@@ -20,18 +20,27 @@ function Accueil() {
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
+
+
+
+
 const pseudoValue = (event) => {
+  const inputlong = document.querySelector('.inputName');
+  const alerteMore15 = document.querySelector(".alertLength");
+  //ternaire pour check nb de characteres + 15
+   inputlong.value.length == 15 ? alerteMore15.style.display = "flex" : alerteMore15.style.display = "none";
   dispatch(savePseudo(event.currentTarget.value, "valueName"));
 };
 
 
 const valueName = useSelector ((state) => state.valuePseudo);
+console.log('le pseudo', valueName);
+
+const HandelLaunch = (event ) => {
 
 
-const HandelLaunch = (event) => {
-  console.log(valueName);
+  console.log('le pseudo', valueName);
     // Ici Une ternaire qui gere l'affichage de la deuxieme location si nul => on affiche rien
-    //const checkPseudo = 
     //const checkPseudo = srcanimaux.locations[1] == undefined ? "" : srcanimaux.locations[1];
     //navigate('/Send-invitation');
 
@@ -56,9 +65,11 @@ const HandelLaunch = (event) => {
               <Carousel/>
             </div>
             <div className="contenerPseudo">
+              <div className="alertLength" >Attention, seulement 15 caractères</div>
               <form type="sumbit" >
-              <input onChange={pseudoValue} value={valueName} className="inputName" placeholder="Pseudo"></input>
+              <input onChange={pseudoValue} value={valueName} className="inputName" maxLength="15" placeholder="Pseudo"></input>
               </form>
+              <div className="alertAvatarEmpty" >Veuillez choisir un avatar</div>
               <AvatarChoix/>
             </div>
           </div>

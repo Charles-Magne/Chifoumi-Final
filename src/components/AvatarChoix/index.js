@@ -1,6 +1,7 @@
+import "./style.scss";
+import "../../assets/VarClass.scss";
 
 
-import { array } from "prop-types";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -46,6 +47,7 @@ import Tigre_bebe from "../../assets/Pictures/Avatars/Tigre_bebe.png";
 import "./style.scss";
 
 function AvatarChoix() {
+
   const tableauAvatar = [
     Elephant_adulte,
     Elephant_badass,
@@ -72,13 +74,18 @@ function AvatarChoix() {
     Tigre_badass,
     Tigre_bebe,
   ];
+  console.log('le tableau =>',tableauAvatar.indexOf);
 
   const dispatch = useDispatch();
-
+  
 
   const handleAvatar = (event) => {
-    console.log("l'avatar",event.target.src);
     dispatch(saveAvatarImg(event.target));
+    const AvatarAll = document.querySelectorAll(".imgAvatar");
+    for (const imgAvatar of AvatarAll) {
+      imgAvatar.classList.remove('button_style--active');
+    }
+    event.target.classList.add("button_style--active");
     
   };
 
@@ -92,6 +99,7 @@ function AvatarChoix() {
               onClick={handleAvatar}
               className="imgAvatar"
               src={tableauAvatar}
+              alt="imgAvatar"
             />
           ))}
         </div>

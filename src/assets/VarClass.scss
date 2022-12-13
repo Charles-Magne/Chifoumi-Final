@@ -1,0 +1,92 @@
+@use "./vars.scss";
+
+/*Le call to action lorsqu'il est cliqué*/
+.button_style--active{
+  background-color: vars.$jaune-main;
+  border-radius: 0.5rem;
+  font-family: vars.$police-main;
+  color: vars.$bleu-main;
+  text-align: center;
+  font-weight: 600;
+  border: solid 2px;
+  border-color: vars.$jaune-secondary;
+  box-shadow: 2px 2px 5px rgb(82, 81, 81);
+}
+
+
+/*Le call to action lorsqu'il est survolé*/
+.button_style--active:hover{
+  border-color: vars.$jaune-main;
+  font-size: 110%;
+  font-weight: 700;
+}
+
+/*Le call to action lorsqu'il n'est pas cliqué*/
+.button_style--desactive{
+  background-color: white;
+  border-radius: 0.5rem;
+  font-family: vars.$police-main;
+  color: vars.$bleu-main;
+  text-align: center;
+  font-weight: 200;
+  border: solid 2px;
+  border-color: vars.$bleu-secondary;
+  box-shadow: 2px 2px 5px rgb(82, 81, 81);
+}
+
+/*Permet d'appliquer le style desactive sans le hover */
+.button_style--desactive2{
+  background-color: white;
+  border-radius: 0.5rem;
+  font-family: vars.$police-main;
+  color: vars.$bleu-main;
+  text-align: center;
+  font-weight: 200;
+  border: solid 2px;
+  border-color: vars.$bleu-secondary;
+  box-shadow: 2px 2px 5px rgb(82, 81, 81);
+}
+
+
+.button_style--desactive:hover{
+background-color: vars.$jaune-main;
+position: relative;
+top: 3px;
+left: 3px;
+}
+
+/*Les boutons secondaires lorsqu'ils ne sont pas activé*/
+.button_secondaire--active{
+  background-color: vars.$bleu-main;
+  border-radius: 0.5rem;
+  font-family: vars.$police-main;
+  color: white;
+  text-align: center;
+  border: solid 2px;
+  border-color: white;
+  box-shadow: 2px 2px 5px rgb(82, 81, 81);
+}
+
+/*le button secondaire lorsqu'il n'est pas activé*/
+.button_secondaire--desactive{
+  background-color: white;
+  border-radius: 0.5rem;
+  font-family: vars.$police-main;
+  color: vars.$bleu-main;
+  text-align: center;
+  border: solid 2px;
+  border-color: vars.$bleu-main;
+}
+
+/*le button secondaire lorsqu'il est desactivé et survolé*/
+.button_secondaire--desactive:hover{
+  background-color: vars.$bleu-main; 
+  color: white;
+  border-color: white;
+  font-weight: 800;
+  box-shadow: 4px 4px 5px rgb(82, 81, 81);
+}
+
+.wrongCard{
+  background-color: vars.$red;
+}

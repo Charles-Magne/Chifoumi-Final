@@ -79,6 +79,18 @@ body {
   border: 1px solid vars.$red;
 }
 
+.alertEmpty{
+  position: absolute;
+  top: 10.1rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
 .inputName{
   border: 1px solid vars.$bleu-main;
   border-radius: vars.$raduisLittle;
@@ -95,7 +107,7 @@ body {
   position: absolute;
   top: 14rem;
   right: 51rem;
-  display: flex;
+  display: none;
   background-color: white;
   font-size: 0.7rem;
   padding: 0.3rem;

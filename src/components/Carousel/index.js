@@ -36,7 +36,7 @@ function Carousel() {
   // Ici On peut utiliser le useSelectorAll
   const domGlobal = useSelector((state) => state.carousel.DomArticle);
   const domCiblé = { ...domGlobal };
-  console.log("Testselectorciblé", domCiblé[0]);
+
 
   /**
    * Permet d'appeler la function qui gere l'affichage tout les X secondes

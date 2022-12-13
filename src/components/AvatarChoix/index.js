@@ -74,7 +74,7 @@ function AvatarChoix() {
     Tigre_badass,
     Tigre_bebe,
   ];
-  console.log('le tableau =>',tableauAvatar.indexOf);
+
 
   const dispatch = useDispatch();
   

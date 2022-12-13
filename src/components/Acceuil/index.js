@@ -2,6 +2,7 @@ import "./style.scss";
 // les dependances
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 //les actions
 import { savePseudo } from '../../action/Avatar';
@@ -15,15 +16,15 @@ import Carousel from "../Carousel";
 import AvatarChoix from "../AvatarChoix";
 
 
+
 function Accueil() {
 
+  const valueName = useSelector ((state) => state.avatar.valuePseudo);
+  const avatarImg = useSelector ((state) => state.avatar.avatarImg);
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
-
-
-
-
+//input du pseudo
 const pseudoValue = (event) => {
   const inputlong = document.querySelector('.inputName');
   const alerteMore15 = document.querySelector(".alertLength");
@@ -32,17 +33,18 @@ const pseudoValue = (event) => {
   dispatch(savePseudo(event.currentTarget.value, "valueName"));
 };
 
-
-const valueName = useSelector ((state) => state.valuePseudo);
-console.log('le pseudo', valueName);
-
-const HandelLaunch = (event ) => {
-
-
-  console.log('le pseudo', valueName);
-    // Ici Une ternaire qui gere l'affichage de la deuxieme location si nul => on affiche rien
-    //const checkPseudo = srcanimaux.locations[1] == undefined ? "" : srcanimaux.locations[1];
-    //navigate('/Send-invitation');
+//Clic sur le lancer une partie
+const HandelLaunch = ( ) => {
+const alerteAvatar = document.querySelector(".alertAvatarEmpty");
+const alertePseudo = document.querySelector(".alertEmpty");
+    // ternaire pour checker si le pseudo est rempli
+    const checkPseudo = valueName == '' ? alertePseudo.style.display = "flex" : alertePseudo.style.display = "flex";
+    // ternaire pour checker si un avatar a etait choisi
+    const checkAvatar = avatarImg == undefined ? alerteAvatar.style.display = "flex" : alerteAvatar.style.display = "none";
+    // ternaire pour savoir si on peut passer a la page suivante
+    const nextPage = avatarImg != undefined && valueName != '' ? navigate('/Send-invitation') : '' ; 
+    console.log('le pseudo',valueName); 
+    ;
 
 }
 
@@ -65,6 +67,7 @@ const HandelLaunch = (event ) => {
               <Carousel/>
             </div>
             <div className="contenerPseudo">
+            <div className="alertEmpty" >Veuillez choisir un pseudo</div>
               <div className="alertLength" >Attention, seulement 15 caractères</div>
               <form type="sumbit" >
               <input onChange={pseudoValue} value={valueName} className="inputName" maxLength="15" placeholder="Pseudo"></input>

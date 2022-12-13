@@ -1,0 +1,291 @@
+@use "../../assets/vars.scss";
+
+body {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+/*la class qui contient les infos d'une seule taupe*/
+.div__les__taupes--contain--1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  background-color: white;
+  width: 40rem;
+  height: 10em;
+  margin: 1rem 0;
+  border: 1px solid vars.$bleu-main;
+  border-radius: 0.5em;
+}
+
+/*la class qui contient l'icone de la taupe*/
+.div__role--main {
+  display: flex;
+  margin: 0 0 0 0;
+  width: 5rem;
+  align-items: center;
+}
+.div__les__taupes--contain--1{
+  margin: 1rem auto 0 auto ;
+}
+
+.compteurTaupe {
+  border: 1px solid vars.$bleu-main;
+  border-radius: 5rem;
+  height: 2rem;
+  width: 2rem;
+  position: relative;
+  right: 1rem;
+  background-color: vars.$jaune-main;
+  text-align: center;
+  color: vars.$bleu-main;
+  font-size: 1.6rem;
+}
+
+.scoreTaupe {
+  margin: 0.2rem 0 0 0;
+}
+
+.icone_taupe {
+  display: flex;
+  justify-items: center;
+  height: 4rem;
+  width: 4rem;
+  margin: 1rem 0 1rem 1rem ;
+}
+
+/*la class qui contient le pseudo et l'img de la taupe */
+.div__PseudoImg--Taupe {
+  display: flex;
+  flex-direction: column;
+  width: 11rem;
+  height: 8rem;
+  margin: 1rem;
+}
+
+.span__pseudo {
+  margin: 0 auto 0.7rem auto;
+  font-size: 1.5rem;
+  justify-items: center;
+  color: vars.$bleu-main;
+}
+
+.img__Avatar {
+  margin: 0 auto;
+  height: 5.5rem;
+}
+
+/*les trois cartes symboles et la carte qui a etait jouée*/
+.div__symboles--taupe {
+  display: flex;
+  align-items: center;
+}
+
+.carte__symbole-Selectionné {
+  background-color: vars.$jaune-main;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 1.5rem 1rem;
+  height: 4rem;
+  width: 4rem;
+}
+
+.carte__symbole {
+  background-color: white;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 1.5rem 1rem;
+  height: 4rem;
+  width: 4rem;
+}
+
+.contener__informateur {
+  display: flex;
+  margin: 1rem 1rem;
+  justify-content: space-around;
+  background-color: white;
+  padding: 1rem 0;
+  border: 1px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+}
+
+.div__Informateurs {
+  display: flex;
+  background-color: white;
+  justify-content: space-around;
+  align-items: center;
+  width: 30rem;
+  height: 5rem;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.contener__icone__informateur {
+  background-color: none;
+}
+
+.icone__informateur {
+  height: 4rem;
+  width: 4rem;
+}
+
+.contenerPersoInformateur{
+  display: flex;
+}
+
+.pseudoInformateur{
+  text-align: center;
+}
+
+.img__informateur--1 {
+  width: 2rem;
+  height: 2rem;
+}
+
+.carte__symbole__informateur {
+  background-color: white;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.carte__symbole-Selectionné__informateur {
+  background-color: vars.$jaune-main;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.img__informateur--1 {
+  width: 50%;
+}
+
+.compteurInformateurs {
+  border: 1px solid vars.$bleu-main;
+  border-radius: 5rem;
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  background-color: vars.$jaune-main;
+  text-align: center;
+  color: vars.$bleu-main;
+  font-size: 1.6rem;
+  right: -1rem;
+  bottom: 3.7rem;
+}
+
+.scoreInformateur {
+  margin: 0.2rem 0 0 0;
+}
+
+.contener__card {
+  display: flex;
+  flex-direction: row;
+}
+
+.contener__player {
+  display: flex;
+  background-color: white;
+  border: 1px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 1rem;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.div__player {
+  display: flex;
+  margin: 1rem 2rem;
+  background-color: white;
+  justify-content: space-around;
+  align-items: center;
+  width: 30rem;
+  height: 5rem;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.icone__player {
+  height: 4rem;
+  width: 4rem;
+}
+
+.contenerPseudoPlayer{
+  display: flex;
+}
+.pseudoPlayer{
+  text-align: center;
+}
+
+.compteurPlayer {
+  border: 1px solid vars.$bleu-main;
+  border-radius: 5rem;
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  background-color: vars.$jaune-main;
+  text-align: center;
+  color: vars.$bleu-main;
+  font-size: 1.6rem;
+  right: -1rem;
+  bottom: 3.7rem;
+}
+
+.scorePlayer {
+  margin: 0.2rem 0 0 0;
+}
+
+.img__informateur--1 {
+  width: 4rem;
+  height: 3rem;
+}
+
+.carte__symbole__informateur {
+  background-color: white;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.carte__symbole-Selectionné__informateur {
+  background-color: vars.$jaune-main;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.img__informateur--1 {
+  width: 50%;
+}
+
+.buttonNewPartie {
+  float: right;
+  margin: 2rem 2rem 0 0;
+  width: 10rem;
+  height: 2rem;
+}

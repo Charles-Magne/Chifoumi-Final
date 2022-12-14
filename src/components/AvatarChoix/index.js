@@ -80,7 +80,7 @@ function AvatarChoix() {
   
 
   const handleAvatar = (event) => {
-    dispatch(saveAvatarImg(event.target));
+    dispatch(saveAvatarImg(event.target.src));
     const AvatarAll = document.querySelectorAll(".imgAvatar");
     for (const imgAvatar of AvatarAll) {
       imgAvatar.classList.remove('button_style--active');

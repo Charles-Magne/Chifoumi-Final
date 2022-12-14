@@ -1,7 +1,7 @@
 import "./style.scss";
 // les dependances
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 //les actions
@@ -15,14 +15,25 @@ import titre from "../../assets/Pictures/Titre/Pierre, feuille et Arnaques.png";
 import Carousel from "../Carousel";
 import AvatarChoix from "../AvatarChoix";
 
+// Les actions
+import { fetchCodeSalon } from "../../action/Salon";
+
 
 
 function Accueil() {
+// On envoie le code du salon vers le state pour gerer la redirection
+  useEffect(() => {
+    const salon = Math.round(Math.random()*10000000000000000);
+    dispatch(fetchCodeSalon(salon));
+  }, []);
 
+  // On import le code du salon
+  const salonState = useSelector((state) => state.salon.lobby);
   const valueName = useSelector ((state) => state.avatar.valuePseudo);
   const avatarImg = useSelector ((state) => state.avatar.avatarImg);
    const dispatch = useDispatch();
    const navigate = useNavigate();
+   
 
 //input du pseudo
 const pseudoValue = (event) => {
@@ -42,8 +53,8 @@ const alertePseudo = document.querySelector(".alertEmpty");
     // ternaire pour checker si un avatar a etait choisi
     const checkAvatar = avatarImg == undefined ? alerteAvatar.style.display = "flex" : alerteAvatar.style.display = "none";
     // ternaire pour savoir si on peut passer a la page suivante
-    const nextPage = avatarImg != undefined && valueName != '' ? navigate('/Send-invitation') : '' ; 
-    console.log('le pseudo',valueName); 
+    const nextPage = avatarImg != undefined && valueName != '' ?  navigate(`Send-invitation/${salonState}`)  : '' ; 
+    console.log('l url',salonState); 
     ;
 
 }

@@ -342,6 +342,32 @@ padding: 1em 0 ;
   margin-bottom: 15%;
 }
 
+.Joueur__localStorageSelf{
+  display: flex;
+  justify-content: space-around ;
+}
+
+.logo__joueursSelf{
+  display: flex;
+  width: 2rem;
+
+}
+
+.Pseudo__joueurSelf{
+  display: flex;
+  font-size: 1.2rem;
+  align-self: center;
+  color: vars.$bleu-main;
+  margin: 0rem 1.1rem;
+}
+
+.playerReady{
+  display: flex;
+  align-self: center;
+  color: vars.$bleu-main;
+  padding: 0.4rem 0.6rem ;
+}
+
 .button__lancer__une__partie--2 {
   position: absolute;
   bottom: 0px;

@@ -1,22 +1,37 @@
 import style from "./style.scss";
 
+//les dependances
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 // les icones
 import titre from "../../assets/Pictures/Titre/Pierre, feuille et Arnaques.png";
 import flag from "../../assets/Icones/drapeau-france.svg";
 import share from "../../assets/Icones/partager.png";
 import info from "../../assets/Icones/informations.png";
 
-//Les hooks
-import { useNavigate } from "react-router-dom";
 
 function Meetplayer() {
+  const salonState = useSelector((state) => state.salon.lobby);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-const navigate = useNavigate();
 
-  const handleLaunchGame = () => {
- navigate('/Playing');
+
+  const nameSelf = useSelector((state) => state.avatar.valuePseudo);
+  const imgSelf = useSelector((state) => state.avatar.avatarImg);
+  
+
+  const handleCopyLink = () => {
+    
+    console.log(salonState);
+    navigator.clipboard.writeText( `http://localhost:8080/Send-invitation/${salonState}`);
   }
 
+  const handleLaunchGame = () => {
+    navigate("/Playing");
+  };
 
   return (
     <div>
@@ -62,7 +77,7 @@ const navigate = useNavigate();
                     Modifier le nb de taupe
                   </h3>
                   <div className="div__nbDeTaupe--choix">
-                    <div className="choixTaupe" >
+                    <div className="choixTaupe">
                       <span>1</span>
                       <input
                         className="checkbox--taupe checkbox--taupe--1"
@@ -93,7 +108,7 @@ const navigate = useNavigate();
                 </div>
               </div>
             </div>
-            <button className="div__link--invit">
+            <button onClick={handleCopyLink} className="div__link--invit">
               <img
                 className="img__icone--information"
                 src={info}
@@ -112,9 +127,9 @@ const navigate = useNavigate();
               <h3 className="div__nbdejoueur">6 Joueurs</h3>
               {/*info dans le local storage */}
               <div className="Joueur__localStorageSelf">
-                <img className="logo__joueurs" />
-                <p className="Pseudo__joueur"></p>
-                <p className="Statut__joueur"></p>
+                <img className="logo__joueursSelf" src={imgSelf} />
+                <span className="Pseudo__joueurSelf" >{nameSelf}</span>
+                <p className="playerReady button_style--active">Pret</p>
                 {/*pret ou non */}
                 <p className="Hebergeur__salon"></p>
               </div>
@@ -129,7 +144,7 @@ const navigate = useNavigate();
               <button
                 href=""
                 className="button__lancer__une__partie--2 button_style--active"
-                onClick={ handleLaunchGame }
+                onClick={handleLaunchGame}
               >
                 Lancer la partie
               </button>

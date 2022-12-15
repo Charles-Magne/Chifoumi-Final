@@ -230,7 +230,7 @@ display: flex;
   margin-bottom: 5%;
   font-family: vars.$police-main;
 }
-// ************ choix du pseudo et de l'avatar  => visible seulement par l'hote
+// ************ choix du pseudo et de l'avatar  => non-visible par l'hote
 .contenerNonHote{
   display: none;
   flex-direction: column;

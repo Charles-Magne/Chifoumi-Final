@@ -1,10 +1,10 @@
 
 //Gere la value du pseudo name
-export const PSEUDO_VALUE = 'PSEUDO_VALUE';
+export const PSEUDO_VALUE_INVITE = 'PSEUDO_VALUE_INVITE';
 
-export function savePseudo (value, field) { 
+export function savePseudoInvite (value, field) { 
   return {
-type : PSEUDO_VALUE,
+type : PSEUDO_VALUE_INVITE,
 value,
 field,
   };
@@ -23,9 +23,10 @@ export function saveAvatarImg ( target ) {
 //save le pseudo de l'hote
 export const SAVE_HOTE = 'SAVE_HOTE';
 
-export function saveHote (nameHote) { 
+export function saveHote (value, field) { 
   return {
-type : saveHote,
-nameHote,
+type : SAVE_HOTE,
+value, 
+field,
   };
 }

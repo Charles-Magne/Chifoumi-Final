@@ -10,8 +10,11 @@ let socket;
 const webSocketConnection = (store) => (next) => (action) => {
   switch (action.type) {
     case CONNECTION_WEB_SO:
+      // On se connecte au serveur websocket
       socket = window.io('http://localhost:3001');
       console.log('ca marche bien les socket');
+
+      return next (action);
     
     // V Cette partie ne bouge pas 
     default:

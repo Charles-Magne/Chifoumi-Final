@@ -1,7 +1,7 @@
 import "./style.scss";
 // les dependances
 import { useDispatch, useSelector } from "react-redux";
-import { unstable_HistoryRouter, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 //les actions
@@ -35,13 +35,13 @@ function Accueil() {
 
   //input du pseudo
   const pseudoValue = (event) => {
-    const inputlong = document.querySelector(".inputName");
+    const inputlong = document.querySelector(".inputNameHote");
     const alerteMore15 = document.querySelector(".alertLength");
     //ternaire pour check nb de characteres + 15
     inputlong.value.length == 15
       ? (alerteMore15.style.display = "flex")
       : (alerteMore15.style.display = "none");
-    dispatch(savePseudo(event.currentTarget.value, "valueName"));
+    dispatch(saveHote(event.currentTarget.value, "valueName"));
   };
 
   //Clic sur le lancer une partie
@@ -89,11 +89,11 @@ function Accueil() {
               <div className="alertLength">
                 Attention, seulement 15 caractères
               </div>
-              <form type="sumbit">
+              <form type="text">
                 <input
                   onChange={pseudoValue}
                   value={valueName}
-                  className="inputName"
+                  className="inputNameHote"
                   maxLength="15"
                   placeholder="Pseudo"
                 ></input>

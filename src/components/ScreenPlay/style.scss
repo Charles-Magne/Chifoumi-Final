@@ -181,15 +181,41 @@
       border: solid 0.2em;
       border-radius: 0.5em;
       border-color: vars.$bleu-main;
-      margin: 0 2%;
+      margin: 0 ;
       box-shadow: 2px 2px 5px rgb(82, 81, 81);
   
+  }
+
+  .image_symbole--up{
+    width: 1.3rem;
+    margin: 0.5rem ;
   }
   
   .image_symbole{
       width: 5rem;
       //height: 80%;
-      margin: 4.5rem auto ;
+      margin: 0.5rem auto 0rem auto ;
+  }
+
+  .texteSymbole{
+    display: flex;
+    width: auto;
+    margin: 1rem auto 1.3rem auto;
+    font-family: vars.$police-main;
+  }
+
+  .contenerImgDown{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .image_symbole--Down{
+    display: flex;
+    width: 1.3rem;
+    margin: 0.5rem ;
+    transform: rotate(180deg);
+    
   }
 
   //***************** Liste des joueurs

@@ -11,9 +11,22 @@ import "./style.scss";
  import Ciseaux from "../../assets/Pictures/Symbole/ciseaux_bleu.png";
  import avatarProvisoire from"../../assets/Pictures/Avatars/Lion_adulte.png";
 
+//Les dependances
+import { useEffect } from "react";
+
 
 
 function ScreenPlay() {
+
+  useEffect(() => {
+// Il faut definir le role de l'utilisateur, puis sa carte pupute, puis si taupe sa carte à defendre ou si informateur la carte perdante 
+/*Pour definir les roles, on defini un randown math a tous les joueurs et celui qui a la plus elevé est la taupe, les deux moins grands sont informateurs */
+/*pour definir la carte pupute un random math sert a attribuer la carte 
+faire un loading si jamais les calcules prennent du temps.
+*/
+console.log('le useeffect du sceenplay');
+  }, []);
+
   return (
     <div>
        <div className="div__section-principal--ecran--de--jeu">
@@ -48,13 +61,28 @@ function ScreenPlay() {
                 </div>
                 <div className="div__choixdelacarte">
                     <button class="div__cartePierre button__carte button_style--active">
+                    <img className="image_symbole--up" src={ Pierre } alt="SymboleCiseau" />
                         <img className="image_symbole" src={ Pierre } alt="SymbolePierre" />
+                        <div className="texteSymbole" >Pierre</div>
+                        <div className="contenerImgDown" >
+                        <img className="image_symbole--Down" src={ Pierre } alt="SymboleCiseau" />
+                        </div>
                     </button>
                     <button className="div__carteFeuille button__carte button_style--active">
+                    <img className="image_symbole--up" src={ Feuille } alt="SymboleCiseau" />
                         <img className="image_symbole" src={ Feuille } alt="SymboleFeuille" />
+                        <div className="texteSymbole" >Feuille</div>
+                        <div className="contenerImgDown" >
+                        <img className="image_symbole--Down" src={ Feuille } alt="SymboleCiseau" />
+                        </div>
                     </button>
                     <button className="div__carteCiseaux button__carte button_style--active">
+                    <img className="image_symbole--up" src={ Ciseaux } alt="SymboleCiseau" />
                         <img className="image_symbole" src={ Ciseaux } alt="SymboleCiseau" />
+                        <div className="texteSymbole" >Ciseau</div>
+                        <div className="contenerImgDown" >
+                        <img className="image_symbole--Down" src={ Ciseaux } alt="SymboleCiseau" />
+                        </div>
                     </button>
                 </div>
             </div>

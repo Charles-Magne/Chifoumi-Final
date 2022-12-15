@@ -1,4 +1,4 @@
-import { PSEUDO_VALUE, SAVE_AVATAR_IMG, SAVE_HOTE } from "../action/Avatar";
+import { PSEUDO_VALUE_INVITE, SAVE_AVATAR_IMG, SAVE_HOTE } from "../action/Avatar";
 
 
 export const initialState = {
@@ -9,12 +9,18 @@ export const initialState = {
 
 function avatarReducer ( state = initialState, action = {}) {
  switch (action.type) {
-  // savec le pseudo du joueur
-   case PSEUDO_VALUE:
+   // save le pseudo de l'hote
+   case SAVE_HOTE:
      return {
        ...state,
        valuePseudo: action.value,
        hotePseudo: action.value,
+     };
+  // savec le pseudo du joueur
+   case PSEUDO_VALUE_INVITE:
+     return {
+       ...state,
+       valuePseudo: action.value,
      };
 // Save l'img servant a l'avatar
      case SAVE_AVATAR_IMG:

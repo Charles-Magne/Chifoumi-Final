@@ -14,10 +14,11 @@ import flag from "../../assets/Icones/drapeau-france.svg";
 import share from "../../assets/Icones/partager.png";
 import info from "../../assets/Icones/informations.png";
 
+
+
 // Les actions
 import { connectionWebSo } from "../../action/connection.js";
-import { savePseudo } from "../../action/Avatar";
-
+import { savePseudo, savePseudoInvite } from "../../action/Avatar";
 
 function Meetplayer() {
 
@@ -29,30 +30,34 @@ function Meetplayer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // on lance les websockets 
-    //dispatch(connectionWebSo());
-    const divHote = document.querySelector('.div__link--invit');
-    const divNonHote = document.querySelector('.contenerNonHote');
-    nameMJ === nameSelf ? divHote.style.display = "flex" : divNonHote.style.display = "flex";
-    console.log('on me voit ?');
-      }, [],);
+    // on lance les websockets
+    dispatch(connectionWebSo());
+    const divHote = document.querySelector(".div__link--invit");
+    const divNonHote = document.querySelector(".contenerNonHote");
+    nameMJ === nameSelf
+      ? (divHote.style.display = "flex")
+      : (divNonHote.style.display = "flex");
+    console.log("on me voit ?");
+  }, []);
 
-      //input du pseudo
-  const pseudoValue = (event) => {
+  //input du pseudo
+  const pseudoValueInvite = (event) => {
     const inputlong = document.querySelector(".inputName");
     const alerteMore15 = document.querySelector(".alertLength");
     //ternaire pour check nb de characteres + 15
     inputlong.value.length == 15
       ? (alerteMore15.style.display = "flex")
       : (alerteMore15.style.display = "none");
-    dispatch(savePseudo(event.currentTarget.value, "valueName"));
+    dispatch(savePseudoInvite(event.currentTarget.value, "valueName"));
   };
-  
-// On permet a l'hote d'envoyer un lien aux autres participants
+
+  // On permet a l'hote d'envoyer un lien aux autres participants
   const handleCopyLink = () => {
     console.log(salonState);
-    navigator.clipboard.writeText( `http://localhost:8080/Send-invitation/${salonState}`);
-  }
+    navigator.clipboard.writeText(
+      `http://localhost:8080/Send-invitation/${salonState}`
+    );
+  };
 
   // On envoie l'hote vers la page d'ecran de jeu
   const handleLaunchGame = () => {
@@ -134,7 +139,7 @@ function Meetplayer() {
                 </div>
               </div>
             </div>
-            {/* cette partie n'est visible que par les joueurs qui ne sont pas hote */}
+            {/* *************************cette partie n'est visible que par les joueurs qui ne sont pas hote */}
             <div className="contenerNonHote">
               <div className="alertEmpty">Veuillez choisir un pseudo</div>
               <div className="alertLength">
@@ -142,17 +147,17 @@ function Meetplayer() {
               </div>
               <form type="sumbit">
                 <input
-                  onChange={pseudoValue}
+                  onChange={pseudoValueInvite}
                   value={nameSelf}
                   className="inputName"
                   maxLength="15"
                   placeholder="Pseudo"
                 ></input>
               </form>
-              <div className="alertAvatarEmpty">Veuillez choisir un avatar</div>
-              <AvatarChoix />
+              < AvatarChoix />
+              
             </div>
-            {/* cette partie n'est visible que par l'hote du jeu */}
+            {/********************************** cette partie n'est visible que par l'hote du jeu */}
             <button onClick={handleCopyLink} className="div__link--invit">
               <img
                 className="img__icone--information"
@@ -173,7 +178,7 @@ function Meetplayer() {
               {/*info dans le local storage */}
               <div className="Joueur__localStorageSelf">
                 <img className="logo__joueursSelf" src={imgSelf} />
-                <span className="Pseudo__joueurSelf" >{nameSelf}</span>
+                <span className="Pseudo__joueurSelf">{nameSelf}</span>
                 <p className="playerReady button_style--active">Pret</p>
                 {/*pret ou non */}
                 <p className="Hebergeur__salon"></p>

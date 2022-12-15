@@ -44,8 +44,6 @@ import Tigre_adulte from "../../assets/Pictures/Avatars/Tigre_adulte.png";
 import Tigre_badass from "../../assets/Pictures/Avatars/Tigre_badass.png";
 import Tigre_bebe from "../../assets/Pictures/Avatars/Tigre_bebe.png";
 
-import "./style.scss";
-
 function AvatarChoix() {
 
   const tableauAvatar = [

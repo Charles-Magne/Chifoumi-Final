@@ -15,6 +15,29 @@
 
 <body>
 	<div id="root"></div>
+	<!-- 
+			Plan d'action :
+			1 - Ajouter la bibliothèque socket.io
+			2 - On se connecte au serveur websocket au lancement de l'application
+			3 - On envoie un message au serveur (msg crée à la main pour l'instant)
+			4 - On se met à l'écoute de l'arrivée d'un message (qui sera envoyé par le serveur)
+		 
+		/ <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+		 <script>
+			// On se connecte au serveur websocket
+			const socket = window.io('http://localhost:3001');
+
+			// On émet l'event send_message au serveur & on envoie des infos en plus
+			// Le serveur va être à l'écoute de cet event, et va pouvoir faire des actions en conséquences
+			socket.emit('send_message', { author: "Rémi", content: "Hello Curie" });
+
+			// On met notre client en écoute d'un event envoyé par le serveur websocket.
+			// Le serveur websocket va émettre un event pour que tous les clients qui sont connéctés
+			// soient mit à jour
+			socket.on('send_message', (message) => {
+				console.log('[CLIENT] j\'ai reçu un event du serveur', message);
+			});
+		 </script>-->
 </body>
 
 </html>

@@ -19,3 +19,13 @@ export function saveAvatarImg ( target ) {
     target,
   };
 }
+
+//save le pseudo de l'hote
+export const SAVE_HOTE = 'SAVE_HOTE';
+
+export function saveHote (nameHote) { 
+  return {
+type : saveHote,
+nameHote,
+  };
+}

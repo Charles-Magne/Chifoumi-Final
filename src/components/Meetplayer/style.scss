@@ -230,11 +230,68 @@ display: flex;
   margin-bottom: 5%;
   font-family: vars.$police-main;
 }
+// ************ choix du pseudo et de l'avatar  => visible seulement par l'hote
+.contenerNonHote{
+  display: none;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  color: vars.$bleu-main;
+}
 
-// ************ Le button du centre pour copier le lien
+.alertLength{
+  position: absolute;
+  top: 10.1rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+.alertEmpty{
+  position: absolute;
+  top: 10.1rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+.inputName{
+  border: 1px solid vars.$bleu-main;
+  border-radius: vars.$raduisLittle;
+  height: 2rem;
+  width: 12rem;
+  margin: 1rem 0 1.4rem 0;
+  padding: 0 0 0 1rem ;
+  font-family: vars.$police-main;
+  font-size: 1.2rem;
+  color: vars.$bleu-main;
+}
+
+.alertAvatarEmpty{
+  position: absolute;
+  top: 14rem;
+  right: 51rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+// ************ Le button du centre pour copier le lien => visible seulement par l'hote
 
 .div__link--invit {
-  display: flex;
+  display: none;
   flex-direction: column;
   margin-top: auto;
   margin-bottom: auto;

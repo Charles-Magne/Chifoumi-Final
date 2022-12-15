@@ -5,30 +5,56 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
+// les composants
+import AvatarChoix from "../AvatarChoix/index";
+
 // les icones
 import titre from "../../assets/Pictures/Titre/Pierre, feuille et Arnaques.png";
 import flag from "../../assets/Icones/drapeau-france.svg";
 import share from "../../assets/Icones/partager.png";
 import info from "../../assets/Icones/informations.png";
 
+// Les actions
+import { connectionWebSo } from "../../action/connection.js";
+import { savePseudo } from "../../action/Avatar";
+
 
 function Meetplayer() {
+
+  const nameSelf = useSelector((state) => state.avatar.valuePseudo); // si le nom du participant et le nom de l'hote son les memes alors on fait un
+  const nameMJ = useSelector((state) => state.avatar.hotePseudo);
+  const imgSelf = useSelector((state) => state.avatar.avatarImg);
   const salonState = useSelector((state) => state.salon.lobby);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    // on lance les websockets 
+    //dispatch(connectionWebSo());
+    const divHote = document.querySelector('.div__link--invit');
+    const divNonHote = document.querySelector('.contenerNonHote');
+    nameMJ === nameSelf ? divHote.style.display = "flex" : divNonHote.style.display = "flex";
+    console.log('on me voit ?');
+      }, [],);
 
-
-  const nameSelf = useSelector((state) => state.avatar.valuePseudo);
-  const imgSelf = useSelector((state) => state.avatar.avatarImg);
+      //input du pseudo
+  const pseudoValue = (event) => {
+    const inputlong = document.querySelector(".inputName");
+    const alerteMore15 = document.querySelector(".alertLength");
+    //ternaire pour check nb de characteres + 15
+    inputlong.value.length == 15
+      ? (alerteMore15.style.display = "flex")
+      : (alerteMore15.style.display = "none");
+    dispatch(savePseudo(event.currentTarget.value, "valueName"));
+  };
   
-
+// On permet a l'hote d'envoyer un lien aux autres participants
   const handleCopyLink = () => {
-    
     console.log(salonState);
     navigator.clipboard.writeText( `http://localhost:8080/Send-invitation/${salonState}`);
   }
 
+  // On envoie l'hote vers la page d'ecran de jeu
   const handleLaunchGame = () => {
     navigate("/Playing");
   };
@@ -108,6 +134,25 @@ function Meetplayer() {
                 </div>
               </div>
             </div>
+            {/* cette partie n'est visible que par les joueurs qui ne sont pas hote */}
+            <div className="contenerNonHote">
+              <div className="alertEmpty">Veuillez choisir un pseudo</div>
+              <div className="alertLength">
+                Attention, seulement 15 caractères
+              </div>
+              <form type="sumbit">
+                <input
+                  onChange={pseudoValue}
+                  value={nameSelf}
+                  className="inputName"
+                  maxLength="15"
+                  placeholder="Pseudo"
+                ></input>
+              </form>
+              <div className="alertAvatarEmpty">Veuillez choisir un avatar</div>
+              <AvatarChoix />
+            </div>
+            {/* cette partie n'est visible que par l'hote du jeu */}
             <button onClick={handleCopyLink} className="div__link--invit">
               <img
                 className="img__icone--information"

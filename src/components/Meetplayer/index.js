@@ -17,7 +17,7 @@ import info from "../../assets/Icones/informations.png";
 
 
 // Les actions
-import { connectionWebSo } from "../../action/connection.js";
+
 import { savePseudo, savePseudoInvite } from "../../action/Avatar";
 
 function Meetplayer() {
@@ -30,14 +30,11 @@ function Meetplayer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // on lance les websockets
-    dispatch(connectionWebSo());
     const divHote = document.querySelector(".div__link--invit");
     const divNonHote = document.querySelector(".contenerNonHote");
     nameMJ === nameSelf
       ? (divHote.style.display = "flex")
       : (divNonHote.style.display = "flex");
-    console.log("on me voit ?");
   }, []);
 
   //input du pseudo

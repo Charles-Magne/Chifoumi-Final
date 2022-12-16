@@ -60,7 +60,7 @@ console.log('le useeffect du sceenplay');
                     <img className="symoble__mini__bas__droite" src={ ile } alt="iconeCarteAction" />
                 </div>
                 <div className="div__choixdelacarte">
-                    <button class="div__cartePierre button__carte button_style--active">
+                    <button className="div__cartePierre button__carte button_style--active">
                     <img className="image_symbole--up" src={ Pierre } alt="SymboleCiseau" />
                         <img className="image_symbole" src={ Pierre } alt="SymbolePierre" />
                         <div className="texteSymbole" >Pierre</div>

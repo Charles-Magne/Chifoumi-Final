@@ -43,7 +43,7 @@ function Carousel() {
    */
   const timeCount = setInterval(() => {
     //displayToggle();
-    console.log("On dispatch");
+    //console.log("On dispatch");
   }, 5000);
 
   /**

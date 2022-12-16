@@ -18,10 +18,13 @@ import AvatarChoix from "../AvatarChoix";
 
 // Les actions
 import { fetchCodeSalon } from "../../action/Salon";
+import { connectionWebSo } from "../../action/connection.js";
 
 function Accueil() {
   // On envoie le code du salon vers le state pour gerer la redirection
   useEffect(() => {
+        // on lance les websockets
+        dispatch(connectionWebSo());
     const salon = Math.round(Math.random() * 10000000000000000);
     dispatch(fetchCodeSalon(salon));
   }, []);

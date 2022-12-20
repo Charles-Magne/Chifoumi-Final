@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 //les actions
-import { savePseudo, saveHote } from "../../action/Avatar";
+import { savePseudo, savePseudoHote } from "../../action/Avatar";
 
 
 //les imgs
@@ -18,13 +18,11 @@ import AvatarChoix from "../AvatarChoix";
 
 // Les actions
 import { fetchCodeSalon } from "../../action/Salon";
-import { connectionWebSo } from "../../action/connection.js";
+
 
 function Accueil() {
   // On envoie le code du salon vers le state pour gerer la redirection
   useEffect(() => {
-        // on lance les websockets
-        dispatch(connectionWebSo());
     const salon = Math.round(Math.random() * 10000000000000000);
     dispatch(fetchCodeSalon(salon));
   }, []);
@@ -44,7 +42,7 @@ function Accueil() {
     inputlong.value.length == 15
       ? (alerteMore15.style.display = "flex")
       : (alerteMore15.style.display = "none");
-    dispatch(saveHote(event.currentTarget.value, "valueName"));
+    dispatch(savePseudoHote(event.currentTarget.value, "valueName"));
   };
 
   //Clic sur le lancer une partie

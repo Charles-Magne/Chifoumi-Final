@@ -21,12 +21,22 @@ export function saveAvatarImg ( target ) {
 }
 
 //save le pseudo de l'hote
-export const SAVE_HOTE = 'SAVE_HOTE';
+export const SAVE_PSEUDO_HOTE = 'SAVE_PSEUDO_HOTE';
 
-export function saveHote (value, field) { 
+export function savePseudoHote (value, field) { 
   return {
-type : SAVE_HOTE,
+type : SAVE_PSEUDO_HOTE,
 value, 
 field,
+  };
+}
+
+//save le pseudo de l'hote pour les autres joueur => WS
+export const RECEIVE_IMG_HOTE = 'RECEIVE_IMG_HOTE';
+
+export function receiveImgHote (img) { 
+  return {
+type : RECEIVE_IMG_HOTE,
+img,
   };
 }

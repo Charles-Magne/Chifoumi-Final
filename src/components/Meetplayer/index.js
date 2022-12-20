@@ -1,3 +1,4 @@
+
 import style from "./style.scss";
 
 //les dependances
@@ -14,27 +15,32 @@ import flag from "../../assets/Icones/drapeau-france.svg";
 import share from "../../assets/Icones/partager.png";
 import info from "../../assets/Icones/informations.png";
 
-
-
 // Les actions
 
 import { savePseudo, savePseudoInvite } from "../../action/Avatar";
+import { connectionWebSo, sendHoteName, requestHoteName } from "../../action/connection.js";
 
 function Meetplayer() {
 
-  const nameSelf = useSelector((state) => state.avatar.valuePseudo); // si le nom du participant et le nom de l'hote son les memes alors on fait un
-  const nameMJ = useSelector((state) => state.avatar.hotePseudo);
+  const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut
+  const nameSelf = useSelector((state) => state.avatar.joueurSelf.valuePseudo); // si le nom du participant et le nom de l'hote son les memes alors on fait un
   const imgSelf = useSelector((state) => state.avatar.avatarImg);
   const salonState = useSelector((state) => state.salon.lobby);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const divHote = document.querySelector(".div__link--invit");
-    const divNonHote = document.querySelector(".contenerNonHote");
+    // on lance les websockets
+    dispatch(connectionWebSo());
+    const divHote = document.querySelector(".div__link--invit"); // le lien d'invitation
+    const divNonHote = document.querySelector(".contenerNonHote"); // le choix de l'avatar et du pseudo
+    // la ternaire check si on a affaire à l'hote ou a un invité
     nameMJ === nameSelf
       ? (divHote.style.display = "flex")
       : (divNonHote.style.display = "flex");
+      // Si je suis l'hote j'envoie mon nom a l'invité ------ si invité, je demende le name de l'hote
+    nameMJ != "" ? dispatch(sendHoteName()) : dispatch(requestHoteName()) ;
+      console.log('hote =>', nameMJ,'||','moi =>', nameSelf);
   }, []);
 
   //input du pseudo
@@ -175,14 +181,13 @@ function Meetplayer() {
               {/*info dans le local storage */}
               <div className="Joueur__localStorageSelf">
                 <img className="logo__joueursSelf" src={imgSelf} />
-                <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                <span className="Pseudo__joueurSelf">{nameMJ}</span>
                 <p className="playerReady button_style--active">Pret</p>
                 {/*pret ou non */}
                 <p className="Hebergeur__salon"></p>
               </div>
               <div className="Joueur__sessionStorage">
                 <img className="logo__joueurs" />
-                <p className="Pseudo__joueur">Joueurs-coucou</p>
                 <p className="Statut__joueur"></p>
                 {/* pret ou non */}
                 <p className="Hebergeur__salon"></p>

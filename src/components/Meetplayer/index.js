@@ -18,13 +18,15 @@ import info from "../../assets/Icones/informations.png";
 // Les actions
 
 import { savePseudo, savePseudoInvite } from "../../action/Avatar";
-import { connectionWebSo, sendHoteName, requestHoteName } from "../../action/connection.js";
+import { connectionWebSo, newInviteDetecte } from "../../action/connection.js";
 
 function Meetplayer() {
 
-  const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut
+  const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut dans tous les reducers
+  const imgMJ = useSelector((state) => state.avatar.hote.avatarImgHote); // l'img de l'hote toujours en haut
+  const nameMJTrue = useSelector((state) => state.avatar.hote.hotePseudo); // le nom de l'hote toujours en haut uniquement pour l'hote
   const nameSelf = useSelector((state) => state.avatar.joueurSelf.valuePseudo); // si le nom du participant et le nom de l'hote son les memes alors on fait un
-  const imgSelf = useSelector((state) => state.avatar.avatarImg);
+  const imgSelf = useSelector((state) => state.avatar.joueurSelf.avatarImg);
   const salonState = useSelector((state) => state.salon.lobby);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,14 +36,18 @@ function Meetplayer() {
     dispatch(connectionWebSo());
     const divHote = document.querySelector(".div__link--invit"); // le lien d'invitation
     const divNonHote = document.querySelector(".contenerNonHote"); // le choix de l'avatar et du pseudo
-    // la ternaire check si on a affaire à l'hote ou a un invité
-    nameMJ === nameSelf
-      ? (divHote.style.display = "flex")
-      : (divNonHote.style.display = "flex");
+    const buttonLaunch = document.querySelector(".button__lancer__une__partie--2");
+    const divJoueurSelf = document.querySelector('.joueurSelf'); // La div qui affiche le joueur self
+
+    // la ternaire check si hote ou invité pour gerer affichage
+    nameMJ != ""
+      ? (divHote.style.display = "flex", divJoueurSelf.style.display = "none" ) // On cache la div joueur self et le choix de l'avatar
+      : (divNonHote.style.display = "flex", buttonLaunch.style.display = "none");
+
       // Si je suis l'hote j'envoie mon nom a l'invité ------ si invité, je demende le name de l'hote
-    nameMJ != "" ? dispatch(sendHoteName()) : dispatch(requestHoteName()) ;
+    nameMJ != "" ? console.log('l\'hote') : ( console.log('invité'), dispatch(newInviteDetecte()) ) ;
       console.log('hote =>', nameMJ,'||','moi =>', nameSelf);
-  }, []);
+  }, [],);
 
   //input du pseudo
   const pseudoValueInvite = (event) => {
@@ -176,12 +182,21 @@ function Meetplayer() {
               <p className="partage__titre">Cliquer pour copier le lien</p>
               <img className="img__partager" src={share} alt="icone-share" />
             </button>
+            {/********************************** liste des joueurs */}
             <div className="div__listeJoueurs">
               <h3 className="div__nbdejoueur">6 Joueurs</h3>
-              {/*info dans le local storage */}
-              <div className="Joueur__localStorageSelf">
+              {/*Joueur hote */}
+              <div className="Joueur__localStorage joueurHote">
+                <img className="logo__joueursSelf" src={imgMJ} />
+                <span className="Pseudo__joueurSelf">{nameMJTrue}</span>
+                <p className="playerReady button_style--active">Pret</p>
+                {/*pret ou non */}
+                <p className="Hebergeur__salon"></p>
+              </div>
+              {/*Joueur Self */}
+              <div className="Joueur__localStorage joueurSelf">
                 <img className="logo__joueursSelf" src={imgSelf} />
-                <span className="Pseudo__joueurSelf">{nameMJ}</span>
+                <span className="Pseudo__joueurSelf">{nameSelf}</span>
                 <p className="playerReady button_style--active">Pret</p>
                 {/*pret ou non */}
                 <p className="Hebergeur__salon"></p>

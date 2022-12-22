@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 //les actions
 import { savePseudo, savePseudoHote } from "../../action/Avatar";
+import { fetchCodeSalon } from "../../action/Salon";
 
 
 //les imgs
@@ -15,9 +16,6 @@ import titre from "../../assets/Pictures/Titre/Pierre, feuille et Arnaques.png";
 //les composants
 import Carousel from "../Carousel";
 import AvatarChoix from "../AvatarChoix";
-
-// Les actions
-import { fetchCodeSalon } from "../../action/Salon";
 
 
 function Accueil() {
@@ -29,8 +27,8 @@ function Accueil() {
 
   // On import le code du salon
   const salonState = useSelector((state) => state.salon.lobby);
-  const valueName = useSelector((state) => state.avatar.valuePseudo);
-  const avatarImg = useSelector((state) => state.avatar.avatarImg);
+  const valueName = useSelector((state) => state.avatar.hote.hotePseudo);
+  const avatarImg = useSelector((state) => state.avatar.hote.avatarImgHote);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

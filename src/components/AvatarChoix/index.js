@@ -3,9 +3,9 @@ import "../../assets/VarClass.scss";
 
 
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { saveAvatarImg } from "../../action/Avatar";
+import { saveAvatarImg, saveAvatarImgInvit } from "../../action/Avatar";
 
 import Elephant_adulte from "../../assets/Pictures/Avatars/Elephant_adulte.png";
 import Elephant_badass from "../../assets/Pictures/Avatars/Elephant_badass.png";
@@ -76,16 +76,27 @@ function AvatarChoix() {
 
   const dispatch = useDispatch();
   
+// Il faut identifier si c'est l'hote ou l'inviter
+const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut
+  const imgMJ = useSelector((state) => state.avatar.hote.avatarImgHote); // l'img de l'hote toujours en haut
+  const nameSelf = useSelector((state) => state.avatar.joueurSelf.valuePseudo); // si le nom du participant et le nom de l'hote son les memes alors on fait un
 
-  const handleAvatar = (event) => {
-    dispatch(saveAvatarImg(event.target.src));
+  // la ternaire check si hote ou invité pour gerer affichage
+   const handleAvatar = (event) => {
+     // ici une ternaire qui verifie si c'est un hote ou un invité pour savoir ou placer l'img choisi
+     document.location.pathname == "/" ? ( dispatch(saveAvatarImg(event.target.src) ) ) : ( dispatch(saveAvatarImgInvit(event.target.src)) );
+    
     const AvatarAll = document.querySelectorAll(".imgAvatar");
     for (const imgAvatar of AvatarAll) {
       imgAvatar.classList.remove('button_style--active');
     }
     event.target.classList.add("button_style--active");
     
-  };
+  }
+
+
+
+  
 
   return (
     <div>

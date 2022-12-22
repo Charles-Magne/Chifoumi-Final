@@ -7,31 +7,24 @@ type : CONNECTION_WEB_SO,
   };
 }
 
-
 //Envoie du Pseudo et de l'avatar de l'hote
-export const SEND_HOTE_NAME = 'SEND_HOT_NAME' ;
+export const NEW_INVITE_DETECTE = 'NEW_INVITE_DETECTE' ;
 
-export function sendHoteName () { 
+export function newInviteDetecte () { 
   return {
-type : SEND_HOTE_NAME,
+type : NEW_INVITE_DETECTE,
   };
 }
 
-//Envoie du Pseudo et de l'avatar de l'hote
-export const REQUEST_HOTE_NAME = 'REQUEST_HOTE_NAME' ;
+//On recoit les data de l'hote et on stock dans le reducer
+export const SAVE_HOTE_DATA = 'SAVE_HOTE_DATA' ;
 
-export function requestHoteName () { 
+export function SaveHoteData (img, Pseudo) { 
   return {
-type : REQUEST_HOTE_NAME,
+type : SAVE_HOTE_DATA,
+img,
+Pseudo,
   };
 }
 
 
-//Envoie du Pseudo et de l'avatar de l'hote
-export const Test_WS = 'Test_WS' ;
-
-export function requestpseudoWs () { 
-  return {
-type : Test_WS,
-  };
-}

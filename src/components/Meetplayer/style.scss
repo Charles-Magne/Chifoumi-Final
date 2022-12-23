@@ -355,13 +355,16 @@ padding: 1em 0 ;
 
 //********** la div de droite => les joueurs
 
+.wapperJoueur{
+  overflow-y: scroll;
+}
+
 .div__listeJoueurs {
   display: flex;
   flex-direction: column;
   position: relative;
   width: 20rem;
   height: 40em;
-  padding-bottom: 5%;
   background-color: white;
   border-radius: 0.5em;
 
@@ -415,24 +418,27 @@ padding: 1em 0 ;
   font-size: 1.2rem;
   align-self: center;
   color: vars.$bleu-main;
-  margin: 0rem 1.1rem;
+  margin: 0rem 0rem;
 }
 
 .playerReady{
   display: flex;
+  position:relative;
+  left: 0rem;
   align-self: center;
   color: vars.$bleu-main;
   padding: 0.4rem 0.6rem ;
 }
 
 .button__lancer__une__partie--2 {
-  position: absolute;
+  /*position: absolute;
   bottom: 0px;
-  right: 0px;
-  margin: 5% 2%;
-  width: 40%;
+  right: 0px;*/
+  display: flex;
+  margin: 0.7rem 5.2rem;
+  width: 8rem;
   height: 2em;
-  padding: 0 1%;
+  padding: 0 auto;
   font-size: 100%;
 }
 

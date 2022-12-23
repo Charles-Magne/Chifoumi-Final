@@ -20,7 +20,6 @@ export function saveAvatarImg ( target ) {
   };
 }
 
-saveAvatarImgInvit
 // save l'img de l'invité
 export const SAVE_AVATAR_IMG_INVIT = 'SAVE_AVATAR_IMG_INVIT';
 
@@ -39,6 +38,16 @@ export function savePseudoHote (value, field) {
 type : SAVE_PSEUDO_HOTE,
 value, 
 field,
+  };
+}
+
+// Incrementation de l'index pour identifier les joueurs
+export const INCREMENTATION_INDEX = 'INCREMENTATION_INDEX';
+
+export function incrementationIndex ( index ) {
+  return {
+    type: INCREMENTATION_INDEX, 
+    index,
   };
 }
 

@@ -1,3 +1,5 @@
+
+
 //initalise la connection aux webSockets
 export const CONNECTION_WEB_SO = 'CONNECTION_WEB_SO' ;
 
@@ -26,5 +28,7 @@ img,
 Pseudo,
   };
 }
+
+
 
 

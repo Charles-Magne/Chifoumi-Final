@@ -1,4 +1,3 @@
-
 import style from "./style.scss";
 
 //les dependances
@@ -21,7 +20,6 @@ import { savePseudo, savePseudoInvite } from "../../action/Avatar";
 import { connectionWebSo, newInviteDetecte } from "../../action/connection.js";
 
 function Meetplayer() {
-
   const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut dans tous les reducers
   const imgMJ = useSelector((state) => state.avatar.hote.avatarImgHote); // l'img de l'hote toujours en haut
   const nameMJTrue = useSelector((state) => state.avatar.hote.hotePseudo); // le nom de l'hote toujours en haut uniquement pour l'hote
@@ -32,22 +30,28 @@ function Meetplayer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // on lance les websockets
-    dispatch(connectionWebSo());
+    // on lance les websockets en verifiant si on est le hote ou invité 
+     dispatch(connectionWebSo()) 
     const divHote = document.querySelector(".div__link--invit"); // le lien d'invitation
     const divNonHote = document.querySelector(".contenerNonHote"); // le choix de l'avatar et du pseudo
-    const buttonLaunch = document.querySelector(".button__lancer__une__partie--2");
-    const divJoueurSelf = document.querySelector('.joueurSelf'); // La div qui affiche le joueur self
+    const buttonLaunch = document.querySelector(
+      ".button__lancer__une__partie--2"
+    );
+    const divJoueurSelf = document.querySelector(".joueurSelf"); // La div qui affiche le joueur self
 
     // la ternaire check si hote ou invité pour gerer affichage
     nameMJ != ""
-      ? (divHote.style.display = "flex", divJoueurSelf.style.display = "none" ) // On cache la div joueur self et le choix de l'avatar
-      : (divNonHote.style.display = "flex", buttonLaunch.style.display = "none");
+      ? ((divHote.style.display = "flex"),
+        (divJoueurSelf.style.display = "none")) // On cache la div joueur self et le choix de l'avatar
+      : ((divNonHote.style.display = "flex"),
+        (buttonLaunch.style.display = "none"));
 
-      // Si je suis l'hote j'envoie mon nom a l'invité ------ si invité, je demende le name de l'hote
-    nameMJ != "" ? console.log('l\'hote') : ( console.log('invité'), dispatch(newInviteDetecte()) ) ;
-      console.log('hote =>', nameMJ,'||','moi =>', nameSelf);
-  }, [],);
+    // Si je suis l'hote j'envoie mon nom a l'invité ------ si invité, je demende le name de l'hote
+    nameMJ != ""
+      ? ''
+      : ( dispatch(newInviteDetecte()));
+    console.log("hote =>", nameMJ, "||", "moi =>", nameSelf);
+  }, []);
 
   //input du pseudo
   const pseudoValueInvite = (event) => {
@@ -72,7 +76,11 @@ function Meetplayer() {
   const handleLaunchGame = () => {
     navigate("/Playing");
   };
-
+  // Je recois les infos, j'en fais quoi ? => les enregistrer dans le reducer
+  // Decomposer
+  // 1re boulot => dés qu'un joueur se connecte on creer une nouvelle div
+  // Ou on creer les 14 devi et on joue avec le display Ou lorsque l'on recoit un invité on creer une div
+  // Map ? Il faut garder le joueur identifié a la div.
   return (
     <div>
       <div className="pseudoBody">
@@ -163,8 +171,7 @@ function Meetplayer() {
                   placeholder="Pseudo"
                 ></input>
               </form>
-              < AvatarChoix />
-              
+              <AvatarChoix />
             </div>
             {/********************************** cette partie n'est visible que par l'hote du jeu */}
             <button onClick={handleCopyLink} className="div__link--invit">
@@ -185,28 +192,105 @@ function Meetplayer() {
             {/********************************** liste des joueurs */}
             <div className="div__listeJoueurs">
               <h3 className="div__nbdejoueur">6 Joueurs</h3>
-              {/*Joueur hote */}
-              <div className="Joueur__localStorage joueurHote">
-                <img className="logo__joueursSelf" src={imgMJ} />
-                <span className="Pseudo__joueurSelf">{nameMJTrue}</span>
-                <p className="playerReady button_style--active">Pret</p>
-                {/*pret ou non */}
-                <p className="Hebergeur__salon"></p>
-              </div>
-              {/*Joueur Self */}
-              <div className="Joueur__localStorage joueurSelf">
-                <img className="logo__joueursSelf" src={imgSelf} />
-                <span className="Pseudo__joueurSelf">{nameSelf}</span>
-                <p className="playerReady button_style--active">Pret</p>
-                {/*pret ou non */}
-                <p className="Hebergeur__salon"></p>
-              </div>
-              <div className="Joueur__sessionStorage">
-                <img className="logo__joueurs" />
-                <p className="Statut__joueur"></p>
-                {/* pret ou non */}
-                <p className="Hebergeur__salon"></p>
-                {/*plutot une icone */}
+              <div className="wapperJoueur" >
+                {/*Joueur hote */}
+                <div className="Joueur__localStorage joueurHote">
+                  <img className="logo__joueursSelf" src={imgMJ} />
+                  <span className="Pseudo__joueurSelf">{nameMJTrue}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                  {/*pret ou non */}
+                </div>
+                {/*Joueur Self */}
+                <div className="Joueur__localStorage joueurSelf">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                  {/*pret ou non */}
+                </div>
+                {/*Joueur 1 */}
+                <div className="Joueur__localStorage joueur1">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 2 */}
+                <div className="Joueur__localStorage joueur2">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 3 */}
+                <div className="Joueur__localStorage joueur3">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 4 */}
+                <div className="Joueur__localStorage joueur4">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 5 */}
+                <div className="Joueur__localStorage joueur5">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 6 */}
+                <div className="Joueur__localStorage joueur6">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 7 */}
+                <div className="Joueur__localStorage joueur7">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 8 */}
+                <div className="Joueur__localStorage joueur8">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 9 */}
+                <div className="Joueur__localStorage joueur9">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 10 */}
+                <div className="Joueur__localStorage joueur10">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 11 */}
+                <div className="Joueur__localStorage joueur11">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 12 */}
+                <div className="Joueur__localStorage joueur12">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 13 */}
+                <div className="Joueur__localStorage joueur13">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
+                {/*Joueur 14 */}
+                <div className="Joueur__localStorage joueur14">
+                  <img className="logo__joueursSelf" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
+                  <p className="playerReady button_style--active">Pret</p>
+                </div>
               </div>
               <button
                 href=""

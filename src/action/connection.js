@@ -9,12 +9,24 @@ type : CONNECTION_WEB_SO,
   };
 }
 
-//Envoie du Pseudo et de l'avatar de l'hote
+HoteDetecte
+//On signal au serveur que l'hote se connecte pour remettre l'index a zero
+export const HOTE_DETECTE = 'HOTE_DETECTE' ;
+
+export function HoteDetecte () { 
+  return {
+type : HOTE_DETECTE,
+  };
+}
+
+
+//On envoie notre index a l'hote et on le save dans le state
 export const NEW_INVITE_DETECTE = 'NEW_INVITE_DETECTE' ;
 
-export function newInviteDetecte () { 
+export function newInviteDetecte (indexRandomPlayer) { 
   return {
 type : NEW_INVITE_DETECTE,
+indexRandomPlayer,
   };
 }
 

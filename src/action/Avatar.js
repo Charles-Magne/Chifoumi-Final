@@ -41,13 +41,25 @@ field,
   };
 }
 
-// Incrementation de l'index pour identifier les joueurs
-export const INCREMENTATION_INDEX = 'INCREMENTATION_INDEX';
+//save l'index et l'indexRandom d'un joueur qui vient de se connecter sur le salon
+export const SAVE_PLAYER_0_INDEX = 'SAVE_PLAYER_0_INDEX';
 
-export function incrementationIndex ( index ) {
+export function Saveplayer0Index (numberRandomPlayer, i) { 
   return {
-    type: INCREMENTATION_INDEX, 
-    index,
+type : SAVE_PLAYER_0_INDEX,
+i,
+numberRandomPlayer
   };
 }
+
+//save le pseudo de l'hote
+export const SAVE_PLAYER_2_INDEX = 'SAVE_PLAYER_2_INDEX';
+
+export function Saveplayer2Index (i) { 
+  return {
+type : SAVE_PLAYER_2_INDEX,
+i,
+  };
+}
+
 

@@ -1,15 +1,21 @@
-import axios from "axios";
+
+import {React} from 'react';
+import ReactDOM from 'react-dom'
+import MeetplayerDom from '../components/Meetplayer';
 
 //les actions
 import {
   CONNECTION_WEB_SO,
   NEW_INVITE_DETECTE,
   SaveHoteData,
+  HOTE_DETECTE,
 } from "../action/connection";
 
 import {
-  incrementationIndex,
+  Saveplayer2Index,
+  Saveplayer0Index
 } from "../action/Avatar";
+
 
 let socket;
 //const dispatch = useDispatch();
@@ -18,7 +24,6 @@ let socket;
 const webSocketConnection = (store) => (next) => (action) => {
   
   const state = store.getState();
-  
   switch (action.type) {
 
     // Connection au serveur 3001 lors du useEffect de la page meetplayer
@@ -26,25 +31,46 @@ const webSocketConnection = (store) => (next) => (action) => {
       socket = window.io("http://localhost:3001");
       socket.emit("connection", {});
       console.log("ca marche bien les socket", socket);
-      const { i } = state.avatar;
-      const indexZero = o;
-      store.dispatch(indexToZero(i));
-      console.log("On teste index", i);
 
       // On est notifier qu'un nouveau joueur rejoint le salon 
-      socket.on('new_invite_detecte', () => {
-        console.log('jusque ici tout va bien');
+      socket.on('new_invite_detecte', ( newPlayer ) => {
         //On lui envoie les datas de l'hote
         const { hotePseudo, avatarImgHote } = state.avatar.hote;
-        const { i } = state.avatar;
-        console.log('un nouvau joueur', i);
-        //si c'est l'hote on incremente l'index et on modifie le state 
-        let index = i + 1;
-        console.log('i apres incrementation', index);
-        hotePseudo != "" ?  store.dispatch(incrementationIndex(index))  : '' ;
-        '';
+        //const { idJoueur } = context.state.avatar; // attention ici on appele le state une seule fois => store.subscribe ?
+        console.log('un nouvau joueur', newPlayer, newPlayer.i);
+
+        // Si on recoit le joueur 0, On passe sa div en flex et on enregistre l'index randowm dans le state
+        if (newPlayer.i == 0 ) {
+          console.log('1er joueur');
+          store.dispatch(Saveplayer0Index(newPlayer.numberRandomPlayer, newPlayer.i ));
+          const testDomSoluc1 = ReactDOM.findDOMNode(MeetplayerDom );
+          const soluc1 = testDomSoluc1.querySelector('.joueur1');
+          console.log('la div =>',soluc1);
+        }
+        else if ( newPlayer.i == 1) {
+          console.log('2eme joueur');
+        }
+        else if ( newPlayer.i == 2) {
+          store.dispatch(Saveplayer2Index(newPlayer.i));
+        }
+        else if ( newPlayer.i == 3) {
+          console.log('2eme joueur');
+        }
+        else if ( newPlayer.i == 4) {
+          console.log('2eme joueur');
+        }
+        else if ( newPlayer.i == 5) {
+          console.log('2eme joueur');
+        }
+        else if ( newPlayer.i == 6) {
+          console.log('2eme joueur');
+        }
+        else if ( newPlayer.i == 7) {
+          console.log('2eme joueur');
+        }
+
         // On envoie les données si nous sommes hote
-        hotePseudo != "" ? socket.emit('send_data_hote', { Pseudo: hotePseudo, img: avatarImgHote, indexJoueur: index } ) : '' ;
+        hotePseudo != "" ? socket.emit('send_data_hote', { Pseudo: hotePseudo, img: avatarImgHote } ) : '' ;
       });
 
       // On ecoute les notifications d'envoie des données de l'hote
@@ -56,9 +82,16 @@ const webSocketConnection = (store) => (next) => (action) => {
       return next(action);
     }
 
+    // Si je suis l'hote j'envoie un message au websoket pour remettre l'index a zero
+    case HOTE_DETECTE: {
+      socket.emit("hote_detecte",  { });
+      
+      return next(action);
+    }
+
     // Si je suis l'invité, j'envoie un WS a l'hote pour lui demender des infos et me loger dans son reducer
     case NEW_INVITE_DETECTE: {
-      socket.emit("new_invite_detecte",  { });
+      socket.emit("new_invite_detecte",  { infoJoueur: action.indexRandomPlayer });
       
       return next(action);
     }

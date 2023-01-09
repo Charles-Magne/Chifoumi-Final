@@ -378,7 +378,31 @@ padding: 1em 0 ;
 
 }
 
+.nbdejoueurs {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 5% 0;
+}
+
+.listedejoueurs {
+  margin: 10% 2%;
+  margin-bottom: 15%;
+}
+
 .Joueur__localStorage {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2% 5%;
+  padding: 2% 0;
+  border: 2px solid;
+  border-color: var(--bleu-one);
+  border-radius: 0.5em;
+  color: var(--bleu-one);
+}
+
+.joueurHote{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -390,16 +414,16 @@ padding: 1em 0 ;
   color: var(--bleu-one);
 }
 
-.nbdejoueurs {
+.joueurSelf{
   display: flex;
-  height: 100%;
-  width: 100%;
-  margin: 5% 0;
-}
-
-.listedejoueurs {
-  margin: 10% 2%;
-  margin-bottom: 15%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2% 5%;
+  padding: 2% 0;
+  border: 2px solid;
+  border-color: var(--bleu-one);
+  border-radius: 0.5em;
+  color: var(--bleu-one);
 }
 
 .Joueur__localStorageSelf{
@@ -415,16 +439,16 @@ padding: 1em 0 ;
 
 .Pseudo__joueurSelf{
   display: flex;
+  width: 9rem;
   font-size: 1.2rem;
   align-self: center;
   color: vars.$bleu-main;
-  margin: 0rem 0rem;
+  margin: 0rem 0rem 0 0.5rem;
 }
 
 .playerReady{
   display: flex;
-  position:relative;
-  left: 0rem;
+  margin: 0 0 0 0.5rem;
   align-self: center;
   color: vars.$bleu-main;
   padding: 0.4rem 0.6rem ;

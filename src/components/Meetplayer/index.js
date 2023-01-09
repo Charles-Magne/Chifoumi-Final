@@ -17,7 +17,13 @@ import info from "../../assets/Icones/informations.png";
 // Les actions
 
 import { savePseudo, savePseudoInvite } from "../../action/Avatar";
-import { connectionWebSo, newInviteDetecte } from "../../action/connection.js";
+import {
+  connectionWebSo,
+  newInviteDetecte,
+  HoteDetecte,
+} from "../../action/connection.js";
+
+
 
 function Meetplayer() {
   const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut dans tous les reducers
@@ -25,13 +31,21 @@ function Meetplayer() {
   const nameMJTrue = useSelector((state) => state.avatar.hote.hotePseudo); // le nom de l'hote toujours en haut uniquement pour l'hote
   const nameSelf = useSelector((state) => state.avatar.joueurSelf.valuePseudo); // si le nom du participant et le nom de l'hote son les memes alors on fait un
   const imgSelf = useSelector((state) => state.avatar.joueurSelf.avatarImg);
+
+  //On defini les index pour savoir si on affche ou non les div
+  const indexJoueur0 = useSelector((state) => state.avatar.joueurs.i0);
+  const indexJoueur1 = useSelector((state) => state.avatar.joueurs.i1);
+  const indexJoueur2 = useSelector((state) => state.avatar.joueurs.i2);
+  const indexJoueur3 = useSelector((state) => state.avatar.joueurs.i3);
+  const indexJoueur4 = useSelector((state) => state.avatar.joueurs.i4);
+
   const salonState = useSelector((state) => state.salon.lobby);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // on lance les websockets en verifiant si on est le hote ou invité 
-     dispatch(connectionWebSo()) 
+    // on lance les websockets en verifiant si on est le hote ou invité
+    dispatch(connectionWebSo());
     const divHote = document.querySelector(".div__link--invit"); // le lien d'invitation
     const divNonHote = document.querySelector(".contenerNonHote"); // le choix de l'avatar et du pseudo
     const buttonLaunch = document.querySelector(
@@ -46,12 +60,21 @@ function Meetplayer() {
       : ((divNonHote.style.display = "flex"),
         (buttonLaunch.style.display = "none"));
 
+    // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
+    const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
+
     // Si je suis l'hote j'envoie mon nom a l'invité ------ si invité, je demende le name de l'hote
-    nameMJ != ""
-      ? ''
-      : ( dispatch(newInviteDetecte()));
+    nameMJ != "" ? dispatch(HoteDetecte()) : dispatch(newInviteDetecte(indexRandomPlayer));
     console.log("hote =>", nameMJ, "||", "moi =>", nameSelf);
   }, []);
+
+  // On identifie les div a afficher
+  const divJoueur2 = document.querySelector(".inputName");
+
+  // On ecoute le state et s'il se rempli on passe la div player en flex
+  indexJoueur2 != null
+    ? "divJoueur2.style.display = flex"
+    : console.log("la cible joueur 2", divJoueur2);
 
   //input du pseudo
   const pseudoValueInvite = (event) => {
@@ -192,7 +215,7 @@ function Meetplayer() {
             {/********************************** liste des joueurs */}
             <div className="div__listeJoueurs">
               <h3 className="div__nbdejoueur">6 Joueurs</h3>
-              <div className="wapperJoueur" >
+              <div className="wapperJoueur">
                 {/*Joueur hote */}
                 <div className="Joueur__localStorage joueurHote">
                   <img className="logo__joueursSelf" src={imgMJ} />

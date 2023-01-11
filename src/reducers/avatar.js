@@ -4,7 +4,19 @@ import {
   SAVE_AVATAR_IMG_INVIT,
   SAVE_PSEUDO_HOTE,
   SAVE_PLAYER_0_INDEX,
+  SAVE_PLAYER_1_INDEX,
   SAVE_PLAYER_2_INDEX,
+  SAVE_PLAYER_3_INDEX,
+  SAVE_PLAYER_4_INDEX,
+  SAVE_PLAYER_5_INDEX,
+  SAVE_PLAYER_6_INDEX,
+  SAVE_PLAYER_7_INDEX,
+  SAVE_PLAYER_8_INDEX,
+  SAVE_PLAYER_9_INDEX,
+  SAVE_PLAYER_10_INDEX,
+  SAVE_PLAYER_11_INDEX,
+  SAVE_PLAYER_12_INDEX,
+  SAVE_PLAYER_13_INDEX,
 } from "../action/Avatar";
 
 import { SAVE_HOTE_DATA, NEW_INVITE_DETECTE } from "../action/connection";
@@ -163,6 +175,8 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
+      /*****************On save les indexs des joueurs lorsqu'ils se connectent au salon  */
+
        // save l'index du joueur 0
     case SAVE_PLAYER_0_INDEX:
       return {
@@ -174,7 +188,16 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      
+         // save l'index du joueur 1
+    case SAVE_PLAYER_1_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i1: action.i,
+          indexRandom1: action.numberRandomPlayer.infoJoueur,
+        },
+      };
 
           // save l'index du joueur 2
     case SAVE_PLAYER_2_INDEX:
@@ -183,6 +206,118 @@ function avatarReducer(state = initialState, action = {}) {
         joueurs: {
           ...state.joueurs,
           i2: action.i,
+        },
+      };
+
+         // save l'index du joueur 3
+    case SAVE_PLAYER_3_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i3: action.i,
+          indexRandom3: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+         // save l'index du joueur 4
+    case SAVE_PLAYER_4_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i4: action.i,
+          indexRandom4: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+         // save l'index du joueur 5
+    case SAVE_PLAYER_5_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i5: action.i,
+          indexRandom5: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+         // save l'index du joueur 6
+    case SAVE_PLAYER_6_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i6: action.i,
+          indexRandom6: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+         // save l'index du joueur 7
+    case SAVE_PLAYER_7_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i7: action.i,
+          indexRandom7: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+      
+         // save l'index du joueur 8
+    case SAVE_PLAYER_8_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i8: action.i,
+          indexRandom8: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+         // save l'index du joueur 9
+    case SAVE_PLAYER_9_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i9: action.i,
+          indexRandom9: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+         // save l'index du joueur 10
+    case SAVE_PLAYER_10_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i10: action.i,
+          indexRandom10: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+         // save l'index du joueur 11
+    case SAVE_PLAYER_11_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i11: action.i,
+          indexRandom12: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+         // save l'index du joueur 12
+    case SAVE_PLAYER_12_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i12: action.i,
+          indexRandom12: action.numberRandomPlayer.infoJoueur,
+        },
+      };
+           // save l'index du joueur 13
+    case SAVE_PLAYER_13_INDEX:
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          i13: action.i,
+          indexRandom13: action.numberRandomPlayer.infoJoueur,
         },
       };
 

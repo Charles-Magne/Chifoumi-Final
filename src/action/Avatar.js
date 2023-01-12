@@ -197,4 +197,144 @@ numberRandomPlayer
   };
 }
 
+/***************************************************************************************************** */
 
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_0 = 'SEND_INDEX_PLAYER_0';
+
+export function sendIndexPlayer0 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_0,
+index,
+  };
+}
+
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_1 = 'SEND_INDEX_PLAYER_1';
+
+export function sendIndexPlayer1 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_1,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_2 = 'SEND_INDEX_PLAYER_2';
+
+export function sendIndexPlayer2 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_2,
+index,
+  };
+}
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_3 = 'SEND_INDEX_PLAYER_3';
+
+export function sendIndexPlayer3 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_3,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_4 = 'SEND_INDEX_PLAYER_4';
+
+export function sendIndexPlayer4 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_4,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_5 = 'SEND_INDEX_PLAYER_5';
+
+export function sendIndexPlayer5 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_5,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_6 = 'SEND_INDEX_PLAYER_6';
+
+export function sendIndexPlayer6 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_6,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_7 = 'SEND_INDEX_PLAYER_7';
+
+export function sendIndexPlayer7 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_7,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_8 = 'SEND_INDEX_PLAYER_8';
+
+export function sendIndexPlayer8 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_8,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_9 = 'SEND_INDEX_PLAYER_9';
+
+export function sendIndexPlayer9 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_9,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_10 = 'SEND_INDEX_PLAYER_10';
+
+export function sendIndexPlayer10 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_10,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_11 = 'SEND_INDEX_PLAYER_11';
+
+export function sendIndexPlayer11 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_11,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_12 = 'SEND_INDEX_PLAYER_12';
+
+export function sendIndexPlayer12 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_12,
+index,
+  };
+}
+
+//On envoie via les websockets les indexs aux autres joueurs
+export const SEND_INDEX_PLAYER_13 = 'SEND_INDEX_PLAYER_13';
+
+export function sendIndexPlayer13 (index) { 
+  return {
+type : SEND_INDEX_PLAYER_13,
+index,
+  };
+}

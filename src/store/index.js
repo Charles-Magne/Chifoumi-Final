@@ -15,6 +15,16 @@ const enhancers = composeEnhancers(
   // applyMiddleware permet de "combiner" les deux middlewares (les mettre dans un paquet)
   applyMiddleware( socketMiddleware ),
 );
+
 const store = createStore(reducer, enhancers);
+
+/*
+store.subscribe(() => {
+  let state = store.getState();
+  // Faire quelque chose avec l'état du store
+  console.log('le subscribe', state);
+});
+*/
+
 
 export default store;

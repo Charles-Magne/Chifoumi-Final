@@ -37,72 +37,72 @@ export const initialState = {
   joueurs: {
     i0: null,
     indexRandom0: null,
-    ValuePseudo0: "",
+    ValuePseudo0: "Player 1",
     avatarImg0: null,
     //********** */
     i1: null,
     indexRandom1: null,
-    ValuePseudo1: "",
+    ValuePseudo1: "Player 2",
     avatarImg1: null,
     //********** */
     i2: null,
     indexRandom2: null,
-    ValuePseudo2: "",
+    ValuePseudo2: "Player 3",
     avatarImg2: null,
     //********** */
     i3: null,
     indexRandom3: null,
-    ValuePseudo3: "",
+    ValuePseudo3: "Player 4",
     avatarImg3: null,
     //********** */
     i4: null,
     indexRandom4: null,
-    ValuePseudo4: "",
+    ValuePseudo4: "Player 5",
     avatarImg4: null,
     //********** */
     i5: null,
     indexRandom5: null,
-    ValuePseudo5: "",
+    ValuePseudo5: "Player 6",
     avatarImg5: null,
     //********** */
     i6: null,
     indexRandom6: null,
-    ValuePseudo6: "",
+    ValuePseudo6: "Player 7",
     avatarImg6: null,
     //********** */
     i7: null,
     indexRandom7: null,
-    ValuePseudo7: "",
+    ValuePseudo7: "Player 8",
     avatarImg7: null,
     //********** */
     i8: null,
     indexRandom8: null,
-    ValuePseudo8: "",
+    ValuePseudo8: "Player 9",
     avatarImg8: null,
     //********** */
     i9: null,
     indexRandom9: null,
-    ValuePseudo9: "",
+    ValuePseudo9: "Player 10",
     avatarImg9: null,
     //********** */
     i10: null,
     indexRandom10: null,
-    ValuePseudo10: "",
+    ValuePseudo10: "Player 11",
     avatarImg10: null,
     //********** */
     i11: null,
     indexRandom11: null,
-    ValuePseudo11: "",
+    ValuePseudo11: "Player 12",
     avatarImg11: null,
     //********** */
     i12: null,
     indexRandom12: null,
-    ValuePseudo12: "",
+    ValuePseudo12: "Player 13",
     avatarImg12: null,
     //********** */
     i13: null,
     indexRandom13: null,
-    ValuePseudo13: "",
+    ValuePseudo13: "Player 14",
     avatarImg13: null,
   },
 };
@@ -206,6 +206,7 @@ function avatarReducer(state = initialState, action = {}) {
         joueurs: {
           ...state.joueurs,
           i2: action.i,
+          indexRandom2: action.numberRandomPlayer.infoJoueur,
         },
       };
 

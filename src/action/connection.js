@@ -13,9 +13,12 @@ HoteDetecte
 //On signal au serveur que l'hote se connecte pour remettre l'index a zero
 export const HOTE_DETECTE = 'HOTE_DETECTE' ;
 
-export function HoteDetecte () { 
+export function HoteDetecte (nameMJ, imgMJ, indexRandomPlayer) { 
   return {
 type : HOTE_DETECTE,
+nameMJ, 
+imgMJ, 
+indexRandomPlayer
   };
 }
 

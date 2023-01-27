@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 //les actions
-import { savePseudo, savePseudoHote } from "../../action/Avatar";
+import { savePseudoHote } from "../../action/Avatar";
 import { fetchCodeSalon } from "../../action/Salon";
 
 

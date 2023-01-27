@@ -5,6 +5,7 @@ import reducer from '../reducers';
 // On donne acces au middlewares 
 import socketMiddleware from '../middlewares/webSocketConnection';
 
+
 // ici on va venir importer les middleswares que l'on va creer
 
 //permet d'utiliser les react devs tool dans le localhost
@@ -18,13 +19,19 @@ const enhancers = composeEnhancers(
 
 const store = createStore(reducer, enhancers);
 
+
+// Ici on va venir observé le state et des qu'il change, on dipatch les actions
+
+ 
 /*
 store.subscribe(() => {
   let state = store.getState();
-  // Faire quelque chose avec l'état du store
-  console.log('le subscribe', state);
+
+
+  console.log('le subscribe', state.avatar);
 });
 */
+
 
 
 export default store;

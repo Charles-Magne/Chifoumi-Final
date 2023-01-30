@@ -80,11 +80,13 @@ function AvatarChoix() {
 const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut
   const imgMJ = useSelector((state) => state.avatar.hote.avatarImgHote); // l'img de l'hote toujours en haut
   const nameSelf = useSelector((state) => state.avatar.joueurSelf.valuePseudo); // si le nom du participant et le nom de l'hote son les memes alors on fait un
+  const indexPlayer = useSelector((state) => state.avatar.joueurSelf.inumber);
+
 
   // la ternaire check si hote ou invité pour gerer affichage
    const handleAvatar = (event) => {
      // ici une ternaire qui verifie si c'est un hote ou un invité pour savoir ou placer l'img choisi
-     document.location.pathname == "/" ? ( dispatch(saveAvatarImg(event.target.src) ) ) : ( dispatch(saveAvatarImgInvit(event.target.src)) );
+     document.location.pathname == "/" ? ( dispatch(saveAvatarImg(event.target.src) ) ) : ( dispatch(saveAvatarImgInvit(event.target.src, indexPlayer )) );
     
     const AvatarAll = document.querySelectorAll(".imgAvatar");
     for (const imgAvatar of AvatarAll) {

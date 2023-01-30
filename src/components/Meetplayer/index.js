@@ -16,7 +16,7 @@ import info from "../../assets/Icones/informations.png";
 
 // Les actions
 
-import { savePseudoInvite  } from "../../action/Avatar";
+import { savePseudoInvite, sendNameself  } from "../../action/Avatar";
 import {
   connectionWebSo,
   newInviteDetecte,
@@ -63,6 +63,7 @@ function Meetplayer() {
   const img14 = useSelector((state) => state.avatar.joueurs.avatarImg14); // img joueur 14
 
   //On defini les index pour savoir si on affche ou non les div
+  const totalOfUser = useSelector((state) => state.avatar.joueurs.nbPlayer);
   const indexJoueur1 = useSelector((state) => state.avatar.joueurs.i1);
   const indexJoueurRandom1 = useSelector((state) => state.avatar.joueurs.indexRandom1);
   const indexJoueur2 = useSelector((state) => state.avatar.joueurs.i2);
@@ -252,6 +253,14 @@ function Meetplayer() {
     );
   };
 
+  /////////****************************** */
+    // On permet a l'hote d'envoyer un lien aux autres participants
+    const handleSendName = () => {
+      event.preventDefault();
+      console.log('le nom qu on veut partager',nameSelf);
+      dispatch(sendNameself(iround , nameSelf));
+    };
+
   // On envoie l'hote vers la page d'ecran de jeu
   const handleLaunchGame = () => {
     navigate("/Playing");
@@ -348,7 +357,7 @@ function Meetplayer() {
               <div className="alertLength">
                 Attention, seulement 15 caractères
               </div>
-              <form type="sumbit">
+              <form type="text">
                 <input
                   onChange={pseudoValueInvite}
                   value={nameSelf}
@@ -356,6 +365,7 @@ function Meetplayer() {
                   maxLength="15"
                   placeholder="Pseudo"
                 ></input>
+                <button onClick={handleSendName} className="button_style--active" >ok</button>
               </form>
               <AvatarChoix />
             </div>
@@ -377,7 +387,7 @@ function Meetplayer() {
             </button>
             {/********************************** liste des joueurs */}
             <div className="div__listeJoueurs">
-              <h3 className="div__nbdejoueur">6 Joueurs</h3>
+              <h3 className="div__nbdejoueur">{totalOfUser} Joueurs</h3>
               <div className="wapperJoueur">
                 {/*Joueur hote */}
                 <div className="Joueur__localStorage joueurHote">

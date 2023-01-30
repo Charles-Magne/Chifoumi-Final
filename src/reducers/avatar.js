@@ -1,9 +1,10 @@
 import {
   PSEUDO_VALUE_INVITE,
+  SAVE_NB_PLAYER,
   SAVE_AVATAR_IMG,
   SAVE_AVATAR_IMG_INVIT,
+  SAVE_NEW_IMG_INVITE,
   SAVE_PSEUDO_HOTE,
-  
   SAVE_PLAYER_SELF_INDEX,
   SAVE_PLAYER_1_INDEX, 
   SAVE_PLAYER_2_INDEX, 
@@ -51,6 +52,7 @@ export const initialState = {
     avatarImg: null, // l'avatar des joueurs
   },
   joueurs: {
+    nbPlayer:1,
     i1: null,
     indexRandom1: null,
     ValuePseudo1: "Player 1",
@@ -158,6 +160,20 @@ function avatarReducer(state = initialState, action = {}) {
         joueurSelf: {
           ...state.joueurSelf,
           avatarImg: action.target,
+        },
+      };
+
+     // nbPlayer:0, 
+      //joueurs: {
+       // nbPlayer:0,     
+          // Save l'img servant a l'avatar de l'invité
+    case SAVE_NB_PLAYER:
+      let nbOfPlayer = action.index + 1;
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          nbPlayer: nbOfPlayer,
         },
       };
 
@@ -355,12 +371,14 @@ function avatarReducer(state = initialState, action = {}) {
       
     // save l'index des joueurs qui se sont connecté avant nous
     case SAVE_BEAFORE_JOUEUR_2:
+      console.log('test de l\'image du joueur 1',action.beforeJoueur2[2] );
       return {
         ...state,
         joueurs: {
           ...state.joueurs,
           i1:  action.beforeJoueur2[0], 
           indexRandom1: action.beforeJoueur2[1],
+          avatarImg1: action.beforeJoueur2[2]
         },
       };
 
@@ -374,6 +392,8 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom1: action.beforeJoueur3[1],
           i2:  action.beforeJoueur3[2], 
           indexRandom2: action.beforeJoueur3[3],
+          avatarImg1: action.beforeJoueur3[4],
+          avatarImg2: action.beforeJoueur3[5]
         },
       };
 
@@ -389,6 +409,9 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom2: action.beforeJoueur4[3],
           i3:  action.beforeJoueur4[4], 
           indexRandom3: action.beforeJoueur4[5],
+          avatarImg1: action.beforeJoueur4[6],
+          avatarImg2: action.beforeJoueur4[7],
+          avatarImg3: action.beforeJoueur4[8]
         },
       };
 
@@ -406,6 +429,10 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom3: action.beforeJoueur5[5],
           i4:  action.beforeJoueur5[6], 
           indexRandom4: action.beforeJoueur5[7],
+          avatarImg1: action.beforeJoueur5[8],
+          avatarImg2: action.beforeJoueur5[9],
+          avatarImg3: action.beforeJoueur5[10],
+          avatarImg4: action.beforeJoueur5[11],
         },
       };
 
@@ -424,6 +451,11 @@ function avatarReducer(state = initialState, action = {}) {
             indexRandom4: action.beforeJoueur6[7],
             i5:  action.beforeJoueur6[8], 
             indexRandom5: action.beforeJoueur6[9],
+            avatarImg1: action.beforeJoueur6[10],
+            avatarImg2: action.beforeJoueur6[11],
+            avatarImg3: action.beforeJoueur6[12],
+            avatarImg4: action.beforeJoueur6[13],
+            avatarImg5: action.beforeJoueur6[14]
           },
         };
 
@@ -444,6 +476,12 @@ function avatarReducer(state = initialState, action = {}) {
               indexRandom5: action.beforeJoueur7[9],
               i6:  action.beforeJoueur7[10], 
               indexRandom6: action.beforeJoueur7[11],
+              avatarImg1: action.beforeJoueur7[12],
+              avatarImg2: action.beforeJoueur7[13],
+              avatarImg3: action.beforeJoueur7[14],
+              avatarImg4: action.beforeJoueur7[15],
+              avatarImg5: action.beforeJoueur7[16],
+              avatarImg6: action.beforeJoueur7[17]
             },
           };
 
@@ -466,6 +504,13 @@ function avatarReducer(state = initialState, action = {}) {
               indexRandom6: action.beforeJoueur8[11],
               i7:  action.beforeJoueur8[12], 
               indexRandom7: action.beforeJoueur8[13],
+              avatarImg1: action.beforeJoueur8[14],
+              avatarImg2: action.beforeJoueur8[15],
+              avatarImg3: action.beforeJoueur8[16],
+              avatarImg4: action.beforeJoueur8[17],
+              avatarImg5: action.beforeJoueur8[18],
+              avatarImg6: action.beforeJoueur8[19],
+              avatarImg7: action.beforeJoueur8[20]
             },
           };
 
@@ -490,6 +535,14 @@ function avatarReducer(state = initialState, action = {}) {
               indexRandom7: action.beforeJoueur9[13],
               i8:  action.beforeJoueur9[14], 
               indexRandom8: action.beforeJoueur9[15],
+              avatarImg1: action.beforeJoueur9[16],
+              avatarImg2: action.beforeJoueur9[17],
+              avatarImg3: action.beforeJoueur9[18],
+              avatarImg4: action.beforeJoueur9[19],
+              avatarImg5: action.beforeJoueur9[20],
+              avatarImg6: action.beforeJoueur9[21],
+              avatarImg7: action.beforeJoueur9[22],
+              avatarImg8: action.beforeJoueur9[23],
             },
           };
 
@@ -516,6 +569,15 @@ function avatarReducer(state = initialState, action = {}) {
               indexRandom8: action.beforeJoueur10[15],
               i9:  action.beforeJoueur10[16], 
               indexRandom9: action.beforeJoueur10[17],
+              avatarImg1: action.beforeJoueur10[18],
+              avatarImg2: action.beforeJoueur10[19],
+              avatarImg3: action.beforeJoueur10[20],
+              avatarImg4: action.beforeJoueur10[21],
+              avatarImg5: action.beforeJoueur10[22],
+              avatarImg6: action.beforeJoueur10[23],
+              avatarImg7: action.beforeJoueur10[24],
+              avatarImg8: action.beforeJoueur10[25],
+              avatarImg9: action.beforeJoueur10[26],
             },
           };
 
@@ -544,6 +606,16 @@ function avatarReducer(state = initialState, action = {}) {
                 indexRandom9: action.beforeJoueur11[17],
                 i10:  action.beforeJoueur11[18], 
                 indexRandom10: action.beforeJoueur11[19],
+                avatarImg1: action.beforeJoueur11[20],
+                avatarImg2: action.beforeJoueur11[21],
+                avatarImg3: action.beforeJoueur11[22],
+                avatarImg4: action.beforeJoueur11[23],
+                avatarImg5: action.beforeJoueur11[24],
+                avatarImg6: action.beforeJoueur11[25],
+                avatarImg7: action.beforeJoueur11[26],
+                avatarImg8: action.beforeJoueur11[27],
+                avatarImg9: action.beforeJoueur11[28],
+                avatarImg10: action.beforeJoueur11[29],
               },
             };
 
@@ -574,6 +646,17 @@ function avatarReducer(state = initialState, action = {}) {
                   indexRandom10: action.beforeJoueur12[19],
                   i11:  action.beforeJoueur12[20], 
                   indexRandom11: action.beforeJoueur12[21],
+                  avatarImg1: action.beforeJoueur12[22],
+                  avatarImg2: action.beforeJoueur12[23],
+                  avatarImg3: action.beforeJoueur12[24],
+                  avatarImg4: action.beforeJoueur12[25],
+                  avatarImg5: action.beforeJoueu12[26],
+                  avatarImg6: action.beforeJoueur12[27],
+                  avatarImg7: action.beforeJoueur12[28],
+                  avatarImg8: action.beforeJoueur12[29],
+                  avatarImg9: action.beforeJoueur12[30],
+                  avatarImg10: action.beforeJoueur12[31],
+                  avatarImg11: action.beforeJoueur12[32],
                 },
               };
 
@@ -607,6 +690,18 @@ function avatarReducer(state = initialState, action = {}) {
                     indexRandom11: action.beforeJoueur13[21],
                     i12:  action.beforeJoueur13[22], 
                     indexRandom12: action.beforeJoueur13[23],
+                    avatarImg1: action.beforeJoueur13[24],
+                    avatarImg2: action.beforeJoueur13[25],
+                    avatarImg3: action.beforeJoueur13[26],
+                    avatarImg4: action.beforeJoueur13[27],
+                    avatarImg5: action.beforeJoueur13[28],
+                    avatarImg6: action.beforeJoueur13[29],
+                    avatarImg7: action.beforeJoueur13[30],
+                    avatarImg8: action.beforeJoueur13[31],
+                    avatarImg9: action.beforeJoueur13[32],
+                    avatarImg10: action.beforeJoueur13[33],
+                    avatarImg11: action.beforeJoueur13[34],
+                    avatarImg12: action.beforeJoueur13[35],
                   },
                 };
 
@@ -641,8 +736,34 @@ function avatarReducer(state = initialState, action = {}) {
                       indexRandom12: action.beforeJoueur14[23],
                       i13:  action.beforeJoueur14[24], 
                       indexRandom13: action.beforeJoueur14[25],
+                      avatarImg1: action.beforeJoueur13[26],
+                    avatarImg2: action.beforeJoueur14[27],
+                    avatarImg3: action.beforeJoueur14[28],
+                    avatarImg4: action.beforeJoueur14[29],
+                    avatarImg5: action.beforeJoueur13[30],
+                    avatarImg6: action.beforeJoueur14[31],
+                    avatarImg7: action.beforeJoueur14[32],
+                    avatarImg8: action.beforeJoueur14[33],
+                    avatarImg9: action.beforeJoueur14[34],
+                    avatarImg10: action.beforeJoueur14[35],
+                    avatarImg11: action.beforeJoueur14[36],
+                    avatarImg12: action.beforeJoueur14[37],
+                    avatarImg13: action.beforeJoueur14[38],
                     },
                   };
+
+                  
+    // Ici on recoit toutes les modifications d'avatar
+    case SAVE_NEW_IMG_INVITE:
+      //let rightPlayer = `avatarImg${action.index}`;
+      //console.log('l\'endoit ou on sauvegare la photo', rightPlayer );
+      return {
+        ...state,
+        joueurs: {
+          ...state.joueurs,
+          [`avatarImg${action.index}`]: action.imgAvatar,  
+        },
+      };
 
     // V pas touche
     default:

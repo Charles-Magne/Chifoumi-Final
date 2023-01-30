@@ -10,6 +10,30 @@ field,
   };
 }
 
+
+//Sert a envoyer notre pseudo aux autres joueurs
+export const SEND_NAME_SELF = 'SEND_NAME_SELF';
+
+export function sendNameself (index, name) {
+  return {
+type : SEND_NAME_SELF,
+index,
+name
+  };
+}
+
+
+
+//Gere le nombre de joueur
+export const SAVE_NB_PLAYER = 'SAVE_NB_PLAYER';
+
+export function SaveNbPlayer (index) {
+  return {
+type : SAVE_NB_PLAYER,
+index
+  };
+}
+
 // save l'img de l'hote
 export const SAVE_AVATAR_IMG = 'SAVE_AVATAR_IMG';
 
@@ -23,10 +47,11 @@ export function saveAvatarImg ( target ) {
 // save l'img de l'invité
 export const SAVE_AVATAR_IMG_INVIT = 'SAVE_AVATAR_IMG_INVIT';
 
-export function saveAvatarImgInvit ( target ) {
+export function saveAvatarImgInvit ( target, indexPlayer ) {
   return {
     type: SAVE_AVATAR_IMG_INVIT, 
     target,
+    indexPlayer
   };
 }
 
@@ -344,5 +369,17 @@ export function SavebeforeJoueur14 (beforeJoueur14) {
   return {
 type : SAVE_BEAFORE_JOUEUR_14,
 beforeJoueur14
+  };
+}
+
+saveNewImgInvite
+//Lorsque on n'est notifier d'un changement d'avatar, on l'enregistre dans le reducer
+export const SAVE_NEW_IMG_INVITE = 'SAVE_NEW_IMG_INVITE';
+
+export function saveNewImgInvite (changeImgPlayer) { 
+  return {
+type : SAVE_NEW_IMG_INVITE,
+index: changeImgPlayer.index, 
+imgAvatar: changeImgPlayer.imgInvite
   };
 }

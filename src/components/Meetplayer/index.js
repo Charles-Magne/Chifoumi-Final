@@ -12,7 +12,11 @@ import AvatarChoix from "../AvatarChoix/index";
 import titre from "../../assets/Pictures/Titre/Pierre, feuille et Arnaques.png";
 import flag from "../../assets/Icones/drapeau-france.svg";
 import share from "../../assets/Icones/partager.png";
-import info from "../../assets/Icones/informations.png";
+import info from "../../assets/Icones/informations.png"; 
+import waiting from "../../assets/Icones/waiting_blue.png";
+import ready from "../../assets/Icones/ready_blue.png";
+import waitingIconeSelf from "../../assets/Icones/waiting_blanc.png";
+import readyIconeSelf from "../../assets/Icones/ready_blanc.png";
 
 // Les actions
 
@@ -109,6 +113,42 @@ function Meetplayer() {
   const divJoueur13 = document.querySelector(".joueur13");
   const divJoueur14 = document.querySelector(".joueur14");
 
+  // On cible les icones pret et en attante
+  const waitingSelf = document.querySelector(".playerWaitingSelf");
+  const readySelf = document.querySelector(".playerReadySelf");
+  const waiting1 = document.querySelector(".playerWaiting1");
+  const ready1 = document.querySelector(".playerReady1");
+  const waiting2 = document.querySelector(".playerWaiting2");
+  const ready2 = document.querySelector(".playerReady2");
+  const waiting3 = document.querySelector(".playerWaiting3");
+  const ready3 = document.querySelector(".playerReady3");
+  const waiting4 = document.querySelector(".playerWaiting4");
+  const ready4 = document.querySelector(".playerReady4");
+  const waiting5 = document.querySelector(".playerWaiting5");
+  const ready5 = document.querySelector(".playerReady5");
+  const waiting6 = document.querySelector(".playerWaiting6");
+  const ready6 = document.querySelector(".playerReady6");
+  const waiting7 = document.querySelector(".playerWaiting7");
+  const ready7 = document.querySelector(".playerReady7");
+  const waiting8 = document.querySelector(".playerWaiting8");
+  const ready8 = document.querySelector(".playerReady8");
+  const waiting9 = document.querySelector(".playerWaiting9");
+  const ready9 = document.querySelector(".playerReady9");
+  const waiting10 = document.querySelector(".playerWaiting10");
+  const ready10 = document.querySelector(".playerReady10");
+  const waiting11 = document.querySelector(".playerWaiting11");
+  const ready11 = document.querySelector(".playerReady11");
+  const waiting12 = document.querySelector(".playerWaiting12");
+  const ready12 = document.querySelector(".playerReady12");
+  const waiting13 = document.querySelector(".playerWaiting13");
+  const ready13 = document.querySelector(".playerReady13");
+  const waiting14 = document.querySelector(".playerWaiting14");
+  const ready14 = document.querySelector(".playerReady14");
+
+  //ciblage du pseudoSelf pour changer la couleur lorsque on valide le nom
+  const PseudoSelf = document.querySelector(".PseudoSelfTrue");
+
+
   const salonState = useSelector((state) => state.salon.lobby);
   const iround = useSelector((state) => state.avatar.joueurSelf.inumber);
   const navigate = useNavigate();
@@ -118,43 +158,43 @@ function Meetplayer() {
   if (indexJoueurRandom1 !== null) {
     divJoueur1.style.display = "flex";
   }
-  if (indexJoueurRandom2 !== null) {
+  else if (indexJoueurRandom2 !== null) {
     divJoueur2.style.display = "flex";
   }
-  if (indexJoueurRandom3 !== null) {
+  else if (indexJoueurRandom3 !== null) {
     divJoueur3.style.display = "flex";
   }
-  if (indexJoueurRandom4 !== null) {
+  else if (indexJoueurRandom4 !== null) {
     divJoueur4.style.display = "flex";
   }
-  if (indexJoueurRandom5 !== null) {
+  else if (indexJoueurRandom5 !== null) {
     divJoueur5.style.display = "flex";
   }
-  if (indexJoueurRandom6 !== null) {
+  else if (indexJoueurRandom6 !== null) {
     divJoueur6.style.display = "flex";
   }
-  if (indexJoueurRandom7 !== null) {
+  else if (indexJoueurRandom7 !== null) {
     divJoueur7.style.display = "flex";
   }
-  if (indexJoueurRandom8 !== null) {
+  else if (indexJoueurRandom8 !== null) {
     divJoueur8.style.display = "flex";
   }
-  if (indexJoueurRandom9 !== null) {
+  else if (indexJoueurRandom9 !== null) {
     divJoueur9.style.display = "flex";
   }
-  if (indexJoueurRandom10 !== null) {
+  else if (indexJoueurRandom10 !== null) {
     divJoueur10.style.display = "flex";
   }
-  if (indexJoueurRandom11 !== null) {
+  else if (indexJoueurRandom11 !== null) {
     divJoueur11.style.display = "flex";
   }
-  if (indexJoueurRandom12 !== null) {
+  else if (indexJoueurRandom12 !== null) {
     divJoueur12.style.display = "flex";
   }
-  if (indexJoueurRandom13 !== null) {
+  else if (indexJoueurRandom13 !== null) {
     divJoueur13.style.display = "flex";
   }
-  if (indexJoueurRandom14 !== null) {
+  else if (indexJoueurRandom14 !== null) {
     divJoueur14.style.display = "flex";
   }
 
@@ -162,6 +202,7 @@ function Meetplayer() {
     if ( iround == 1 ) {
       divJoueur1.style.display = "none";
     }
+  
 // si i self est egal a 2, on cache la case 2
     else if ( iround == 2 ) {
       divJoueur2.style.display = "none";
@@ -202,9 +243,6 @@ function Meetplayer() {
     else if ( iround == 14 ) {
       divJoueur14.style.display = "none";
     }
-
-
-
 
 
   useEffect(() => {
@@ -253,13 +291,79 @@ function Meetplayer() {
     );
   };
 
+  const PseudoTarget = document.querySelector(".PseudoSelfTrue");
+
   /////////****************************** */
-    // On permet a l'hote d'envoyer un lien aux autres participants
-    const handleSendName = () => {
+    // On clique sur le button OK => envoie son pseudo aux autres joueurs via les websockets
+    const handleSendName = (event) => {
       event.preventDefault();
-      console.log('le nom qu on veut partager',nameSelf);
+      PseudoSelf.textContent = nameSelf;
+      //On gere l'affichage des icones waiting et ready
+      // On doit afficher le name juste quand on clique sur ok
       dispatch(sendNameself(iround , nameSelf));
     };
+
+
+    // si le pseudo est l'avatar sont rempli alos on valide avec la deuxieme img
+
+
+     if (name1 !== "Player 1" && img1 !== null) {
+      waiting1.style.display = "none";
+      ready1.style.display = "flex";
+    }
+    else if (name2 !== "Player 2" && img2 !== null) {
+      waiting2.style.display = "none";
+      ready2.style.display = "flex";
+    }
+    else if (name3 !== "Player 3" && img3 !== null) {
+      waiting3.style.display = "none";
+      ready3.style.display = "flex";
+    }
+    else if (name4 !== "Player 4" && img4 !== null) {
+      waiting4.style.display = "none";
+      ready4.style.display = "flex";
+    }
+    else if (name5 !== "Player 5" && img5 !== null) {
+      waiting5.style.display = "none";
+      ready5.style.display = "flex";
+    }
+    else if (name6 !== "Player 6" && img6 !== null) {
+      waiting6.style.display = "none";
+      ready6.style.display = "flex";
+    }
+    else if (name7 !== "Player 7" && img7 !== null) {
+      waiting7.style.display = "none";
+      ready7.style.display = "flex";
+    }
+    else if (name8 !== "Player 8" && img8 !== null) {
+      waiting8.style.display = "none";
+      ready8.style.display = "flex";
+    }
+    else if (name9 !== "Player 9" && img9 !== null) {
+      waiting9.style.display = "none";
+      ready9.style.display = "flex";
+    }  
+      else if (name10 !== "Player 10" && img10 !== null) {
+      waiting10.style.display = "none";
+      ready10.style.display = "flex";
+    }    
+    else if (name11 !== "Player 11" && img11 !== null) {
+      waiting11.style.display = "none";
+      ready11.style.display = "flex";
+    }    
+    else if (name12 !== "Player 12" && img12 !== null) {
+      waiting12.style.display = "none";
+      ready12.style.display = "flex";
+    }    
+    else if (name13 !== "Player 13" && img13 !== null) {
+      waiting13.style.display = "none";
+      ready13.style.display = "flex";
+    }
+    else if (name14 !== "Player 14" && img14 !== null) {
+      waiting14.style.display = "none";
+      ready14.style.display = "flex";
+    }
+
 
   // On envoie l'hote vers la page d'ecran de jeu
   const handleLaunchGame = () => {
@@ -365,7 +469,7 @@ function Meetplayer() {
                   maxLength="15"
                   placeholder="Pseudo"
                 ></input>
-                <button onClick={handleSendName} className="button_style--active" >ok</button>
+                <button onClick={handleSendName} className="button_style--active send_name--button" >ok</button>
               </form>
               <AvatarChoix />
             </div>
@@ -392,100 +496,115 @@ function Meetplayer() {
                 {/*Joueur hote */}
                 <div className="Joueur__localStorage joueurHote">
                   <img className="logo__joueursSelf" src={imgMJ} />
-                  <span className="Pseudo__joueurSelf">{nameMJTrue}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur">{nameMJTrue}</span>
+                  <img className="playerReady playerReadyHote" src={ready} />
                   {/*pret ou non */}
                 </div>
                 {/*Joueur Self */}
                 <div className="Joueur__localStorage joueurSelf">
-                  <img className="logo__joueursSelf" src={imgSelf} />
-                  <span className="Pseudo__joueurSelf">{nameSelf}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <img className="logo__joueursSelf imgSelfTrue" src={imgSelf} />
+                  <span className="Pseudo__joueurSelf PseudoSelfTrue" value=""></span>
+                  <img className="playerWaiting playerWaitingSelf" src={waitingIconeSelf} />
+                  <img className="playerReady playerReadySelf" src={readyIconeSelf} />
                   {/*pret ou non */}
                 </div>
                 {/*Joueur 1 */}
                 <div className="Joueur__localStorage joueur1">
                   <img className="logo__joueursSelf" src={img1} />
-                  <span className="Pseudo__joueurSelf">{name1}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur1">{name1}</span>
+                  <img className="playerWaiting playerWaiting1" src={waiting} />
+                  <img className="playerReady playerReady1" src={ready} />
                 </div>
                 {/*Joueur 2 */}
                 <div className="Joueur__localStorage joueur2">
                   <img className="logo__joueursSelf" src={img2} />
-                  <span className="Pseudo__joueurSelf">{name2}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur2">{name2}</span>
+                  <img className="playerWaiting playerWaiting2" src={waiting} />
+                  <img className="playerReady playerReady2" src={ready} />
                 </div>
                 {/*Joueur 3 */}
                 <div className="Joueur__localStorage joueur3">
                   <img className="logo__joueursSelf" src={img3} />
-                  <span className="Pseudo__joueurSelf">{name3}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur3">{name3}</span>
+                  <img className="playerWaiting playerWaiting3" src={waiting} />
+                  <img className="playerReady playerReady3" src={ready} />
                 </div>
                 {/*Joueur 4 */}
                 <div className="Joueur__localStorage joueur4">
                   <img className="logo__joueursSelf" src={img4} />
-                  <span className="Pseudo__joueurSelf">{name4}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur4">{name4}</span>
+                  <img className="playerWaiting playerWaiting4" src={waiting} />
+                  <img className="playerReady playerReady4" src={ready} />
                 </div>
                 {/*Joueur 5 */}
                 <div className="Joueur__localStorage joueur5">
                   <img className="logo__joueursSelf" src={img5} />
-                  <span className="Pseudo__joueurSelf">{name5}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur5">{name5}</span>
+                  <img className="playerWaiting playerWaiting5" src={waiting} />
+                  <img className="playerReady playerReady5" src={ready} />
                 </div>
                 {/*Joueur 6 */}
                 <div className="Joueur__localStorage joueur6">
                   <img className="logo__joueursSelf" src={img6} />
-                  <span className="Pseudo__joueurSelf">{name6}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur6">{name6}</span>
+                  <img className="playerWaiting playerWaiting6" src={waiting} />
+                  <img className="playerReady playerReady6" src={ready} />
                 </div>
                 {/*Joueur 7 */}
                 <div className="Joueur__localStorage joueur7">
                   <img className="logo__joueursSelf" src={img7} />
-                  <span className="Pseudo__joueurSelf">{name7}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur7">{name7}</span>
+                  <img className="playerWaiting playerWaiting7" src={waiting} />
+                  <img className="playerReady playerReady7" src={ready} />
                 </div>
                 {/*Joueur 8 */}
                 <div className="Joueur__localStorage joueur8">
                   <img className="logo__joueursSelf" src={img8} />
-                  <span className="Pseudo__joueurSelf">{name8}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur8">{name8}</span>
+                  <img className="playerWaiting playerWaiting8" src={waiting} />
+                  <img className="playerReady playerReady8" src={ready} />
                 </div>
                 {/*Joueur 9 */}
                 <div className="Joueur__localStorage joueur9">
                   <img className="logo__joueursSelf" src={img9} />
-                  <span className="Pseudo__joueurSelf">{name9}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur9">{name9}</span>
+                  <img className="playerWaiting playerWaiting9" src={waiting} />
+                  <img className="playerReady playerReady9" src={ready} />
                 </div>
                 {/*Joueur 10 */}
                 <div className="Joueur__localStorage joueur10">
                   <img className="logo__joueursSelf" src={img10} />
-                  <span className="Pseudo__joueurSelf">{name10}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur10">{name10}</span>
+                  <img className="playerWaiting playerWaiting10" src={waiting} />
+                  <img className="playerReady playerReady10" src={ready} />
                 </div>
                 {/*Joueur 11 */}
                 <div className="Joueur__localStorage joueur11">
                   <img className="logo__joueursSelf" src={img11} />
-                  <span className="Pseudo__joueurSelf">{name11}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur11">{name11}</span>
+                  <img className="playerWaiting playerWaiting11" src={waiting} />
+                  <img className="playerReady playerReady11" src={ready} />
                 </div>
                 {/*Joueur 12 */}
                 <div className="Joueur__localStorage joueur12">
                   <img className="logo__joueursSelf" src={img12} />
-                  <span className="Pseudo__joueurSelf">{name12}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur12">{name12}</span>
+                  <img className="playerWaiting playerWaiting12" src={waiting} />
+                  <img className="playerReady playerReady12" src={ready} />
                 </div>
                 {/*Joueur 13 */}
                 <div className="Joueur__localStorage joueur13">
                   <img className="logo__joueursSelf" src={img13} />
-                  <span className="Pseudo__joueurSelf">{name13}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur13">{name13}</span>
+                  <img className="playerWaiting playerWaiting13" src={waiting} />
+                  <img className="playerReady playerReady13" src={ready} />
                 </div>
                 {/*Joueur 14 */}
                 <div className="Joueur__localStorage joueur14">
                   <img className="logo__joueursSelf" src={img14} />
-                  <span className="Pseudo__joueurSelf">{name14}</span>
-                  <p className="playerReady button_style--active">Pret</p>
+                  <span className="Pseudo__joueurSelf Pseudo__joueur14">{name14}</span>
+                  <img className="playerWaiting playerWaiting14" src={waiting} />
+                  <img className="playerReady playerReady14" src={ready} />
                 </div>
               </div>
               <button

@@ -16,6 +16,7 @@ import {
   SaveNbPlayer,
   saveNewImgInvite,
   SaveplayerSelfIndex,
+  SavePlayerName,
   Saveplayer1Index,
   Saveplayer2Index,
   Saveplayer3Index,
@@ -157,7 +158,7 @@ const webSocketConnection = (store) => (next) => (action) => {
           player14Flex.style.display = "flex";
         }
 
-        //ON VAS SUPPRIMER CETTE LIGNE
+
         //On lui envoie les datas de l'hote
         const { hotePseudo, avatarImgHote } = state.avatar.hote;
         // On envoie les données si nous sommes hote
@@ -231,6 +232,16 @@ const webSocketConnection = (store) => (next) => (action) => {
           changeImgPlayer
         );
         store.dispatch(saveNewImgInvite(changeImgPlayer));
+      });
+
+      
+      // On ecoute les notifications de la base de donnée pour les noms des joueurs
+      socket.on("receive_name_player", (nameOfPlayer) => {
+        console.log(
+          "On vient de recevoir un nom de joueur",
+          nameOfPlayer
+        );
+        store.dispatch(SavePlayerName(nameOfPlayer.indexSelf, nameOfPlayer.nameSelf));
       });
 
       // On ecoute les notifications d'envoie des données de l'hote

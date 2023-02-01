@@ -82,12 +82,25 @@ const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom 
   const nameSelf = useSelector((state) => state.avatar.joueurSelf.valuePseudo); // si le nom du participant et le nom de l'hote son les memes alors on fait un
   const indexPlayer = useSelector((state) => state.avatar.joueurSelf.inumber);
 
+  //Ici on verifie que les infos sont entrer
+  const PseudoTarget = document.querySelector(".PseudoSelfTrue");
+  const imgSelf = useSelector((state) => state.avatar.joueurSelf.avatarImg); //img joueur Self
 
   // la ternaire check si hote ou invité pour gerer affichage
    const handleAvatar = (event) => {
      // ici une ternaire qui verifie si c'est un hote ou un invité pour savoir ou placer l'img choisi
      document.location.pathname == "/" ? ( dispatch(saveAvatarImg(event.target.src) ) ) : ( dispatch(saveAvatarImgInvit(event.target.src, indexPlayer )) );
-    
+     //la on verifie sur quelle page on se trouve
+     if (document.location.pathname == "/") {
+
+      if (PseudoTarget.value !== "" && imgSelf !== null) {
+        console.log('la condition est ok', PseudoTarget, ' le textContent =>', PseudoTarget.textContent );
+        console.log('la condition est pas valide', PseudoTarget, ' le textContent =>', PseudoTarget.textContent );
+        waitingSelf.style.display = "none";
+        readySelf.style.display = "flex";
+      }
+     }
+     
     const AvatarAll = document.querySelectorAll(".imgAvatar");
     for (const imgAvatar of AvatarAll) {
       imgAvatar.classList.remove('button_style--active');

@@ -288,6 +288,15 @@ display: flex;
   border: 1px solid vars.$red;
 }
 
+.send_name--button{
+  position: relative;
+ right: 2rem;
+ bottom: 0.1rem;
+ border-radius: 0.2rem 0 0.2rem 0;
+ width: 1.9rem;
+ height: 2rem;
+}
+
 // ************ Le button du centre pour copier le lien => visible seulement par l'hote
 
 .div__link--invit {
@@ -424,6 +433,14 @@ padding: 1em 0 ;
   border-color: var(--bleu-one);
   border-radius: 0.5em;
   color: var(--bleu-one);
+  background-color: vars.$bleu-main;
+}
+
+
+.imgSelfTrue{
+  border: 1rem;
+  border-radius: 0.2rem;
+  padding: 0.3rem;
 }
 
 .Joueur__localStorageSelf{
@@ -434,8 +451,9 @@ padding: 1em 0 ;
 .logo__joueursSelf{
   display: flex;
   width: 2rem;
-
+  margin: 0 0.5rem 0 0.5rem;
 }
+
 
 .Pseudo__joueurSelf{
   display: flex;
@@ -443,15 +461,34 @@ padding: 1em 0 ;
   font-size: 1.2rem;
   align-self: center;
   color: vars.$bleu-main;
-  margin: 0rem 0rem 0 0.5rem;
+  margin: 0rem 0rem 0rem 0.5rem;
+}
+
+.PseudoSelfTrue{
+  display: flex;
+  color: white;
 }
 
 .playerReady{
-  display: flex;
-  margin: 0 0 0 0.5rem;
+  display: none;
+  height: 3rem;
+  margin: 0 0 0 0.4rem;
   align-self: center;
   color: vars.$bleu-main;
-  padding: 0.4rem 0.6rem ;
+  padding: 0.4rem 0.5rem ;
+}
+
+.playerReadyHote{
+  display: flex;
+}
+
+.playerWaiting{
+  display: flex;
+  height: 3rem;
+  color: vars.$bleu-main;
+  align-self: center;
+  padding: 0.4rem 0.5rem ;
+  margin: 0 0 0 0.4rem;
 }
 
 .button__lancer__une__partie--2 {

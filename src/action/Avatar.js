@@ -11,6 +11,8 @@ field,
 }
 
 
+
+
 //Sert a envoyer notre pseudo aux autres joueurs
 export const SEND_NAME_SELF = 'SEND_NAME_SELF';
 
@@ -22,6 +24,16 @@ name
   };
 }
 
+//Sert a envoyer notre pseudo aux autres joueurs
+export const SAVE_PLAYER_NAME = 'SAVE_PLAYER_NAME';
+
+export function SavePlayerName (index, name) {
+  return {
+type : SAVE_PLAYER_NAME,
+index,
+name
+  };
+}
 
 
 //Gere le nombre de joueur

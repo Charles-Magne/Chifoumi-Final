@@ -202,7 +202,6 @@ function Meetplayer() {
     if ( iround == 1 ) {
       divJoueur1.style.display = "none";
     }
-  
 // si i self est egal a 2, on cache la case 2
     else if ( iround == 2 ) {
       divJoueur2.style.display = "none";
@@ -297,69 +296,73 @@ function Meetplayer() {
     // On clique sur le button OK => envoie son pseudo aux autres joueurs via les websockets
     const handleSendName = (event) => {
       event.preventDefault();
-      PseudoSelf.textContent = nameSelf;
+      //je veux afficher le name donc textContent
+      PseudoTarget.textContent = nameSelf; 
+      //Ternaire qui check si l'avatar est ok
+      if (imgSelf !== null) {  
       //On gere l'affichage des icones waiting et ready
+      waitingSelf.style.display = "none",
+      readySelf.style.display = "flex" ;
+    }
       // On doit afficher le name juste quand on clique sur ok
       dispatch(sendNameself(iround , nameSelf));
     };
 
 
     // si le pseudo est l'avatar sont rempli alos on valide avec la deuxieme img
-
-
      if (name1 !== "Player 1" && img1 !== null) {
       waiting1.style.display = "none";
       ready1.style.display = "flex";
     }
-    else if (name2 !== "Player 2" && img2 !== null) {
+     if (name2 !== "Player 2" && img2 !== null) {
       waiting2.style.display = "none";
       ready2.style.display = "flex";
     }
-    else if (name3 !== "Player 3" && img3 !== null) {
+     if (name3 !== "Player 3" && img3 !== null) {
       waiting3.style.display = "none";
       ready3.style.display = "flex";
     }
-    else if (name4 !== "Player 4" && img4 !== null) {
+     if (name4 !== "Player 4" && img4 !== null) {
       waiting4.style.display = "none";
       ready4.style.display = "flex";
     }
-    else if (name5 !== "Player 5" && img5 !== null) {
+     if (name5 !== "Player 5" && img5 !== null) {
       waiting5.style.display = "none";
       ready5.style.display = "flex";
     }
-    else if (name6 !== "Player 6" && img6 !== null) {
+     if (name6 !== "Player 6" && img6 !== null) {
       waiting6.style.display = "none";
       ready6.style.display = "flex";
     }
-    else if (name7 !== "Player 7" && img7 !== null) {
+     if (name7 !== "Player 7" && img7 !== null) {
       waiting7.style.display = "none";
       ready7.style.display = "flex";
     }
-    else if (name8 !== "Player 8" && img8 !== null) {
+     if (name8 !== "Player 8" && img8 !== null) {
       waiting8.style.display = "none";
       ready8.style.display = "flex";
     }
-    else if (name9 !== "Player 9" && img9 !== null) {
+     if (name9 !== "Player 9" && img9 !== null) {
       waiting9.style.display = "none";
       ready9.style.display = "flex";
     }  
-      else if (name10 !== "Player 10" && img10 !== null) {
+     if (name10 !== "Player 10" && img10 !== null) {
       waiting10.style.display = "none";
       ready10.style.display = "flex";
     }    
-    else if (name11 !== "Player 11" && img11 !== null) {
+    if (name11 !== "Player 11" && img11 !== null) {
       waiting11.style.display = "none";
       ready11.style.display = "flex";
     }    
-    else if (name12 !== "Player 12" && img12 !== null) {
+    if (name12 !== "Player 12" && img12 !== null) {
       waiting12.style.display = "none";
       ready12.style.display = "flex";
     }    
-    else if (name13 !== "Player 13" && img13 !== null) {
+    if (name13 !== "Player 13" && img13 !== null) {
       waiting13.style.display = "none";
       ready13.style.display = "flex";
     }
-    else if (name14 !== "Player 14" && img14 !== null) {
+    if (name14 !== "Player 14" && img14 !== null) {
       waiting14.style.display = "none";
       ready14.style.display = "flex";
     }
@@ -503,7 +506,7 @@ function Meetplayer() {
                 {/*Joueur Self */}
                 <div className="Joueur__localStorage joueurSelf">
                   <img className="logo__joueursSelf imgSelfTrue" src={imgSelf} />
-                  <span className="Pseudo__joueurSelf PseudoSelfTrue" value=""></span>
+                  <span className="Pseudo__joueurSelf PseudoSelfTrue"></span>
                   <img className="playerWaiting playerWaitingSelf" src={waitingIconeSelf} />
                   <img className="playerReady playerReadySelf" src={readyIconeSelf} />
                   {/*pret ou non */}

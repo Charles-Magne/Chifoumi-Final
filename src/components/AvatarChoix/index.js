@@ -43,6 +43,8 @@ import Springbok_bebe from "../../assets/Pictures/Avatars/Springbok_bebe.png";
 import Tigre_adulte from "../../assets/Pictures/Avatars/Tigre_adulte.png";
 import Tigre_badass from "../../assets/Pictures/Avatars/Tigre_badass.png";
 import Tigre_bebe from "../../assets/Pictures/Avatars/Tigre_bebe.png";
+import waitingIconeSelf from "../../assets/Icones/waiting_blanc.png";
+import readyIconeSelf from "../../assets/Icones/ready_blanc.png";
 
 function AvatarChoix() {
 
@@ -85,20 +87,24 @@ const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom 
   //Ici on verifie que les infos sont entrer
   const PseudoTarget = document.querySelector(".PseudoSelfTrue");
   const imgSelf = useSelector((state) => state.avatar.joueurSelf.avatarImg); //img joueur Self
+  const waitingSelf = document.querySelector(".playerWaitingSelf");
+  const readySelf = document.querySelector(".playerReadySelf");
+
+
 
   // la ternaire check si hote ou invité pour gerer affichage
    const handleAvatar = (event) => {
      // ici une ternaire qui verifie si c'est un hote ou un invité pour savoir ou placer l'img choisi
      document.location.pathname == "/" ? ( dispatch(saveAvatarImg(event.target.src) ) ) : ( dispatch(saveAvatarImgInvit(event.target.src, indexPlayer )) );
      //la on verifie sur quelle page on se trouve
-     if (document.location.pathname == "/") {
-
-      if (PseudoTarget.value !== "" && imgSelf !== null) {
+     if ( document.location.pathname !== "/" && !PseudoTarget.textContent.trim() ) {
         console.log('la condition est ok', PseudoTarget, ' le textContent =>', PseudoTarget.textContent );
-        console.log('la condition est pas valide', PseudoTarget, ' le textContent =>', PseudoTarget.textContent );
-        waitingSelf.style.display = "none";
-        readySelf.style.display = "flex";
-      }
+     }
+     else if ( document.location.pathname !== "/" && PseudoTarget.textContent ) {
+       //ici on indique que le joueur est pret
+      console.log('la condition est pas valide', PseudoTarget, ' le textContent =>', PseudoTarget.textContent );
+      waitingSelf.style.display = "none";
+      readySelf.style.display = "flex";
      }
      
     const AvatarAll = document.querySelectorAll(".imgAvatar");

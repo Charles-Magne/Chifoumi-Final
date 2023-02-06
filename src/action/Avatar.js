@@ -67,6 +67,7 @@ export function saveAvatarImgInvit ( target, indexPlayer ) {
   };
 }
 
+
 //save le pseudo de l'hote
 export const SAVE_PSEUDO_HOTE = 'SAVE_PSEUDO_HOTE';
 
@@ -393,5 +394,15 @@ export function saveNewImgInvite (changeImgPlayer) {
 type : SAVE_NEW_IMG_INVITE,
 index: changeImgPlayer.index, 
 imgAvatar: changeImgPlayer.imgInvite
+  };
+}
+
+
+// lorsque l'hote lance la game on dispatch pour que les autres joueurs aillent sur /playing
+export const LAUNCH_GAME = 'LAUNCH_GAME';
+
+export function launchGame () { 
+  return {
+type : LAUNCH_GAME,
   };
 }

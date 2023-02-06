@@ -509,8 +509,8 @@ function avatarReducer(state = initialState, action = {}) {
           avatarImg4: action.beforeJoueur7[15],
           avatarImg5: action.beforeJoueur7[16],
           avatarImg6: action.beforeJoueur7[17],
-          ValuePseudo1: action.beforeJoueur8[18],
-          ValuePseudo2: action.beforeJoueur8[19],
+          ValuePseudo1: action.beforeJoueur7[18],
+          ValuePseudo2: action.beforeJoueur7[19],
           ValuePseudo3: action.beforeJoueur7[20],
           ValuePseudo4: action.beforeJoueur7[21],
           ValuePseudo5: action.beforeJoueur7[22],
@@ -717,7 +717,7 @@ function avatarReducer(state = initialState, action = {}) {
           avatarImg2: action.beforeJoueur12[23],
           avatarImg3: action.beforeJoueur12[24],
           avatarImg4: action.beforeJoueur12[25],
-          avatarImg5: action.beforeJoueu12[26],
+          avatarImg5: action.beforeJoueur12[26],
           avatarImg6: action.beforeJoueur12[27],
           avatarImg7: action.beforeJoueur12[28],
           avatarImg8: action.beforeJoueur12[29],
@@ -853,6 +853,8 @@ function avatarReducer(state = initialState, action = {}) {
           ValuePseudo13: action.beforeJoueur14[51],
         },
       };
+
+
 
     // Ici on recoit toutes les modifications d'avatar
     case SAVE_NEW_IMG_INVITE:

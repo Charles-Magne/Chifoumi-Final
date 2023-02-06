@@ -21,6 +21,7 @@ import AvatarChoix from "../AvatarChoix";
 function Accueil() {
   // On envoie le code du salon vers le state pour gerer la redirection
   useEffect(() => {
+    console.log('On test le random =>' ,Math.random());
     const salon = Math.round(Math.random() * 10000000000000000);
     dispatch(fetchCodeSalon(salon));
   }, []);

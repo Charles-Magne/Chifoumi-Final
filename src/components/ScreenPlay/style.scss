@@ -229,9 +229,14 @@
       border-radius: 0.5em;
       border: solid 1px vars.$bleu-main;
   }
+
+  .Wrapper__Joueur{
+    overflow-y: scroll;
+    height: 42rem;
+  }
   
   .joueur_local{
-      display: flex;
+      display: none;
       flex-direction: row;
       margin: 2% 5%;
       padding: 2% 0;
@@ -239,6 +244,14 @@
       border-color: vars.$bleu-main;
       border-radius: 0.5em;
       color: vars.$bleu-main;
+  }
+
+  .joueurHotePlaying{
+    display: flex;
+  }
+
+  .joueurSelfPlaying{
+    display: flex;
   }
   
   .avatar__joueur{
@@ -251,7 +264,9 @@
   }
   
   .Pseudo__joueur{
-      text-align: center;
+    display: flex;
+    color: vars.$bleu-main;
+    justify-content: center;
       margin: 0 0 0.5em 0;
   }
   

@@ -503,6 +503,20 @@ padding: 1em 0 ;
   font-size: 100%;
 }
 
+.alert__nb--player{
+  color: vars.$red;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+  justify-content: center;
+  width: 12rem;
+  margin: 0 3rem;
+}
+
 .ad-2 {
   display: flex;
   margin: 6rem 0 0 0;

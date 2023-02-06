@@ -6,6 +6,8 @@ import Accueil from "../Acceuil";
 import Meetplayer from "../Meetplayer";
 import Results from "../Results";
 import ScreenPlay from "../ScreenPlay";
+import ToMuchPlayer from "../ScreenPlay";
+
 
 
 // == Composant
@@ -19,6 +21,7 @@ function App() {
         <Route path="Send-invitation/:salonState" element={<Meetplayer/> } />  
         <Route path="Playing" element={<ScreenPlay/> } />
         <Route path="Resultat" element={<Results/> } />
+        <Route path="error" element={<ToMuchPlayer/> } />
       </Routes>
     </div>
   );

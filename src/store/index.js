@@ -4,6 +4,7 @@ import reducer from '../reducers';
 
 // On donne acces au middlewares 
 import socketMiddleware from '../middlewares/webSocketConnection';
+import role from '../middlewares/role';
 
 
 // ici on va venir importer les middleswares que l'on va creer
@@ -14,7 +15,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // trad. exhausteurs => permet d'englober le applyMiddleware qui lui meme engloble tout les middlewares
 const enhancers = composeEnhancers(
   // applyMiddleware permet de "combiner" les deux middlewares (les mettre dans un paquet)
-  applyMiddleware( socketMiddleware ),
+  applyMiddleware( socketMiddleware, role ),
 );
 
 const store = createStore(reducer, enhancers);

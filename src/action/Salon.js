@@ -8,3 +8,11 @@ type : FETCH_CODE_SALON,
 salon
   };
 }
+
+export const LAUNCH_GAME_ALL = 'LAUNCH_GAME_ALL';
+
+export function launchGameAll () { 
+  return {
+type : LAUNCH_GAME_ALL,
+  };
+}

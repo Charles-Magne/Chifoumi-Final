@@ -11,6 +11,11 @@ import {
 } from "../action/connection";
 
 import {
+  launchGameAll
+} from "../action/Salon";
+
+
+import {
   SAVE_AVATAR_IMG_INVIT,
   SEND_NAME_SELF,
   SaveNbPlayer,
@@ -44,6 +49,7 @@ import {
   SavebeforeJoueur12,
   SavebeforeJoueur13,
   SavebeforeJoueur14,
+  LAUNCH_GAME
 } from "../action/Avatar";
 
 let socket;
@@ -234,6 +240,12 @@ const webSocketConnection = (store) => (next) => (action) => {
         store.dispatch(saveNewImgInvite(changeImgPlayer));
       });
 
+
+      //Lorsqu'on est notifier que l'hote a cliquer sur lancer la partie
+      socket.on("launchGameAll", () => {
+        store.dispatch(launchGameAll());
+      });
+
       
       // On ecoute les notifications de la base de donnée pour les noms des joueurs
       socket.on("receive_name_player", (nameOfPlayer) => {
@@ -300,6 +312,15 @@ const webSocketConnection = (store) => (next) => (action) => {
 
       return next(action);
     }
+
+      // l'hote a cliquer sur lancer la game on notifie tous les joueurs d'aller sur la page de jeu
+      case LAUNCH_GAME: {
+        socket.emit("launchGameHote", {
+        });
+        return next(action);
+      }
+
+    
 
     // V Cette partie ne bouge pas
     default:

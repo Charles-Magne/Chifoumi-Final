@@ -61,9 +61,14 @@ faire un loading si jamais les calcules prennent du temps.
   const name14Play = useSelector((state) => state.avatar.joueurs.ValuePseudo14); // pseudo joueur 14
   const img14Play = useSelector((state) => state.avatar.joueurs.avatarImg14); // img joueur 14
 
+  const indexTaupe = useSelector((state) => state.role.taupe); // index du joueur self
   const indexSelf = useSelector((state) => state.avatar.joueurSelf.inumber); // index du joueur self
-  const indexHotePlay = useSelector((state) => state.avatar.idJoueur);
-  const numberOfPlayer =useSelector((state) => state.avatar.joueurs.nbPlayer);
+  const indexHotePlay = useSelector((state) => state.avatar.idJoueur); // index de l'hote
+  const numberOfPlayer =useSelector((state) => state.avatar.joueurs.nbPlayer); // le nb de joueur present dans la partie
+
+
+
+  // -----------------------------Gestion de l'affichage des cases joueurs -----------------------------
 
   useEffect(() => {
     
@@ -71,7 +76,8 @@ faire un loading si jamais les calcules prennent du temps.
     // On creer un random math qui gere le role
     const randomRole = Math.random();
 
-    indexSelf !== null ? dispatch(sendRandomForRole(randomRole, indexSelf, numberOfPlayer )) : dispatch(sendRandomForRole(randomRole, indexHotePlay )) ;
+    // sert a savoir si c'est l'hote ou non 
+    indexSelf !== null ? dispatch(sendRandomForRole(randomRole, indexSelf, numberOfPlayer )) : dispatch(sendRandomForRole(randomRole, indexHotePlay, numberOfPlayer )) ;
     // Il faut definir le role de l'utilisateur, puis sa carte pupute, puis si taupe sa carte à defendre ou si informateur la carte perdante
     /*Pour definir les roles, on defini un randown math a tous les joueurs et celui qui a la plus elevé est la taupe, les deux moins grands sont informateurs */
     /*pour definir la carte pupute un random math sert a attribuer la carte 
@@ -82,7 +88,6 @@ faire un loading si jamais les calcules prennent du temps.
     const divJoueurHotePlay = document.querySelector(".joueurHotePlaying");
     const divJoueurSelfPlay = document.querySelector(".joueurSelfPlaying");
     const divJoueur1Play = document.querySelector(".joueur1Playing");
-    console.log("le useeffect du sceenplay", divJoueur1Play);
     const divJoueur2Play = document.querySelector(".joueur2Playing");
     const divJoueur3Play = document.querySelector(".joueur3Playing");
     const divJoueur4Play = document.querySelector(".joueur4Playing");
@@ -124,7 +129,6 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
     }
   }
 
-
     // Si l'indexSelf egale a x on passe en none divJoueurXPlay
     if (indexSelf == 1) {
       divJoueur1Play.style.display = "none";
@@ -144,9 +148,57 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
     else if (indexSelf == 6) {
       divJoueur6Play.style.display = "none";
     }
+    else if (indexSelf == 7) {
+      divJoueur7Play.style.display = "none";
+    }
+    else if (indexSelf == 8) {
+      divJoueur8Play.style.display = "none";
+    }
+    else if (indexSelf == 9) {
+      divJoueur9Play.style.display = "none";
+    }
+    else if (indexSelf == 10) {
+      divJoueur10Play.style.display = "none";
+    }
+    else if (indexSelf == 11) {
+      divJoueur11Play.style.display = "none";
+    }
+    else if (indexSelf == 12) {
+      divJoueur12Play.style.display = "none";
+
+    }else if (indexSelf == 13) {
+      divJoueur13Play.style.display = "none";
+    }
+    else if (indexSelf == 14) {
+      divJoueur14Play.style.display = "none";
+    }
 
 
   }, []);
+
+  //------------------------------------- Le role  attribution de la taupe ------------------------------
+
+  // Ici on va determiner si nous somme la taupe 
+  if ( indexTaupe !== null && indexSelf == indexTaupe) {
+    document.querySelector(".Role__titre").textContent = "Taupe";
+    document.querySelector(".Conseil-role_p").textContent = "Votre but est de faire perdre les joueurs";
+    document.querySelector(".icone__titre").style.src={Taupe};
+    document.querySelector(".consignesCompletesHide").textContent = "Pour faire perdre les joueurs, incitez les a jouer la carte qui perdra contre vous. Si les joueurs jouent la meme carte que vous, ils perdent. N'hesitez pas a vous faire passer pour un informateur ou un joueur";
+
+    const choixSymbole = Math.floor(Math.random()* 10);
+    if (choixSymbole <= 3 ) {
+      const symbole = "Pierre";
+      //dispatch(symboleTaupe(symbole ))
+    }
+    else if ( choixSymbole >= 4 && choixSymbole <=6 ){
+      const symbole = "feuille";
+      //dispatch(symboleTaupe(symbole ))
+    }
+    else if ( choixSymbole > 6) {
+      const symbole = "Ciseaux";
+      //dispatch(symboleTaupe(symbole ))
+    }
+}
 
   return (
     <div>
@@ -163,9 +215,9 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
           <div className="Conseil_role">
             <img src={player} alt="icone Role" className="icone__titre" />
             {/*<!--Icone role--> */}
-            <h1 className="Role__titre">Taupe</h1>
+            <h1 className="Role__titre">Joueur</h1>
             <div className="div__consigne--openregle">
-              <p className="Conseil-role_p">.</p>
+              <p className="Conseil-role_p"></p>
               <img
                 className="icone__ouvrir--conseil"
                 src={arrowDown}

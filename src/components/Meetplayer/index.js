@@ -66,11 +66,9 @@ function Meetplayer() {
   const img14 = useSelector((state) => state.avatar.joueurs.avatarImg14); // img joueur 14
 
   //On defini les index pour savoir si on affche ou non les div
-  const totalOfUser = useSelector((state) => state.avatar.joueurs.nbPlayer);
-  const indexJoueur1 = useSelector((state) => state.avatar.joueurs.i1);
-  const indexJoueurRandom1 = useSelector(
-    (state) => state.avatar.joueurs.indexRandom1
-  );
+  const totalOfUser = useSelector((state) => state.avatar.joueurs.nbPlayer); // Le nombre de joueur present dans la room
+  const indexJoueur1 = useSelector((state) => state.avatar.joueurs.i1); // index standard
+  const indexJoueurRandom1 = useSelector((state) => state.avatar.joueurs.indexRandom1 ); // index Random du joueur 1
   const indexJoueur2 = useSelector((state) => state.avatar.joueurs.i2);
   const indexJoueurRandom2 = useSelector(
     (state) => state.avatar.joueurs.indexRandom2
@@ -265,7 +263,7 @@ function Meetplayer() {
     dispatch(sendNameself(iround, nameSelf));
   };
 
-  // si le pseudo est l'avatar sont rempli alors on valide avec la deuxieme img
+  // si le pseudo est l'avatar sont rempli alors on valide avec la deuxieme icone
   if (name1 !== "Player 1" && img1 !== null) {
     waiting1.style.display = "none";
     ready1.style.display = "flex";

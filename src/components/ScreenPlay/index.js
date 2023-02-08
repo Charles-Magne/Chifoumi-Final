@@ -8,7 +8,7 @@ import arrowDown from "../../assets/Icones/down-arrow.png";
 import ile from "../../assets/Pictures/Carte pupute/Hawail_blue.png";
 import Pierre from "../../assets/Pictures/Symbole/pierre_bleu.png";
 import Feuille from "../../assets/Pictures/Symbole/feuille_bleu.png";
-import Ciseaux from "../../assets/Pictures/Symbole/ciseaux_bleu.png";
+import Ciseaux from "../../assets/Pictures/Symbole/ciseaux_bleu.png"; 
 import avatarProvisoire from "../../assets/Pictures/Avatars/Lion_adulte.png";
 
 //Les dependances
@@ -17,6 +17,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Les actions
 import { sendRandomForRole } from "../../action/Role";
+
+import { chooseCardPierre, chooseCardFeuille, chooseCardCiseaux } from "../../action/Avatar";
+
+chooseCardCiseaux
 
 function ScreenPlay() {
   // Il faut definir le role de l'utilisateur, puis sa carte pupute, puis si taupe sa carte à defendre ou si informateur la carte perdante
@@ -61,17 +65,24 @@ faire un loading si jamais les calcules prennent du temps.
   const name14Play = useSelector((state) => state.avatar.joueurs.ValuePseudo14); // pseudo joueur 14
   const img14Play = useSelector((state) => state.avatar.joueurs.avatarImg14); // img joueur 14
 
-  const indexTaupe = useSelector((state) => state.role.taupe); // index du joueur self
+  const indexTaupe = useSelector((state) => state.role.taupe); // index du joueur qui sera la taupe
+  const symboleTaupe = useSelector((state) => state.role.symboleTaupe); // symbole que doit defendre la taupe
+
+  const indexInfo1 = useSelector((state) => state.role.info1); // index du joueur qui sera l'informateur 1
+  const symboleInfor1 = useSelector((state) => state.role.SymboleInfo1); // symbole de l'informateur 1
+
+  const indexInfo2 = useSelector((state) => state.role.info2); // index du joueur qui sera l'informateur 2
+  const symboleInfo2 = useSelector((state) => state.role.SymboleInfo2); // symbole de l'informateur 2
+
   const indexSelf = useSelector((state) => state.avatar.joueurSelf.inumber); // index du joueur self
   const indexHotePlay = useSelector((state) => state.avatar.idJoueur); // index de l'hote
   const numberOfPlayer =useSelector((state) => state.avatar.joueurs.nbPlayer); // le nb de joueur present dans la partie
-
+ 
 
 
   // -----------------------------Gestion de l'affichage des cases joueurs -----------------------------
 
   useEffect(() => {
-    
 
     // On creer un random math qui gere le role
     const randomRole = Math.random();
@@ -121,6 +132,7 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
   }
 }
 
+/*
   // Si i self est egal a 1 on cache la case 1
   for (let i = 0; i < divJoueursPlay.length; i++) {
     if (indexSelf === i ) {
@@ -128,8 +140,9 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
       break;
     }
   }
+  */
 
-    // Si l'indexSelf egale a x on passe en none divJoueurXPlay
+    // Si l'indexSelf egale a x on passe en none divJoueurXPlay car notre pseudo est deja dans la case selfjoueur
     if (indexSelf == 1) {
       divJoueur1Play.style.display = "none";
     } 
@@ -172,33 +185,184 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
     else if (indexSelf == 14) {
       divJoueur14Play.style.display = "none";
     }
-
-
+// v La fin du useeffect
   }, []);
 
-  //------------------------------------- Le role  attribution de la taupe ------------------------------
+  let imgTaupeConseil1 = {Pierre};
+  let imgTaupeConseil2 = {Pierre};
+  let roleImgMain = player;
+
+  //------------------------------------- Le role - attribution de la taupe ------------------------------
 
   // Ici on va determiner si nous somme la taupe 
-  if ( indexTaupe !== null && indexSelf == indexTaupe) {
+  if ( indexTaupe !== null && indexSelf == indexTaupe ) {
+
     document.querySelector(".Role__titre").textContent = "Taupe";
-    document.querySelector(".Conseil-role_p").textContent = "Votre but est de faire perdre les joueurs";
-    document.querySelector(".icone__titre").style.src={Taupe};
+    document.querySelector(".Conseil-role_p").textContent = "Votre but est de faire perdre les joueurs. Incitez les joueurs a jouer                 ou                 .";
+    roleImgMain = Taupe;
     document.querySelector(".consignesCompletesHide").textContent = "Pour faire perdre les joueurs, incitez les a jouer la carte qui perdra contre vous. Si les joueurs jouent la meme carte que vous, ils perdent. N'hesitez pas a vous faire passer pour un informateur ou un joueur";
 
-    const choixSymbole = Math.floor(Math.random()* 10);
-    if (choixSymbole <= 3 ) {
-      const symbole = "Pierre";
-      //dispatch(symboleTaupe(symbole ))
+    // Votre but est de faire perdre les joueurs. Faites vous passez pour un informateur et conseillez aux joueurs de jouer un symbole perdant contre vous.  
+
+    const IconeTaupe1 = document.querySelector('.iconeConseilTaupe');
+    const IconeTaupe2 = document.querySelector('.iconeConseilTaupe2');
+
+
+    if ( symboleTaupe == 'Pierre' ) {
+
+      
+      document.querySelector(".div__cartePierre").classList.add("button_style--active");
+      // on veut afficher la pierre ou les ciseaux
+
+      IconeTaupe1.style.display = "flex";
+      imgTaupeConseil1 = Pierre;
+      IconeTaupe2.style.display = "flex";
+      imgTaupeConseil2 = Ciseaux;
     }
-    else if ( choixSymbole >= 4 && choixSymbole <=6 ){
-      const symbole = "feuille";
-      //dispatch(symboleTaupe(symbole ))
+
+    else if ( symboleTaupe == 'Feuille' ) {
+
+
+      document.querySelector(".div__carteFeuille").classList.add("button_style--active");
+      // on veut afficher la feuille ou la pierre
+      IconeTaupe1.style.display = "flex";
+      imgTaupeConseil1 = Pierre;
+      IconeTaupe2.style.display = "flex";
+      imgTaupeConseil2 = Feuille;
     }
-    else if ( choixSymbole > 6) {
-      const symbole = "Ciseaux";
-      //dispatch(symboleTaupe(symbole ))
+    else if ( symboleTaupe == 'Ciseaux' ) {
+
+      document.querySelector(".div__carteCiseaux").classList.add("button_style--active");
+      // on veut afficher la feuille ou les ciseaux
+      IconeTaupe1.style.display = "flex";
+      imgTaupeConseil1 = Feuille;
+      IconeTaupe2.style.display = "flex";
+      imgTaupeConseil2 = Ciseaux;
+    }
+
+}
+
+//------------------------------------- Le role - attribution de l'informateur 1 ------------------------------
+if (indexInfo1 !== null && indexSelf == indexInfo1 ) {
+
+  document.querySelector(".Role__titre").textContent = "Informateur";
+    document.querySelector(".Conseil-role_p").textContent = "Vous devez faire gagner les joueurs";
+    roleImgMain = Informateur;
+    document.querySelector(".consignesCompletesHide").textContent = "Le symbole coloré est perdant contre la taupe. Dissuadez les joueurs de le jouer";
+
+    if ( symboleInfor1 == 'Pierre' ) {
+      document.querySelector(".div__cartePierre").classList.add("cardInfo");
+    }
+    else if ( symboleInfor1 == 'Feuille' ) {
+      document.querySelector(".div__carteFeuille").classList.add("cardInfo");
+    }
+    else if ( symboleInfor1 == 'Ciseaux' ) {
+      document.querySelector(".div__carteCiseaux").classList.add("cardInfo");
     }
 }
+
+//------------------------------------- Le role - attribution de l'informateur 2 ------------------------------
+if (indexInfo2 !== null && indexSelf == indexInfo2 ) {
+  document.querySelector(".Role__titre").textContent = "Informateur";
+    document.querySelector(".Conseil-role_p").textContent = "Vous devez faire gagner les joueurs";
+    roleImgMain = Informateur;
+    document.querySelector(".consignesCompletesHide").textContent = "Le symbole coloré est perdant contre la taupe. Dissuadez les joueurs de le jouer";
+
+    if ( symboleInfo2 == 'Pierre' ) { // Si la carte de informateur est pierre
+      document.querySelector(".div__cartePierre").classList.add("cardInfo"); // On passe la carte pierre en rouge
+    }
+    else if ( symboleInfo2 == 'Feuille' ) {
+      document.querySelector(".div__carteFeuille").classList.add("cardInfo");
+    }
+    else if ( symboleInfo2 == 'Ciseaux' ) {
+      document.querySelector(".div__carteCiseaux").classList.add("cardInfo");
+    }
+}
+
+// Lors du clic on verifie que le style de la div conseil // Si il est egale a none ou ouvre si c'est flex on ferme
+ const showConseil = () => {
+   // On cache
+    if (document.querySelector(".consignesCompletesHide").style.display !== "none") {
+    document.querySelector(".consignesCompletesHide").style.display = "none";
+    document.querySelector(".icone__ouvrir--conseil").style.transform = "rotate(0deg)";
+   }
+      // On affiche
+    else  {
+    document.querySelector(".consignesCompletesHide").style.display = "flex";
+    document.querySelector(".icone__ouvrir--conseil").style.transform = "rotate(180deg)";
+   }
+ }
+ 
+
+// Le clic sur le bouton player
+ const handlePlayer = (event) => {
+  let classePlayer = event.currentTarget.classList;
+  if (!classePlayer.contains("select")) {
+    classePlayer.add('select');
+  }
+  else {
+    classePlayer.remove('select');
+  }
+ }
+
+ // Le clic sur le bouton Informateur
+ const handleInformateur = (event) => {
+  let classeInfo = event.currentTarget.classList;
+  if (!classeInfo.contains("select")) {
+    classeInfo.add('select');
+  }
+  else {
+    classeInfo.remove('select');
+  }
+ }
+
+ // Le clic sur le bouton Taupe
+ const handleTaupe = (event) => {
+  let classeTaupe = event.currentTarget.classList;
+  if (!classeTaupe.contains("select")) {
+    classeTaupe.add('select');
+  }
+  else {
+    classeTaupe.remove('select');
+  }
+}
+
+// -------------------------- clic sur les card pour les joueurs ---------------------------------------
+
+const ChoosePierre = () => {
+  // on verifie qu'on est joueur
+  if (indexTaupe !== indexSelf && indexInfo1 !== indexSelf && indexInfo2 !== indexSelf ) {
+    document.querySelector(".div__cartePierre").classList.add('button_style--active'); 
+    document.querySelector(".div__carteFeuille").classList.remove('button_style--active'); 
+    document.querySelector(".div__carteCiseaux").classList.remove('button_style--active'); 
+    dispatch(chooseCardPierre());
+  }
+ 
+}
+
+const ChooseFeuille = () => {
+  // on verifie qu'on est joueur
+  if (indexTaupe !== indexSelf && indexInfo1 !== indexSelf && indexInfo2 !== indexSelf ) {
+    document.querySelector(".div__cartePierre").classList.remove('button_style--active'); 
+    document.querySelector(".div__carteFeuille").classList.add('button_style--active'); 
+    document.querySelector(".div__carteCiseaux").classList.remove('button_style--active'); 
+    dispatch(chooseCardFeuille());
+  }
+
+}
+
+const ChooseCiseaux = () => {
+  // on verifie qu'on est joueur
+  if (indexTaupe !== indexSelf && indexInfo1 !== indexSelf && indexInfo2 !== indexSelf ) {
+    document.querySelector(".div__cartePierre").classList.remove('button_style--active'); 
+    document.querySelector(".div__carteFeuille").classList.remove('button_style--active'); 
+    document.querySelector(".div__carteCiseaux").classList.add('button_style--active'); 
+    dispatch(chooseCardCiseaux());
+  }
+
+}
+
+
 
   return (
     <div>
@@ -213,21 +377,25 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
         </div>
         <div className="div__centrale">
           <div className="Conseil_role">
-            <img src={player} alt="icone Role" className="icone__titre" />
+            <img src={roleImgMain} alt="icone Role" className="icone__titre" />
             {/*<!--Icone role--> */}
             <h1 className="Role__titre">Joueur</h1>
             <div className="div__consigne--openregle">
-              <p className="Conseil-role_p"></p>
+              <pre className="Conseil-role_p">Vous devez battre la taupe a l'aide du bon symbole</pre>
+              <img src={imgTaupeConseil1} className="iconeConseilTaupe"  alt="iconeHelpTaupe"/>
+              <img src={imgTaupeConseil2} className="iconeConseilTaupe2" alt="iconeHelpTaupe"/>
               <img
+              onClick={showConseil}
                 className="icone__ouvrir--conseil"
                 src={arrowDown}
                 alt="iconeArrow"
               />
             </div>
             <p className="consignesCompletesHide">
-              Vous voyez l'une des deux cartes perdantes. Faites en sorte que
-              les joueurs ne jouent pas cette carte.
+              Prenez garde à la taupe qui va tenter de se faire passer pour un informateur. 
+              N'oubliez pas que moins de joueurs gagnent et plus les gains sont importants.
             </p>
+            { /**La carte Action */}
           </div>
           <div className="carte_pupute">
             <img
@@ -248,11 +416,14 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             />
           </div>
           <div className="div__choixdelacarte">
-            <button className="div__cartePierre button__carte button_style--active">
+
+
+            {/* Carte Pierre */}
+            <button onClick={ChoosePierre} className="div__cartePierre button__carte">
               <img
                 className="image_symbole--up"
                 src={Pierre}
-                alt="SymboleCiseau"
+                alt="SymbolePierre"
               />
               <img className="image_symbole" src={Pierre} alt="SymbolePierre" />
               <div className="texteSymbole">Pierre</div>
@@ -264,7 +435,10 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
                 />
               </div>
             </button>
-            <button className="div__carteFeuille button__carte button_style--active">
+
+
+            {/* Carte Feuille */}
+            <button onClick={ChooseFeuille} className="div__carteFeuille button__carte">
               <img
                 className="image_symbole--up"
                 src={Feuille}
@@ -280,11 +454,14 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
                 <img
                   className="image_symbole--Down"
                   src={Feuille}
-                  alt="SymboleCiseau"
+                  alt="SymboleFeuille"
                 />
               </div>
             </button>
-            <button className="div__carteCiseaux button__carte button_style--active">
+
+
+            {/* Carte Ciseaux */}
+            <button onClick={ChooseCiseaux} className="div__carteCiseaux button__carte ">
               <img
                 className="image_symbole--up"
                 src={Ciseaux}
@@ -312,15 +489,15 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
           <div className="joueur_local joueurHotePlaying">
             <img className="avatar__joueur" src={imgMJPlay} alt="AvatarHote" />
             <div className="container__nameuser--button">
-              <p className="Pseudo__joueur" >{nameMJPlay}</p>
+              <p className="Pseudo__joueur" >{nameMJTrue}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur" >
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -328,22 +505,22 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
           </div>
 
           {/*JoueurSelf*/}
-          <div className="joueur_local joueurSelfPlaying">
+          <div className="joueur_local joueurSelfPlaying JoueurSelf">
             <img
               className="avatar__joueur"
               src={imgSelfPlay}
               alt="AvatarJoueurSelf"
             />
             <div className="container__nameuser--button">
-              <p className="Pseudo__joueur" >{nameSelfPlay}</p>
+              <p className="Pseudo__joueur Pseudo__joueur--Self" >{nameSelfPlay}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur" >
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -360,13 +537,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name1Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -383,13 +560,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur">{name2Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -406,13 +583,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name3Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -429,13 +606,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name4Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -452,13 +629,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name5Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -475,13 +652,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur">{name6Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -498,13 +675,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name7Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -521,13 +698,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name8Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -544,13 +721,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name9Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -567,13 +744,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name10Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -590,13 +767,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name11Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -613,13 +790,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name12Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -636,13 +813,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name13Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>
@@ -659,13 +836,13 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
             <div className="container__nameuser--button">
               <p className="Pseudo__joueur" >{name14Play}</p>
               <div className="div__button--role">
-                <button className="button__role">
+                <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleInformateur} className="button__Informateur">
                   <img className="img__Role" src={Informateur} alt="role" />
                 </button>
-                <button>
+                <button onClick={handleTaupe} className="button__Taupe">
                   <img className="img__Role" src={Taupe} alt="role" />
                 </button>
               </div>

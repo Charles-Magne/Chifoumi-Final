@@ -34,6 +34,9 @@ import {
   SAVE_BEAFORE_JOUEUR_12,
   SAVE_BEAFORE_JOUEUR_13,
   SAVE_BEAFORE_JOUEUR_14,
+  CHOOSE_CARD_PIERRE,
+  CHOOSE_CARD_FEUILLE,
+  CHOOSE_CARD_CISEAUX
 } from "../action/Avatar";
 
 import { NEW_INVITE_DETECTE, SAVE_HOTE_DATA } from "../action/connection";
@@ -51,6 +54,8 @@ export const initialState = {
     i: null, // L'index random
     valuePseudo: "", // Le pseudo des joueurs
     avatarImg: null, // l'avatar des joueurs
+    roleSelf: null, // le role du joueur
+    symboleSelf: null, // la card choisie par le joueurSelf
   },
   joueurs: {
     nbPlayer: 1,
@@ -140,6 +145,7 @@ function avatarReducer(state = initialState, action = {}) {
         joueurSelf: {
           ...state.joueurSelf,
           valuePseudo: action.value,
+          inumber: 0,
         },
       };
 
@@ -858,13 +864,41 @@ function avatarReducer(state = initialState, action = {}) {
 
     // Ici on recoit toutes les modifications d'avatar
     case SAVE_NEW_IMG_INVITE:
-      //let rightPlayer = `avatarImg${action.index}`;
-      //console.log('l\'endoit ou on sauvegare la photo', rightPlayer );
       return {
         ...state,
         joueurs: {
           ...state.joueurs,
           [`avatarImg${action.index}`]: action.imgAvatar,
+        },
+      };
+
+      // Ici on recoit toutes les modifications d'avatar
+    case CHOOSE_CARD_PIERRE:
+      return {
+        ...state,
+        joueurSelf: {
+          ...state.joueurSelf,
+          symboleSelf: 'Pierre',
+        },
+      };
+
+           // Ici on recoit toutes les modifications d'avatar
+    case CHOOSE_CARD_FEUILLE:
+      return {
+        ...state,
+        joueurSelf: {
+          ...state.joueurSelf,
+          symboleSelf: 'Feuille',
+        },
+      };
+
+           // Ici on recoit toutes les modifications d'avatar
+    case CHOOSE_CARD_CISEAUX:
+      return {
+        ...state,
+        joueurSelf: {
+          ...state.joueurSelf,
+          symboleSelf: 'Ciseaux',
         },
       };
 

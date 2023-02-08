@@ -72,6 +72,24 @@
       padding: 0 0 1% 0 ;
       margin: 1% 0;
   }
+
+  .iconeConseilTaupe{
+    display: none;
+    position: relative;
+    width: 2rem;
+    right: 9.8rem;
+    bottom: 0.7rem;
+  }
+
+  .iconeConseilTaupe2{
+    display: none;
+    position: relative;
+    width: 2rem;
+    right: 8rem;
+    bottom: 0.7rem;
+  }
+
+  
   
   .icone__titre{
       display: block;
@@ -107,6 +125,7 @@
   .consignesCompletesHide{
       text-align: center;
       display: none;
+      margin: 0 1rem;
   }
 
   //*********** La carte action (Pupute ^^)
@@ -115,7 +134,7 @@
       position: relative;
       width: 10.5rem;
       height: 14rem;
-      margin: 11% auto ;
+      margin: 9% auto ;
       text-align: center;
       border: solid 1px;
       border-color: vars.$bleu-main;
@@ -183,7 +202,10 @@
       border-color: vars.$bleu-main;
       margin: 0 ;
       box-shadow: 2px 2px 5px rgb(82, 81, 81);
-  
+  }
+
+  .cardInfo{
+    background-color: vars.$red;
   }
 
   .image_symbole--up{
@@ -253,6 +275,18 @@
   .joueurSelfPlaying{
     display: flex;
   }
+
+  .JoueurSelf{
+    background-color: vars.$bleu-main;
+  }
+
+  // Sert a mettre en evidence la carte
+  .select{
+    background-color: vars.$jaune-main;
+    border: 1px solid;
+    border-color: vars.$bleu-main;
+    border-radius: 0.2em;
+  }
   
   .avatar__joueur{
       height: 3.2em;
@@ -270,6 +304,10 @@
       margin: 0 0 0.5em 0;
   }
   
+  .Pseudo__joueur--Self{
+color: white;
+  }
+
   .div__button--role{
       display: flex;
       justify-content: space-around;

@@ -406,3 +406,31 @@ export function launchGame () {
 type : LAUNCH_GAME,
   };
 }
+
+
+// lorsque un joueur clique sur une carte Symbole
+export const CHOOSE_CARD_PIERRE = 'CHOOSE_CARD_PIERRE';
+
+export function chooseCardPierre () { 
+  return {
+type : CHOOSE_CARD_PIERRE,
+  };
+}
+
+// lorsque un joueur clique sur une carte Symbole
+export const CHOOSE_CARD_FEUILLE = 'CHOOSE_CARD_FEUILLE';
+
+export function chooseCardFeuille () { 
+  return {
+type : CHOOSE_CARD_FEUILLE,
+  };
+}
+
+// lorsque un joueur clique sur une carte Symbole
+export const CHOOSE_CARD_CISEAUX = 'CHOOSE_CARD_CISEAUX';
+
+export function chooseCardCiseaux () { 
+  return {
+type : CHOOSE_CARD_CISEAUX,
+  };
+}

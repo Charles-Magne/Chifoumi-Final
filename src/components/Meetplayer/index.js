@@ -216,6 +216,9 @@ function Meetplayer() {
       : ((divNonHote.style.display = "flex"),
         (buttonLaunch.style.display = "none"));
 
+        // Si je suis l'hote je passe la case en bleu 
+        nameMJ != "" ? document.querySelector('.joueurHote').classList.add('Pseudo__joueurHoteSelf')  : "" ;
+
     // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
     const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
 
@@ -462,9 +465,9 @@ function Meetplayer() {
               <h3 className="div__nbdejoueur">{totalOfUser} Joueurs</h3>
               <div className="wapperJoueur">
                 {/*Joueur hote */}
-                <div className="Joueur__localStorage joueurHote">
+                <div className=" joueurHote">
                   <img className="logo__joueursSelf" src={imgMJ} />
-                  <span className="Pseudo__joueurSelf Pseudo__joueurHote">
+                  <span className="Pseudo__joueurHoteMeet ">
                     {nameMJTrue}
                   </span>
                   <img className="playerReady playerReadyHote" src={ready} />

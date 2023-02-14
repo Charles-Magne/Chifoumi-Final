@@ -94,7 +94,7 @@ const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom 
 
   // la ternaire check si hote ou invité pour gerer affichage
    const handleAvatar = (event) => {
-     // ici une ternaire qui verifie si c'est un hote ou un invité pour savoir ou placer l'img choisi
+     //  si c'est l'hote on envoie lmig cible dans le state ou un invité pour savoir ou placer l'img choisi
      document.location.pathname == "/" ? ( dispatch(saveAvatarImg(event.target.src) ) ) : ( dispatch(saveAvatarImgInvit(event.target.src, indexPlayer )) );
      //la on verifie sur quelle page on se trouve
      if ( document.location.pathname !== "/" && !PseudoTarget.textContent.trim() ) {

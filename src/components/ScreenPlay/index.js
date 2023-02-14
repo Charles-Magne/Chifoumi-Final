@@ -19,8 +19,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendRandomForRole } from "../../action/Role";
 
 import { chooseCardPierre, chooseCardFeuille, chooseCardCiseaux } from "../../action/Avatar";
+import { useNavigate } from "react-router";
 
-chooseCardCiseaux
+
 
 function ScreenPlay() {
   // Il faut definir le role de l'utilisateur, puis sa carte pupute, puis si taupe sa carte à defendre ou si informateur la carte perdante
@@ -29,6 +30,7 @@ function ScreenPlay() {
 faire un loading si jamais les calcules prennent du temps.
 */
  const dispatch = useDispatch();
+ const navigate = useNavigate();
 
   //Les data du state
   const nameMJPlay = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut dans tous les reducers
@@ -77,6 +79,8 @@ faire un loading si jamais les calcules prennent du temps.
   const indexSelf = useSelector((state) => state.avatar.joueurSelf.inumber); // index du joueur self
   const indexHotePlay = useSelector((state) => state.avatar.idJoueur); // index de l'hote
   const numberOfPlayer =useSelector((state) => state.avatar.joueurs.nbPlayer); // le nb de joueur present dans la partie
+  const roleOfPlayer =useSelector((state) => state.avatar.joueurSelf.roleSelf); // le nb de joueur present dans la partie
+  
  
 
 
@@ -132,16 +136,6 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
   }
 }
 
-/*
-  // Si i self est egal a 1 on cache la case 1
-  for (let i = 0; i < divJoueursPlay.length; i++) {
-    if (indexSelf === i ) {
-      divJoueursPlay[i].style.display = "none";
-      break;
-    }
-  }
-  */
-
     // Si l'indexSelf egale a x on passe en none divJoueurXPlay car notre pseudo est deja dans la case selfjoueur
     if (indexSelf == 1) {
       divJoueur1Play.style.display = "none";
@@ -184,9 +178,29 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
     }
     else if (indexSelf == 14) {
       divJoueur14Play.style.display = "none";
+
     }
-// v La fin du useeffect
+
+// -------------------------------------On verifie si on est l'hote -------------------------------
+    nameMJPlay !== "" ? (divJoueurHotePlay.classList.remove('joueur_local'), divJoueurHotePlay.classList.add('HoteSelf')) :"" ;
+
+
+
+    if (indexSelf == indexTaupe ) {
+      console.log('on est la taupe ');
+    }
+    if (indexSelf == indexInfo1 ) {
+      console.log('on est informateur 1 ');
+    }
+    if (indexSelf == indexInfo2 ) {
+      console.log('on est informateur 2 ');
+    }
+
+
+    // v La fin du useeffect
   }, []);
+
+
 
   let imgTaupeConseil1 = {Pierre};
   let imgTaupeConseil2 = {Pierre};
@@ -281,8 +295,9 @@ if (indexInfo2 !== null && indexSelf == indexInfo2 ) {
 
 // Lors du clic on verifie que le style de la div conseil // Si il est egale a none ou ouvre si c'est flex on ferme
  const showConseil = () => {
+   console.log(document.querySelector(".consignesCompletesHide").style);
    // On cache
-    if (document.querySelector(".consignesCompletesHide").style.display !== "none") {
+    if (document.querySelector(".consignesCompletesHide").style.display !== "none" ) {
     document.querySelector(".consignesCompletesHide").style.display = "none";
     document.querySelector(".icone__ouvrir--conseil").style.transform = "rotate(0deg)";
    }
@@ -362,6 +377,58 @@ const ChooseCiseaux = () => {
 
 }
 
+// ------------------------------- Le timer --------------------------------------
+
+//On defini la durée de la partie
+let timer = 5;
+const timerValue = 5;
+
+// le loadeur
+const loadingtimer = document.querySelector(".Chrono__Color");
+
+//On attend 1 seconde avant de relancer la fonction
+let decompte = setInterval(leDecompte, 1000);
+
+// Ici on fait le calcule pour vider la barre de progression quel que soit le timer defini
+let unité = 100 / timer;
+
+//Le code écrit dans cette fonction ne sera exécuté qu'au bout de 1 secondes
+function leDecompte() {
+
+  // le loadeur
+const loadingtimer = document.querySelector(".Chrono__Color");
+
+  if (timer >= 1) {
+    timer--;
+    //Ici on defini le pourcentage de loading
+    let progressBar = timer * unité;
+
+    // ici on passe le pourcentage a la barre de timer
+    let resultlaoding = (loadingtimer.style.width = progressBar + "%");
+
+    if (timer < timerValue / 2) {
+      //On affiche le timer dans le HTML
+      document.querySelector(".div__chrono").textContent = timer;
+
+      let chronoCss = document.querySelector(".div__chrono");
+      //On affiche le chrono
+
+      if (timer < timerValue / 3) {
+        chronoCss.style.color = "#E3E309";
+
+        if (timer < timerValue / 4) {
+          //on anime => le compteur doit s'agrandir et retrecire toutes les S
+          chronoCss.style.fontSize = "200%";
+        }
+      }
+    }
+  }
+  //lorsque que le timer est fini, on devra changer de page
+  else if (timer === 0) {
+    console.log("yes");
+    navigate('/Resultat');
+  }
+}
 
 
   return (
@@ -489,7 +556,7 @@ const ChooseCiseaux = () => {
           <div className="joueur_local joueurHotePlaying">
             <img className="avatar__joueur" src={imgMJPlay} alt="AvatarHote" />
             <div className="container__nameuser--button">
-              <p className="Pseudo__joueur" >{nameMJTrue}</p>
+              <p className="Pseudo__joueurHote" >{nameMJTrue}</p>
               <div className="div__button--role">
                 <button onClick={handlePlayer} className="button__Player">
                   <img className="img__Role" src={player} alt="role" />

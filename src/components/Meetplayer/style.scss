@@ -384,7 +384,6 @@ padding: 1em 0 ;
   justify-content: center;
   margin: 5% 0;
   color: var(--bleu-one);
-
 }
 
 .nbdejoueurs {
@@ -421,6 +420,29 @@ padding: 1em 0 ;
   border-color: var(--bleu-one);
   border-radius: 0.5em;
   color: var(--bleu-one);
+}
+
+.Pseudo__joueurHoteMeet{ 
+  display: flex;
+  width: 9rem;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-self: center;
+  margin: 0rem 0rem 0rem 0.5rem;
+}
+
+.Pseudo__joueurHoteSelf{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2% 5%;
+  padding: 2% 0;
+  border: 2px solid;
+  border-color: var(--bleu-one);
+  border-radius: 0.5em;
+  color: var(--bleu-one);
+  color: white;
+  background-color: vars.$bleu-main;
 }
 
 .joueurSelf{

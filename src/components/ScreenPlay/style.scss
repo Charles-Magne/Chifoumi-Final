@@ -38,7 +38,7 @@
   .Chrono__Color{
       background-color: vars.$jaune-main;
       width: 100%;
-      height: 0.5rem;
+      height: 0.4rem;
   }
   
   .div__chrono{
@@ -222,6 +222,7 @@
   .texteSymbole{
     display: flex;
     width: auto;
+    color: vars.$bleu-main;
     margin: 1rem auto 1.3rem auto;
     font-family: vars.$police-main;
   }
@@ -268,8 +269,23 @@
       color: vars.$bleu-main;
   }
 
+  .HoteSelf{
+    display: none;
+    flex-direction: row;
+    margin: 2% 5%;
+    padding: 2% 0;
+    border: 2px solid;
+    border-color: vars.$bleu-main;
+    border-radius: 0.5em;
+    background-color: vars.$bleu-main;
+    color: white;
+  }
+
   .joueurHotePlaying{
     display: flex;
+ 
+    justify-content: center;
+      margin: 0 0 0.5em 0;
   }
 
   .joueurSelfPlaying{

@@ -59,6 +59,7 @@ function Accueil() {
       avatarImg == undefined
         ? (alerteAvatar.style.display = "flex" , console.log('pas de photo?') )
         : (alerteAvatar.style.display = "none" ) ;
+        
     // ternaire pour savoir si on peut passer a la page suivante et identifer le pseudo cliquer comme hote
     const nextPage =
       avatarImg != undefined && valueName != ""

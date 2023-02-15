@@ -61,57 +61,80 @@ function Results() {
   const indexTaupeResults = useSelector((state) => state.role.taupe); // index de la taupe
   const symboleTaupeResults = useSelector((state) => state.role.symboleTaupe); // valeur du symbole de la taupe
   const indexInfo1Results = useSelector((state) => state.role.info1); // index de l'info 1 
-  const symboleInfo1Results = useSelector((state) => state.role.SymboleInfo1); // valeur du symbole de l'info 1
+  const symboleInfo1Results = useSelector((state) => state.role.SymboleInfo1); // valeur du symbole de l'info 1 
   const indexInfo2Results = useSelector((state) => state.role.info2); // index de l'info 2
   const symboleInfo2Results = useSelector((state) => state.role.SymboleInfo2); // valeur du symbole de l' info 2
   const checkRoleEmpty = useSelector((state) => state.avatar.joueurSelf.roleSelf); // valeur du symbole de l' info 2
+  const arrayJoueurResult = useSelector((state) => state.role.joueur); // tableau contenant tous les participants joueurs
 
 
 
   //On Creer un tableau qui va contenir tout les noms
-  let nameUserResults = [ name0Results, name1Results, name2Results, name3Results, name4Results, name5Results,
+  const nameUserResults = [ name0Results, name1Results, name2Results, name3Results, name4Results, name5Results,
      name6Results, name7Results, name8Results, name9Results, name10Results, name11Results,
      name12Results, name13Results, name14Results];
 
-     console.log('le tableau de tout les names',nameUserResults);
+     // on check si nameSelfResults est égal à une des données de ArrayJoueurResult
+     /**
+      * @default: contient la valeur de joueurSelfIndex si on la trouve dans le tableau des joueurs
+      */
+     const indexJoueur = arrayJoueurResult.indexOf(indexSelfResults);
 
-       //name de la taupe 
-   const nameTaupeResult = nameUserResults[indexTaupeResults];
+// Si nameSelfResults est dans ArrayJoueurResult, retirer cette donnée 
+if (indexJoueur !== -1) {
+  arrayJoueurResult.splice(indexJoueur, 1);
+  console.log('le tableau qui contient les joueurs',arrayJoueurResult);
+}
 
-     //name de l'informateur 1
-  const nameInfo1Result = nameUserResults[indexInfo1Results];
-
-    //Name de l'informateur 2
-    const nameInfo2Result = nameUserResults[indexInfo2Results];
-
-
-    // Une fois qu'on a utiliser le nom de la taupe on l'enleve du tableau
-    nameUserResults = nameUserResults.filter(name => name !== nameTaupeResult);
-
-    // On enleve l'informateur 1
-    nameUserResults = nameUserResults.filter(name => name !== nameInfo1Result);
-
-    // On enleve l'informateur 2
-     let nameJoueurResults = nameUserResults.filter(name => name !== nameInfo2Result);
-
-   /*  // si je suis le joueurSelf On me retire du tableau des joueurs
-    if (nameSelfResults !== "") {
-      let nameJoueurResults = nameUserResults.filter(name => name !== nameSelfResults);
-      console.log('je suis le joueur self Name', nameJoueurResults);
-      return nameJoueurResults;
-    }*/
+const IndexJoueur1Result = arrayJoueurResult[0];
+const IndexJoueur2Result = arrayJoueurResult[1];
+const IndexJoueur3Result = arrayJoueurResult[2];
+const IndexJoueur4Result = arrayJoueurResult[3];
+const IndexJoueur5Result = arrayJoueurResult[4];
+const IndexJoueur6Result = arrayJoueurResult[5];
+const IndexJoueur7Result = arrayJoueurResult[6];
+const IndexJoueur8Result = arrayJoueurResult[7];
+const IndexJoueur9Result = arrayJoueurResult[8];
+const IndexJoueur10Result = arrayJoueurResult[9];
+const IndexJoueur11Result = arrayJoueurResult[10];
 
 
+    // --------------------------- Les avatars -----------------------------------------
+
+    const avatarUserResults = [
+      avatar0Results ,
+     avatar1Results ,
+     avatar2Results ,
+     avatar3Results ,
+     avatar4Results ,
+     avatar5Results ,
+     avatar6Results ,
+     avatar7Results ,
+     avatar8Results ,
+     avatar9Results ,
+     avatar10Results ,
+     avatar11Results ,
+     avatar12Results ,
+     avatar13Results ,
+     avatar14Results,
+    ];
+
+ 
+
+
+    //Useeffect qui permet de check une seule fois si la on n'est joueur ou non et d'envoyer notre index aux autres
+    useEffect(() => {
     //On veut identifiier les joueurs Donc Si roleSelf est vide je suis un joueur j'enregistre mon index dans le state joueur et je dispatch mon index pour signaler aux autres que je suis joueur
     if ( checkRoleEmpty == null ) {
       // Si je suis joueur, je m'enregistre dans le state et j'envoie mon index aux autre participants
       dispatch(sendIndexJoueurWs(indexSelfResults));
-      
     }
+  }, [checkRoleEmpty]);
     
 
       //Ce useeffect permet de trouver tout les div dans lesquel placer les noms
   useEffect(() => {
+
     const divPseudoSelfResults = document.querySelector('.div__playerSelf');
     const divPseudo1Results = document.querySelector('.joueur1Result');
     const divPseudo2Results = document.querySelector('.joueur2Result');
@@ -278,67 +301,7 @@ function Results() {
           }
         }
 
-    }, []);
-
-    // --------------------------- Les avatars -----------------------------------------
-
-     const avatarUserResults = [
-      avatar0Results ,
-     avatar1Results ,
-     avatar2Results ,
-     avatar3Results ,
-     avatar4Results ,
-     avatar5Results ,
-     avatar6Results ,
-     avatar7Results ,
-     avatar8Results ,
-     avatar9Results ,
-     avatar10Results ,
-     avatar11Results ,
-     avatar12Results ,
-     avatar13Results ,
-     avatar14Results,
-    ];
-
-    //console.log('le tableau des avatars', avatarUserResults);
-
-   //avatar de la taupe 
-   const avatarTaupeResult = avatarUserResults[indexTaupeResults];
-   //console.log('avatar de la taupe', avatarTaupeResult);
-
-
-  //avatar de l'informateur 1
-  const avatarInfo1Result = avatarUserResults[indexInfo1Results];
-
-
-  //avatar de l'informateur 2
-  const avatarInfo2Result = avatarUserResults[indexInfo2Results];
-
-  // avatar du joueurSelf
-  const avatarJoueurSelfResult = avatarUserResults[indexSelfResults];
-
-  // Une fois qu'on a utiliser l'avatar de la taupe on l'enleve du tableau
-  avatarUserResults.splice(indexTaupeResults, 1);
-  console.log('Taupe enlevé dans le tableau',avatarUserResults);
-
-  // On enleve l'informateur 1 
-  avatarUserResults.splice(indexInfo1Results, 1);
-  console.log('Info1 enlevé dans le tableau',avatarUserResults);
-
-  // On enleve l'informateur 2 
-  avatarUserResults.splice(indexInfo2Results, 1);
-   console.log('Info2 enlevé dans le tableau',avatarUserResults);
-
-   // On enleve le joueurSelf
-  // avatarUserResults.splice(indexSelfResults, 1);
-  // console.log('joueurSelf enlevé dans le tableau',avatarUserResults);
-
-
-
-
-useEffect(() => {
-
- // Si le joueur self n'est pas la taupe / l'informateur 1 ou 2 alors il est joueur et donc on l'enleve du tableau des joueurs
+// Si le joueur self n'est pas la taupe / l'informateur 1 ou 2 alors il est joueur et donc on l'enleve du tableau des joueurs
  /*if (indexSelfResults !== indexTaupeResults || indexSelfResults !== indexInfo1Results || indexSelfResults !== indexInfo2Results ){
   avatarUserResults.splice(indexSelfResults, 1);
   console.log('je suis le joueur Self', avatarUserResults);
@@ -388,10 +351,11 @@ useEffect(() => {
     document.querySelector(".info2Ciseaux").classList.add('carte__symbole-Selectionné__informateur'); 
   }
 
-},[]);
 
 
-  //  Comment on organise les name ? Pour la taupe ? si le roleSelf est egale a taupe on place notre nameSelf dedans
+    }, []);
+
+
 
   // Une boucle for pour la taupe 
   // une boucle for pour l'informateur 1
@@ -413,8 +377,8 @@ useEffect(() => {
                 <img className="icone_taupe" src={ taupe } alt="icone Taupe" />
             </div>
             <div className="div__PseudoImg--Taupe">
-                <img className="img__Avatar" src={ avatarTaupeResult } alt="Img Avatar" />
-                <span className="span__pseudo">{ nameTaupeResult }</span>
+                <img className="img__Avatar" src={ avatarUserResults[indexTaupeResults] } alt="Img Avatar" />
+                <span className="span__pseudo">{ nameUserResults[indexTaupeResults] }</span>
             </div>
             <div className="div__symboles--taupe">
                 <img className="carte__pierreTaupe " src={ Pierre } alt="Icone Pierre" />
@@ -435,8 +399,8 @@ useEffect(() => {
                 <img className="icone__informateur icone__informateur1" src={ Informateur } alt="icone Informateur" />
             </div>
             <div className="contenerPersoInformateur">
-                <img className="img__informateur--1 imgAvatarResultat" src={ avatarInfo1Result } alt="img__avatar" />
-                <span className="pseudoInformateur pseudoInformateur1">{nameInfo1Result}</span>
+                <img className="img__informateur--1 imgAvatarResultat" src={ avatarUserResults[indexInfo1Results] } alt="img__avatar" />  
+                <span className="pseudoInformateur pseudoInformateur1">{nameUserResults[indexInfo2Results]}</span> 
             </div>
             <div className="contener__card">
                 <img className="carte__pierre info1Pierre" src={ Pierre } alt="icone Pierre" />
@@ -454,8 +418,8 @@ useEffect(() => {
                 <img className="icone__informateur icone__informateur2" src={ Informateur } alt="icone informateur" />
             </div>
             <div className="contenerPersoInformateur">
-                <img className="img__informateur--2 imgAvatarResultat" src={ avatarInfo2Result } alt="img__avatar" />
-                <span className="pseudoInformateur pseudoInformateur2">{nameInfo2Result}</span>
+                <img className="img__informateur--2 imgAvatarResultat" src={ avatarUserResults[indexInfo2Results] } alt="img__avatar" />
+                <span className="pseudoInformateur pseudoInformateur2">{nameUserResults[indexInfo1Results]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre info2Pierre" src={ Pierre } alt="icone Pierre" />
@@ -495,8 +459,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer1 imgAvatarResultat" src={ avatarUserResults[0] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer1Results" >{nameJoueurResults[0]}</span>
+                <img className="imgPlayer1 imgAvatarResultat" src={ avatarUserResults[IndexJoueur1Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer1Results" >{nameUserResults[IndexJoueur1Result]}</span> 
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -514,8 +478,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer2 imgAvatarResultat" src={ avatarUserResults[1] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer2Results" >{nameJoueurResults[1]}</span>
+                <img className="imgPlayer2 imgAvatarResultat" src={ avatarUserResults[IndexJoueur2Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer2Results" >{nameUserResults[IndexJoueur2Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -533,8 +497,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer3 imgAvatarResultat" src={avatarUserResults[2] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer3Results" >{nameJoueurResults[2]}</span>
+                <img className="imgPlayer3 imgAvatarResultat" src={avatarUserResults[IndexJoueur3Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer3Results" >{nameUserResults[IndexJoueur3Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -552,8 +516,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer4 imgAvatarResultat" src={ avatarUserResults[3] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer4Results" >{nameJoueurResults[3]}</span>
+                <img className="imgPlayer4 imgAvatarResultat" src={ avatarUserResults[IndexJoueur4Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer4Results" >{nameUserResults[IndexJoueur4Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -571,8 +535,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer5 imgAvatarResultat" src={ avatarUserResults[4] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer5Results" >{nameJoueurResults[4]}</span>
+                <img className="imgPlayer5 imgAvatarResultat" src={ avatarUserResults[IndexJoueur5Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer5Results" >{nameUserResults[IndexJoueur5Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -590,8 +554,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer6 imgAvatarResultat" src={ avatarUserResults[5] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer6Results" >{nameJoueurResults[5]}</span>
+                <img className="imgPlayer6 imgAvatarResultat" src={ avatarUserResults[IndexJoueur6Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer6Results" >{nameUserResults[IndexJoueur6Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -609,8 +573,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer7 imgAvatarResultat" src={ avatarUserResults[6] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer7Results" >{nameJoueurResults[6]}</span>
+                <img className="imgPlayer7 imgAvatarResultat" src={ avatarUserResults[IndexJoueur7Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer7Results" >{nameUserResults[IndexJoueur7Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -628,8 +592,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer8 imgAvatarResultat" src={ avatarUserResults[7] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer8Results" >{nameJoueurResults[7]}</span>
+                <img className="imgPlayer8 imgAvatarResultat" src={ avatarUserResults[IndexJoueur8Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer8Results" >{nameUserResults[IndexJoueur8Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -647,8 +611,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer8 imgAvatarResultat" src={ avatarUserResults[8] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer9Results" >{nameJoueurResults[8]}</span>
+                <img className="imgPlayer8 imgAvatarResultat" src={ avatarUserResults[IndexJoueur9Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer9Results" >{nameUserResults[IndexJoueur9Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -667,8 +631,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer8 imgAvatarResultat" src={ avatarUserResults[9] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer10Results" >{nameJoueurResults[9]}</span>
+                <img className="imgPlayer8 imgAvatarResultat" src={ avatarUserResults[IndexJoueur10Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer10Results" >{nameUserResults[IndexJoueur10Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />
@@ -686,8 +650,8 @@ useEffect(() => {
                 <img className="icone__player" src={ player } alt="img player" />
             </div>
             <div className="contenerPseudoPlayer">
-                <img className="imgPlayer8 imgAvatarResultat" src={ avatarUserResults[10] } alt="img__avatar" />
-                <span className="pseudoPlayer pseudoPlayer11Results" >{nameJoueurResults[10]}</span>
+                <img className="imgPlayer8 imgAvatarResultat" src={ avatarUserResults[IndexJoueur11Result] } alt="img__avatar" />
+                <span className="pseudoPlayer pseudoPlayer11Results" >{nameUserResults[IndexJoueur11Result]}</span>
             </div>
             <div className="contener__card">
                 <img className="carte__pierre carte__symbole__informateur" src={ Pierre } alt="icone Pierre" />

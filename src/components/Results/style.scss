@@ -130,10 +130,6 @@ header {
   width: 4rem;
 }
 
-.carte__symbole-Selectionné {
-  background-color: vars.$jaune-main;
-}
-
 
 .contener__informateur {
   display: flex;
@@ -365,6 +361,11 @@ border-radius: 0.2rem;
 
 .carte__symbole-Selectionné__informateur {
   background-color: vars.$red;
+}
+
+// On la met apres les autres pour que le background puisse etre appliqué
+.carte__symbole-Selectionné {
+  background-color: vars.$jaune-main;
 }
 
 .NewGameContener{

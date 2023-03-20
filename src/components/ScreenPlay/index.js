@@ -380,8 +380,8 @@ const ChooseCiseaux = () => {
 // ------------------------------- Le timer --------------------------------------
 
 //On defini la durée de la partie
-let timer = 5;
-const timerValue = 5;
+let timer = 10;
+const timerValue = 10;
 
 // le loadeur
 const loadingtimer = document.querySelector(".Chrono__Color");

@@ -37,6 +37,9 @@ import {
   CHOOSE_CARD_PIERRE,
   CHOOSE_CARD_FEUILLE,
   CHOOSE_CARD_CISEAUX,
+  SAVE_CHOIX_SYMBOLE,
+  SAVE_WIN_WS,
+  SAVE_LOSE_WS
 } from "../action/Avatar";
 
 import {
@@ -57,6 +60,8 @@ export const initialState = {
     avatarImg: null, // Rempli uniquement pour tout le monde pour afficher les datas de l'hote
     avatarImgHote: null, // Rempli uniquement pour l'hote
     hotePseudo: "", // Rempli uniquement pour l'hote
+    choixSymbole0: null,
+    result0: null,
   },
   joueurSelf: {
     inumber: null, // l'index standard 
@@ -65,6 +70,7 @@ export const initialState = {
     avatarImg: null, // l'avatar des joueurs
     roleSelf: null, // le role du joueur
     symboleSelf: null, // la card choisie par le joueurSelf
+    resultSelf: null, // On enregistre ici le restultat du du joueur self
   },
   joueurs: {
     nbPlayer: 1,
@@ -72,71 +78,99 @@ export const initialState = {
     indexRandom1: null,
     ValuePseudo1: "Player 1",
     avatarImg1: null,
+    choixSymbole1: null,
+    result1: null,
     //********** */
     i2: null,
     indexRandom2: null,
     ValuePseudo2: "Player 2",
     avatarImg2: null,
+    choixSymbole2: null,
+    result2: null,
     //********** */
     i3: null,
     indexRandom3: null,
     ValuePseudo3: "Player 3",
     avatarImg3: null,
+    choixSymbole3: null,
+    result3: null,
     //********** */
     i4: null,
     indexRandom4: null,
     ValuePseudo4: "Player 4",
     avatarImg4: null,
+    choixSymbole4: null,
+    result4: null,
     //********** */
     i5: null,
     indexRandom5: null,
     ValuePseudo5: "Player 5",
     avatarImg5: null,
+    choixSymbole5: null,
+    result5: null,
     //********** */
     i6: null,
     indexRandom6: null,
     ValuePseudo6: "Player 6",
     avatarImg6: null,
+    choixSymbole6: null,
+    result6: null,
     //********** */
     i7: null,
     indexRandom7: null,
     ValuePseudo7: "Player 7",
     avatarImg7: null,
+    choixSymbole7: null,
+    result7: null,
     //********** */
     i8: null,
     indexRandom8: null,
     ValuePseudo8: "Player 8",
     avatarImg8: null,
+    choixSymbole8: null,
+    result8: null,
     //********** */
     i9: null,
     indexRandom9: null,
     ValuePseudo9: "Player 9",
     avatarImg9: null,
+    choixSymbole9: null,
+    result9: null,
     //********** */
     i10: null,
     indexRandom10: null,
     ValuePseudo10: "Player 10",
     avatarImg10: null,
+    choixSymbole10: null,
+    result10: null,
     //********** */
     i11: null,
     indexRandom11: null,
     ValuePseudo11: "Player 11",
     avatarImg11: null,
+    choixSymbole11: null,
+    result11: null,
     //********** */
     i12: null,
     indexRandom12: null,
     ValuePseudo12: "Player 12",
     avatarImg12: null,
+    choixSymbole12: null,
+    result12: null,
     //********** */
     i13: null,
     indexRandom13: null,
     ValuePseudo13: "Player 13",
     avatarImg13: null,
+    choixSymbole13: null,
+    result13: null,
     //********** */
     i14: null,
     indexRandom14: null,
     ValuePseudo14: "Player 14",
     avatarImg14: null,
+    choixSymbole14: null,
+    result14: null,
   },
 };
 
@@ -937,34 +971,109 @@ function avatarReducer(state = initialState, action = {}) {
       // Si on est info1 on l'enregistre dans le roleSelf
       case SAVE_INFO_1_SELF:
         //On doit verifier que l'index du joueur est le meme que celui de l'info 1. =>  
-      if (state.joueurSelf.inumber == action.indexInfo1[0]) {
-        
-        return {
-          ...state,
-          joueurSelf: {
-            ...state.joueurSelf,
-            roleSelf: "Info1",
-          },
-        };
-      }
+        if (state.joueurSelf.inumber == action.indexInfo1[0]) {
+
+          return {
+            ...state,
+            joueurSelf: {
+              ...state.joueurSelf,
+              roleSelf: "Info1",
+            },
+          };
+        }
 
         // Si on est info2 on l'enregistre dans le roleSelf
-      case SAVE_INFO_2_SELF:
+        case SAVE_INFO_2_SELF:
           //On doit verifier que l'index du joueur est le meme que celui de l'info 2. =>  
-      if (state.joueurSelf.inumber == action.indexInfo2[0]) {
-        return {
-          ...state,
-          joueurSelf: {
-            ...state.joueurSelf,
-            roleSelf: "Info2",
-          },
-        };
-      }
+          if (state.joueurSelf.inumber == action.indexInfo2[0]) {
+            return {
+              ...state,
+              joueurSelf: {
+                ...state.joueurSelf,
+                roleSelf: "Info2",
+              },
+            };
+          }
 
 
-        // V pas touche
-      default:
-        return state;
+          // Ici on recoit via les WS les choix de symbole des autres joueurs
+          case SAVE_CHOIX_SYMBOLE:
+            console.log('on vient de recevoir les choix des joueurs WS', action);
+            if (action.index == 0) {
+
+              return {
+                ...state,
+                hote: {
+                  ...state.hote,
+                  choixSymbole0: action.choixSymbole,
+                },
+              };
+            }
+
+            if (action.index >= 1 && action.index <= 14) {
+              return {
+                ...state,
+                joueurs: {
+                  ...state.joueurs,
+                  [`choixSymbole${action.index}`]: action.choixSymbole,
+                },
+              };
+            }
+
+
+              // On recoit les resultats des autres joueurs qui ont gagné
+            case SAVE_WIN_WS:
+              //On doit verifier que l'index du joueur est le meme que celui de l'info 1. =>  
+              if (action.indexSelf == 0) {
+
+                return {
+                  ...state,
+                  hote: {
+                    ...state.hote,
+                    result0: "Win",
+                  },
+                };
+              }
+
+              if (action.indexSelf >= 1 && action.indexSelf <= 14) {
+                return {
+                  ...state,
+                  joueurs: {
+                    ...state.joueurs,
+                    [`result${action.indexSelf}`]: 'Win',
+                  },
+                };
+              }
+
+              // On recoit les resultats des autres joueurs qui ont perdu
+              case SAVE_LOSE_WS:
+                if (action.indexSelf == 0) {
+
+                  return {
+                    ...state,
+                    hote: {
+                      ...state.hote,
+                      result0: "LOSE",
+                    },
+                  };
+                }
+  
+                if (action.indexSelf >= 1 && action.indexSelf <= 14) {
+                  return {
+                    ...state,
+                    joueurs: {
+                      ...state.joueurs,
+                      [`result${action.indexSelf}`]: 'LOSE',
+                    },
+                  };
+                }
+
+
+
+
+                // V pas touche
+                default:
+                  return state;
   }
 }
 

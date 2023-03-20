@@ -12,6 +12,16 @@ import {
   saveIndexJoueur
 } from "../action/Role";
 
+
+import {
+  SEND_CHOIX_SYMBOLE_SELF, 
+  saveChoixSymbole, 
+  SEND_WIN_WS, 
+  SEND_LOSE_WS, 
+  saveWinWs,
+  saveLoseWs
+} from "../action/Avatar";
+
 let socket;
 
 const role = (store) => (next) => (action) => {
@@ -49,7 +59,25 @@ const role = (store) => (next) => (action) => {
       socket.on("save_Index_Joueur", (indexJoueur) => {
         console.log('un nouveau joueur et son index resultats', indexJoueur);
           store.dispatch(saveIndexJoueur(indexJoueur));
-      });  
+      }); 
+      
+
+      // On recupere l'index des joueurs
+      socket.on("Save_Choix_Symbole", (symboleSelf) => {
+      store.dispatch(saveChoixSymbole(symboleSelf));
+            }); 
+          
+        // On recupere l'index des joueurs qui gagnent
+        socket.on("save_Win_WS", (indexSelf) => {
+          store.dispatch(saveWinWs(indexSelf));
+                }); 
+
+      // On recupere l'index des joueurs qui perdent
+      socket.on("save_Lose_WS", (indexSelf) => {
+        store.dispatch(saveLoseWs(indexSelf));
+              }); 
+            
+      
 
       return next(action);
     }
@@ -60,7 +88,27 @@ const role = (store) => (next) => (action) => {
         socket.emit("send_Index_Joueur", {indexJoueur: action.indexSelfResults});
       return next(action);
     }
+    
+    case SEND_CHOIX_SYMBOLE_SELF: {
+      socket = window.io("http://localhost:3001");
+      console.log(('on envoit notre choix de symbole aux autres',action));
+        socket.emit("send_Choix_Symbole", [ action.indexSelfResults, action.choixSymboleSelf] );
+      return next(action);
+    }
 
+    case SEND_WIN_WS: {
+      socket = window.io("http://localhost:3001");
+      console.log(('WIN_on envoit notre choix de symbole aux autres',action));
+        socket.emit("send_Win_WS", ( action.indexSelf) );
+      return next(action);
+    } 
+
+    case SEND_LOSE_WS: {
+      socket = window.io("http://localhost:3001");
+      console.log(('LOOSE_on envoit notre choix de symbole aux autres',action));
+        socket.emit("send_Lose_WS", ( action.indexSelf) );
+      return next(action);
+    } 
 
     // V Cette partie ne bouge pas
     default:

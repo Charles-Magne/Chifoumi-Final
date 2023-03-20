@@ -434,3 +434,69 @@ export function chooseCardCiseaux () {
 type : CHOOSE_CARD_CISEAUX,
   };
 }
+
+
+// lorsque qu'on arrive sur la page des resultats le useEffect envoie notre choix de carte au server
+export const SEND_CHOIX_SYMBOLE_SELF = 'SEND_CHOIX_SYMBOLE_SELF';
+
+export function sendChoixSymboleSelf (choixSymboleSelf,indexSelfResults) { 
+  return {
+type : SEND_CHOIX_SYMBOLE_SELF,
+choixSymboleSelf,
+indexSelfResults
+  };
+}
+
+// On recoit via les WebSocket les choix de symboles 
+export const SAVE_CHOIX_SYMBOLE = 'SAVE_CHOIX_SYMBOLE';
+
+export function saveChoixSymbole (symboleSelf) { 
+  return {
+type : SAVE_CHOIX_SYMBOLE,
+index : symboleSelf[0],
+choixSymbole : symboleSelf[1]
+  };
+}
+
+// Si on a gagner on le dit a tout le monde via les webSockets
+export const SEND_WIN_WS = 'SEND_WIN_WS';
+
+export function sendWinWS (indexSelf) { 
+  return {
+type : SEND_WIN_WS,
+indexSelf
+  };
+}
+
+// Si on a gagner on le dit a tout le monde via les webSockets
+export const SEND_LOSE_WS = 'SEND_LOSE_WS';
+
+export function sendLoseWS (indexSelf) { 
+  return {
+type : SEND_LOSE_WS,
+indexSelf
+  };
+}
+
+// On recoit via les websockets les resultats de tout les joueurs qui ont perdus
+export const SAVE_LOSE_WS = 'SAVE_LOSE_WS';
+
+export function saveLoseWs (indexSelf) { 
+  return {
+type : SAVE_LOSE_WS,
+indexSelf
+  };
+}
+
+
+
+// On recoit via les websockets les resultats de tout les joueurs qui ont gagnés 
+export const SAVE_WIN_WS = 'SAVE_WIN_WS';
+
+export function saveWinWs (indexSelf) { 
+  return {
+type : SAVE_WIN_WS,
+indexSelf
+  };
+}
+

@@ -301,6 +301,7 @@ border-radius: 0.2rem;
 }
 
 .compteurPlayer {
+  display: none;
   border: 1px solid vars.$bleu-main;
   border-radius: 5rem;
   height: 2rem;

@@ -136,7 +136,11 @@ function Results() {
   const checkRoleEmpty = useSelector(
     (state) => state.avatar.joueurSelf.roleSelf
   ); // valeur du symbole de l' info 2
-  const arrayJoueurResult = useSelector((state) => state.role.joueur); // tableau contenant tous les participants joueurs
+
+  /**
+   * tableau contenant tous les participants joueurs
+   */
+  const arrayJoueurResult = useSelector((state) => state.role.joueur);
 
   const choixSymbole0 = useSelector(
     (state) => state.avatar.hote.choixSymbole0
@@ -187,6 +191,27 @@ function Results() {
     (state) => state.avatar.joueurSelf.symboleSelf
   ); // Le choix du symbole de joueur x
 
+
+  // On va chercher si chaque joueurs gagne ou perd
+  const winOrLooseSelf = useSelector((state) => state.result.selfResult); // gagner ou perdu pour le joueur self
+  const winOrLoose0 = useSelector((state) => state.avatar.hote.result0); // gagné ou perdu joueur hote
+  const winOrLoose1 = useSelector((state) => state.avatar.joueurs.result1); // gagné ou perdu joueur 1
+  const winOrLoose2 = useSelector((state) => state.avatar.joueurs.result2); // gagné ou perdu joueur 2
+  const winOrLoose3 = useSelector((state) => state.avatar.joueurs.result3); // gagné ou perdu joueur 3
+  const winOrLoose4 = useSelector((state) => state.avatar.joueurs.result4); // gagné ou perdu joueur 4
+  const winOrLoose5 = useSelector((state) => state.avatar.joueurs.result5); // gagné ou perdu joueur 5
+  const winOrLoose6 = useSelector((state) => state.avatar.joueurs.result6); // gagné ou perdu joueur 6
+  const winOrLoose7 = useSelector((state) => state.avatar.joueurs.result7); // gagné ou perdu joueur 7
+  const winOrLoose8 = useSelector((state) => state.avatar.joueurs.result8); // gagné ou perdu joueur 8
+  const winOrLoose9 = useSelector((state) => state.avatar.joueurs.result9); // gagné ou perdu joueur 9
+  const winOrLoose10 = useSelector((state) => state.avatar.joueurs.result10); // gagné ou perdu joueur 10
+  const winOrLoose11 = useSelector((state) => state.avatar.joueurs.result11); // gagné ou perdu joueur 11
+  const winOrLoose12 = useSelector((state) => state.avatar.joueurs.result12); // gagné ou perdu joueur 12
+  const winOrLoose13 = useSelector((state) => state.avatar.joueurs.result13); // gagné ou perdu joueur 13
+  const winOrLoose14 = useSelector((state) => state.avatar.joueurs.result14); // gagné ou perdu joueur 14
+
+
+  
   /**
    * Le tableau qui contient tous les choix de symbole des joueurs
    */
@@ -208,7 +233,9 @@ function Results() {
     choixSymbole14,
   ];
 
-  //On Creer un tableau qui va contenir tout les noms
+/**
+ * Tableau qui va contenir tout les noms
+ */
   const nameUserResults = [
     name0Results,
     name1Results,
@@ -226,6 +253,11 @@ function Results() {
     name13Results,
     name14Results,
   ];
+
+  /**
+   * Tableau qui va contenir les resultats finaux
+   */
+  const winOrLooseArray = [winOrLoose0, winOrLoose1, winOrLoose2, winOrLoose3, winOrLoose4, winOrLoose5, winOrLoose6, winOrLoose7, winOrLoose8, winOrLoose9, winOrLoose10, winOrLoose11,winOrLoose12,winOrLoose13,winOrLoose14];
 
   // on check si nameSelfResults est égal à une des données de ArrayJoueurResult
   /**
@@ -700,8 +732,6 @@ function Results() {
     const feuille11 = document.querySelector(".joueur11Feuille");
     const ciseaux11 = document.querySelector(".joueur11Ciseaux");
 
-    console.log("Ca Passe §§§§",IndexJoueur1Result, SymboleJoueurResults );
-
     // On verifie quelle symbole a joué le joueur 1 et on lui attribue une couleur
     if (SymboleJoueurResults[IndexJoueur1Result] == "Pierre") {
       pierre1.classList.add("carte__symbole-Selectionné");
@@ -819,6 +849,67 @@ function Results() {
 
   }, [SymboleJoueurResults]);
 
+
+// On modifie le css en fonction du resultat
+useEffect(() => {
+// On test le tableau des resultats
+console.log('tableau des resultats', winOrLooseArray);
+  
+  const score0 = document.querySelector(".compteurPlayerSelf");
+  const score1 = document.querySelector(".compteurPlayer1");
+  const score2 = document.querySelector(".compteurPlayer2");
+  const score3 = document.querySelector(".compteurPlayer3");
+  const score4 = document.querySelector(".compteurPlayer4");
+  const score5 = document.querySelector(".compteurPlayer5");
+  const score6 = document.querySelector(".compteurPlayer6");
+  const score7 = document.querySelector(".compteurPlayer7");
+  const score8 = document.querySelector(".compteurPlayer8");
+  const score9 = document.querySelector(".compteurPlayer9");
+  const score10 = document.querySelector(".compteurPlayer10");
+  const score11 = document.querySelector(".compteurPlayer11");
+
+  console.log('on test l\'index', IndexJoueur2Result, arrayJoueurResult);
+  // le joueur self
+  if ( winOrLooseSelf == "WIN") {
+    score0.style.display = "flex";
+  }
+  if ( winOrLooseSelf == "LOSE") {
+  }
+
+
+  if ( winOrLooseArray[IndexJoueur1Result] == "Win") {
+    score1.style.display = "flex";
+    console.log('gagné css joueur 2', IndexJoueur1Result);
+  }
+  if ( winOrLooseArray[IndexJoueur1Result] == "LOSE") {
+    console.log('perdu css joueur 2');
+  }
+
+  if ( winOrLooseArray[IndexJoueur2Result] == "Win") {
+    score2.style.display = "flex";
+    console.log('gagné css joueur 3', IndexJoueur2Result);
+  }
+  if ( winOrLooseArray[IndexJoueur2Result] == "LOSE") {
+    console.log('perdu css joueur 3');
+  }
+
+  if ( winOrLooseArray[IndexJoueur3Result] == "Win") {
+    score3.style.display = "flex";
+    console.log('gagné css joueur 4', IndexJoueur3Result);
+  }
+  if ( winOrLooseArray[IndexJoueur3Result] == "LOSE") {
+    console.log('perdu css joueur 4');
+  }
+
+  if ( winOrLooseArray[IndexJoueur4Result] == "Win") {
+    score4.style.display = "flex";
+    console.log('gagné css joueur 5', IndexJoueur4Result);
+  }
+  if ( winOrLooseArray[IndexJoueur4Result] == "LOSE") {
+    console.log('perdu css joueur 5');
+  }
+}, [winOrLooseArray]);
+
   // Les scores
   // le ryhtme d'apparition
 
@@ -904,8 +995,8 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurInformateurs">
-            <div className="scoreInformateur"> 10 </div>{" "}
+          <div className="compteurInformateurs compteurInformateurs1">
+            <div className="scoreInformateur "> 10 </div>{" "}
           </div>{" "}
         </div>
         {/**Informateur 2 */}{" "}
@@ -945,7 +1036,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurInformateurs">
+          <div className="compteurInformateurs compteurInformateurs2">
             <div className="scoreInformateur"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -983,7 +1074,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayerSelf">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -1020,7 +1111,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayer1">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -1057,7 +1148,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayer2">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -1094,7 +1185,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayer3">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -1131,7 +1222,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayer4">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -1168,7 +1259,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayer5">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -1205,7 +1296,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayer6">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -1242,8 +1333,8 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
-            <div className="scorePlayer"> 10 </div>{" "}
+          <div className="compteurPlayer compteurPlayer7">
+            <div className="scorePlayer "> 10 </div>{" "}
           </div>{" "}
         </div>
         {/**Player8 */}{" "}
@@ -1279,8 +1370,8 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
-            <div className="scorePlayer"> 10 </div>{" "}
+          <div className="compteurPlayer compteurPlayer8">
+            <div className="scorePlayer "> 10 </div>{" "}
           </div>{" "}
         </div>
         {/**Player9 */}{" "}
@@ -1316,8 +1407,8 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
-            <div className="scorePlayer"> 10 </div>{" "}
+          <div className="compteurPlayer compteurPlayer9">
+            <div className="scorePlayer "> 10 </div>{" "}
           </div>{" "}
         </div>
         {/**Player10 */}{" "}
@@ -1353,7 +1444,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayer10">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>
@@ -1390,7 +1481,7 @@ function Results() {
               alt="icone Ciseaux"
             />
           </div>{" "}
-          <div className="compteurPlayer">
+          <div className="compteurPlayer compteurPlayer11">
             <div className="scorePlayer"> 10 </div>{" "}
           </div>{" "}
         </div>{" "}

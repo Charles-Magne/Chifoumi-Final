@@ -16,7 +16,10 @@ export const initialState = {
   info2: null, // l'identification de l'informateur 2
   SymboleInfo2: null, // Le symbole a ne pas jouer de informateur 1
   /*********************** */
-  joueur: [], // ici on enregistre notre index si on n'est joueur
+  /**
+   * ici on enregistre notre index si on n'est joueur
+   */
+  joueur: [],
 };
 
 function roleReducer(state = initialState, action = {}) {

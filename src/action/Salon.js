@@ -16,3 +16,4 @@ export function launchGameAll () {
 type : LAUNCH_GAME_ALL,
   };
 }
+

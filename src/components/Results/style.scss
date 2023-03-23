@@ -13,6 +13,10 @@ header {
   justify-content: center;
 }
 
+.watingForNewPlay{
+  display: none;
+}
+
 /*la class qui contient les infos d'une seule taupe*/
 .div__les__taupes--contain--1 {
   display: flex;

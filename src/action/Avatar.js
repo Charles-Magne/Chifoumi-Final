@@ -11,8 +11,6 @@ field,
 }
 
 
-
-
 //Sert a envoyer notre pseudo aux autres joueurs
 export const SEND_NAME_SELF = 'SEND_NAME_SELF';
 

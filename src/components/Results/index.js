@@ -11,6 +11,7 @@ import Informateur from "../../assets/Pictures/Role/informateur Blue.png";
 
 //Les dependances
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 //les actions
@@ -20,10 +21,16 @@ import {
   sendLoseWS,
   sendWinWS,
 } from "../../action/Avatar";
-import { saveLoseSelf, saveWinSelf } from "../../action/Result";
+import { saveLoseSelf, saveWinSelf, cleanServer } from "../../action/Result";
 
 function Results() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  /**
+   * On verifie si quelque a lancer une nouvelle partie
+   */
+  const newGameready = useSelector((state) => state.salon.gameReady); 
 
   const indexSelfResults = useSelector(
     (state) => state.avatar.joueurSelf.inumber
@@ -868,31 +875,31 @@ console.log('tableau des resultats', winOrLooseArray);
   const score10 = document.querySelector(".compteurPlayer10");
   const score11 = document.querySelector(".compteurPlayer11");
 
-  console.log('on test l\'index', IndexJoueur2Result, arrayJoueurResult);
+  console.log('on test l\'index', IndexJoueur1Result, arrayJoueurResult);
   // le joueur self
-  if ( winOrLooseSelf == "WIN") {
+ if ( winOrLooseSelf == "WIN") {
     score0.style.display = "flex";
   }
   if ( winOrLooseSelf == "LOSE") {
   }
-
-
+  
+/*******************joueur 1 */
   if ( winOrLooseArray[IndexJoueur1Result] == "Win") {
     score1.style.display = "flex";
-    console.log('gagné css joueur 2', IndexJoueur1Result);
+    console.log('gagné css joueur 1', IndexJoueur1Result);
   }
   if ( winOrLooseArray[IndexJoueur1Result] == "LOSE") {
-    console.log('perdu css joueur 2');
+    console.log('perdu css joueur 1');
   }
-
+/*******************joueur 2 */
   if ( winOrLooseArray[IndexJoueur2Result] == "Win") {
     score2.style.display = "flex";
-    console.log('gagné css joueur 3', IndexJoueur2Result);
+    console.log('gagné css joueur 2', IndexJoueur2Result);
   }
   if ( winOrLooseArray[IndexJoueur2Result] == "LOSE") {
-    console.log('perdu css joueur 3');
+    console.log('perdu css joueur 2');
   }
-
+/*******************joueur 3 */
   if ( winOrLooseArray[IndexJoueur3Result] == "Win") {
     score3.style.display = "flex";
     console.log('gagné css joueur 4', IndexJoueur3Result);
@@ -900,7 +907,7 @@ console.log('tableau des resultats', winOrLooseArray);
   if ( winOrLooseArray[IndexJoueur3Result] == "LOSE") {
     console.log('perdu css joueur 4');
   }
-
+/*******************joueur 4 */
   if ( winOrLooseArray[IndexJoueur4Result] == "Win") {
     score4.style.display = "flex";
     console.log('gagné css joueur 5', IndexJoueur4Result);
@@ -908,13 +915,97 @@ console.log('tableau des resultats', winOrLooseArray);
   if ( winOrLooseArray[IndexJoueur4Result] == "LOSE") {
     console.log('perdu css joueur 5');
   }
+/*******************joueur 5 */
+  if ( winOrLooseArray[IndexJoueur5Result] == "Win") {
+    score5.style.display = "flex";
+    console.log('gagné css joueur 5', IndexJoueur5Result);
+  }
+  if ( winOrLooseArray[IndexJoueur5Result] == "LOSE") {
+    console.log('perdu css joueur 5');
+  }
+/*******************joueur 6 */
+  if ( winOrLooseArray[IndexJoueur6Result] == "Win") {
+    score6.style.display = "flex";
+    console.log('gagné css joueur 5', IndexJoueur6Result);
+  }
+  if ( winOrLooseArray[IndexJoueur6Result] == "LOSE") {
+    console.log('perdu css joueur 5');
+  }
+/*******************joueur 7 */
+  if ( winOrLooseArray[IndexJoueur7Result] == "Win") {
+    score7.style.display = "flex";
+    console.log('gagné css joueur 5', IndexJoueur7Result);
+  }
+  if ( winOrLooseArray[IndexJoueur7Result] == "LOSE") {
+    console.log('perdu css joueur 5');
+  }
+/*******************joueur 8 */
+  if ( winOrLooseArray[IndexJoueur8Result] == "Win") {
+    score8.style.display = "flex";
+    console.log('gagné css joueur 5', IndexJoueur4Result);
+  }
+  if ( winOrLooseArray[IndexJoueur8Result] == "LOSE") {
+    console.log('perdu css joueur 5');
+  }
+/*******************joueur 9 */
+  if ( winOrLooseArray[IndexJoueur9Result] == "Win") {
+    score9.style.display = "flex";
+    console.log('gagné css joueur 5', IndexJoueur9Result);
+  }
+  if ( winOrLooseArray[IndexJoueur9Result] == "LOSE") {
+    console.log('perdu css joueur 5');
+  }
+  /*******************joueur 10 */
+  if ( winOrLooseArray[IndexJoueur10Result] == "Win") {
+    score10.style.display = "flex";
+    console.log('gagné css joueur 5', IndexJoueur10Result);
+  }
+  if ( winOrLooseArray[IndexJoueur10Result] == "LOSE") {
+    console.log('perdu css joueur 5');
+  }
+  /*******************joueur 11 */
+  if ( winOrLooseArray[IndexJoueur11Result] == "Win") {
+    score11.style.display = "flex";
+    console.log('gagné css joueur 5', IndexJoueur11Result);
+  }
+  if ( winOrLooseArray[IndexJoueur11Result] == "LOSE") {
+    console.log('perdu css joueur 5');
+  }
 }, [winOrLooseArray]);
 
-  // Les scores
-  // le ryhtme d'apparition
+
+const newPartieButton = (event) => {
+  // On veut faire une redirection vers une nouvelle partie. il faut donc changer de page vider le serveur et changer de page.
+  // on envoit un webSocket a tout le monde pour dire de vider le serveur et losque c'est bon on change de page. 
+  console.log('clique est trigger');
+  dispatch(cleanServer());
+}
+
+
+if ( newGameready == "newGame") {
+  /**
+   * la div qui masque la page result lorsque on initie une nouvelle partie
+   */
+  const divWating = document.querySelector('.watingForNewPlay');
+  console.log('on passe vers la page de jeu', newGameready);
+
+  /**
+   * la div normale qui affiche les resultats
+   */
+   const divResult = document.querySelector('.resultview');
+
+   //divWating.style.display = "flex";
+   //divResult.style.display = "none";
+   navigate('/Playing');
+}
+
+
+
 
   return (
-    <div>
+    <div >
+      <div className="watingForNewPlay" > Une partie va bientot commencer </div>
+      <div className="resultview" >
       {" "}
       {/*     <!--pouvoir faire remonter les bugs ou les points a ameliorer !! Attention au insersion de sql-->
           <!--IL faut placer les joueurs et les informateurs dans une boucle forEatch-->
@@ -1487,10 +1578,11 @@ console.log('tableau des resultats', winOrLooseArray);
         </div>{" "}
       </div>{" "}
       <div className="NewGameContener">
-        <button className="button_style--active buttonNewPartie">
+        <button className="button_style--active buttonNewPartie" onClick={newPartieButton}>
           Nouvelle Partie{" "}
         </button>{" "}
       </div>{" "}
+    </div>
     </div>
   );
 }

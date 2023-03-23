@@ -1,9 +1,20 @@
 import { FETCH_CODE_SALON,
   LAUNCH_GAME_ALL }from "../action/Salon";
 
+  import { CLEAN_SERVER_DONE } from "../action/Result";
+
 export const initialState = {
   lobby:"", // le numero qui gere le lobby
-  gameReady:"" // savoir si la partie est prete a etre lancé
+  gameReady:"", // savoir si la partie est prete a etre lancé
+  /**
+   * La durée totale du timer (ne change pas)
+   */
+  timerValue: 10, 
+  /**
+   * Le timer qui se decremente
+   */
+  timer: 10,
+
 }
 
 function salonReducer( state = initialState, action = {}) {
@@ -20,6 +31,13 @@ function salonReducer( state = initialState, action = {}) {
     return {
       ...state,
       gameReady: "yes",
+    };
+
+    case CLEAN_SERVER_DONE: 
+    console.log('le serveur est propre - salon');
+    return {
+      ...state,
+      gameReady: "newGame",
     };
 
     //V pas touche

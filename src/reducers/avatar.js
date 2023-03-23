@@ -39,19 +39,18 @@ import {
   CHOOSE_CARD_CISEAUX,
   SAVE_CHOIX_SYMBOLE,
   SAVE_WIN_WS,
-  SAVE_LOSE_WS
+  SAVE_LOSE_WS,
 } from "../action/Avatar";
 
 import {
   SAVE_TAUPE_SELF,
   SAVE_INFO_1_SELF,
-  SAVE_INFO_2_SELF
+  SAVE_INFO_2_SELF,
 } from "../action/Role";
 
-import {
-  NEW_INVITE_DETECTE,
-  SAVE_HOTE_DATA
-} from "../action/connection";
+import { NEW_INVITE_DETECTE, SAVE_HOTE_DATA } from "../action/connection";
+
+import { CLEAN_SERVER_DONE } from "../action/Result";
 
 export const initialState = {
   idJoueur: 0,
@@ -60,11 +59,11 @@ export const initialState = {
     avatarImg: null, // Rempli uniquement pour tout le monde pour afficher les datas de l'hote
     avatarImgHote: null, // Rempli uniquement pour l'hote
     hotePseudo: "", // Rempli uniquement pour l'hote
-    choixSymbole0: null,
+    choixSymbole0: null, 
     result0: null,
   },
   joueurSelf: {
-    inumber: null, // l'index standard 
+    inumber: null, // l'index standard
     i: null, // L'index random
     valuePseudo: "", // Le pseudo des joueurs
     avatarImg: null, // l'avatar des joueurs
@@ -181,32 +180,32 @@ function avatarReducer(state = initialState, action = {}) {
       return {
         ...state,
         hote: {
-            ...state.hote,
-            valuePseudo: action.value,
-            hotePseudo: action.value,
-          },
-          joueurSelf: {
-            ...state.joueurSelf,
-            valuePseudo: action.value,
-            inumber: 0,
-          },
+          ...state.hote,
+          valuePseudo: action.value,
+          hotePseudo: action.value,
+        },
+        joueurSelf: {
+          ...state.joueurSelf,
+          valuePseudo: action.value,
+          inumber: 0,
+        },
       };
 
-      // Save l'img servant a l'avatar de l'hote
+    // Save l'img servant a l'avatar de l'hote
     case SAVE_AVATAR_IMG:
       return {
         ...state,
         hote: {
-            ...state.hote,
-            avatarImgHote: action.target,
-          },
-          joueurSelf: {
-            ...state.joueurSelf,
-            avatarImg: action.target,
-          },
+          ...state.hote,
+          avatarImgHote: action.target,
+        },
+        joueurSelf: {
+          ...state.joueurSelf,
+          avatarImg: action.target,
+        },
       };
 
-      // Save l'img servant a l'avatar de l'invité
+    // Save l'img servant a l'avatar de l'invité
     case SAVE_AVATAR_IMG_INVIT:
       return {
         ...state,
@@ -216,10 +215,10 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // nbPlayer:0,
-      //joueurs: {
-      // nbPlayer:0,
-      // Save l'img servant a l'avatar de l'invité
+    // nbPlayer:0,
+    //joueurs: {
+    // nbPlayer:0,
+    // Save l'img servant a l'avatar de l'invité
     case SAVE_NB_PLAYER:
       let nbOfPlayer = action.index + 1;
       return {
@@ -230,7 +229,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // le use effect de meetplayer qui genere un random index
+    // le use effect de meetplayer qui genere un random index
     case NEW_INVITE_DETECTE:
       return {
         ...state,
@@ -240,7 +239,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save le pseudo du joueur
+    // save le pseudo du joueur
     case PSEUDO_VALUE_INVITE:
       return {
         ...state,
@@ -250,7 +249,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save le name et l'img de l'hote via appel WS
+    // save le name et l'img de l'hote via appel WS
     case SAVE_HOTE_DATA:
       return {
         ...state,
@@ -261,8 +260,8 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      /*****************On save les indexs des joueurs lorsqu'ils se connectent au salon  */
-      // save l'index du joueur 1
+    /*****************On save les indexs des joueurs lorsqu'ils se connectent au salon  */
+    // save l'index du joueur 1
     case SAVE_PLAYER_SELF_INDEX:
       return {
         ...state,
@@ -273,7 +272,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save l'index du joueur 1
+    // save l'index du joueur 1
     case SAVE_PLAYER_1_INDEX:
       return {
         ...state,
@@ -284,7 +283,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save l'index du joueur 2
+    // save l'index du joueur 2
     case SAVE_PLAYER_2_INDEX:
       return {
         ...state,
@@ -295,7 +294,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save l'index du joueur 3
+    // save l'index du joueur 3
     case SAVE_PLAYER_3_INDEX:
       return {
         ...state,
@@ -305,7 +304,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom3: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 4
+    // save l'index du joueur 4
     case SAVE_PLAYER_4_INDEX:
       return {
         ...state,
@@ -315,7 +314,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom4: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 5
+    // save l'index du joueur 5
     case SAVE_PLAYER_5_INDEX:
       return {
         ...state,
@@ -325,7 +324,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom5: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 6
+    // save l'index du joueur 6
     case SAVE_PLAYER_6_INDEX:
       return {
         ...state,
@@ -335,7 +334,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom6: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 7
+    // save l'index du joueur 7
     case SAVE_PLAYER_7_INDEX:
       return {
         ...state,
@@ -346,7 +345,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save l'index du joueur 8
+    // save l'index du joueur 8
     case SAVE_PLAYER_8_INDEX:
       return {
         ...state,
@@ -356,7 +355,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom8: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 9
+    // save l'index du joueur 9
     case SAVE_PLAYER_9_INDEX:
       return {
         ...state,
@@ -366,7 +365,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom9: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 10
+    // save l'index du joueur 10
     case SAVE_PLAYER_10_INDEX:
       return {
         ...state,
@@ -376,7 +375,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom10: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 11
+    // save l'index du joueur 11
     case SAVE_PLAYER_11_INDEX:
       return {
         ...state,
@@ -386,7 +385,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom11: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 12
+    // save l'index du joueur 12
     case SAVE_PLAYER_12_INDEX:
       return {
         ...state,
@@ -396,7 +395,7 @@ function avatarReducer(state = initialState, action = {}) {
           indexRandom12: action.numberRandomPlayer,
         },
       };
-      // save l'index du joueur 13
+    // save l'index du joueur 13
     case SAVE_PLAYER_13_INDEX:
       return {
         ...state,
@@ -407,7 +406,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save l'index du joueur 14
+    // save l'index du joueur 14
     case SAVE_PLAYER_14_INDEX:
       return {
         ...state,
@@ -418,9 +417,9 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      /*************************************** */
+    /*************************************** */
 
-      // On save les names des joueurs
+    // On save les names des joueurs
     case SAVE_PLAYER_NAME:
       console.log(
         "on test l'index =>",
@@ -438,9 +437,9 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      /*************************************** */
+    /*************************************** */
 
-      // save l'index des joueurs qui se sont connecté avant nous
+    // save l'index des joueurs qui se sont connecté avant nous
     case SAVE_BEAFORE_JOUEUR_2:
       console.log("test de l'image du joueur 1", action.beforeJoueur2[2]);
       return {
@@ -454,7 +453,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save l'index des joueurs qui se sont connecté avant nous
+    // save l'index des joueurs qui se sont connecté avant nous
     case SAVE_BEAFORE_JOUEUR_3:
       return {
         ...state,
@@ -471,7 +470,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save l'index des joueurs qui se sont connecté avant nous
+    // save l'index des joueurs qui se sont connecté avant nous
     case SAVE_BEAFORE_JOUEUR_4:
       return {
         ...state,
@@ -492,7 +491,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // save l'index des joueurs qui se sont connecté avant nous
+    // save l'index des joueurs qui se sont connecté avant nous
     case SAVE_BEAFORE_JOUEUR_5:
       return {
         ...state,
@@ -913,7 +912,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // Ici on recoit toutes les modifications d'avatar
+    // Ici on recoit toutes les modifications d'avatar
     case SAVE_NEW_IMG_INVITE:
       return {
         ...state,
@@ -923,7 +922,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // Ici on recoit les choix de carte pendant le jeu
+    // Ici on recoit les choix de carte pendant le jeu
     case CHOOSE_CARD_PIERRE:
       return {
         ...state,
@@ -933,7 +932,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // Ici on recoit les choix de carte pendant le jeu
+    // Ici on recoit les choix de carte pendant le jeu
     case CHOOSE_CARD_FEUILLE:
       return {
         ...state,
@@ -943,7 +942,7 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // Ici on recoit les choix de carte pendant le jeu
+    // Ici on recoit les choix de carte pendant le jeu
     case CHOOSE_CARD_CISEAUX:
       return {
         ...state,
@@ -953,11 +952,11 @@ function avatarReducer(state = initialState, action = {}) {
         },
       };
 
-      // Si on est taupe on l'enregistre dans le roleSelf
+    // Si on est taupe on l'enregistre dans le roleSelf
     case SAVE_TAUPE_SELF:
-      //On doit verifier que l'index du joueur est le meme que celui de la taupe. =>  
+      //On doit verifier que l'index du joueur est le meme que celui de la taupe. =>
       if (state.joueurSelf.inumber == action.indexTaupe[0]) {
-        console.log('je suis la taupe Mouhahahah');
+        console.log("je suis la taupe Mouhahahah");
         return {
           ...state,
           joueurSelf: {
@@ -967,113 +966,173 @@ function avatarReducer(state = initialState, action = {}) {
         };
       }
 
+    // Si on est info1 on l'enregistre dans le roleSelf
+    case SAVE_INFO_1_SELF:
+      //On doit verifier que l'index du joueur est le meme que celui de l'info 1. =>
+      if (state.joueurSelf.inumber == action.indexInfo1[0]) {
+        return {
+          ...state,
+          joueurSelf: {
+            ...state.joueurSelf,
+            roleSelf: "Info1",
+          },
+        };
+      }
 
-      // Si on est info1 on l'enregistre dans le roleSelf
-      case SAVE_INFO_1_SELF:
-        //On doit verifier que l'index du joueur est le meme que celui de l'info 1. =>  
-        if (state.joueurSelf.inumber == action.indexInfo1[0]) {
+    // Si on est info2 on l'enregistre dans le roleSelf
+    case SAVE_INFO_2_SELF:
+      console.log('pourquoi le 0000 est il une erreur ?',action.indexInfo2[0], action );
+      //On doit verifier que l'index du joueur est le meme que celui de l'info 2. =>
+      if (state.joueurSelf.inumber == action.indexInfo2[0]) {
+        console.log(('a !!! comparer 1', state.joueurSelf.inumber));
+        console.log(('a !!! comparer 2', action.indexInfo2[0]));
+        return {
+          ...state,
+          joueurSelf: {
+            ...state.joueurSelf,
+            roleSelf: "Info2",
+          },
+        };
+      }
 
-          return {
-            ...state,
-            joueurSelf: {
-              ...state.joueurSelf,
-              roleSelf: "Info1",
-            },
-          };
-        }
+    // Ici on recoit via les WS les choix de symbole des autres joueurs
+    case SAVE_CHOIX_SYMBOLE:
+      console.log("on vient de recevoir les choix des joueurs WS", action);
+      if (action.index == 0) {
+        return {
+          ...state,
+          hote: {
+            ...state.hote,
+            choixSymbole0: action.choixSymbole,
+          },
+        };
+      }
 
-        // Si on est info2 on l'enregistre dans le roleSelf
-        case SAVE_INFO_2_SELF:
-          //On doit verifier que l'index du joueur est le meme que celui de l'info 2. =>  
-          if (state.joueurSelf.inumber == action.indexInfo2[0]) {
-            return {
-              ...state,
-              joueurSelf: {
-                ...state.joueurSelf,
-                roleSelf: "Info2",
-              },
-            };
-          }
+      if (action.index >= 1 && action.index <= 14) {
+        return {
+          ...state,
+          joueurs: {
+            ...state.joueurs,
+            [`choixSymbole${action.index}`]: action.choixSymbole,
+          },
+        };
+      }
 
+    // On recoit les resultats des autres joueurs qui ont gagné
+    case SAVE_WIN_WS:
+      //On doit verifier que l'index du joueur est le meme que celui de l'info 1. =>
+      if (action.indexSelf == 0) {
+        return {
+          ...state,
+          hote: {
+            ...state.hote,
+            result0: "Win",
+          },
+        };
+      }
 
-          // Ici on recoit via les WS les choix de symbole des autres joueurs
-          case SAVE_CHOIX_SYMBOLE:
-            console.log('on vient de recevoir les choix des joueurs WS', action);
-            if (action.index == 0) {
+      if (action.indexSelf >= 1 && action.indexSelf <= 14) {
+        return {
+          ...state,
+          joueurs: {
+            ...state.joueurs,
+            [`result${action.indexSelf}`]: "Win",
+          },
+        };
+      }
 
-              return {
-                ...state,
-                hote: {
-                  ...state.hote,
-                  choixSymbole0: action.choixSymbole,
-                },
-              };
-            }
+    // On recoit les resultats des autres joueurs qui ont perdu
+    case SAVE_LOSE_WS:
+      if (action.indexSelf == 0) {
+        return {
+          ...state,
+          hote: {
+            ...state.hote,
+            result0: "LOSE",
+          },
+        };
+      }
 
-            if (action.index >= 1 && action.index <= 14) {
-              return {
-                ...state,
-                joueurs: {
-                  ...state.joueurs,
-                  [`choixSymbole${action.index}`]: action.choixSymbole,
-                },
-              };
-            }
+      if (action.indexSelf >= 1 && action.indexSelf <= 14) {
+        return {
+          ...state,
+          joueurs: {
+            ...state.joueurs,
+            [`result${action.indexSelf}`]: "LOSE",
+          },
+        };
+      }
+    /**
+     *Le server vient d'etre nettoyer on va maintenant effacer les données relative a cette partie 
+     */
+    /*case CLEAN_SERVER_DONE:
+      console.log('le serveur est propre - avatar');
+      return {
+        ...state,
+        hote: {
+          ...state.hote,
+          choixSymbole0: null,
+          result0: null
+        },
+        joueurSelf:{
+          ...state.joueurSelf,
+          i : null,
+          roleSelf: null,
+          symboleSelf: null,
+          resultSelf: null
+        },
+        joueurs: {
+          ...state.joueurs,
+          indexRandom1: null,
+          indexRandom2: null,
+          indexRandom3: null,
+          indexRandom4: null,
+          indexRandom5: null,
+          indexRandom6: null,
+          indexRandom7: null,
+          indexRandom8: null,
+          indexRandom9: null,
+          indexRandom10: null,
+          indexRandom11: null,
+          indexRandom12: null,
+          indexRandom13: null,
+          indexRandom14: null,
+          //*********************** 
+          choixSymbole1: null,
+          choixSymbole2: null,
+          choixSymbole3: null,
+          choixSymbole4: null,
+          choixSymbole5: null,
+          choixSymbole6: null,
+          choixSymbole7: null,
+          choixSymbole8: null,
+          choixSymbole9: null,
+          choixSymbole10: null,
+          choixSymbole11: null,
+          choixSymbole12: null,
+          choixSymbole13: null,
+          choixSymbole14: null,
+         //*********************** 
+         result1: null,
+         result2: null,
+         result3: null,
+         result4: null,
+         result5: null,
+         result6: null,
+         result7: null,
+         result8: null,
+         result9: null,
+         result10: null,
+         result11: null,
+         result12: null,
+         result13: null,
+         result14: null
+        },
+      };*/
 
-
-              // On recoit les resultats des autres joueurs qui ont gagné
-            case SAVE_WIN_WS:
-              //On doit verifier que l'index du joueur est le meme que celui de l'info 1. =>  
-              if (action.indexSelf == 0) {
-
-                return {
-                  ...state,
-                  hote: {
-                    ...state.hote,
-                    result0: "Win",
-                  },
-                };
-              }
-
-              if (action.indexSelf >= 1 && action.indexSelf <= 14) {
-                return {
-                  ...state,
-                  joueurs: {
-                    ...state.joueurs,
-                    [`result${action.indexSelf}`]: 'Win',
-                  },
-                };
-              }
-
-              // On recoit les resultats des autres joueurs qui ont perdu
-              case SAVE_LOSE_WS:
-                if (action.indexSelf == 0) {
-
-                  return {
-                    ...state,
-                    hote: {
-                      ...state.hote,
-                      result0: "LOSE",
-                    },
-                  };
-                }
-  
-                if (action.indexSelf >= 1 && action.indexSelf <= 14) {
-                  return {
-                    ...state,
-                    joueurs: {
-                      ...state.joueurs,
-                      [`result${action.indexSelf}`]: 'LOSE',
-                    },
-                  };
-                }
-
-
-
-
-                // V pas touche
-                default:
-                  return state;
+    // V pas touche
+    default:
+      return state;
   }
 }
 

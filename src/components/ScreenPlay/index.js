@@ -79,8 +79,11 @@ faire un loading si jamais les calcules prennent du temps.
   const indexSelf = useSelector((state) => state.avatar.joueurSelf.inumber); // index du joueur self
   const indexHotePlay = useSelector((state) => state.avatar.idJoueur); // index de l'hote
   const numberOfPlayer =useSelector((state) => state.avatar.joueurs.nbPlayer); // le nb de joueur present dans la partie
-  const roleOfPlayer =useSelector((state) => state.avatar.joueurSelf.roleSelf); // le nb de joueur present dans la partie
-  
+  const roleOfPlayer =useSelector((state) => state.avatar.joueurSelf.roleSelf); // le role du joueurSelf
+  const timeTotal = useSelector((state) => state.salon.timerValue); // la durée total du timer qui ne change pas
+  let timer = useSelector((state) => state.salon.timer); // le timer qui diminue chaque seconde
+
+
  
 
 
@@ -379,56 +382,62 @@ const ChooseCiseaux = () => {
 
 // ------------------------------- Le timer --------------------------------------
 
-//On defini la durée de la partie
-let timer = 10;
-const timerValue = 10;
 
-// le loadeur
-const loadingtimer = document.querySelector(".Chrono__Color");
 
 //On attend 1 seconde avant de relancer la fonction
-let decompte = setInterval(leDecompte, 1000);
+//let decompte = setInterval(leDecompte, 1000);
+useEffect(() => {
+  const interval = setInterval(() => {
+    leDecompte();
+  }, 1000);
+  return () => clearInterval(interval);
+}, []);
 
-// Ici on fait le calcule pour vider la barre de progression quel que soit le timer defini
-let unité = 100 / timer;
 
 //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 1 secondes
 function leDecompte() {
 
+  
+// Ici on fait le calcule pour vider la barre de progression quel que soit le timer defini
+let unité = 100 / timeTotal;
+
   // le loadeur
 const loadingtimer = document.querySelector(".Chrono__Color");
 
-  if (timer >= 1) {
-    timer--;
+  if (timer >= 1 && document.location.pathname == "/Playing") {
+    
     //Ici on defini le pourcentage de loading
     let progressBar = timer * unité;
-
+    console.log('le pourcentage', progressBar, 'le timer', timer, 'unité', unité);
     // ici on passe le pourcentage a la barre de timer
     let resultlaoding = (loadingtimer.style.width = progressBar + "%");
 
-    if (timer < timerValue / 2) {
+    if (timer < timeTotal / 2 && document.location.pathname == "Playing") {
       //On affiche le timer dans le HTML
       document.querySelector(".div__chrono").textContent = timer;
 
       let chronoCss = document.querySelector(".div__chrono");
       //On affiche le chrono
 
-      if (timer < timerValue / 3) {
+      if (timer < timeTotal / 3 && document.location.pathname == "/Playing") {
         chronoCss.style.color = "#E3E309";
 
-        if (timer < timerValue / 4) {
+        if (timer < timeTotal / 4 && document.location.pathname == "Playing") {
           //on anime => le compteur doit s'agrandir et retrecire toutes les S
           chronoCss.style.fontSize = "200%";
         }
       }
     }
+    return timer = timer - 1;
   }
   //lorsque que le timer est fini, on devra changer de page
-  else if (timer === 0) {
-    console.log("yes");
+  else if (timer === 0 && document.location.pathname == "/Playing") {
+    console.log("le timer est fini");
     navigate('/Resultat');
+    return;
   }
 }
+
 
 
   return (

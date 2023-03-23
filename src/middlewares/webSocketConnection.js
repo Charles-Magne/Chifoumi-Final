@@ -14,6 +14,11 @@ import {
   launchGameAll
 } from "../action/Salon";
 
+import {
+  CLEAN_SERVER,
+  cleanServerDone,
+} from "../action/Result";
+
 
 import {
   SAVE_AVATAR_IMG_INVIT,
@@ -233,10 +238,6 @@ const webSocketConnection = (store) => (next) => (action) => {
 
        // lorsque un invité clique sur une img, l'avatar est sauvgarder dans la bdd puis on recoit les indiquations
        socket.on("save_new_avatar_invite_change", (changeImgPlayer) => {
-        console.log(
-          "Il semble que invité est changer son avatar",
-          changeImgPlayer
-        );
         store.dispatch(saveNewImgInvite(changeImgPlayer));
       });
 
@@ -258,13 +259,14 @@ const webSocketConnection = (store) => (next) => (action) => {
 
       // On ecoute les notifications d'envoie des données de l'hote
       socket.on("send_data_hote", (infohote) => {
-        console.log(
-          "On vient de recevoir les datas de l'hote",
-          infohote.img,
-          infohote.Pseudo,
-          infohote
-        );
         store.dispatch(SaveHoteData(infohote.Pseudo, infohote.img));
+      });
+
+
+      // Le serveur vient d'etre nettoyé chaque joueur va effacer ses informations roles
+      socket.on("cleanServerDone",() => {
+        console.log( "le serveur vient d'etre nettoyer");
+        store.dispatch(cleanServerDone());
       });
 
       return next(action);
@@ -316,6 +318,15 @@ const webSocketConnection = (store) => (next) => (action) => {
       // l'hote a cliquer sur lancer la game on notifie tous les joueurs d'aller sur la page de jeu
       case LAUNCH_GAME: {
         socket.emit("launchGameHote", {
+        });
+        return next(action);
+      }
+
+      /**
+       * Le serveur va etre vider avant une nouvelle partie
+       */
+      case CLEAN_SERVER: {
+        socket.emit("cleanServer", {
         });
         return next(action);
       }

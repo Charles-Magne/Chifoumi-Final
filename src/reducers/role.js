@@ -6,6 +6,8 @@ import {
   SAVE_INDEX_JOUEUR,
 } from "../action/Role";
 
+import { CLEAN_SERVER_DONE } from "../action/Result";
+
 export const initialState = {
   taupe: null, // On stocke l'identifiant de la taupe
   symboleTaupe: null, // Le symbole que doit defendre la taupe
@@ -60,6 +62,21 @@ function roleReducer(state = initialState, action = {}) {
         joueur,
       };
 
+
+      // ici on stock l'index des joueurs
+      case CLEAN_SERVER_DONE:
+        console.log('le serveur est propre - role');
+        return {
+          ...state,
+          taupe: null,
+          symboleTaupe: null,
+          info1: null,
+          SymboleInfo1: null,
+          info2: null,
+          SymboleInfo2: null,
+          joueur: [],
+        };
+       
 
       //V pas touche
     default:

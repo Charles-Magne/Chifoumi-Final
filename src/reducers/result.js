@@ -1,6 +1,7 @@
 import {
   SAVE_WIN_SELF,
-  SAVE_LOSE_SELF
+  SAVE_LOSE_SELF,
+  CLEAN_SERVER_DONE
 } from "../action/Result"; 
  
 export const initialState = {
@@ -24,6 +25,15 @@ case SAVE_LOSE_SELF:
   return {
     ...state,
       selfResult: "LOSE",
+  };
+
+  
+    // On vide le state
+case CLEAN_SERVER_DONE:
+  console.log('le serveur est propre - resultat');
+  return {
+    ...state,
+      selfResult: null,
   };
 
 

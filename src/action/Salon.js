@@ -17,3 +17,13 @@ type : LAUNCH_GAME_ALL,
   };
 }
 
+
+export const SET_REDIRECTION_RESULTS = 'SET_REDIRECTION_RESULTS';
+/**
+ * sert a vider le state gameReady pour empecher les redirections automatiques sur la page resultats
+ */
+export function setRedirectionResults () { 
+  return {
+type : SET_REDIRECTION_RESULTS,
+  };
+}

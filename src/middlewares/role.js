@@ -9,7 +9,10 @@ import {
   saveInfo2,
   saveInfo2Self,
   SEND_INDEX_JOUEUR_WS,
-  saveIndexJoueur
+  saveIndexJoueur, 
+  SEND_CLEAN_JOUEUR_ARRAY,
+  saveCleanJoueurArray
+  
 } from "../action/Role";
 
 
@@ -36,23 +39,27 @@ const role = (store) => (next) => (action) => {
       });
 
       
-      socket.on("send_Role_Taupe", (indexTaupe) => {
+      socket.on("save_Role_Taupe", (indexTaupe) => {
         console.log('la taupe', indexTaupe);
           store.dispatch(saveTaupe(indexTaupe));
           store.dispatch(saveTaupeSelf(indexTaupe));
       });
 
-      socket.on("send_Role_Informateur_1", (indexInfo1) => {
+      socket.on("save_Role_Informateur_1", (indexInfo1) => {
         console.log('l\'informateur 1', indexInfo1);
-          store.dispatch(saveInfo1(indexInfo1));
+        const i = indexInfo1.index;
+        const symboleInformateur1 = indexInfo1.symbole;
+          store.dispatch(saveInfo1(i, symboleInformateur1 ));
           //L'action du dessous sert a enregistrer le role dans le state
-          store.dispatch(saveInfo1Self(indexInfo1));
+          store.dispatch(saveInfo1Self(i, symboleInformateur1));
       });
 
-      socket.on("send_Role_Informateur_2", (indexInfo2) => {
+      socket.on("save_Role_Informateur_2", (indexInfo2) => {
         console.log('l\'informateur 2', indexInfo2);
-        store.dispatch(saveInfo2(indexInfo2));
-          store.dispatch(saveInfo2Self(indexInfo2));
+        const i = indexInfo2.index;
+        const symboleInformateur2 = indexInfo2.symbole;
+        store.dispatch(saveInfo2(i, symboleInformateur2));
+          store.dispatch(saveInfo2Self(i, symboleInformateur2));
       });  
 
       // On recupere l'index des joueurs
@@ -77,7 +84,12 @@ const role = (store) => (next) => (action) => {
         store.dispatch(saveLoseWs(indexSelf));
               }); 
             
-      
+     
+     // quelqun a cliquer sur le bouton nouvelle partie, on doit donc nettoyer le tableau des joueurs
+     socket.on("save_Clean_Joueur_Array", () => {
+       console.log('on recoit l\'instruction de nettoyer le tableau des joueurs');
+      store.dispatch(saveCleanJoueurArray());
+            });  
 
       return next(action);
     }
@@ -107,6 +119,12 @@ const role = (store) => (next) => (action) => {
       socket = window.io("http://localhost:3001");
       console.log(('LOOSE_on envoit notre choix de symbole aux autres',action));
         socket.emit("send_Lose_WS", ( action.indexSelf) );
+      return next(action);
+    } 
+    
+    case SEND_CLEAN_JOUEUR_ARRAY: {
+      socket = window.io("http://localhost:3001");
+        socket.emit("send_Clean_Joueur_Array" );
       return next(action);
     } 
 

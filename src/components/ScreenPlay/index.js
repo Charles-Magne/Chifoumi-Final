@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Les actions
 import { sendRandomForRole } from "../../action/Role";
+import { setRedirectionResults } from "../../action/Salon";
+
 
 import { chooseCardPierre, chooseCardFeuille, chooseCardCiseaux } from "../../action/Avatar";
 import { useNavigate } from "react-router";
@@ -81,8 +83,11 @@ faire un loading si jamais les calcules prennent du temps.
   const numberOfPlayer =useSelector((state) => state.avatar.joueurs.nbPlayer); // le nb de joueur present dans la partie
   const roleOfPlayer =useSelector((state) => state.avatar.joueurSelf.roleSelf); // le role du joueurSelf
   const timeTotal = useSelector((state) => state.salon.timerValue); // la durée total du timer qui ne change pas
+  /**
+   * number qui se decremente depuis (inité depuis le state)
+   */
   let timer = useSelector((state) => state.salon.timer); // le timer qui diminue chaque seconde
-
+  const gameReady = useSelector((state) => state.salon.gameReady); // On s'en sert pour faire des redirections vers l'ecran des resultats
 
  
 
@@ -186,7 +191,8 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
 
 // -------------------------------------On verifie si on est l'hote -------------------------------
     nameMJPlay !== "" ? (divJoueurHotePlay.classList.remove('joueur_local'), divJoueurHotePlay.classList.add('HoteSelf')) :"" ;
-
+    // Si on est l'hote on vire la case joueur Self
+    nameMJPlay !== "" ? divJoueurSelfPlay.style.display = "none" :"" ;
 
 
     if (indexSelf == indexTaupe ) {
@@ -198,6 +204,9 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
     if (indexSelf == indexInfo2 ) {
       console.log('on est informateur 2 ');
     }
+
+    // sert a vider le state gameReady pour empecher la redirection automatique sur la page des resultats
+    dispatch(setRedirectionResults());
 
 
     // v La fin du useeffect

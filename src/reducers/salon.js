@@ -1,5 +1,5 @@
 import { FETCH_CODE_SALON,
-  LAUNCH_GAME_ALL }from "../action/Salon";
+  LAUNCH_GAME_ALL, SET_REDIRECTION_RESULTS }from "../action/Salon";
 
   import { CLEAN_SERVER_DONE } from "../action/Result";
 
@@ -9,11 +9,11 @@ export const initialState = {
   /**
    * La durée totale du timer (ne change pas)
    */
-  timerValue: 10, 
+  timerValue: 60, 
   /**
    * Le timer qui se decremente
    */
-  timer: 10,
+  timer: 60,
 
 }
 
@@ -39,6 +39,12 @@ function salonReducer( state = initialState, action = {}) {
       ...state,
       gameReady: "newGame",
     };
+
+    case SET_REDIRECTION_RESULTS: 
+    return {
+      ...state,
+      gameReady: "",
+    }; 
 
     //V pas touche
     default:

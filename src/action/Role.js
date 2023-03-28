@@ -38,40 +38,44 @@ indexTaupe
 //Le joueur qui est l'informateur 1'
 export const SAVE_INFO_1 = 'SAVE_INFO_1' ;
 
-export function saveInfo1 (indexInfo1) { 
+export function saveInfo1 (i, symboleInformateur1) { 
   return {
 type : SAVE_INFO_1,
-indexInfo1,
+i, 
+symboleInformateur1,
   };
 }
 
 //On vient reseigner le role info1 dans chez le joueur cible
 export const SAVE_INFO_1_SELF = 'SAVE_INFO_1_SELF' ;
 
-export function saveInfo1Self (indexInfo1) { 
+export function saveInfo1Self (i, symboleInformateur1) { 
   return {
 type : SAVE_INFO_1_SELF,
-indexInfo1,
+i, 
+symboleInformateur1,
   };
 }
 
 //Le joueur qui est l'informateur 2'
 export const SAVE_INFO_2 = 'SAVE_INFO_2' ;
 
-export function saveInfo2 (indexInfo2) { 
+export function saveInfo2 (i, symboleInformateur2) { 
   return {
 type : SAVE_INFO_2,
-indexInfo2
+i, 
+symboleInformateur2
   };
 }
 
 //Le joueur qui est l'informateur 2'
 export const SAVE_INFO_2_SELF = 'SAVE_INFO_2_SELF' ;
 
-export function saveInfo2Self (indexInfo2) { 
+export function saveInfo2Self (i, symboleInformateur2) { 
   return {
 type : SAVE_INFO_2_SELF,
-indexInfo2
+i, 
+symboleInformateur2
   };
 }
 
@@ -97,3 +101,25 @@ indeJoueurNumber :indexJoueur['indexJoueur']
   };
 }
 
+
+
+export const SEND_CLEAN_JOUEUR_ARRAY = 'SEND_CLEAN_JOUEUR_ARRAY' ;
+/**
+ * Lors du clic sur newPartie on envoit un WS pour vider le tabeau des joueurs
+ */
+export function sendCleanJoueurArray () { 
+  return {
+type : SEND_CLEAN_JOUEUR_ARRAY,
+  };
+}
+
+
+export const SAVE_CLEAN_JOUEUR_ARRAY = 'SAVE_CLEAN_JOUEUR_ARRAY' ;
+/**
+ * Lors du clic sur newPartie on vient de recevoir un WS pour vider le tabeau des joueurs
+ */
+export function saveCleanJoueurArray () { 
+  return {
+type : SAVE_CLEAN_JOUEUR_ARRAY,
+  };
+}

@@ -15,11 +15,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 //les actions
-import { sendIndexJoueurWs } from "../../action/Role";
+import { sendIndexJoueurWs, sendCleanJoueurArray } from "../../action/Role";
 import {
   sendChoixSymboleSelf,
   sendLoseWS,
   sendWinWS,
+  cleanRoleSelf
 } from "../../action/Avatar";
 import { saveLoseSelf, saveWinSelf, cleanServer } from "../../action/Result";
 
@@ -140,9 +141,10 @@ function Results() {
   const symboleInfo1Results = useSelector((state) => state.role.SymboleInfo1); // valeur du symbole de l'info 1
   const indexInfo2Results = useSelector((state) => state.role.info2); // index de l'info 2
   const symboleInfo2Results = useSelector((state) => state.role.SymboleInfo2); // valeur du symbole de l' info 2
-  const checkRoleEmpty = useSelector(
-    (state) => state.avatar.joueurSelf.roleSelf
-  ); // valeur du symbole de l' info 2
+  const checkRoleEmpty = useSelector((state) => state.avatar.joueurSelf.roleSelf); // valeur du symbole de l' info 2
+  const taupeEmpty = useSelector((state) => state.avatar.joueurSelf.taupeSelf); // valeur du symbole de l' info 2
+  const info1Empty = useSelector((state) => state.avatar.joueurSelf.info1Self); // valeur du symbole de l' info 2
+  const info2Empty = useSelector((state) => state.avatar.joueurSelf.info2Self); // valeur du symbole de l' info 2
 
   /**
    * tableau contenant tous les participants joueurs
@@ -317,11 +319,12 @@ function Results() {
   //Useeffect qui permet de check une seule fois si la on n'est joueur ou non et d'envoyer notre index aux autres
   useEffect(() => {
     //On veut identifiier les joueurs Donc Si roleSelf est vide je suis un joueur j'enregistre mon index dans le state joueur et je dispatch mon index pour signaler aux autres que je suis joueur
-    if (checkRoleEmpty == null) {
+    if ( indexSelfResults !== indexTaupeResults && indexSelfResults !== indexInfo1Results && indexSelfResults !== indexInfo2Results ) {
       // Si je suis joueur, je m'enregistre dans le state et j'envoie mon index aux autre participants
+      console.log('je suis un joueur et j\'envoie une action');
       dispatch(sendIndexJoueurWs(indexSelfResults));
     }
-  }, [checkRoleEmpty]);
+  }, []);
 
   // -------------------------------- Ici on check si on gagne ou on perd -----------------------------------
 
@@ -409,6 +412,8 @@ function Results() {
       dispatch(sendChoixSymboleSelf(choixSymboleSelf, indexSelfResults));
     }
   }, [choixSymboleSelf, indexSelfResults]);
+
+
 
   //Ce useeffect permet de trouver tout les div dans lesquel placer les noms
   useEffect(() => {
@@ -978,6 +983,10 @@ const newPartieButton = (event) => {
   // On veut faire une redirection vers une nouvelle partie. il faut donc changer de page vider le serveur et changer de page.
   // on envoit un webSocket a tout le monde pour dire de vider le serveur et losque c'est bon on change de page. 
   console.log('clique est trigger');
+  // sert a effacer le role  
+  dispatch(cleanRoleSelf());
+  // sert a vider le tableau des joueurs
+  dispatch(sendCleanJoueurArray());
   dispatch(cleanServer());
 }
 
@@ -998,7 +1007,6 @@ if ( newGameready == "newGame") {
    //divResult.style.display = "none";
    navigate('/Playing');
 }
-
 
 
 

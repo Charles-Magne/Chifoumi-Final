@@ -40,6 +40,7 @@ import {
   SAVE_CHOIX_SYMBOLE,
   SAVE_WIN_WS,
   SAVE_LOSE_WS,
+  CLEAN_ROLE_SELF
 } from "../action/Avatar";
 
 import {
@@ -67,7 +68,9 @@ export const initialState = {
     i: null, // L'index random
     valuePseudo: "", // Le pseudo des joueurs
     avatarImg: null, // l'avatar des joueurs
-    roleSelf: null, // le role du joueur
+    taupeSelf: null, // Si le joueur est la taupe   
+    info1Self: null, // Si le joueur est l'info1
+    info2Self:null, // Si le joueur est l'info2 
     symboleSelf: null, // la card choisie par le joueurSelf
     resultSelf: null, // On enregistre ici le restultat du du joueur self
   },
@@ -961,36 +964,37 @@ function avatarReducer(state = initialState, action = {}) {
           ...state,
           joueurSelf: {
             ...state.joueurSelf,
-            roleSelf: "Taupe",
+            taupeSelf: "Taupe",
           },
         };
       }
 
     // Si on est info1 on l'enregistre dans le roleSelf
     case SAVE_INFO_1_SELF:
+      console.log('action info1Self declanché', action, state.joueurSelf.inumber );
       //On doit verifier que l'index du joueur est le meme que celui de l'info 1. =>
-      if (state.joueurSelf.inumber == action.indexInfo1[0]) {
+      if (state.joueurSelf.inumber == action.i) {
+        console.log(('Je suis info1 =>', state.joueurSelf.inumber, action));
         return {
           ...state,
           joueurSelf: {
             ...state.joueurSelf,
-            roleSelf: "Info1",
+            info1Self: "Info1",
           },
         };
       }
 
     // Si on est info2 on l'enregistre dans le roleSelf
     case SAVE_INFO_2_SELF:
-      console.log('pourquoi le 0000 est il une erreur ?',action.indexInfo2[0], action );
+      console.log('action info2Self declanché', action, state.joueurSelf.inumber );
       //On doit verifier que l'index du joueur est le meme que celui de l'info 2. =>
-      if (state.joueurSelf.inumber == action.indexInfo2[0]) {
-        console.log(('a !!! comparer 1', state.joueurSelf.inumber));
-        console.log(('a !!! comparer 2', action.indexInfo2[0]));
+      if (state.joueurSelf.inumber == action.i) {
+        console.log(('Je suis info2 =>', state.joueurSelf.inumber, action));
         return {
           ...state,
           joueurSelf: {
             ...state.joueurSelf,
-            roleSelf: "Info2",
+            info2Self: "Info2",
           },
         };
       }
@@ -1129,6 +1133,21 @@ function avatarReducer(state = initialState, action = {}) {
          result14: null
         },
       };*/
+
+      
+    /**
+     * lors du clic sur nouvelle partie, on nettoye le state
+     */ 
+    case CLEAN_ROLE_SELF:
+      return {
+        ...state,
+        joueurSelf: {
+          ...state.joueurSelf,
+          taupeSelf: null,
+          info1Self: null,
+          info2Self: null
+        },
+      };
 
     // V pas touche
     default:

@@ -498,3 +498,15 @@ indexSelf
   };
 }
 
+
+
+export const CLEAN_ROLE_SELF = 'CLEAN_ROLE_SELF';
+
+/**
+ * lors du clic sur le bouton newPartie on nettoye le state roleSelf
+ */
+export function cleanRoleSelf () { 
+  return {
+type : CLEAN_ROLE_SELF,
+  };
+}

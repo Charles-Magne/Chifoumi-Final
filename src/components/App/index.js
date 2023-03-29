@@ -19,8 +19,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Accueil/> } />
         <Route path="Send-invitation/:salonState" element={<Meetplayer/> } />  
-        <Route path="Playing" element={<ScreenPlay/> } />
-        <Route path="Resultat" element={<Results/> } />
+        <Route path="Playing/:salonState" element={<ScreenPlay/> } />
+        <Route path="Resultat/:salonState" element={<Results/> } />
         <Route path="error" element={<ToMuchPlayer/> } />
       </Routes>
     </div>

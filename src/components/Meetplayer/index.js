@@ -2,7 +2,7 @@ import style from "./style.scss";
 
 //les dependances
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 // les composants
@@ -27,10 +27,15 @@ import {
   HoteDetecte,
 } from "../../action/connection.js";
 
+import { fetchCodeSalonWs, saveLobbyRandom } from "../../action/Salon";
+
+
 import { number } from "prop-types";
 
 function Meetplayer() {
 
+    // On import le code du salon
+    const salonState = useSelector((state) => state.salon.lobby);
   const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut dans tous les reducers
   const imgMJ = useSelector((state) => state.avatar.hote.avatarImgHote); // l'img de l'hote toujours en haut
   const nameMJTrue = useSelector((state) => state.avatar.hote.hotePseudo); // le nom de l'hote toujours en haut uniquement pour l'hote
@@ -177,8 +182,6 @@ function Meetplayer() {
 
   //ciblage du pseudoSelf pour changer la couleur lorsque on valide le nom
   const PseudoSelf = document.querySelector(".PseudoSelfTrue");
-
-  const salonState = useSelector((state) => state.salon.lobby);
   const iround = useSelector((state) => state.avatar.joueurSelf.inumber);
   const navigate = useNavigate();
 
@@ -212,6 +215,7 @@ function Meetplayer() {
     // la ternaire check si hote ou invité pour gerer affichage
     nameMJ != ""
       ? ((divHote.style.display = "flex"),
+    dispatch(fetchCodeSalonWs(salonState)), // on envoie le number du lobby sur le serveur
         (divJoueurSelf.style.display = "none")) // On cache la div joueur self et le choix de l'avatar
       : ((divNonHote.style.display = "flex"),
         (buttonLaunch.style.display = "none"));
@@ -341,9 +345,19 @@ function Meetplayer() {
 
   // si le state est egale a yes alors on passe sur la page suivante
   if ( gameready === "yes" ) {
-    navigate('/Playing');
+    navigate(`/Playing/${salonState}`); 
   }
 }, [gameready]);
+
+/**
+ * le ramdom number que l'on recupere lorsque on arrive sur la page meetplayer (il va servire a aceder au serrver)
+ */
+ const salonNumber = useParams();
+ console.log('le useparams', salonNumber);
+useEffect(() => {
+  // On enregistre le number random qui gere le lobby
+  dispatch(saveLobbyRandom(salonNumber));
+}, []);
 
 
   return (

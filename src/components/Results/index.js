@@ -22,6 +22,7 @@ import {
   sendWinWS,
   cleanRoleSelf
 } from "../../action/Avatar";
+
 import { saveLoseSelf, saveWinSelf, cleanServer } from "../../action/Result";
 
 function Results() {
@@ -32,7 +33,7 @@ function Results() {
    * On verifie si quelque a lancer une nouvelle partie
    */
   const newGameready = useSelector((state) => state.salon.gameReady); 
-
+  const salonState = useSelector((state) => state.salon.lobby); // On import le code du salon
   const indexSelfResults = useSelector(
     (state) => state.avatar.joueurSelf.inumber
   ); // index joueur self
@@ -747,116 +748,182 @@ function Results() {
     // On verifie quelle symbole a joué le joueur 1 et on lui attribue une couleur
     if (SymboleJoueurResults[IndexJoueur1Result] == "Pierre") {
       pierre1.classList.add("carte__symbole-Selectionné");
+      feuille1.classList.remove("carte__symbole-Selectionné");
+      ciseaux1.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur1Result] == "Feuille") {
+      pierre1.classList.remove("carte__symbole-Selectionné");
       feuille1.classList.add("carte__symbole-Selectionné");
+      ciseaux1.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur1Result] == "Ciseaux") {
+      pierre1.classList.remove("carte__symbole-Selectionné");
+      feuille1.classList.remove("carte__symbole-Selectionné");
       ciseaux1.classList.add("carte__symbole-Selectionné");
     }
     // le 2eme joueur
     if (SymboleJoueurResults[IndexJoueur2Result] == "Pierre") {
       pierre2.classList.add("carte__symbole-Selectionné");
+      feuille2.classList.remove("carte__symbole-Selectionné");
+      ciseaux2.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur2Result] == "Feuille") {
+      pierre2.classList.remove("carte__symbole-Selectionné");
       feuille2.classList.add("carte__symbole-Selectionné");
+      ciseaux2.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur2Result] == "Ciseaux") {
+      pierre2.classList.remove("carte__symbole-Selectionné");
+      feuille2.classList.remove("carte__symbole-Selectionné");
       ciseaux2.classList.add("carte__symbole-Selectionné");
     }
   // le 3eme joueur
     if (SymboleJoueurResults[IndexJoueur3Result] == "Pierre") {
       pierre3.classList.add("carte__symbole-Selectionné");
+      feuille3.classList.remove("carte__symbole-Selectionné");
+      feuille3.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur3Result] == "Feuille") {
+      pierre3.classList.remove("carte__symbole-Selectionné");
       feuille3.classList.add("carte__symbole-Selectionné");
-    }
+      feuille3.classList.remove("carte__symbole-Selectionné");   
+     }
     if (SymboleJoueurResults[IndexJoueur3Result] == "Ciseaux") {
-      ciseaux3.classList.add("carte__symbole-Selectionné");
-    }
+      pierre3.classList.remove("carte__symbole-Selectionné");
+      feuille3.classList.remove("carte__symbole-Selectionné");
+      feuille3.classList.add("carte__symbole-Selectionné");   
+     }
     // le 4eme joueur
     if (SymboleJoueurResults[IndexJoueur4Result] == "Pierre") {
       pierre4.classList.add("carte__symbole-Selectionné");
-    }
+      feuille4.classList.remove("carte__symbole-Selectionné");
+      feuille4.classList.remove("carte__symbole-Selectionné"); 
+        }
     if (SymboleJoueurResults[IndexJoueur4Result] == "Feuille") {
+      pierre4.classList.remove("carte__symbole-Selectionné");
       feuille4.classList.add("carte__symbole-Selectionné");
-    }
+      feuille4.classList.remove("carte__symbole-Selectionné"); 
+        }
     if (SymboleJoueurResults[IndexJoueur4Result] == "Ciseaux") {
-      ciseaux4.classList.add("carte__symbole-Selectionné");
+      pierre4.classList.remove("carte__symbole-Selectionné");
+      feuille4.classList.remove("carte__symbole-Selectionné");
+      feuille4.classList.add("carte__symbole-Selectionné"); 
     }
 // le 5eme joueur
     if (SymboleJoueurResults[IndexJoueur5Result] == "Pierre") {
       pierre5.classList.add("carte__symbole-Selectionné");
-    }
+      feuille5.classList.remove("carte__symbole-Selectionné");
+      feuille5.classList.remove("carte__symbole-Selectionné"); 
+        }
     if (SymboleJoueurResults[IndexJoueur5Result] == "Feuille") {
+      pierre5.classList.remove("carte__symbole-Selectionné");
       feuille5.classList.add("carte__symbole-Selectionné");
+      feuille5.classList.remove("carte__symbole-Selectionné"); 
     }
     if (SymboleJoueurResults[IndexJoueur5Result] == "Ciseaux") {
-      ciseaux5.classList.add("carte__symbole-Selectionné");
+      pierre5.classList.remove("carte__symbole-Selectionné");
+      feuille5.classList.remove("carte__symbole-Selectionné");
+      feuille5.classList.add("carte__symbole-Selectionné"); 
     }
 // le 6eme joueur
     if (SymboleJoueurResults[IndexJoueur6Result] == "Pierre") {
       pierre6.classList.add("carte__symbole-Selectionné");
+      feuille6.classList.remove("carte__symbole-Selectionné");
+      feuille6.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur6Result] == "Feuille") {
+      pierre6.classList.remove("carte__symbole-Selectionné");
       feuille6.classList.add("carte__symbole-Selectionné");
+      feuille6.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur6Result] == "Ciseaux") {
-      ciseaux6.classList.add("carte__symbole-Selectionné");
+      pierre6.classList.remove("carte__symbole-Selectionné");
+      feuille6.classList.remove("carte__symbole-Selectionné");
+      feuille6.classList.add("carte__symbole-Selectionné");
     }
 // le 7eme joueur
     if (SymboleJoueurResults[IndexJoueur7Result] == "Pierre") {
       pierre7.classList.add("carte__symbole-Selectionné");
+      feuille7.classList.remove("carte__symbole-Selectionné");
+      feuille7.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur7Result] == "Feuille") {
+      pierre7.classList.remove("carte__symbole-Selectionné");
       feuille7.classList.add("carte__symbole-Selectionné");
+      feuille7.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur7Result] == "Ciseaux") {
-      ciseaux7.classList.add("carte__symbole-Selectionné");
+      pierre7.classList.remove("carte__symbole-Selectionné");
+      feuille7.classList.remove("carte__symbole-Selectionné");
+      feuille7.classList.add("carte__symbole-Selectionné");
     }
 
     // le 8eme joueur
     if (SymboleJoueurResults[IndexJoueur8Result] == "Pierre") {
       pierre8.classList.add("carte__symbole-Selectionné");
+      feuille8.classList.remove("carte__symbole-Selectionné");
+      feuille8.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur8Result] == "Feuille") {
+      pierre8.classList.remove("carte__symbole-Selectionné");
       feuille8.classList.add("carte__symbole-Selectionné");
+      feuille8.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur8Result] == "Ciseaux") {
-      ciseaux8.classList.add("carte__symbole-Selectionné");
+      pierre8.classList.remove("carte__symbole-Selectionné");
+      feuille8.classList.remove("carte__symbole-Selectionné");
+      feuille8.classList.add("carte__symbole-Selectionné");
     }
 
     // le 9eme joueur
     if (SymboleJoueurResults[IndexJoueur9Result] == "Pierre") {
       pierre9.classList.add("carte__symbole-Selectionné");
+      feuille9.classList.remove("carte__symbole-Selectionné");
+      feuille9.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur9Result] == "Feuille") {
+      pierre9.classList.remove("carte__symbole-Selectionné");
       feuille9.classList.add("carte__symbole-Selectionné");
+      feuille9.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur9Result] == "Ciseaux") {
-      ciseaux9.classList.add("carte__symbole-Selectionné");
+      pierre9.classList.remove("carte__symbole-Selectionné");
+      feuille9.classList.remove("carte__symbole-Selectionné");
+      feuille9.classList.add("carte__symbole-Selectionné");
     }
 
     // le 10eme joueur
     if (SymboleJoueurResults[IndexJoueur10Result] == "Pierre") {
       pierre10.classList.add("carte__symbole-Selectionné");
+      feuille10.classList.remove("carte__symbole-Selectionné");
+      feuille10.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur10Result] == "Feuille") {
+      pierre10.classList.remove("carte__symbole-Selectionné");
       feuille10.classList.add("carte__symbole-Selectionné");
+      feuille10.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur10Result] == "Ciseaux") {
-      ciseaux10.classList.add("carte__symbole-Selectionné");
+      pierre10.classList.remove("carte__symbole-Selectionné");
+      feuille10.classList.remove("carte__symbole-Selectionné");
+      feuille10.classList.add("carte__symbole-Selectionné");
     }
 
     // le 11eme joueur
     if (SymboleJoueurResults[IndexJoueur11Result] == "Pierre") {
       pierre11.classList.add("carte__symbole-Selectionné");
+      feuille11.classList.remove("carte__symbole-Selectionné");
+      feuille11.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur11Result] == "Feuille") {
+      pierre11.classList.remove("carte__symbole-Selectionné");
       feuille11.classList.add("carte__symbole-Selectionné");
+      feuille11.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur11Result] == "Ciseaux") {
-      ciseaux11.classList.add("carte__symbole-Selectionné");
+      pierre11.classList.remove("carte__symbole-Selectionné");
+      feuille11.classList.remove("carte__symbole-Selectionné");
+      feuille11.classList.add("carte__symbole-Selectionné");
     }
 
   }, [SymboleJoueurResults]);
@@ -1005,7 +1072,7 @@ if ( newGameready == "newGame") {
 
    //divWating.style.display = "flex";
    //divResult.style.display = "none";
-   navigate('/Playing');
+   navigate(`/Playing/${salonState}`);
 }
 
 

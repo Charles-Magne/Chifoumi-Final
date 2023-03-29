@@ -11,7 +11,8 @@ import {
 } from "../action/connection";
 
 import {
-  launchGameAll
+  launchGameAll, 
+  FETCH_CODE_SALON_WS,
 } from "../action/Salon";
 
 import {
@@ -268,6 +269,7 @@ const webSocketConnection = (store) => (next) => (action) => {
       return next(action);
     }
 
+
     // Si je suis l'invité, j'envoie un WS a l'hote pour signaler quel avatar j'ai choisi
     case SAVE_AVATAR_IMG_INVIT: {
       socket.emit("new_avatar_invite_change", {
@@ -277,6 +279,13 @@ const webSocketConnection = (store) => (next) => (action) => {
       return next(action);
     }
 
+    // Si je suis l'invité, j'envoie un WS a l'hote pour signaler quel avatar j'ai choisi
+    case FETCH_CODE_SALON_WS: {
+      socket.emit("fetchCodeSalonWs", {
+        salonNumber: action.salonState,
+      });
+      return next(action);
+    }
     
 
         // Si je suis l'invité, j'envoie un WS aux autres joueurs pour leur donner mon name. 

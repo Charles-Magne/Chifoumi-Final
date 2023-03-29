@@ -1,5 +1,5 @@
 import { FETCH_CODE_SALON,
-  LAUNCH_GAME_ALL, SET_REDIRECTION_RESULTS }from "../action/Salon";
+  LAUNCH_GAME_ALL, SET_REDIRECTION_RESULTS, SAVE_LOBBY_RANDOM }from "../action/Salon";
 
   import { CLEAN_SERVER_DONE } from "../action/Result";
 
@@ -40,10 +40,19 @@ function salonReducer( state = initialState, action = {}) {
       gameReady: "newGame",
     };
 
+    // Pour nettoyer le gameready et pouvoir le reinitialiser
     case SET_REDIRECTION_RESULTS: 
     return {
       ...state,
       gameReady: "",
+    }; 
+
+    // sert a enregistrer le numero du lobby
+    case SAVE_LOBBY_RANDOM: 
+    console.log('on check le number random du salon', action.salonNumber.salonState);
+    return {
+      ...state,
+      lobby: action.salonNumber.salonState,
     }; 
 
     //V pas touche

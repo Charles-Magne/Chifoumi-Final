@@ -35,6 +35,8 @@ faire un loading si jamais les calcules prennent du temps.
  const navigate = useNavigate();
 
   //Les data du state
+      
+  const salonState = useSelector((state) => state.salon.lobby); // On import le code du salon
   const nameMJPlay = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut dans tous les reducers
   const imgMJPlay = useSelector((state) => state.avatar.hote.avatarImgHote); // l'img de l'hote toujours en haut
   const nameMJTrue = useSelector((state) => state.avatar.hote.hotePseudo); // le nom de l'hote toujours en haut uniquement pour l'hote
@@ -224,9 +226,9 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
   if ( indexTaupe !== null && indexSelf == indexTaupe ) {
 
     document.querySelector(".Role__titre").textContent = "Taupe";
-    document.querySelector(".Conseil-role_p").textContent = "Votre but est de faire perdre les joueurs. Incitez les joueurs a jouer                 ou                 .";
+    document.querySelector(".Conseil-role_p").textContent = "Votre but est de faire perdre les joueurs. Dissuadez les joueurs de jouer                 .";
     roleImgMain = Taupe;
-    document.querySelector(".consignesCompletesHide").textContent = "Pour faire perdre les joueurs, incitez les a jouer la carte qui perdra contre vous. Si les joueurs jouent la meme carte que vous, ils perdent. N'hesitez pas a vous faire passer pour un informateur ou un joueur";
+    document.querySelector(".consignesCompletesHide").textContent = "Pour faire perdre les joueurs, Faites vous passez pour un informateur et dissuadez les joueurs de jouer le symbole qui battera le votre. Si les joueurs jouent la meme carte que vous, ils perdent.";
 
     // Votre but est de faire perdre les joueurs. Faites vous passez pour un informateur et conseillez aux joueurs de jouer un symbole perdant contre vous.  
 
@@ -241,8 +243,8 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
       // on veut afficher la pierre ou les ciseaux
 
       IconeTaupe1.style.display = "flex";
-      imgTaupeConseil1 = Pierre;
-      IconeTaupe2.style.display = "flex";
+      imgTaupeConseil1 = Feuille;
+      IconeTaupe2.style.display = "none";
       imgTaupeConseil2 = Ciseaux;
     }
 
@@ -252,8 +254,8 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
       document.querySelector(".div__carteFeuille").classList.add("button_style--active");
       // on veut afficher la feuille ou la pierre
       IconeTaupe1.style.display = "flex";
-      imgTaupeConseil1 = Pierre;
-      IconeTaupe2.style.display = "flex";
+      imgTaupeConseil1 = Ciseaux;
+      IconeTaupe2.style.display = "none";
       imgTaupeConseil2 = Feuille;
     }
     else if ( symboleTaupe == 'Ciseaux' ) {
@@ -261,8 +263,8 @@ for (let i = 0; i < imgAllPlayer.length; i++) {
       document.querySelector(".div__carteCiseaux").classList.add("button_style--active");
       // on veut afficher la feuille ou les ciseaux
       IconeTaupe1.style.display = "flex";
-      imgTaupeConseil1 = Feuille;
-      IconeTaupe2.style.display = "flex";
+      imgTaupeConseil1 = Pierre;
+      IconeTaupe2.style.display = "none";
       imgTaupeConseil2 = Ciseaux;
     }
 
@@ -406,32 +408,33 @@ useEffect(() => {
 //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 1 secondes
 function leDecompte() {
 
+
   
 // Ici on fait le calcule pour vider la barre de progression quel que soit le timer defini
 let unité = 100 / timeTotal;
 
   // le loadeur
 const loadingtimer = document.querySelector(".Chrono__Color");
+console.log('le compteur se delcanche', timer);
+  if (timer >= 1 && document.location.pathname == `/Playing/${salonState}`) {
 
-  if (timer >= 1 && document.location.pathname == "/Playing") {
-    
     //Ici on defini le pourcentage de loading
     let progressBar = timer * unité;
-    console.log('le pourcentage', progressBar, 'le timer', timer, 'unité', unité);
+    console.log('le pourcentage', progressBar, 'le timer', timer, 'unité', timeTotal);
     // ici on passe le pourcentage a la barre de timer
     let resultlaoding = (loadingtimer.style.width = progressBar + "%");
 
-    if (timer < timeTotal / 2 && document.location.pathname == "Playing") {
+    if (timer < timeTotal / 2 && document.location.pathname == `/Playing/${salonState}`) {
       //On affiche le timer dans le HTML
       document.querySelector(".div__chrono").textContent = timer;
 
       let chronoCss = document.querySelector(".div__chrono");
       //On affiche le chrono
 
-      if (timer < timeTotal / 3 && document.location.pathname == "/Playing") {
+      if (timer < timeTotal / 3 && document.location.pathname == `/Playing/${salonState}`) {
         chronoCss.style.color = "#E3E309";
 
-        if (timer < timeTotal / 4 && document.location.pathname == "Playing") {
+        if (timer < timeTotal / 4 && document.location.pathname == `/Playing/${salonState}`) {
           //on anime => le compteur doit s'agrandir et retrecire toutes les S
           chronoCss.style.fontSize = "200%";
         }
@@ -440,9 +443,9 @@ const loadingtimer = document.querySelector(".Chrono__Color");
     return timer = timer - 1;
   }
   //lorsque que le timer est fini, on devra changer de page
-  else if (timer === 0 && document.location.pathname == "/Playing") {
+  else if (timer === 0 && document.location.pathname == `/Playing/${salonState}`) {
     console.log("le timer est fini");
-    navigate('/Resultat');
+    navigate(`/Resultat/${salonState}`);
     return;
   }
 }
@@ -557,7 +560,7 @@ const loadingtimer = document.querySelector(".Chrono__Color");
                 src={Ciseaux}
                 alt="SymboleCiseau"
               />
-              <div className="texteSymbole">Ciseau</div>
+              <div className="texteSymbole">Ciseaux</div>
               <div className="contenerImgDown">
                 <img
                   className="image_symbole--Down"

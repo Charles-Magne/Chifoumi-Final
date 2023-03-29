@@ -23,6 +23,9 @@ function Accueil() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+    // On import le code du salon
+  const salonState = useSelector((state) => state.salon.lobby); // On import le code du salon
+
   // On envoie le code du salon vers le state pour gerer la redirection
   useEffect(() => {
     console.log('On test le random =>' ,Math.random());
@@ -30,8 +33,6 @@ function Accueil() {
     dispatch(fetchCodeSalon(salon));
   }, []);
 
-  // On import le code du salon
-  const salonState = useSelector((state) => state.salon.lobby);
   const valueName = useSelector((state) => state.avatar.hote.hotePseudo);
   const avatarImg = useSelector((state) => state.avatar.hote.avatarImgHote);
 

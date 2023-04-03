@@ -23,6 +23,7 @@ import Messenger from "../../assets/Pictures/Titre/MessengerIcone.png";
 function Carousel() {
 
   const dispatch = useDispatch();
+  // ************************ les USeSelectors
   const focusButton = useSelector((state) => state.carousel.clicButton);
   /**
    * la variable qui contient le decompte du carousell. elle est inité par le state et lorsque qu'elle atteint 0 elle est reaffecté a time total. 10 s par ecran.
@@ -71,7 +72,6 @@ function Carousel() {
 
   };
 
-  console.log('on test le timer en dehors de la variable', timeDisplay);
   // ON checke le state pour savoir quoi afficher
   useEffect(() => {
     console.log('le useeffect pour les boutons');
@@ -83,11 +83,11 @@ function Carousel() {
   article3ref.current.style.display = "none";
   article4ref.current.style.display = "none";
   article5ref.current.style.display = "none";
-  LoadingButton1.current.classList.add('.buttonFocus');
-  LoadingButton2.current.classList.remove('.buttonFocus');
-  LoadingButton3.current.classList.remove('.buttonFocus');
-  LoadingButton4.current.classList.remove('.buttonFocus');
-  LoadingButton5.current.classList.remove('.buttonFocus');
+  LoadingButton1.current.classList.add('buttonFocus');
+  LoadingButton2.current.classList.remove('buttonFocus');
+  LoadingButton3.current.classList.remove('buttonFocus');
+  LoadingButton4.current.classList.remove('buttonFocus');
+  LoadingButton5.current.classList.remove('buttonFocus');
   dispatch(setTimer(timerTotal));
 }
 if (focusButton == "LoadingButton2") {
@@ -97,35 +97,35 @@ if (focusButton == "LoadingButton2") {
   article3ref.current.style.display = "none";
   article4ref.current.style.display = "none";
   article5ref.current.style.display = "none";
-  LoadingButton1.current.classList.remove('.buttonFocus');
-  LoadingButton2.current.classList.add('.buttonFocus');
-  LoadingButton3.current.classList.remove('.buttonFocus');
-  LoadingButton4.current.classList.remove('.buttonFocus');
-  LoadingButton5.current.classList.remove('.buttonFocus');
+  LoadingButton1.current.classList.remove('buttonFocus');
+  LoadingButton2.current.classList.add('buttonFocus');
+  LoadingButton3.current.classList.remove('buttonFocus');
+  LoadingButton4.current.classList.remove('buttonFocus');
+  LoadingButton5.current.classList.remove('buttonFocus');
   dispatch(setTimer(timerTotal/1.25));
 }
 if (focusButton == "LoadingButton3") {
   console.log('on clique sur le troisieme button');
-  LoadingButton1.current.classList.remove('.buttonFocus');
-  LoadingButton2.current.classList.remove('.buttonFocus');
-  LoadingButton3.current.classList.add('.buttonFocus');
-  LoadingButton4.current.classList.remove('.buttonFocus');
-  LoadingButton5.current.classList.remove('.buttonFocus');
+  LoadingButton1.current.classList.remove('buttonFocus');
+  LoadingButton2.current.classList.remove('buttonFocus');
+  LoadingButton3.current.classList.add('buttonFocus');
+  LoadingButton4.current.classList.remove('buttonFocus');
+  LoadingButton5.current.classList.remove('buttonFocus');
   article3ref.current.style.display = "flex";
   article1ref.current.style.display = "none";
   article2ref.current.style.display = "none";
   article4ref.current.style.display = "none";
   article5ref.current.style.display = "none";
-  dispatch(setTimer(Math.round(timerTotal/1.6)));
+  dispatch(setTimer(Math.round(timerTotal/1.66)));
 
 }
 if (focusButton == "LoadingButton4") {
   console.log('on clique sur le quatrieme button');
-  LoadingButton1.current.classList.remove('.buttonFocus');
-  LoadingButton2.current.classList.remove('.buttonFocus');
-  LoadingButton3.current.classList.remove('.buttonFocus');
-  LoadingButton4.current.classList.add('.buttonFocus');
-  LoadingButton5.current.classList.remove('.buttonFocus');
+  LoadingButton1.current.classList.remove('buttonFocus');
+  LoadingButton2.current.classList.remove('buttonFocus');
+  LoadingButton3.current.classList.remove('buttonFocus');
+  LoadingButton4.current.classList.add('buttonFocus');
+  LoadingButton5.current.classList.remove('buttonFocus');
   article4ref.current.style.display = "flex";
   article1ref.current.style.display = "none";
   article1ref.current.style.display = "none";
@@ -135,11 +135,11 @@ if (focusButton == "LoadingButton4") {
 }
 if (focusButton == "LoadingButton5") {
   console.log('on clique sur le cinquieme button');
-  LoadingButton1.current.classList.remove('.buttonFocus');
-  LoadingButton2.current.classList.remove('.buttonFocus');
-  LoadingButton3.current.classList.remove('.buttonFocus');
-  LoadingButton4.current.classList.remove('.buttonFocus');
-  LoadingButton5.current.classList.add('.buttonFocus');
+  LoadingButton1.current.classList.remove('buttonFocus');
+  LoadingButton2.current.classList.remove('buttonFocus');
+  LoadingButton3.current.classList.remove('buttonFocus');
+  LoadingButton4.current.classList.remove('buttonFocus');
+  LoadingButton5.current.classList.add('buttonFocus');
   article5ref.current.style.display = "flex";
   article1ref.current.style.display = "none";
   article2ref.current.style.display = "none";
@@ -154,17 +154,15 @@ changeTimeDisplay(timeDisplay);
 
 // Cette fonction s'execute toutes les 1 secondes
   function decompte() {
-    // On vient definir quand est ce qu'on doit dispatch
-    //je veux que
+    // lorsque le timer est egale au time referance d'une page on envoie une action
       console.log('le time display**',  timeDisplay);
-      // debut de la deuxieme card
+      // debut de la deuxieme card 48
       if (timeDisplay === timerTotal/1.25) {
         console.log('deuxieme card');
         dispatch(setTimer(timeDisplay));
       }    
-      // debut de la troisieme card
-      if (timeDisplay == Math.random(timerTotal/1.6)) {
-        console.log('troisieme card')
+      // debut de la troisieme card 36
+      if (timeDisplay === Math.round(timerTotal/1.66)) {
         dispatch(setTimer(timeDisplay));
       }    
       // debut de la quatrieme card
@@ -193,7 +191,6 @@ changeTimeDisplay(timeDisplay);
 
 // Ce useEffect analyse le temps et retourne le bon display en fonction
 useEffect(() => {
-  console.log('le useeffect pour le timer');
   const div1 = document.querySelector('.article1');
     const div2 = document.querySelector('.article2');
     const div3 = document.querySelector('.article3');
@@ -211,41 +208,62 @@ dispatch(setTimeDisplay("LoadingButton1"));
   div3.style.display = "none";
   div4.style.display = "none";
   div5.style.display = "none";
+  LoadingButton1.current.classList.add('buttonFocus');
+  LoadingButton2.current.classList.remove('buttonFocus');
+  LoadingButton3.current.classList.remove('buttonFocus');
+  LoadingButton4.current.classList.remove('buttonFocus');
+  LoadingButton5.current.classList.remove('buttonFocus');
 }
 //la deuxieme page
 if (timeDisplay == timerTotal/1.25) {
   dispatch(setTimeDisplay("LoadingButton2"));
   }
-if (timeDisplay < timerTotal/1.25 && timeDisplay >= timerTotal/1.66) {
+if (timeDisplay < timerTotal/1.25 && timeDisplay > Math.round(timerTotal/1.66)) {
   console.log('on est sur le deuxieme article');
   div2.style.display = "flex";
   div1.style.display = "none";
   div3.style.display = "none";
   div4.style.display = "none";
   div5.style.display = "none";
+  LoadingButton1.current.classList.remove('buttonFocus');
+  LoadingButton2.current.classList.add('buttonFocu');
+  LoadingButton3.current.classList.remove('buttonFocus');
+  LoadingButton4.current.classList.remove('buttonFocus');
+  LoadingButton5.current.classList.remove('buttonFocus');
 }
 // la troisieme page
 if (timeDisplay == Math.round(timerTotal/1.66)) {
   dispatch(setTimeDisplay("LoadingButton3"));
   console.log('la troisieme condition');
   }
-if (timeDisplay < timerTotal/1.66 && timeDisplay >= timerTotal/2.5) {
+if (timeDisplay == Math.round(timerTotal/1.66) && timeDisplay > timerTotal/2.5) {
+  console.log('On est sur la troisieme card *****')
   div3.style.display = "flex";
   div1.style.display = "none";
   div2.style.display = "none";
   div4.style.display = "none";
   div5.style.display = "none";
+  LoadingButton1.current.classList.remove('buttonFocus');
+  LoadingButton2.current.classList.remove('buttonFocus');
+  LoadingButton3.current.classList.add('buttonFocus');
+  LoadingButton4.current.classList.remove('buttonFocus');
+  LoadingButton5.current.classList.remove('buttonFocus');
 }
 // la quatrieme page
 if (timeDisplay == timerTotal/2.5) {
   dispatch(setTimeDisplay("LoadingButton4"));
   }
-if (timeDisplay < timerTotal/2.5 && timeDisplay >= timerTotal/5) {
+if (timeDisplay == timerTotal/2.5 && timeDisplay > timerTotal/5) {
   div4.style.display = "flex";
   div1.style.display = "none";
   div2.style.display = "none";
   div3.style.display = "none";
   div5.style.display = "none";
+  LoadingButton1.current.classList.remove('buttonFocus');
+  LoadingButton2.current.classList.remove('buttonFocus');
+  LoadingButton3.current.classList.remove('buttonFocus');
+  LoadingButton4.current.classList.add('buttonFocus');
+  LoadingButton5.current.classList.remove('buttonFocus');
 }
 // la cinquieme page
 if (timeDisplay == timerTotal/5) {
@@ -257,6 +275,11 @@ if (timeDisplay < timerTotal/5 && timeDisplay > 0) {
   div2.style.display = "none";
   div3.style.display = "none";
   div4.style.display = "none";
+  LoadingButton1.current.classList.remove('buttonFocus');
+  LoadingButton2.current.classList.remove('buttonFocus');
+  LoadingButton3.current.classList.remove('buttonFocus');
+  LoadingButton4.current.classList.remove('buttonFocus');
+  LoadingButton5.current.classList.add('buttonFocus');
 }
 if (timeDisplay == 0) {
   //dispatch(remaketime());

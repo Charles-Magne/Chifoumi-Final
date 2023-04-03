@@ -5,7 +5,6 @@
 }
 
 
-
 .carouselContenerMaine {
   position: relative; // sert a positioner les loadingbar en bas
   align-items: center;
@@ -172,9 +171,20 @@
   display: flex;
   width: 2.5rem;
   height: 0.7rem;
-  background-color: vars.$bleu-main;
+  background-color: white;
   margin: 1.3rem 0 1rem 1rem;
   border-radius: vars.$raduisLittle;
+  border: 1px solid vars.$bleu-main ;
+}
+
+.loadingTimeBarre:hover {
+  background-color: vars.$bleu-main ;
+  width: 2.7rem;
+  height: 0.9rem;
+}
+
+.buttonFocus {
+  background-color: vars.$bleu-main;
 }
 
 // Exemple de Mixine de Tony

@@ -3,9 +3,10 @@
 //initalise la connection aux webSockets
 export const CONNECTION_WEB_SO = 'CONNECTION_WEB_SO' ;
 
-export function connectionWebSo () { 
+export function connectionWebSo (salonState) { 
   return {
 type : CONNECTION_WEB_SO,
+salonState
   };
 }
 

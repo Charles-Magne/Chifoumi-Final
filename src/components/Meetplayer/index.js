@@ -202,36 +202,75 @@ function Meetplayer() {
     }
   }
 
+  // ******************************** optention de code lobby *********************************************************
+
+      /**
+ * le ramdom number que l'on recupere lorsque on arrive sur la page meetplayer (il va servire a aceder au serrver)
+ */
+       const salonNumber = useParams();
+       console.log('le useparams', salonNumber);
+
+  //!dispatch(connectionWebSo(salonState)); // on lance les websockets
+
+ // **************************************Gestion de l'affichage du participant ***********************************
+
+ useEffect(() => {
+
+  const divNonHote = document.querySelector(".contenerNonHote"); // le choix de l'avatar et du pseudo
+  const buttonLaunch = document.querySelector(".button__lancer__une__partie--2");
+
+  if ( nameMJ == "") { 
+    console.log('je ne suis pas l hote ');
+    divNonHote.style.display = "flex";
+    buttonLaunch.style.display = "none";
+  }
+
+        // Si le salon state est vide on est un participant donc on doit faire un useparam enregistrer le 
+  if ( salonState == "")  {
+    dispatch(saveLobbyRandom(salonNumber)); // ON enregistre le number salon dans le reducer Si le salonNumber est vide
+    console.log('on save le number dans le state');
+  }
+
+
+  // Si le salon state est vide on est un participant donc on doit faire un useparam enregistrer le 
+  if ( salonState !== "" && nameMJ == "" )  {
+        // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
+        const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
+        
+    dispatch(connectionWebSo(salonState)); // on lance les websockets Si le sate est rempli et que le nameMj est vide
+    dispatch(newInviteDetecte(indexRandomPlayer)); // si invité, je demande le name de l'hote Si le sate est rempli et que le nameMj est vide
+    console.log('on se connecter et notifie qu\'on est l\'invite');
+  }
+
+}, [salonState]);
+
+ // **************************************Gestion de l'affichage de l'hote ou du participant ***********************************
+
   useEffect(() => {
-    // on lance les websockets en verifiant si on est le hote ou invité
-    dispatch(connectionWebSo());
+        // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
+        const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
+
     const divHote = document.querySelector(".div__link--invit"); // le lien d'invitation
-    const divNonHote = document.querySelector(".contenerNonHote"); // le choix de l'avatar et du pseudo
-    const buttonLaunch = document.querySelector(
-      ".button__lancer__une__partie--2"
-    );
+
     const divJoueurSelf = document.querySelector(".joueurSelf"); // La div qui affiche le joueur self
+   const divJoueurHote = document.querySelector(".joueurHote"); // la div qui affiche le joueur self
 
-    // la ternaire check si hote ou invité pour gerer affichage
-    nameMJ != ""
-      ? ((divHote.style.display = "flex"),
-    dispatch(fetchCodeSalonWs(salonState)), // on envoie le number du lobby sur le serveur
-        (divJoueurSelf.style.display = "none")) // On cache la div joueur self et le choix de l'avatar
-      : ((divNonHote.style.display = "flex"),
-        (buttonLaunch.style.display = "none"));
+    // check si hote ou invité pour gerer affichage
+    if (nameMJ != "") {
+      dispatch(connectionWebSo(salonState)); // on lance les websockets 
+       divHote.style.display = "flex";
+      dispatch(fetchCodeSalonWs(salonState)); // on envoie le number du lobby sur le serveur
+      divJoueurHote.classList.add('Pseudo__joueurHoteSelf'); // Si je suis l'hote je passe la case en bleu
+      divJoueurSelf.style.display = "none"; // On cache la div joueur self et le choix de l'avatar
+      dispatch(HoteDetecte(nameMJ, imgMJ, indexRandomPlayer)); // Si je suis l'hote j'envoie mon nom a l'invité
+      console.log('je suis hote');
+      }
 
-        // Si je suis l'hote je passe la case en bleu 
-        nameMJ != "" ? document.querySelector('.joueurHote').classList.add('Pseudo__joueurHoteSelf')  : "" ;
 
-    // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
-    const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
+
 
     //! Attention, il faut virer les joueurs en trop La ternaire qui gere les joueurs lorsque le salon est plein navigate("/error")
 
-    // Si je suis l'hote j'envoie mon nom a l'invité ------ si invité, je demende le name de l'hote
-    nameMJ != ""
-      ? dispatch(HoteDetecte(nameMJ, imgMJ, indexRandomPlayer))
-      : dispatch(newInviteDetecte(indexRandomPlayer));
   }, []);
 
   //input du pseudo
@@ -348,16 +387,6 @@ function Meetplayer() {
     navigate(`/Playing/${salonState}`); 
   }
 }, [gameready]);
-
-/**
- * le ramdom number que l'on recupere lorsque on arrive sur la page meetplayer (il va servire a aceder au serrver)
- */
- const salonNumber = useParams();
- console.log('le useparams', salonNumber);
-useEffect(() => {
-  // On enregistre le number random qui gere le lobby
-  dispatch(saveLobbyRandom(salonNumber));
-}, []);
 
 
   return (

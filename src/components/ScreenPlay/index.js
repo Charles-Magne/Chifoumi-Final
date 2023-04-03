@@ -405,6 +405,7 @@ useEffect(() => {
 }, []);
 
 
+
 //Le code écrit dans cette fonction ne sera exécuté qu'au bout de 1 secondes
 function leDecompte() {
 

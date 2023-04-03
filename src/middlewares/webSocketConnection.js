@@ -64,11 +64,12 @@ let socket;
 // APPEL_API 3- ici on recupere l'action exporté juste au dessus et lui demande de recuperer les datas voulu
 const webSocketConnection = (store) => (next) => (action) => {
   switch (action.type) {
-    // Connection au serveur 3001 lors du useEffect de la page meetplayer
+    // Connection au serveur 3001 lors du useEffect de la page meetplayer salonState   `/Playing/${salonState}`
     case CONNECTION_WEB_SO: {
       socket = window.io("http://localhost:3001");
-      socket.emit("connection", {});
-
+      //socket = window.io(`http://localhost:3001/${action.salonState}`);
+      socket.emit("connection", (action.salonState), {});
+      console.log('je me connecte', socket );
       // On est notifier qu'un nouveau joueur rejoint le salon
       socket.on("new_invite_index", (newPlayer) => {
         const state = store.getState();

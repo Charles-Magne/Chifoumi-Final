@@ -1,0 +1,434 @@
+@use "../../assets/vars.scss";
+
+body {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.responsiveAlert{
+  display: none;
+}
+
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.watingForNewPlay{
+  display: none;
+}
+
+.resultview{
+  display: flex;
+  flex-direction: row;
+}
+
+.pubGaucheResultat{
+  display: flex;
+  width: 160px;
+  height: 600px;
+  background-color: gray;
+  margin: 5rem 0 0 1rem;
+}
+
+.containerResult{
+  width: 100rem;
+}
+
+/*la class qui contient les infos d'une seule taupe*/
+.div__les__taupes--contain--1 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  background-color: white;
+  width: 40rem;
+  height: 7em;
+  margin: 1rem 0;
+  border: 1px solid vars.$bleu-main;
+  border-radius: 0.5em;
+}
+
+
+/*la class qui contient l'icone de la taupe*/
+.div__role--main {
+  display: flex;
+  margin: 0 0 0 0;
+  width: 3rem;
+  align-items: center;
+}
+.div__les__taupes--contain--1{
+  margin: 1rem auto 0 auto ;
+}
+
+.compteurTaupe {
+  border: 1px solid vars.$bleu-main;
+  border-radius: 5rem;
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  left: 79rem;
+  bottom: 50rem;
+  background-color: vars.$jaune-main;
+  text-align: center;
+  color: vars.$bleu-main;
+  font-size: 1.6rem;
+}
+
+.scoreTaupe {
+  margin: 0.2rem 0 0 0;
+}
+
+.icone_taupe {
+  display: flex;
+  justify-items: center;
+  height: 3rem;
+  width: 3rem;
+  margin: 1rem 0 1rem 1rem ;
+}
+
+
+
+
+
+/*la class qui contient le pseudo et l'img de la taupe */
+.div__PseudoImg--Taupe {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  width: 10rem;
+  height: 8rem;
+  margin: 1rem;
+}
+
+.span__pseudo {
+  display: flex;
+  margin: 0 auto 0.7rem auto;
+  font-size: 1.5rem;
+  align-self: center;
+  color: vars.$bleu-main;
+}
+
+
+.img__Avatar {
+  display: flex;
+  align-self: center;
+  margin: 0 auto;
+  height: 5.5rem;
+}
+
+/*les trois cartes symboles et la carte qui a etait jouée*/
+.div__symboles--taupe {
+  display: flex;
+  align-items: center;
+}
+
+.carte__pierreTaupe{
+  background-color: white;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 1rem 0.5rem;
+  height: 4rem;
+  width: 3rem;
+}
+
+.carte__feuilleTaupe{
+  background-color: white;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.9rem 0.5rem;
+  height: 4rem;
+  width: 3rem;
+}
+
+.carte__ciseauTaupe{
+  background-color: white;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.9rem 0.5rem;
+  height: 4rem;
+  width: 3rem;
+}
+
+
+.contener__informateur {
+  display: flex;
+  margin: 1rem 1rem;
+  justify-content: space-around;
+  padding: 1rem 0;
+  //border: 1px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+}
+
+.div__Informateurs {
+  display: flex;
+  background-color: white;
+  justify-content: space-around;
+  align-items: center;
+  width: 30rem;
+  height: 5rem;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.contener__icone__informateur {
+  background-color: none;
+}
+
+.icone__informateur {
+  height: 2rem;
+}
+
+.contenerPersoInformateur{
+  display: flex;
+}
+
+.pseudoInformateur{
+  display: flex;
+  align-self: center;
+  margin: 0 0 0 1rem ;
+  color: vars.$bleu-main;
+}
+
+.imgAvatarResultat {
+  height: 4rem;
+}
+
+.carte__symbole__informateur {
+  background-color: white;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.compteurInformateurs {
+  border: 1px solid vars.$bleu-main;
+  border-radius: 5rem;
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  background-color: vars.$jaune-main;
+  text-align: center;
+  color: vars.$bleu-main;
+  font-size: 1.6rem;
+  right: -1rem;
+  bottom: 3.7rem;
+}
+
+.scoreInformateur {
+  margin: 0.2rem 0 0 0;
+}
+
+.contener__card {
+  display: flex;
+  flex-direction: row;
+}
+
+//------------------------- Si je suis la taupe ou l'informateur le css Change
+
+.icone_taupeSlef {
+  display: flex;
+background-color: white;
+padding: 0.5rem;
+border: 1px white solid;
+border-radius: 0.2rem;
+}
+
+// Si je suis la taupe
+.divTaupeSelf{
+  background-color: vars.$bleu-main ;
+}
+
+.nameTaupeSelf{
+  color: white;
+}
+
+//************* Les joueurs 
+
+.contener__player {
+  display: flex;
+  background-color: white;
+  border: 1px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 1rem 0 1rem;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.div__playerSelf {
+  display: flex;
+  margin: 0.5rem 0rem;
+  background-color: vars.$bleu-main;
+  justify-content: space-around;
+  align-items: center;
+  width: 30rem;
+  height: 5rem;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.div__player {
+  display: flex;
+  margin: 0.5rem 0rem;
+  background-color: white;
+  justify-content: space-around;
+  align-items: center;
+  width: 30rem;
+  height: 5rem;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.icone__playerSelf {
+  height: 2.5rem;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+}
+
+.icone__player {
+  height: 1.5rem;
+}
+
+.contenerPseudoPlayer{
+  display: flex;
+}
+
+.pseudoPlayerSelf{
+  display: flex;
+  align-self: center;
+  color: white ;
+  margin: 0 0 0 1rem;
+}
+
+.pseudoPlayer{
+  display: flex;
+  align-self: center;
+  color: vars.$bleu-main ;
+  margin: 0 0 0 1rem;
+}
+
+.carte__symbole-Selectionné__Player {
+  background-color: vars.$jaune-main;
+}
+
+.compteurPlayer {
+  display: none;
+  border: 1px solid vars.$bleu-main;
+  border-radius: 5rem;
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  background-color: vars.$jaune-main;
+  text-align: center;
+  color: vars.$bleu-main;
+  font-size: 1.6rem;
+  right: -1rem;
+  bottom: 3.7rem;
+}
+
+.scorePlayer {
+  margin: 0.2rem 0 0 0;
+}
+
+
+.carte__symbole__informateur {
+  background-color: white;
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.carte__pierre{
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2.4rem;
+  width: 2rem;
+  background-color: white;
+}
+
+.carte__feuille{
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2.4rem;
+  width: 2rem;
+  background-color: white;
+}
+
+.carte__ciseaux{
+  border: 2px solid vars.$bleu-main;
+  border-radius: 0.2rem;
+  margin: 0 1rem 0 0;
+  padding: 0.5rem 0.2rem;
+  height: 2.4rem;
+  width: 2rem;
+  background-color: white;
+}
+
+.carte__symbole-Selectionné__informateur {
+  background-color: vars.$red;
+}
+
+// On la met apres les autres pour que le background puisse etre appliqué
+.carte__symbole-Selectionné {
+  background-color: vars.$jaune-main;
+}
+
+.NewGameContener{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.buttonNewPartie {
+  display: flex;
+  margin: 2rem 2rem 0 0;
+  width: 15rem;
+  justify-content: center;
+  height: 3rem;
+  font-size: 1.5rem;
+  border: 1px solid vars.$bleu-main ;
+}
+
+.pubDroiteResultat{
+  display: flex;
+  width: 160px;
+  height: 600px;
+  background-color: gray;
+  margin: 5rem 1rem 0 0;
+}
+
+// *************************************** responsive **************************************
+
+
+  // Les ecrans jusqu'a 1330PX de large
+@media screen and (max-width:1320px) {
+
+  // a supprimer lorsque le responsive est fini
+  .responsiveAlert{
+    display: flex;
+    background-color: white;
+    color: red;
+  }
+}

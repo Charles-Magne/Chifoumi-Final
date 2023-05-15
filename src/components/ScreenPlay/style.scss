@@ -1,0 +1,358 @@
+@use "../../assets/vars.scss";
+
+.div__section-principal--ecran--de--jeu{
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(0deg, rgba(15,96,133,0.85), rgba(13,59,102,0.35));
+  margin: 1rem 0 0 0 ;
+  border-radius: 0.5em;
+  justify-content: space-between;
+  border: solid 2px;
+  border-color: vars.$bleu-main;
+  border-radius: 0.5em;
+  font-family: vars.$police-main;
+  }
+
+  .responsiveAlert{
+    display: none;
+  }
+  
+  .div__chronoetdialogue{
+      display: flex;
+      flex-direction: column;
+      width: 12rem;
+      height: 50rem;
+      color: var(--last-color);
+  }
+  
+  .div__chrono{
+      text-align: center;
+  }
+  
+  .ringChrono{
+      display: flex;
+      flex-direction:row-reverse;
+      border: 1px solid vars.$jaune-main;
+      width: 12rem;
+      height: 0.5rem;
+      margin: 1rem 0 0 1rem;
+      transform: 90deg ;
+  }
+  
+  .Chrono__Color{
+      background-color: vars.$jaune-main;
+      width: 100%;
+      height: 0.4rem;
+  }
+  
+  .div__chrono{
+      margin: 4% 4%;
+      font-size: 160%;
+      border-radius: 3rem ;
+      color: white;
+      margin: 2rem 0 0 2rem;
+  }
+  /*pour le moment la div n'est pas active*/
+  .div__dialogue{
+      width: 100%;
+      height: 100%;
+      margin-top: 80%;
+      background-color: white;
+  }
+  
+  .div__centrale{
+      width: 40%;
+      height: 100%;
+  }
+  
+  .Conseil_role{
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      color: vars.$bleu-main;
+      border: solid 2px;
+      border-radius: 0.5em;
+      border-color: vars.$bleu-main;
+      padding: 0 0 1% 0 ;
+      margin: 1% 0;
+  }
+
+  .iconeConseilTaupe{
+    display: none;
+    position: relative;
+    width: 2rem;
+    right: 8rem;
+    bottom: 0.7rem;
+  }
+
+  .iconeConseilTaupe2{
+    display: none;
+    position: relative;
+    width: 2rem;
+    right: 6rem;
+    bottom: 0.7rem;
+  }
+
+  
+  
+  .icone__titre{
+      display: block;
+      width: 5%;
+      margin: 1% auto;
+  }
+  
+  .Role__titre{
+      display: flex;
+      margin: 0 auto 0 auto;
+      font-size: 150%;
+      font-weight: 400;
+  }
+  
+  .div__consigne--openregle{
+      display: flex;
+      justify-content: space-between;
+      margin: 1em 0 0 0;
+      padding: 0 0 0 2em;
+  }
+  
+  .Conseil-role_p{
+      margin: 0 auto;
+  }
+  
+  .icone__ouvrir--conseil{
+      display: flex;
+      margin: 0 1em 0 0;
+      height: 1.5em;
+      width: 1.5em;
+  }
+  
+  .consignesCompletesHide{
+      text-align: center;
+      display: none;
+      margin: 0 1rem;
+  }
+
+  //*********** La carte action (Pupute ^^)
+  
+  .carte_pupute{
+      position: relative;
+      width: 10.5rem;
+      height: 14rem;
+      margin: 9% auto ;
+      text-align: center;
+      border: solid 1px;
+      border-color: vars.$bleu-main;
+      border-radius: 0.5em;
+      background-color: white;
+      padding-bottom: 10%;
+  }
+  
+  .symoble__mini__haut__gauche{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 10%;
+      height: 8%;
+      margin: 4% 0 0 4%;
+  }
+  
+  .symbole__action{
+      width: 3rem;
+      height: 3rem;
+      margin: 15% 2% 10% 2%;
+  }
+  
+  .titre__carte__action{
+      color: vars.$bleu-main;
+      margin-bottom: 5%;
+      font-size: 150%;
+  }
+  
+  .description__carte{
+      color: vars.$bleu-main;
+  }
+  
+  .symoble__mini__bas__droite{
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      width: 10%;
+      height: 8%;
+      margin: 0 4% 4% 0;
+      transform: rotate(180deg);
+  }
+
+  //**************** les cartes symboles
+  
+  .div__choixdelacarte{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 2%;
+      background-color: white;
+      border-radius: 0.5em;
+      border: solid 0.2em;
+      border-color: vars.$bleu-main;
+      margin: 2% 0;
+  }
+  
+  .button__carte{
+      display: flex;
+      flex-direction: column;
+      width: 10.5rem;
+      height: 14rem;
+      border: solid 0.2em;
+      border-radius: 0.5em;
+      border-color: vars.$bleu-main;
+      margin: 0 ;
+      box-shadow: 2px 2px 5px rgb(82, 81, 81);
+  }
+
+  .cardInfo{
+    background-color: vars.$red;
+  }
+
+  .image_symbole--up{
+    width: 1.3rem;
+    margin: 0.5rem ;
+  }
+  
+  .image_symbole{
+      width: 5rem;
+      //height: 80%;
+      margin: 0.5rem auto 0rem auto ;
+  }
+
+  .texteSymbole{
+    display: flex;
+    width: auto;
+    color: vars.$bleu-main;
+    margin: 1rem auto 1.3rem auto;
+    font-family: vars.$police-main;
+  }
+
+  .contenerImgDown{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .image_symbole--Down{
+    display: flex;
+    width: 1.3rem;
+    margin: 0.5rem ;
+    transform: rotate(180deg);
+    
+  }
+
+  //***************** Liste des joueurs
+  
+  .div__joueurs--roles--liste{
+      width: 20%;
+      height: 45rem;
+      background-color: white;
+      margin: 1% 1%;
+      padding: 1%;
+      border-radius: 0.5em;
+      border: solid 1px vars.$bleu-main;
+  }
+
+  .Wrapper__Joueur{
+    overflow-y: scroll;
+    height: 42rem;
+  }
+  
+  .joueur_local{
+      display: none;
+      flex-direction: row;
+      margin: 2% 5%;
+      padding: 2% 0;
+      border: 2px solid;
+      border-color: vars.$bleu-main;
+      border-radius: 0.5em;
+      color: vars.$bleu-main;
+  }
+
+  .HoteSelf{
+    display: none;
+    flex-direction: row;
+    margin: 2% 5%;
+    padding: 2% 0;
+    border: 2px solid;
+    border-color: vars.$bleu-main;
+    border-radius: 0.5em;
+    background-color: vars.$bleu-main;
+    color: white;
+  }
+
+  .joueurHotePlaying{
+    display: flex;
+    width: 19rem;
+    margin: 2% 5%;
+    justify-content: center;
+  }
+
+  .joueurSelfPlaying{
+    display: flex;
+  }
+
+  .JoueurSelf{
+    background-color: vars.$bleu-main;
+  }
+
+  // Sert a mettre en evidence la carte
+  .select{
+    background-color: vars.$jaune-main;
+    border: 1px solid;
+    border-color: vars.$bleu-main;
+    border-radius: 0.2em;
+  }
+  
+  .avatar__joueur{
+      height: 3.2em;
+      margin: 0 0 0 0.5em;
+  }
+  
+  .container__nameuser--button{
+      width: 100%;
+  }
+
+  .Pseudo__joueurHote{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 0.5rem 0 ;
+  }
+  
+  .Pseudo__joueur{
+    display: flex;
+    color: vars.$bleu-main;
+    justify-content: center;
+      margin: 0 0 0.5em 0;
+  }
+  
+  .Pseudo__joueur--Self{
+color: white;
+  }
+
+  .div__button--role{
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  .img__Role{
+      height: 1.5em;
+  }
+
+  // *************************************** responsive **************************************
+
+
+  // Les ecrans jusqu'a 1330PX de large
+@media screen and (max-width:1320px) {
+
+  // a supprimer lorsque le responsive est fini
+  .responsiveAlert{
+    display: flex;
+    background-color: white;
+    color: red;
+  }
+}

@@ -1,0 +1,250 @@
+@use "../../assets/vars.scss";
+
+body {
+  background-image: url("../../assets/Pictures/Fond-decran/Background.png") ;
+  font-family: vars.$police-main ;
+}
+
+.responsiveAlert{
+  display: none;
+}
+
+.imgTitre {
+  display: flex;
+  height: 8rem;
+  margin: 1rem auto 0 auto;
+}
+
+.contenaireMain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 1rem 0 0 0;
+}
+
+.Pub-left {
+  display: flex;
+  width: 160px;
+  height: 600px;
+  background-color: gray;
+}
+
+.reglePseudoButton {
+  height: 600px;
+  width: 60rem;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(15,96,133,0.8);
+  //background-color: linear-gradient(90deg, rgba(13,59,102,1) , rgba(15,96,133,1)) ;
+  border: 1px vars.$bleu-secondary solid;
+  border-radius: 0.5rem;
+  padding: 1rem 0 0 0;
+}
+
+.reglePseudo{
+  display: flex;
+  flex-direction: row;
+}
+
+.contenerRegle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.titreRegle{
+  color: white;
+  font-size: 1.4rem;
+}
+
+.soustitreRegle{
+  color: white;
+  margin: 1rem 0 1rem 0;
+}
+
+.contenerPseudo{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  color: vars.$bleu-main;
+}
+
+.alertLength{
+  position: absolute;
+  top: 10.1rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+.alertEmpty{
+  position: absolute;
+  top: 10.1rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+.inputNameHote{
+  border: 1px solid vars.$bleu-main;
+  border-radius: vars.$raduisLittle;
+  height: 2rem;
+  width: 12rem;
+  margin: 1rem 0 1.4rem 0;
+  padding: 0 0 0 0.5rem ;
+  font-family: vars.$police-main;
+  font-size: 1.3rem;
+  color: vars.$bleu-main;
+  text-transform: lowercase;
+}
+
+.alertAvatarEmpty{
+  position: absolute;
+  top: 14rem;
+  right: 51rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+.ContenerButton{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.buttonLaunch{
+  display: flex;
+  margin: 1rem 1rem 0 0;
+  background-color: vars.$jaune-main;
+  border-bottom: 1px solid vars.$bleu-main;
+  border-radius: vars.$raduis;
+  font-family: vars.$police-main;
+  color: vars.$bleu-main;
+  font-size: 1.2rem;
+}
+
+.Pub-right {
+  display: flex;
+  width: 160px;
+  height: 600px;
+  background-color: gray;
+}
+
+.pubPortable{
+  display: none;
+}
+
+
+
+
+//**************************************************** Responsive **************************************************************************
+
+
+
+
+
+
+
+
+
+// Les ecrans jusqu'a 1320PX de large
+@media screen and (max-width:1320px) {
+
+  // a supprimer lorsque le responsive est fini
+  .responsiveAlert{
+    display: flex;
+    background-color: white;
+    color: red;
+  }
+
+  .Pub-left {
+    position: sticky;
+    top: 10rem;
+  }
+
+  .reglePseudoButton{
+    height: 60rem;
+    width: 30rem;
+  }
+.reglePseudo{
+  display: flex;
+  flex-direction: column;
+}
+
+.contenerRegle{
+  width: 100%;
+}
+
+.titreRegle{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.contenerPseudo{
+  width: 100%;
+}
+
+.ContenerButton{
+  padding: 0 0 3rem 0 ;
+}
+
+.Pub-right {
+  position: sticky;
+  top: 10rem;
+}
+
+}
+
+// Les ecrans jusqu'a 850PX de large
+@media screen and (max-width:850px) {
+
+  .Pub-right {
+    display: none;
+  }
+}
+
+// Les ecrans jusqu'a 650PX de large
+@media screen and (max-width:650px) {
+
+  .contenaireMain {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reglePseudoButton {
+    margin: 0 0 10rem 0;
+  }
+
+  .Pub-left {
+    display: none;
+  }
+
+  .Pub-right {
+    display: none;
+  }
+
+  .pubPortable{
+    display: flex;
+    height: 50px;
+    width: 320px;
+    background-color: gray;
+    margin: 0 0 1rem 0;
+  }
+}

@@ -1,0 +1,220 @@
+@use "../../assets/vars.scss";
+
+.iconeRoleAll {
+  width: 2rem;
+}
+
+
+.carouselContenerMaine {
+  position: relative; // sert a positioner les loadingbar en bas
+  align-items: center;
+  background-color: white;
+  width: 27rem;
+  height: 28rem;
+  border: 1px solid vars.$bleu-main;
+  border-radius: vars.$raduis;
+  color: vars.$bleu-main;
+}
+
+.carouselContener {
+  flex-direction: column;
+  align-items: center;
+  width: 27rem;
+  height: 28rem;
+  color: vars.$bleu-main;
+  padding: 0 1rem 0 1rem;
+}
+
+//*************Article 1 *****************************
+
+.article1 {
+  display: flex; //Flex
+}
+
+.titre {
+  margin: 2rem 0 0rem 0;
+}
+
+.role {
+  display: flex;
+  flex-direction: column;
+  margin: 2.5rem 0 0 0;
+}
+
+.iconeRole {
+  display: flex;
+  width: 3rem;
+  margin: 0 0rem 0.4rem 0;
+  align-self: center;
+}
+
+.RoleName {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+//*************Article 2 *****************************
+
+.article2 {
+  display: none; //Flex
+}
+
+.titreRegleContener2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem 0 0 0;
+}
+
+.iconeTaupe2 {
+  margin: 0 1rem 0 0;
+}
+
+.titreRegle2 {
+  display: flex;
+  align-self: center;
+}
+
+.cardExemple2 {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 0 0;
+}
+
+.CardSymbole {
+  width: 2.6rem;
+  height: 3rem;
+  border: 2px solid vars.$bleu-main;
+  margin: 0 1rem 0 1rem;
+  border-radius: vars.$raduis;
+  padding:0.6rem 0.4rem;
+}
+
+.cardRed {
+  background-color: vars.$red;
+}
+
+.cardJaune {
+  background-color: vars.$jaune-main;
+}
+
+.DansCeCasLa {
+  display: block;
+  text-align: center;
+  margin: 1.3rem 0 0 0;
+}
+
+.policebig {
+  font-size: 1.2rem;
+}
+
+//*************Article 3 *****************************
+
+.article3 {
+  display: none; // flex
+}
+
+.imgRole{
+  margin: 1rem 0 0 0;
+}
+
+
+
+//*************Article 4 *****************************
+
+.article4 {
+  display: none; // flex
+}
+
+.sautDeLigne{
+  margin: 1rem 0 0 0;
+}
+
+//*************Article 5 *****************************
+
+.article5 {
+  display: none; // flex
+}
+.souligné{
+  text-decoration: underline;
+}
+
+
+
+.iconeDiscord{
+  width: 10rem;
+}
+
+.iconeSkype{
+  width: 6rem;
+  margin: 1rem 1rem 0 0 ;
+}
+
+.iconeWhatsapp{
+  width: 2.5rem;
+  margin: 1rem 1rem 0 0 ;
+}
+
+.iconeMessenger{
+  width: 2rem;
+  margin: 1rem 1rem 0 0 ;
+}
+
+.contenereTimerbar {
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  width: 27rem;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.loadingTimeBarre {
+  display: flex;
+  width: 2.5rem;
+  height: 0.7rem;
+  background-color: white;
+  margin: 1.3rem 0 1rem 1rem;
+  border-radius: vars.$raduisLittle;
+  border: 1px solid vars.$bleu-main ;
+}
+
+.loadingTimeBarre:hover {
+  background-color: vars.$bleu-main ;
+  width: 2.7rem;
+  height: 0.9rem;
+}
+
+.buttonFocus {
+  background-color: vars.$bleu-main;
+}
+
+// Exemple de Mixine de Tony
+/*
+@mixin test {
+    width: 50vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+@mixin test-color ($color) {
+    color: $color;
+}
+.demonstration-container1 {
+    @include test-color(red);
+    @include test;
+}
+.demonstration-container2 {
+    @include test-color(blue);
+    @include test;
+}
+.demonstration-container3 {
+    @include test-color(purple);
+    @include test;
+}
+.demonstration-container4 {
+    @include test-color(pink);
+    @include test;
+}
+*/

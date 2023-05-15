@@ -1,0 +1,846 @@
+@use "../../assets/vars.scss";
+
+
+.pseudoBody{
+  display: flex;
+  justify-content: space-around;
+  font-family: vars.$police-main;
+}
+
+.responsiveAlert{
+  display: none;
+}
+
+.ad-1{
+  display: flex;
+  width: 160px;
+  height: 600px;
+  background-color: gray;
+  margin: 6rem 0 0 0;
+}
+
+.contener-main{
+  display: flex;
+  flex-direction: column;
+  width: 80rem; //! attention
+  height: 45rem;
+}
+
+.contener-header{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.logoTitre {
+display: flex;
+  left: 20%;
+  height: 5rem;
+}
+
+.button__langue {
+  display: none;
+  position: absolute;
+  right: 20%;
+  top: 25%;
+  width: 2rem;
+}
+
+.drapeau {
+  margin: 0.2em 0 0 0;
+  width: 75%;
+}
+
+.div__Menu--langue {
+  position: absolute;
+  width: 5rem;
+  height: 3rem;
+  background-color: red;
+  top: 75%;
+  right: 10%;
+  border-radius: 0.5em;
+  display: none;
+  z-index: 5;
+}
+
+/*se connecter sans rentrer son adresse, juste avec un lien resaux sociaux*/
+.button__connection {
+  position: absolute;
+  right: 0px;
+  width: max-content;
+  height: min-content;
+  top: 25%;
+  padding: 0.6% 0.6em;
+  font-size: 60%;
+}
+
+.div__menu--connexion {
+  display: flex;
+  width: 80%;
+  height: 1200%;
+  background-color: var(--last-color);
+  top: 150%;
+  right: 10%;
+  border-radius: 0.5em;
+  border: solid 2px;
+  border-color: var(--bleu-one);
+  box-shadow: 10px 5px 5px darkslategrey;
+  display: none;
+  z-index: 5;
+}
+
+// ********** main general 
+
+.div__section-principal--inviter--joueur {
+  display: flex;
+  flex-direction: row;
+  width: 80rem;
+  background: linear-gradient(0deg, rgba(15, 96, 133, 0.85), rgba(13, 59, 102, 0.35));
+  height: 40rem;
+  border-radius: 0.5em;
+  justify-content: space-between;
+}
+
+// ******** le menu de gauche 
+
+.div__roles--options {
+  display: flex;
+  width: 20rem;
+  height: 40rem;
+  background-color: white;
+  border-radius: vars.$raduis;
+  flex-direction: column;
+}
+
+.contain__role--options {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+.Button__regles {
+  width: 50%;
+  padding: 3% 0;
+  font-size: 110%;
+  border-radius: 0.5em 0 0 0;
+  font-family: vars.$police-main;
+}
+
+.Button__options {
+  width: 50%;
+  padding: 3% 0;
+  font-size: 110%;
+  border-radius: 0 0.5em 0 0;
+  font-family: vars.$police-main;
+}
+
+.les_regles {
+  display: none;
+}
+
+.P__astuces--1 {
+  width: 80%;
+  margin-bottom: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: vars.$police-main;
+}
+
+.P__astuces--2 {
+  width: 80%;
+  margin-bottom: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: vars.$police-main;
+}
+
+.P__astuces--3 {
+  width: 80%;
+  margin-bottom: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: vars.$police-main;
+}
+
+/*div a cacher ou a afficher selon le clic*/
+.les_options {
+  display: block;
+  width: 100%;
+  height: 50%;
+  margin-bottom: 10%;
+}
+
+//********************************* le carousell
+.les_regles{
+  align-content: center;
+  flex-direction: column;
+  color: vars.$bleu-main;
+  padding:  0 1rem;
+}
+
+//class commun pour ne pas repeter de code
+.pageRegle{
+  flex-direction: column;
+}
+
+.regleIconeRole{
+  width: 2rem;
+}
+
+.regleIconeSymbole{
+  width: 2rem;
+}
+
+.contenerRow{
+  flex-direction: row;
+}
+
+.pageRegle1{
+  display: flex;
+  flex-direction: column;
+}
+
+.imgRegle1{
+  display: flex;
+  width: 2rem;
+  margin: 2rem 0 0 0;
+}
+
+.regle1role{
+  display: flex;
+  margin: 0.5rem 0 0 0;
+}
+
+.pageRegle2{
+  display: none;
+}
+
+.pageRegle3{
+  display: none;
+}
+
+.pageRegle4{
+  display: none;
+}
+
+.pageRegle5{
+  display: none;
+}
+
+.contenerButtonRegle{
+  display: flex;
+  //width: 100%;
+  height: 0.8rem;
+  margin: 0 auto;
+  justify-self: center;
+  flex-direction: row;
+  position: absolute;
+  bottom: 8rem;
+  justify-content: space-around;
+}
+
+.buttonRegle{
+display: flex;
+width: 2rem;
+border: 1px solid vars.$bleu-main;
+border-radius: 0.5rem;
+}
+
+.titre--option {
+  font-size: 110%;
+  font-family: vars.$police-main;
+}
+
+.div__Difficultéchoix {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 7% 5%;
+  color: vars.$bleu-main;
+  margin-bottom: 5%;
+  font-family: vars.$police-main;
+}
+
+.button__difficulté {
+  margin: 5% 0 0 0;
+  font-family: vars.$police-main;
+}
+
+.h3__nb_de_taupe {
+  display: block;
+  text-align: center;
+  color: vars.$bleu-main;
+  padding: 7% 5%;
+}
+
+.div__nbDeTaupe--choix {
+  display: flex;
+  justify-content: center;
+  color: vars.$bleu-main;
+  margin-bottom: 5%;
+}
+
+.choixTaupe{
+  display: flex;
+  flex-direction: row;
+  margin: 0 2rem 0 0 ;
+}
+
+.checkbox--taupe{
+  margin: 0 0 0 0.5rem ;
+}
+
+.checkbox--taupe:hover {
+  background-color: red;
+}
+
+.div__gestionCarteAction {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+  color: vars.$bleu-main;
+}
+
+.button__carte--pupute {
+  display: block;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1% 5%;
+  margin-bottom: 5%;
+  font-family: vars.$police-main;
+}
+// ************ choix du pseudo et de l'avatar  => non-visible par l'hote
+.contenerNonHote{
+  display: none;
+  flex-direction: column;
+  width: 80rem;
+  align-items: center;
+  color: vars.$bleu-main;
+}
+
+.alertLength{
+  position: absolute;
+  top: 10.1rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+.alertEmpty{
+  position: absolute;
+  top: 10.1rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+.formeNameNonHote{
+  margin: 0 0 0 1.2rem;
+}
+
+.inputName{
+  border: 1px solid vars.$bleu-main;
+  border-radius: vars.$raduisLittle;
+  height: 2rem;
+  width: 12rem;
+  margin: 1rem 0 1.4rem 0;
+  padding: 0 0 0 0.8rem ;
+  font-family: vars.$police-main;
+  color: vars.$bleu-main;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+}
+
+.alertAvatarEmpty{
+  position: absolute;
+  top: 14rem;
+  right: 51rem;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+}
+
+.send_name--button{
+  position: relative;
+ right: 2rem;
+ bottom: 0.1rem;
+ border-radius: 0.2rem 0 0.2rem 0;
+ width: 1.9rem;
+ height: 2rem;
+}
+
+// ************ Le button du centre pour copier le lien => visible seulement par l'hote
+.contenerInvitLink{
+  display: none;
+  width: 60rem;
+justify-content: center;
+}
+
+.div__link--invit {
+  display: flex;
+  flex-direction: column;
+  margin: auto 3.5rem auto 3.5rem ;
+  height: 12rem;
+  width: 20rem;
+  color: vars.$bleu-main;
+  border-radius: 0.5em;
+  border: 3px solid;
+  border-color: vars.$bleu-main;
+  background-color: white;
+  box-shadow: 2px 2px 5px gray;
+  font-family: vars.$police-main;
+}
+
+.div__link--invit:hover {
+  display: flex;
+  position: relative;
+  top: 3px;
+  left: 2px;
+}
+
+.img__icone--information{
+  display: flex;
+  margin: 0.3em 0 0 90%;
+  height: 1.2em;
+}
+
+.div__conseil--hide{
+  position: absolute;
+  display: none;
+  width: 10em;
+  left: 105%;
+  bottom: 70%;
+  font-family: var(--police);
+  font-size: 120%;
+  color: var(--bleu-one);
+  background-color: var(--last-color);
+  border: 2px solid var(--bleu-one);
+  border-radius: 0.5em;
+  z-index: 2;
+padding: 1em 0 ;
+}
+
+.partage__titre {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--police);
+  padding: 2% 0 5% 0 ;
+  font-weight: 400;
+  font-size: 120%;
+}
+
+.img__partager {
+  display: flex;
+  margin: 5% 0 5% 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+//************************************************ la div de droite => les joueurs
+
+.wapperJoueur{
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.div__listeJoueurs {
+  display: flex;
+  flex-direction: column;
+  //position: relative;
+  width: 30rem;
+  height: 40em;
+  background-color: white;
+  border-radius: 0.5em;
+}
+
+.div__nbdejoueur {
+  display: flex;
+  justify-content: center;
+  margin: 5% 0;
+  color: vars.$bleu-main;
+}
+
+.nbdejoueurs {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 5% 0;
+}
+
+.listedejoueurs {
+  margin: 10% 2%;
+  margin-bottom: 15%;
+}
+
+.Joueur__localStorage {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2% 5%;
+  padding: 2% 0;
+  border: 2px solid;
+  border-color: var(--bleu-one);
+  border-radius: 0.5em;
+  color: var(--bleu-one);
+}
+
+.joueurHote{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2% 5%;
+  padding: 2% 0;
+  border: 2px solid;
+  border-color: var(--bleu-one);
+  border-radius: 0.5em;
+  color: var(--bleu-one);
+}
+
+// Le pseudo de l'hote vu par les autres joueurs
+.Pseudo__joueurHoteMeet{ 
+  display: flex;
+  width: 7rem;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-self: center;
+  margin: 0rem 0rem 0rem 0rem;
+  padding: 0 0 0 1rem ;
+  //color: vars.$bleu-main ;
+  text-transform: lowercase;
+}
+
+// Le pseudo de l'hote vu par lui meme
+.Pseudo__joueurHoteSelf{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2% 5%;
+  padding: 2% 0;
+  border: 2px solid;
+  border-color: var(--bleu-one);
+  border-radius: 0.5em;
+  color: var(--bleu-one);
+  color: white;
+  background-color: vars.$bleu-main;
+  text-transform: capitalize;
+}
+
+.joueurSelf{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2% 5% 2% 5%;
+  padding: 2% 0;
+  border: 2px solid;
+  border-color: var(--bleu-one);
+  border-radius: 0.5em;
+  color: var(--bleu-one);
+  background-color: vars.$bleu-main;
+  text-transform: lowercase;
+}
+
+
+.imgSelfTrue{
+  border: 1rem;
+  border-radius: 0.2rem;
+  padding: 0.3rem;
+}
+
+.Joueur__localStorageSelf{
+  display: flex;
+  justify-content: space-around ;
+}
+
+.logo__joueursSelf{
+  display: flex;
+  width: 2rem;
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+
+.Pseudo__joueurSelf{
+  display: flex;
+  width: 7rem;
+  font-size: 1.2rem;
+  align-self: center;
+  color: vars.$bleu-main;
+  margin: 0rem 0rem 0rem 0rem;
+  text-transform: lowercase;
+}
+
+.PseudoSelfTrue{
+  display: flex;
+  color: white;
+}
+
+.playerReady{
+  display: none;
+  height: 2rem;
+  margin: 0 0 0 0.4rem;
+  align-self: center;
+  color: vars.$bleu-main;
+  padding: 0.4rem 0.5rem ;
+}
+
+.playerReadyHote{
+  display: flex;
+}
+
+.playerWaiting{
+  display: flex;
+  height: 2rem;
+  color: vars.$bleu-main;
+  align-self: center;
+  padding: 0.4rem 0.5rem ;
+  margin: 0 0 0 0.4rem;
+}
+
+.button__lancer__une__partie--2 {
+  /*position: absolute;
+  bottom: 0px;
+  right: 0px;*/
+  display: flex;
+  margin: 0.7rem 5.2rem;
+  width: 8rem;
+  height: 2em;
+  padding: 0.2rem 0 0 0 ;
+  font-size: 100%;
+  justify-content: center;
+}
+
+.alert__nb--player{
+  color: vars.$red;
+  display: none;
+  background-color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: vars.$raduisLittle;
+  color: vars.$red;
+  border: 1px solid vars.$red;
+  justify-content: center;
+  width: 12rem;
+  margin: 0 3rem;
+}
+
+.ad-2 {
+  display: flex;
+  margin: 6rem 0 0 0;
+  width: 160px;
+  height: 600px;
+  background-color: gray;
+  overflow: scroll;
+}
+
+.contenerPubPortable{
+  display: none;
+  justify-content: center;
+  width: 33rem;
+  position: sticky;
+  top: 15rem;
+}
+
+.pubportableMeetplayer{
+  display: none;
+  background-color: gray;
+  width: 320px;
+  height: 50px;
+}
+
+
+
+
+
+//**************************************************** Responsive **************************************************************************
+
+
+
+
+
+// Les ecrans jusqu'a 1670PX de large
+@media screen and (max-width:1670px) {
+
+  .contener-main{
+    width: 60rem;
+  }
+
+  .div__section-principal--inviter--joueur {
+    width: 60rem;
+  }
+
+  .div__roles--options {
+    width: 30rem;
+  }
+
+  .div__link--invit {
+    width: 20rem;
+    height: 12rem;
+  }
+
+  .Pseudo__joueurSelf{
+    margin: 0 0 0 1rem ;
+  }
+
+   .Joueur__localStorage {
+    padding: 0 auto;
+  }
+
+  .logo__joueursSelf{
+    width: 1.5rem;
+    margin: 0 0rem 0 0rem;
+  }
+
+}
+
+
+// Les ecrans jusqu'a 1330PX de large
+@media screen and (max-width:1320px) {
+
+  // a supprimer lorsque le responsive est fini
+  .responsiveAlert{
+    display: flex;
+    background-color: white;
+    color: red;
+  }
+  
+  .contener-main{
+    width: 40rem;
+    height: 120rem;
+  }
+
+  .contenerNonHote{
+    width: 40rem;
+  }
+
+  .div__section-principal--inviter--joueur {
+    flex-direction: column;
+    width: 40rem;
+    height: 80rem;
+    align-items: center;
+  }
+
+  .div__roles--options {
+    width: 30rem;
+    height: 52rem;
+  }
+
+
+  .div__link--invit {
+    margin: 2rem 0 2rem 0  ;
+  }
+
+  .div__listeJoueurs {
+    width: 30rem;
+    margin: 2rem 0 0 0;
+  }
+
+  .logo__joueursSelf {
+    width: 5rem;
+  }
+
+  .Pseudo__joueurHoteMeet{
+    font-size: 2rem;
+    width: 11rem;
+  }
+
+  .Pseudo__joueurSelf {
+    font-size: 2rem;
+    width: 11rem;
+  }
+
+  .ad-1 {
+    position: sticky;
+    top: 10rem;
+  }
+
+  .ad-2 {
+    position: sticky;
+    top: 10rem;
+  }
+
+}
+
+// Les ecrans jusqu'a 1160PX de large
+@media screen and (max-width:1160px) {
+
+  .contener-main{
+    width: 30rem;
+  }
+
+  .div__section-principal--inviter--joueur {
+    width: 30rem;
+  }
+
+}
+
+// Les ecrans jusqu'a 880PX de large
+@media screen and (max-width:880px) {
+
+  .ad-2 {
+    display: none;
+  }
+
+}
+
+// Les ecrans jusqu'a 670PX de large
+@media screen and (max-width:670px) {
+  .contener-main{
+    width: 22rem;
+  }
+
+  .div__section-principal--inviter--joueur {
+    width: 22rem;
+  }
+}
+
+// Les ecrans jusqu'a 510PX de large la pub pour le portable apparait
+@media screen and (max-width:540px) {
+
+  .pseudoBody{
+    flex-direction: column;
+  }
+
+  .ad-1{
+  display: none;
+}
+
+  .contener-main{
+    width: 31rem;
+    height: 80rem;
+  }
+
+  .contenerNonHote{
+    width: 31rem;
+  }
+
+
+  .div__section-principal--inviter--joueur {
+    width: 31rem;
+  }
+
+  .contenerPubPortable{
+    display: flex;
+  }
+
+  .pubportableMeetplayer{
+    display: flex;
+  }
+}

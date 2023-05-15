@@ -1,0 +1,55 @@
+@use "../../assets/vars.scss";
+
+.avatarContener {
+  display: flex;
+  width: 27rem;
+  height: 28rem;
+  background-color: white;
+  border: 1px solid vars.$bleu-main;
+  border-radius: .5rem;
+}
+
+.wrapperAvatarImg{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: scroll;
+  padding: 1rem 0 1rem 0 ;
+  scrollbar-color: vars.$bleu-main;
+}
+
+.imgAvatar{
+  display: flex;
+  width: 4rem;
+  height: 5rem;
+  margin: 1rem 1rem 0 1rem;
+}
+
+.imgAvatar:hover{
+  position: relative;
+  width: 4.5rem;
+  background-color: vars.$bleu-main;
+  padding: 0.4rem ;
+  border-radius: vars.$raduis;
+}
+
+//************************* Responsive
+
+
+// Les ecrans jusqu'a 1670PX de large
+@media screen and (max-width:1670px) {
+
+.avatarContener {
+  width: 20rem;
+}
+}
+
+@media screen and (max-width:1320px) {
+
+  .avatarContener {
+  width: 30rem;
+}
+
+
+
+}

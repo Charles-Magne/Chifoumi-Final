@@ -59,7 +59,7 @@ import {
 } from "../action/Avatar";
 
 let socket;
-//const dispatch = useDispatch();
+const dispatch = useDispatch();
 
 // APPEL_API 3- ici on recupere l'action exporté juste au dessus et lui demande de recuperer les datas voulu
 const webSocketConnection = (store) => (next) => (action) => {
@@ -69,10 +69,11 @@ const webSocketConnection = (store) => (next) => (action) => {
 
       // Si je suis en developpement ****************
       //socket = window.io("http://localhost:3001");
-      //socket = window.io(`http://localhost:3001/${action.salonState}`); 443
+      //socket = window.io(`http://localhost:3001/${action.salonState}`); port recommandé => 443
+      socket = window.io("https://play.pierrefeuillearnaque.com:21");
 
       //si je suis en production *****************  
-      socket = window.io("https://play.pierrefeuillearnaque.com:443");
+      //socket = socket = window.io("http://localhost:3001");
 
       
       socket.emit("connection", (action.salonState), {});

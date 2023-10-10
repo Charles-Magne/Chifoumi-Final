@@ -70,7 +70,7 @@ const webSocketConnection = (store) => (next) => (action) => {
       //si je suis en developpement *****************  
       //socket = window.io("http://localhost:3001");
       //socket = window.io(`http://localhost:3001/${action.salonState}`); port recommandé => 443
-      //socket = window.io("https://play.pierrefeuillearnaque.com:45263");
+      //socket = window.io("https://play.pierrefeuillearnaque.com:45263"); ok
 
       //si je suis en production *****************  
       const serverIP = "37.187.38.225"; // Remplacez par l'adresse IPv4 de votre serveur

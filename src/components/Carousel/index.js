@@ -30,10 +30,6 @@ function Carousel() {
    */
   let timeDisplay = useSelector((state) => state.carousel.timerDisplay); // le temps qui s'ecoule et gere l'affichage
 
-    /**
-   * la variable qui contient le decompte du carousell. elle est inité par le state et lorsque qu'elle atteint 0 elle est reaffecté a time total. 10 s par ecran.
-   */
-     let timeCheck = useSelector((state) => state.carousel.timerDisplay); // le temps qui s'ecoule et gere l'affichage
   /**
    * La valeur inital du total. sert a savoir ou on n'est dans le decompte.
    */
@@ -50,7 +46,7 @@ function Carousel() {
   const LoadingButton4 = useRef(null); 
   const LoadingButton5 = useRef(null); 
 
-
+// Il semble que cette ligne ne serve a rien a virée
   const changeTimeDisplay = () => {
     console.log('on test le timer dans le returne du useEffect', timeDisplay);
     return timeDisplay;
@@ -159,18 +155,21 @@ changeTimeDisplay(timeDisplay);
  
 
   
-
+  console.log('*****en dehors de la variable, on test le timer et le state', timeDisplay);
 
   //! probleme ce code s'exectue sans se mettre a jour via le state
 //! Pour l'instant l'ecoute du timer est ok, mais pas d'ecoute sur le state
 // il faut avoir deux variable un useselector et un decompte
 // Cette fonction s'execute toutes les 1 secondes
   const decompte = () => {
-    let newValue = timeDisplay;
+    console.log('*****a l\'interieur de la variable, on test le timer et le state', timeDisplay);
+      let newValue = timeDisplay;
+    
+      console.log('le time display**',  timeDisplay, newValue);
+
     // lorsque le timer est egale au time referance d'une page on envoie une action
       // debut de la deuxieme card 48
       if (newValue === timerTotal/1.25 ) {
-        console.log('time de la deuxieme card', timeDisplay, timeCheck);
         dispatch(setTimer(timeDisplay));
         newValue = 47;
       }    
@@ -194,11 +193,10 @@ changeTimeDisplay(timeDisplay);
         dispatch(setTimer(60));
         newValue = timerTotal;
       }
-      console.log('le time display**',  timeDisplay, newValue);
+      
       newValue = newValue - 1;
       timeDisplay = newValue;
       return newValue;
-      
     };
 
     useEffect(() => {

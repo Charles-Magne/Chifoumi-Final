@@ -190,6 +190,25 @@
   background-color: vars.$bleu-main;
 }
 
+// Les ecrans jusqu'a 499PX de large
+@media screen and (max-width:499px) {
+
+  .carouselContenerMaine{
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .carouselContener{
+    width: 20rem;
+  }
+  .contenereTimerbar{
+    width: 20rem;
+    padding: 0 1rem 0 0;
+  }
+  
+}
+
 // Exemple de Mixine de Tony
 /*
 @mixin test {

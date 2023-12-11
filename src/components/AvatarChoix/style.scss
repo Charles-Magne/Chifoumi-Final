@@ -53,3 +53,18 @@
 
 
 }
+
+// Les ecrans jusqu'a 499PX de large
+@media screen and (max-width:499px) {
+
+  .avatarContenerMain{
+    width: 27rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+.avatarContener{
+  width: 22rem;
+  display: flex;
+}
+}

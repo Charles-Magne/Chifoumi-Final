@@ -31,8 +31,8 @@ const role = (store) => (next) => (action) => {
   
   switch(action.type){
     case SEND_RANDOM_FOR_ROLE:{
-      //socket = window.io("http://localhost:3001");
-      socket = window.io("https://play.pierrefeuillearnaque.com:45263");
+      socket = window.io("http://localhost:3001");
+      //socket = window.io("https://play.pierrefeuillearnaque.com:45263");
       socket.emit("sendRandomforRole", {
         number: action.randomRole,
         id: action.indexSelf,

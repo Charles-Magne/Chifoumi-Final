@@ -79,7 +79,7 @@ const webSocketConnection = (store) => (next) => (action) => {
       const serverPort = 2015;
       const serverHostname = "vps-2b70c083.vps.ovh.net"; // Remplacez par le nom d'hôte de votre serveur si nécessaire
       //socket = io(`https://${serverIP}:${serverPort}`);
-      socket = window.io(`https://${serverIP`});
+      socket = window.io(`https://${serverIP}`);
       }
       // rsync -avz /home/student/Bureau/html/Perso/Server-Chifoumi ubuntu@vps-2b70c083.vps.ovh.net:/home/ubuntu/server
 

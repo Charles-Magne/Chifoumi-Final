@@ -31,8 +31,22 @@ const role = (store) => (next) => (action) => {
   
   switch(action.type){
     case SEND_RANDOM_FOR_ROLE:{
-      socket = window.io("http://localhost:3001");
-      //socket = window.io("https://play.pierrefeuillearnaque.com:45263");
+
+        // Si je suis en developpement ****************
+        if (process.env.NODE_ENV === 'development'){
+
+          socket = window.io("http://localhost:3001");
+          }
+    
+          if (process.env.NODE_ENV === 'production') {
+          //si je suis en production *****************  
+          const serverIP = "play.pierrefeuillearnaque.com:2015/socket.io/socket.io.js" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
+          const serverPort = 2015;
+          const serverHostname = "vps-2b70c083.vps.ovh.net"; // Remplacez par le nom d'hôte de votre serveur si nécessaire
+          //socket = io(`https://${serverIP}:${serverPort}`);
+          socket = window.io(`https://${serverIP}`);
+          }
+
       socket.emit("sendRandomforRole", {
         number: action.randomRole,
         id: action.indexSelf,
@@ -96,40 +110,100 @@ const role = (store) => (next) => (action) => {
     }
 
     case SEND_INDEX_JOUEUR_WS: {
-      //socket = window.io("http://localhost:3001");
-      socket = window.io("https://play.pierrefeuillearnaque.com:45263");
+       // Si je suis en developpement ****************
+       if (process.env.NODE_ENV === 'development'){
+
+        socket = window.io("http://localhost:3001");
+        }
+  
+        if (process.env.NODE_ENV === 'production') {
+        //si je suis en production *****************  
+        const serverIP = "play.pierrefeuillearnaque.com:2015/socket.io/socket.io.js" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
+        const serverPort = 2015;
+        const serverHostname = "vps-2b70c083.vps.ovh.net"; // Remplacez par le nom d'hôte de votre serveur si nécessaire
+        //socket = io(`https://${serverIP}:${serverPort}`);
+        socket = window.io(`https://${serverIP}`);
+        }
       console.log(('on envoit la requet pour les joueur + index'));
         socket.emit("send_Index_Joueur", {indexJoueur: action.indexSelfResults});
       return next(action);
     }
     
     case SEND_CHOIX_SYMBOLE_SELF: {
-      //socket = window.io("http://localhost:3001");
-      socket = window.io("https://play.pierrefeuillearnaque.com:45263");
+       // Si je suis en developpement ****************
+       if (process.env.NODE_ENV === 'development'){
+
+        socket = window.io("http://localhost:3001");
+        }
+  
+        if (process.env.NODE_ENV === 'production') {
+        //si je suis en production *****************  
+        const serverIP = "play.pierrefeuillearnaque.com:2015/socket.io/socket.io.js" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
+        const serverPort = 2015;
+        const serverHostname = "vps-2b70c083.vps.ovh.net"; // Remplacez par le nom d'hôte de votre serveur si nécessaire
+        //socket = io(`https://${serverIP}:${serverPort}`);
+        socket = window.io(`https://${serverIP}`);
+        }
       console.log(('on envoit notre choix de symbole aux autres',action));
         socket.emit("send_Choix_Symbole", [ action.indexSelfResults, action.choixSymboleSelf] );
       return next(action);
     }
 
     case SEND_WIN_WS: {
-      //socket = window.io("http://localhost:3001");
-      socket = window.io("https://play.pierrefeuillearnaque.com:45263");
+       // Si je suis en developpement ****************
+       if (process.env.NODE_ENV === 'development'){
+
+        socket = window.io("http://localhost:3001");
+        }
+  
+        if (process.env.NODE_ENV === 'production') {
+        //si je suis en production *****************  
+        const serverIP = "play.pierrefeuillearnaque.com:2015/socket.io/socket.io.js" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
+        const serverPort = 2015;
+        const serverHostname = "vps-2b70c083.vps.ovh.net"; // Remplacez par le nom d'hôte de votre serveur si nécessaire
+        //socket = io(`https://${serverIP}:${serverPort}`);
+        socket = window.io(`https://${serverIP}`);
+        }
       console.log(('WIN_on envoit notre choix de symbole aux autres',action));
         socket.emit("send_Win_WS", ( action.indexSelf) );
       return next(action);
     } 
 
     case SEND_LOSE_WS: {
-      //socket = window.io("http://localhost:3001");
-      socket = window.io("https://play.pierrefeuillearnaque.com:45263");
+      // Si je suis en developpement ****************
+      if (process.env.NODE_ENV === 'development'){
+
+        socket = window.io("http://localhost:3001");
+        }
+  
+        if (process.env.NODE_ENV === 'production') {
+        //si je suis en production *****************  
+        const serverIP = "play.pierrefeuillearnaque.com:2015/socket.io/socket.io.js" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
+        const serverPort = 2015;
+        const serverHostname = "vps-2b70c083.vps.ovh.net"; // Remplacez par le nom d'hôte de votre serveur si nécessaire
+        //socket = io(`https://${serverIP}:${serverPort}`);
+        socket = window.io(`https://${serverIP}`);
+        }
       console.log(('LOOSE_on envoit notre choix de symbole aux autres',action));
         socket.emit("send_Lose_WS", ( action.indexSelf) );
       return next(action);
     } 
     
     case SEND_CLEAN_JOUEUR_ARRAY: {
-      //socket = window.io("http://localhost:3001");
-      socket = window.io("https://play.pierrefeuillearnaque.com:45263");
+       // Si je suis en developpement ****************
+       if (process.env.NODE_ENV === 'development'){
+
+        socket = window.io("http://localhost:3001");
+        }
+  
+        if (process.env.NODE_ENV === 'production') {
+        //si je suis en production *****************  
+        const serverIP = "play.pierrefeuillearnaque.com:2015/socket.io/socket.io.js" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
+        const serverPort = 2015;
+        const serverHostname = "vps-2b70c083.vps.ovh.net"; // Remplacez par le nom d'hôte de votre serveur si nécessaire
+        //socket = io(`https://${serverIP}:${serverPort}`);
+        socket = window.io(`https://${serverIP}`);
+        }
         socket.emit("send_Clean_Joueur_Array" );
       return next(action);
     } 

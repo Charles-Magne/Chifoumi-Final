@@ -412,7 +412,8 @@ function Meetplayer() {
   const handleCopyLink = () => {
     console.log(salonState);
     navigator.clipboard.writeText(
-      `http://localhost:8080/Send-invitation/${salonState}`
+      /*`http://localhost:8080/Send-invitation/${salonState}`*/
+      `https://pierrefeuillearnaque.com/Send-invitation/${salonState}`
     );
   };
 

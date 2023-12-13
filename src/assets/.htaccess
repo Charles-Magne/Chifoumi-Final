@@ -1,0 +1,15 @@
+# Activer le moteur de réécriture
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Spécifier la base pour les réécritures
+  RewriteBase /
+
+  # Rediriger toutes les requêtes vers le fichier index.html
+  # si le fichier demandé n'existe pas (pas un fichier régulier)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  # et si le répertoire demandé n'existe pas (pas un répertoire)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  # Réécrire l'URL pour pointer vers index.html
+  RewriteRule ^(.*)$ /index.html [L]
+</IfModule>

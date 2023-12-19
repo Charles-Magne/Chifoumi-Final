@@ -5,10 +5,6 @@ body {
   font-family: vars.$police-main ;
 }
 
-.responsiveAlert{
-  display: none;
-}
-
 .imgTitre {
   display: flex;
   height: 8rem;
@@ -164,13 +160,6 @@ body {
 
 // Les ecrans jusqu'a 1320PX de large
 @media screen and (max-width:1320px) {
-
-  // a supprimer lorsque le responsive est fini
-  .responsiveAlert{
-    display: flex;
-    background-color: white;
-    color: red;
-  }
 
   .Pub-left {
     position: sticky;

@@ -521,7 +521,6 @@ function Meetplayer() {
       <div className="pseudoBody">
         <div className="ad-1">pub1</div>
         <div className="contener-main">
-        <div className="responsiveAlert" >!!!!!!!!!!Responsive in progress!!!!!!!!!!</div>
           <div className="contener-header">
             <img className="logoTitre" src={titre} alt="Logo" />
             <button className="button__langue button_secondaire--desactive">

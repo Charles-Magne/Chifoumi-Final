@@ -316,7 +316,7 @@ if (timeDisplay == 0) {
           </span>
           <div className="role">
             <img className="iconeRole" src={taupe} alt="IconeTaupe" />
-            <span className="RoleName">La taupe(s)</span>
+            <span className="RoleName">L'arnaqueur</span>
           </div>
           <div className="role">
             <img
@@ -341,7 +341,7 @@ if (timeDisplay == 0) {
               alt="iconeTaupe"
             />
             <span className="titreRegle2">
-              La taupe va recevoir un symbole à defendre
+              L'arnaqueur va recevoir un symbole à defendre
             </span>
           </div>
           <span className="DansCeCasLa">Par exemple :</span>
@@ -355,7 +355,7 @@ if (timeDisplay == 0) {
             <img className="CardSymbole" src={Ciseaux} alt="cardCiseaux" />
           </div>
           <span className="DansCeCasLa">
-            Dans ce cas la, la taupe va devoir inciter les joueurs à jouer les
+            Dans ce cas la, l'arnaqueur va devoir inciter les joueurs à jouer les
             symboles perdant face a la feuille.
           </span>
           <div className="cardExemple2">
@@ -375,7 +375,7 @@ if (timeDisplay == 0) {
             Plus les joueurs se trompent,
           </span>
           <span className="DansCeCasLa policebig">
-            Plus la taupe gagne de points
+            Plus l'arnaqueur gagne de points
           </span>
         </div>
         {/* ****************Ici c'est le Troisieme article*****************************  */}
@@ -417,11 +417,11 @@ if (timeDisplay == 0) {
               alt="iconeJoueur"
             />
             <span className="titreRegle2">
-              Les joueurs doivent jouer le symbole qui bat celui de la taupe
+              Les joueurs doivent jouer le symbole qui bat celui de l'arnaqueur
             </span>
           </div>
           <span className="DansCeCasLa">
-            Par exemple, si la taupe défends :
+            Par exemple, si l'arnaqueur défends :
           </span>
           <img
             className="CardSymbole cardRed sautDeLigne"

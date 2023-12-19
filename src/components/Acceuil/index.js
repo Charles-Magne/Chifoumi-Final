@@ -73,7 +73,6 @@ function Accueil() {
   return (
     <div>
       <div>
-        <div className="responsiveAlert" >!!!!!!!!!!Responsive in progress!!!!!!!!!!</div>
         <img className="imgTitre" src={titre} alt="titre" />
       </div>
       <div className="contenaireMain">

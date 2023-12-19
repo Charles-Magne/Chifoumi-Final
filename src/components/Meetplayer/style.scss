@@ -7,10 +7,6 @@
   font-family: vars.$police-main;
 }
 
-.responsiveAlert{
-  display: none;
-}
-
 .ad-1{
   display: flex;
   width: 160px;
@@ -683,7 +679,7 @@ padding: 1em 0 ;
   }
 
   .div__section-principal--inviter--joueur {
-    width: 60rem;
+    width: 70rem;
   }
 
   .div__roles--options {
@@ -713,13 +709,6 @@ padding: 1em 0 ;
 
 // Les ecrans jusqu'a 1330PX de large
 @media screen and (max-width:1320px) {
-
-  // a supprimer lorsque le responsive est fini
-  .responsiveAlert{
-    display: flex;
-    background-color: white;
-    color: red;
-  }
   
   .contener-main{
     width: 40rem;

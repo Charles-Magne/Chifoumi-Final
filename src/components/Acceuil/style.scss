@@ -1,8 +1,8 @@
 @use "../../assets/vars.scss";
 
 body {
-  background-image: url("../../assets/Pictures/Fond-decran/Background.png") ;
-  font-family: vars.$police-main ;
+  background-image: url("../../assets/Pictures/Fond-decran/Background.png");
+  font-family: vars.$police-main;
 }
 
 .imgTitre {
@@ -30,36 +30,36 @@ body {
   width: 60rem;
   display: flex;
   flex-direction: column;
-  background-color: rgba(15,96,133,0.8);
+  background-color: rgba(15, 96, 133, 0.8);
   //background-color: linear-gradient(90deg, rgba(13,59,102,1) , rgba(15,96,133,1)) ;
   border: 1px vars.$bleu-secondary solid;
   border-radius: 0.5rem;
   padding: 1rem 0 0 0;
 }
 
-.reglePseudo{
+.reglePseudo {
   display: flex;
   flex-direction: row;
 }
 
-.contenerRegle{
+.contenerRegle {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50%;
 }
 
-.titreRegle{
+.titreRegle {
   color: white;
   font-size: 1.4rem;
 }
 
-.soustitreRegle{
+.soustitreRegle {
   color: white;
   margin: 1rem 0 1rem 0;
 }
 
-.contenerPseudo{
+.contenerPseudo {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -67,7 +67,7 @@ body {
   color: vars.$bleu-main;
 }
 
-.alertLength{
+.alertLength {
   position: absolute;
   top: 10.1rem;
   display: none;
@@ -79,7 +79,7 @@ body {
   border: 1px solid vars.$red;
 }
 
-.alertEmpty{
+.alertEmpty {
   position: absolute;
   top: 10.1rem;
   display: none;
@@ -91,20 +91,20 @@ body {
   border: 1px solid vars.$red;
 }
 
-.inputNameHote{
+.inputNameHote {
   border: 1px solid vars.$bleu-main;
   border-radius: vars.$raduisLittle;
   height: 2rem;
   width: 12rem;
   margin: 1rem 0 1.4rem 0;
-  padding: 0 0 0 0.5rem ;
+  padding: 0 0 0 0.5rem;
   font-family: vars.$police-main;
   font-size: 1.3rem;
   color: vars.$bleu-main;
   text-transform: lowercase;
 }
 
-.alertAvatarEmpty{
+.alertAvatarEmpty {
   position: absolute;
   top: 14rem;
   right: 51rem;
@@ -117,13 +117,13 @@ body {
   border: 1px solid vars.$red;
 }
 
-.ContenerButton{
+.ContenerButton {
   display: flex;
   width: 100%;
   justify-content: flex-end;
 }
 
-.buttonLaunch{
+.buttonLaunch {
   display: flex;
   margin: 1rem 1rem 0 0;
   background-color: vars.$jaune-main;
@@ -141,7 +141,7 @@ body {
   background-color: gray;
 }
 
-.pubPortable{
+.pubPortable {
   display: none;
 }
 
@@ -166,38 +166,39 @@ body {
     top: 10rem;
   }
 
-  .reglePseudoButton{
+  .reglePseudoButton {
     height: 60rem;
     width: 30rem;
   }
-.reglePseudo{
-  display: flex;
-  flex-direction: column;
-}
 
-.contenerRegle{
-  width: 100%;
-}
+  .reglePseudo {
+    display: flex;
+    flex-direction: column;
+  }
 
-.titreRegle{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  font-size: 1.4rem;
-}
+  .contenerRegle {
+    width: 100%;
+  }
 
-.contenerPseudo{
-  width: 100%;
-}
+  .titreRegle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.4rem;
+  }
 
-.ContenerButton{
-  padding: 0 0 3rem 0 ;
-}
+  .contenerPseudo {
+    width: 100%;
+  }
 
-.Pub-right {
-  position: sticky;
-  top: 10rem;
-}
+  .ContenerButton {
+    padding: 0 0 2rem 0;
+  }
+
+  .Pub-right {
+    position: sticky;
+    top: 10rem;
+  }
 
 }
 
@@ -229,11 +230,82 @@ body {
     display: none;
   }
 
-  .pubPortable{
+  .contenerpubPortable {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .pubPortable {
     display: flex;
     height: 50px;
     width: 320px;
     background-color: gray;
-    margin: 0 0 1rem 0;
+    margin: 0 0 2rem 0;
   }
+}
+
+// Les ecrans jusqu'a 499PX de large
+@media screen and (max-width:499px) {
+
+  .contenaireMain {
+    width: 30rem;
+    display: flex;
+  }
+
+  .reglePseudoButton {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 1rem;
+  }
+
+  .contenerImgTitre {
+    width: 30rem;
+  }
+
+  .imgTitre {
+    width: auto;
+    height: 5rem;
+    display: flex;
+  }
+
+  .titreRegle {
+    margin: 20rem 0 0 0;
+  }
+
+  .reglePseudoButton {
+    margin: 0;
+    padding: 0;
+  }
+
+  .titreRegle {
+    width: 15rem;
+    text-align: center;
+  }
+
+  .contenerPseudo {
+    display: flex;
+    width: 30rem;
+    justify-items: center;
+  }
+
+  .formName {
+    display: flex;
+    margin: 4rem 0 1rem 0;
+  }
+
+  .alertEmpty {
+    display: block;
+    //position: fixed;
+    //top: 1rem;
+    //right: 10rem;
+    //background-color: white;
+    font-size: 0.7rem;
+    padding: 0.3rem;
+    border-radius: vars.$raduisLittle;
+    color: vars.$red;
+    border: 1px solid vars.$red;
+    background-color: green;
+  }
+
 }

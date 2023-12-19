@@ -108,7 +108,7 @@ const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom 
   
 
   return (
-    <div>
+    <div className="avatarContenerMain">
       <div className="avatarContener">
         <div className="wrapperAvatarImg">
           {tableauAvatar.map((tableauAvatar) => (

@@ -412,7 +412,8 @@ function Meetplayer() {
   const handleCopyLink = () => {
     console.log(salonState);
     navigator.clipboard.writeText(
-      `http://localhost:8080/Send-invitation/${salonState}`
+      /*`http://localhost:8080/Send-invitation/${salonState}`*/
+      `https://pierrefeuillearnaque.com/Send-invitation/${salonState}`
     );
   };
 
@@ -508,7 +509,7 @@ function Meetplayer() {
 
   // si le state est egale a yes alors on passe sur la page suivante
   if ( gameready === "yes" ) {
-    process.env.NODE_ENV === 'development' ? navigate(`/Playing/${salonState}`)  : navigate(`pierrefeuillearnaque.com/Playing/${salonState}`) ;
+    process.env.NODE_ENV === 'development' ? navigate(`/Playing/${salonState}`)  : navigate(`/Playing/${salonState}`) ;
     // si on est en devloppement 
     // si on est en production
     //navigate(`/Playing/${salonState}`); 

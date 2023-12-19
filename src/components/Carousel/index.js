@@ -404,7 +404,7 @@ if (timeDisplay == 0) {
           </span>
           <img className="imgRole iconeRoleAll" src={taupe} alt="iconeTaupe" />
           <span className="DansCeCasLa">
-            Mais attention, Les Taupes vont esseyer de se faire passer pour les
+            Mais attention, l'arnaqueur va esseyer de se faire passer pour les
             informateurs afin inciter les joueurs a jouer le mauvais symbole.
           </span>
         </div>

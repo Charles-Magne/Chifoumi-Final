@@ -66,27 +66,19 @@ const webSocketConnection = (store) => (next) => (action) => {
   switch (action.type) {
     // Connection au serveur 3001 lors du useEffect de la page meetplayer salonState   `/Playing/${salonState}`
     case CONNECTION_WEB_SO: {
-  
+
       // Si je suis en developpement ****************
       if (process.env.NODE_ENV === 'development'){
-      //socket = socket = window.io("http://localhost:3001");
-      socket = window.io("http://localhost:3001");
-      //socket = window.io(`http://localhost:3001/${action.salonState}`); port recommandé => 443
-      //socket = window.io("https://play.pierrefeuillearnaque.com:45263"); ok
-      } 
 
-      if (process.env.NODE_ENV === 'production') {
-      //si je suis en production *****************  
-      const serverIP = "37.187.38.225"; // Remplacez par l'adresse IPv4 de votre serveur
-      const serverPort = 2015; // Remplacez par le port de votre serveur 
-      //const serverPort = 45263; // Remplacez par le port de votre serveur
-      const serverHostname = "vps-2b70c083.vps.ovh.net"; // Remplacez par le nom d'hôte de votre serveur si nécessaire
-      socket = io.connect(`https://${serverHostname}:${serverPort}`);
+      socket = window.io("http://localhost:3001");
       }
 
+      if (process.env.NODE_ENV === 'production') {
+        //si je suis en production *****************  
+        const serverIP = "play.pierrefeuillearnaque.com:2015" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
+        socket = window.io(`https://${serverIP}`);
+      }
       // rsync -avz /home/student/Bureau/html/Perso/Server-Chifoumi ubuntu@vps-2b70c083.vps.ovh.net:/home/ubuntu/server
-      // scp -r /home/student/Bureau/html/Perso/Server-Chifoumi ubuntu@vps-2b70c083.vps.ovh.net:/home/ubuntu/server
-
 
       
       socket.emit("connection", (action.salonState), {});

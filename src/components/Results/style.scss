@@ -7,7 +7,7 @@ body {
   margin-right: auto;
 }
 
-.responsiveAlert{
+.responsiveAlert {
   display: none;
 }
 
@@ -17,16 +17,17 @@ header {
   justify-content: center;
 }
 
-.watingForNewPlay{
+.watingForNewPlay {
   display: none;
 }
 
-.resultview{
+.resultview {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-.pubGaucheResultat{
+.pubGaucheResultat {
   display: flex;
   width: 160px;
   height: 600px;
@@ -34,7 +35,7 @@ header {
   margin: 5rem 0 0 1rem;
 }
 
-.containerResult{
+.containerResult {
   width: 100rem;
 }
 
@@ -59,8 +60,9 @@ header {
   width: 3rem;
   align-items: center;
 }
-.div__les__taupes--contain--1{
-  margin: 1rem auto 0 auto ;
+
+.div__les__taupes--contain--1 {
+  margin: 1rem auto 0 auto;
 }
 
 .compteurTaupe {
@@ -86,7 +88,7 @@ header {
   justify-items: center;
   height: 3rem;
   width: 3rem;
-  margin: 1rem 0 1rem 1rem ;
+  margin: 1rem 0 1rem 1rem;
 }
 
 
@@ -125,7 +127,7 @@ header {
   align-items: center;
 }
 
-.carte__pierreTaupe{
+.carte__pierreTaupe {
   background-color: white;
   border: 2px solid vars.$bleu-main;
   border-radius: 0.2rem;
@@ -135,7 +137,7 @@ header {
   width: 3rem;
 }
 
-.carte__feuilleTaupe{
+.carte__feuilleTaupe {
   background-color: white;
   border: 2px solid vars.$bleu-main;
   border-radius: 0.2rem;
@@ -145,7 +147,7 @@ header {
   width: 3rem;
 }
 
-.carte__ciseauTaupe{
+.carte__ciseauTaupe {
   background-color: white;
   border: 2px solid vars.$bleu-main;
   border-radius: 0.2rem;
@@ -185,14 +187,14 @@ header {
   height: 2rem;
 }
 
-.contenerPersoInformateur{
+.contenerPersoInformateur {
   display: flex;
 }
 
-.pseudoInformateur{
+.pseudoInformateur {
   display: flex;
   align-self: center;
-  margin: 0 0 0 1rem ;
+  margin: 0 0 0 1rem;
   color: vars.$bleu-main;
 }
 
@@ -237,18 +239,18 @@ header {
 
 .icone_taupeSlef {
   display: flex;
-background-color: white;
-padding: 0.5rem;
-border: 1px white solid;
-border-radius: 0.2rem;
+  background-color: white;
+  padding: 0.5rem;
+  border: 1px white solid;
+  border-radius: 0.2rem;
 }
 
 // Si je suis la taupe
-.divTaupeSelf{
-  background-color: vars.$bleu-main ;
+.divTaupeSelf {
+  background-color: vars.$bleu-main;
 }
 
-.nameTaupeSelf{
+.nameTaupeSelf {
   color: white;
 }
 
@@ -303,21 +305,21 @@ border-radius: 0.2rem;
   height: 1.5rem;
 }
 
-.contenerPseudoPlayer{
+.contenerPseudoPlayer {
   display: flex;
 }
 
-.pseudoPlayerSelf{
+.pseudoPlayerSelf {
   display: flex;
   align-self: center;
-  color: white ;
+  color: white;
   margin: 0 0 0 1rem;
 }
 
-.pseudoPlayer{
+.pseudoPlayer {
   display: flex;
   align-self: center;
-  color: vars.$bleu-main ;
+  color: vars.$bleu-main;
   margin: 0 0 0 1rem;
 }
 
@@ -355,7 +357,7 @@ border-radius: 0.2rem;
   width: 2rem;
 }
 
-.carte__pierre{
+.carte__pierre {
   border: 2px solid vars.$bleu-main;
   border-radius: 0.2rem;
   margin: 0 1rem 0 0;
@@ -365,7 +367,7 @@ border-radius: 0.2rem;
   background-color: white;
 }
 
-.carte__feuille{
+.carte__feuille {
   border: 2px solid vars.$bleu-main;
   border-radius: 0.2rem;
   margin: 0 1rem 0 0;
@@ -375,7 +377,7 @@ border-radius: 0.2rem;
   background-color: white;
 }
 
-.carte__ciseaux{
+.carte__ciseaux {
   border: 2px solid vars.$bleu-main;
   border-radius: 0.2rem;
   margin: 0 1rem 0 0;
@@ -394,24 +396,30 @@ border-radius: 0.2rem;
   background-color: vars.$jaune-main;
 }
 
-.NewGameContener{
+.NewGameContener {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
+.pubPortable{
+  display: none;
+  width: 320px;
+  height: 50px;
+  background-color: gray;
+}
 
 .buttonNewPartie {
   display: flex;
-  margin: 2rem 2rem 0 0;
+  margin: 2rem 0 0 0;
   width: 15rem;
   justify-content: center;
   height: 3rem;
   font-size: 1.5rem;
-  border: 1px solid vars.$bleu-main ;
+  border: 1px solid vars.$bleu-main;
 }
 
-.pubDroiteResultat{
+.pubDroiteResultat {
   display: flex;
   width: 160px;
   height: 600px;
@@ -421,14 +429,129 @@ border-radius: 0.2rem;
 
 // *************************************** responsive **************************************
 
+// Les ecrans jusqu'a 1950PX de large
+@media screen and (max-width:1950px) {
+  .containerResult {
+    width: 80rem;
+  }
+}
 
-  // Les ecrans jusqu'a 1330PX de large
+// Les ecrans jusqu'a 1650PX de large
+@media screen and (max-width:1650px) {
+  .containerResult {
+    width: 60rem;
+  }
+
+  .contener__informateur {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .div__Informateurs1 {
+    margin: 0 0 2rem 0;
+  }
+}
+
+// Les ecrans jusqu'a 1330PX de large
 @media screen and (max-width:1320px) {
 
   // a supprimer lorsque le responsive est fini
-  .responsiveAlert{
+  .responsiveAlert {
     display: flex;
     background-color: white;
     color: red;
+  }
+
+  .containerResult {
+    width: 40rem;
+  }
+
+}
+
+// Les ecrans jusqu'a 1020PX de large
+@media screen and (max-width:1020px) {
+
+  .containerResult {
+    width: 30rem;
+  }
+
+  .div__les__taupes--contain--1 {
+    width: 30rem;
+  }
+
+  .contener__player {
+    margin: 0;
+    padding: 0 1rem;
+  }
+}
+
+// Les ecrans jusqu'a 900PX de large
+@media screen and (max-width:900px) {
+
+  .resultview {
+    justify-content: space-around;
+  }
+
+  .contenerResult {
+    margin: 0 2rem 0 0;
+  }
+
+  .pubDroiteResultat {
+    display: none;
+  }
+}
+
+// Les ecrans jusqu'a 750PX de large
+@media screen and (max-width:750px) {
+
+  .containerResult {
+    width: 20rem;
+  }
+
+  .div__les__taupes--contain--1 {
+    width: 20rem;
+  }
+
+  .icone_taupe {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  .div__Informateurs {
+    width: 20rem;
+  }
+}
+
+// Les ecrans jusqu'a 520PX de large
+@media screen and (max-width:520px) {
+
+  .contenerResult{
+    width: 40rem;
+  }
+
+  .pubGaucheResultat {
+    display: none;
+  }
+
+  .buttonNewPartie{
+    margin-bottom: 1rem;
+  }
+
+  .pubPortable{
+    display: flex;
+    position: sticky;
+    bottom: 1rem;
+  }
+  
+}
+
+// Les ecrans jusqu'a 370PX de large
+@media screen and (max-width:370px) {
+
+  .contenerResult{
+    width: 20rem;
   }
 }

@@ -31,7 +31,7 @@ function Results() {
   /**
    * On verifie si quelque a lancer une nouvelle partie
    */
-  const newGameready = useSelector((state) => state.salon.gameReady); 
+  const newGameready = useSelector((state) => state.salon.gameReady);
   const salonState = useSelector((state) => state.salon.lobby); // On import le code du salon
   const indexSelfResults = useSelector(
     (state) => state.avatar.joueurSelf.inumber
@@ -220,7 +220,7 @@ function Results() {
   const winOrLoose14 = useSelector((state) => state.avatar.joueurs.result14); // gagné ou perdu joueur 14
 
 
-  
+
   /**
    * Le tableau qui contient tous les choix de symbole des joueurs
    */
@@ -242,9 +242,9 @@ function Results() {
     choixSymbole14,
   ];
 
-/**
- * Tableau qui va contenir tout les noms
- */
+  /**
+   * Tableau qui va contenir tout les noms
+   */
   const nameUserResults = [
     name0Results,
     name1Results,
@@ -266,7 +266,7 @@ function Results() {
   /**
    * Tableau qui va contenir les resultats finaux
    */
-  const winOrLooseArray = [winOrLoose0, winOrLoose1, winOrLoose2, winOrLoose3, winOrLoose4, winOrLoose5, winOrLoose6, winOrLoose7, winOrLoose8, winOrLoose9, winOrLoose10, winOrLoose11,winOrLoose12,winOrLoose13,winOrLoose14];
+  const winOrLooseArray = [winOrLoose0, winOrLoose1, winOrLoose2, winOrLoose3, winOrLoose4, winOrLoose5, winOrLoose6, winOrLoose7, winOrLoose8, winOrLoose9, winOrLoose10, winOrLoose11, winOrLoose12, winOrLoose13, winOrLoose14];
 
   // on check si nameSelfResults est égal à une des données de ArrayJoueurResult
   /**
@@ -319,7 +319,7 @@ function Results() {
   //Useeffect qui permet de check une seule fois si la on n'est joueur ou non et d'envoyer notre index aux autres
   useEffect(() => {
     //On veut identifiier les joueurs Donc Si roleSelf est vide je suis un joueur j'enregistre mon index dans le state joueur et je dispatch mon index pour signaler aux autres que je suis joueur
-    if ( indexSelfResults !== indexTaupeResults && indexSelfResults !== indexInfo1Results && indexSelfResults !== indexInfo2Results ) {
+    if (indexSelfResults !== indexTaupeResults && indexSelfResults !== indexInfo1Results && indexSelfResults !== indexInfo2Results) {
       // Si je suis joueur, je m'enregistre dans le state et j'envoie mon index aux autre participants
       console.log('je suis un joueur et j\'envoie une action');
       dispatch(sendIndexJoueurWs(indexSelfResults));
@@ -776,7 +776,7 @@ function Results() {
       feuille2.classList.remove("carte__symbole-Selectionné");
       ciseaux2.classList.add("carte__symbole-Selectionné");
     }
-  // le 3eme joueur
+    // le 3eme joueur
     if (SymboleJoueurResults[IndexJoueur3Result] == "Pierre") {
       pierre3.classList.add("carte__symbole-Selectionné");
       feuille3.classList.remove("carte__symbole-Selectionné");
@@ -785,46 +785,46 @@ function Results() {
     if (SymboleJoueurResults[IndexJoueur3Result] == "Feuille") {
       pierre3.classList.remove("carte__symbole-Selectionné");
       feuille3.classList.add("carte__symbole-Selectionné");
-      feuille3.classList.remove("carte__symbole-Selectionné");   
-     }
+      feuille3.classList.remove("carte__symbole-Selectionné");
+    }
     if (SymboleJoueurResults[IndexJoueur3Result] == "Ciseaux") {
       pierre3.classList.remove("carte__symbole-Selectionné");
       feuille3.classList.remove("carte__symbole-Selectionné");
-      feuille3.classList.add("carte__symbole-Selectionné");   
-     }
+      feuille3.classList.add("carte__symbole-Selectionné");
+    }
     // le 4eme joueur
     if (SymboleJoueurResults[IndexJoueur4Result] == "Pierre") {
       pierre4.classList.add("carte__symbole-Selectionné");
       feuille4.classList.remove("carte__symbole-Selectionné");
-      feuille4.classList.remove("carte__symbole-Selectionné"); 
-        }
+      feuille4.classList.remove("carte__symbole-Selectionné");
+    }
     if (SymboleJoueurResults[IndexJoueur4Result] == "Feuille") {
       pierre4.classList.remove("carte__symbole-Selectionné");
       feuille4.classList.add("carte__symbole-Selectionné");
-      feuille4.classList.remove("carte__symbole-Selectionné"); 
-        }
+      feuille4.classList.remove("carte__symbole-Selectionné");
+    }
     if (SymboleJoueurResults[IndexJoueur4Result] == "Ciseaux") {
       pierre4.classList.remove("carte__symbole-Selectionné");
       feuille4.classList.remove("carte__symbole-Selectionné");
-      feuille4.classList.add("carte__symbole-Selectionné"); 
+      feuille4.classList.add("carte__symbole-Selectionné");
     }
-// le 5eme joueur
+    // le 5eme joueur
     if (SymboleJoueurResults[IndexJoueur5Result] == "Pierre") {
       pierre5.classList.add("carte__symbole-Selectionné");
       feuille5.classList.remove("carte__symbole-Selectionné");
-      feuille5.classList.remove("carte__symbole-Selectionné"); 
-        }
+      feuille5.classList.remove("carte__symbole-Selectionné");
+    }
     if (SymboleJoueurResults[IndexJoueur5Result] == "Feuille") {
       pierre5.classList.remove("carte__symbole-Selectionné");
       feuille5.classList.add("carte__symbole-Selectionné");
-      feuille5.classList.remove("carte__symbole-Selectionné"); 
+      feuille5.classList.remove("carte__symbole-Selectionné");
     }
     if (SymboleJoueurResults[IndexJoueur5Result] == "Ciseaux") {
       pierre5.classList.remove("carte__symbole-Selectionné");
       feuille5.classList.remove("carte__symbole-Selectionné");
-      feuille5.classList.add("carte__symbole-Selectionné"); 
+      feuille5.classList.add("carte__symbole-Selectionné");
     }
-// le 6eme joueur
+    // le 6eme joueur
     if (SymboleJoueurResults[IndexJoueur6Result] == "Pierre") {
       pierre6.classList.add("carte__symbole-Selectionné");
       feuille6.classList.remove("carte__symbole-Selectionné");
@@ -840,7 +840,7 @@ function Results() {
       feuille6.classList.remove("carte__symbole-Selectionné");
       feuille6.classList.add("carte__symbole-Selectionné");
     }
-// le 7eme joueur
+    // le 7eme joueur
     if (SymboleJoueurResults[IndexJoueur7Result] == "Pierre") {
       pierre7.classList.add("carte__symbole-Selectionné");
       feuille7.classList.remove("carte__symbole-Selectionné");
@@ -928,151 +928,151 @@ function Results() {
   }, [SymboleJoueurResults]);
 
 
-// On modifie le css en fonction du resultat
-useEffect(() => {
-// On test le tableau des resultats
-console.log('tableau des resultats', winOrLooseArray);
-  
-  const score0 = document.querySelector(".compteurPlayerSelf");
-  const score1 = document.querySelector(".compteurPlayer1");
-  const score2 = document.querySelector(".compteurPlayer2");
-  const score3 = document.querySelector(".compteurPlayer3");
-  const score4 = document.querySelector(".compteurPlayer4");
-  const score5 = document.querySelector(".compteurPlayer5");
-  const score6 = document.querySelector(".compteurPlayer6");
-  const score7 = document.querySelector(".compteurPlayer7");
-  const score8 = document.querySelector(".compteurPlayer8");
-  const score9 = document.querySelector(".compteurPlayer9");
-  const score10 = document.querySelector(".compteurPlayer10");
-  const score11 = document.querySelector(".compteurPlayer11");
+  // On modifie le css en fonction du resultat
+  useEffect(() => {
+    // On test le tableau des resultats
+    console.log('tableau des resultats', winOrLooseArray);
 
-  console.log('on test l\'index', IndexJoueur1Result, arrayJoueurResult);
-  // le joueur self
- if ( winOrLooseSelf == "WIN") {
-    score0.style.display = "flex";
-  }
-  if ( winOrLooseSelf == "LOSE") {
-  }
-  
-/*******************joueur 1 */
-  if ( winOrLooseArray[IndexJoueur1Result] == "Win") {
-    score1.style.display = "flex";
-    console.log('gagné css joueur 1', IndexJoueur1Result);
-  }
-  if ( winOrLooseArray[IndexJoueur1Result] == "LOSE") {
-    console.log('perdu css joueur 1');
-  }
-/*******************joueur 2 */
-  if ( winOrLooseArray[IndexJoueur2Result] == "Win") {
-    score2.style.display = "flex";
-    console.log('gagné css joueur 2', IndexJoueur2Result);
-  }
-  if ( winOrLooseArray[IndexJoueur2Result] == "LOSE") {
-    console.log('perdu css joueur 2');
-  }
-/*******************joueur 3 */
-  if ( winOrLooseArray[IndexJoueur3Result] == "Win") {
-    score3.style.display = "flex";
-    console.log('gagné css joueur 4', IndexJoueur3Result);
-  }
-  if ( winOrLooseArray[IndexJoueur3Result] == "LOSE") {
-    console.log('perdu css joueur 4');
-  }
-/*******************joueur 4 */
-  if ( winOrLooseArray[IndexJoueur4Result] == "Win") {
-    score4.style.display = "flex";
-    console.log('gagné css joueur 5', IndexJoueur4Result);
-  }
-  if ( winOrLooseArray[IndexJoueur4Result] == "LOSE") {
-    console.log('perdu css joueur 5');
-  }
-/*******************joueur 5 */
-  if ( winOrLooseArray[IndexJoueur5Result] == "Win") {
-    score5.style.display = "flex";
-    console.log('gagné css joueur 5', IndexJoueur5Result);
-  }
-  if ( winOrLooseArray[IndexJoueur5Result] == "LOSE") {
-    console.log('perdu css joueur 5');
-  }
-/*******************joueur 6 */
-  if ( winOrLooseArray[IndexJoueur6Result] == "Win") {
-    score6.style.display = "flex";
-    console.log('gagné css joueur 5', IndexJoueur6Result);
-  }
-  if ( winOrLooseArray[IndexJoueur6Result] == "LOSE") {
-    console.log('perdu css joueur 5');
-  }
-/*******************joueur 7 */
-  if ( winOrLooseArray[IndexJoueur7Result] == "Win") {
-    score7.style.display = "flex";
-    console.log('gagné css joueur 5', IndexJoueur7Result);
-  }
-  if ( winOrLooseArray[IndexJoueur7Result] == "LOSE") {
-    console.log('perdu css joueur 5');
-  }
-/*******************joueur 8 */
-  if ( winOrLooseArray[IndexJoueur8Result] == "Win") {
-    score8.style.display = "flex";
-    console.log('gagné css joueur 5', IndexJoueur4Result);
-  }
-  if ( winOrLooseArray[IndexJoueur8Result] == "LOSE") {
-    console.log('perdu css joueur 5');
-  }
-/*******************joueur 9 */
-  if ( winOrLooseArray[IndexJoueur9Result] == "Win") {
-    score9.style.display = "flex";
-    console.log('gagné css joueur 5', IndexJoueur9Result);
-  }
-  if ( winOrLooseArray[IndexJoueur9Result] == "LOSE") {
-    console.log('perdu css joueur 5');
-  }
-  /*******************joueur 10 */
-  if ( winOrLooseArray[IndexJoueur10Result] == "Win") {
-    score10.style.display = "flex";
-    console.log('gagné css joueur 5', IndexJoueur10Result);
-  }
-  if ( winOrLooseArray[IndexJoueur10Result] == "LOSE") {
-    console.log('perdu css joueur 5');
-  }
-  /*******************joueur 11 */
-  if ( winOrLooseArray[IndexJoueur11Result] == "Win") {
-    score11.style.display = "flex";
-    console.log('gagné css joueur 5', IndexJoueur11Result);
-  }
-  if ( winOrLooseArray[IndexJoueur11Result] == "LOSE") {
-    console.log('perdu css joueur 5');
-  }
-}, [winOrLooseArray]);
+    const score0 = document.querySelector(".compteurPlayerSelf");
+    const score1 = document.querySelector(".compteurPlayer1");
+    const score2 = document.querySelector(".compteurPlayer2");
+    const score3 = document.querySelector(".compteurPlayer3");
+    const score4 = document.querySelector(".compteurPlayer4");
+    const score5 = document.querySelector(".compteurPlayer5");
+    const score6 = document.querySelector(".compteurPlayer6");
+    const score7 = document.querySelector(".compteurPlayer7");
+    const score8 = document.querySelector(".compteurPlayer8");
+    const score9 = document.querySelector(".compteurPlayer9");
+    const score10 = document.querySelector(".compteurPlayer10");
+    const score11 = document.querySelector(".compteurPlayer11");
 
+    console.log('on test l\'index', IndexJoueur1Result, arrayJoueurResult);
+    // le joueur self
+    if (winOrLooseSelf == "WIN") {
+      score0.style.display = "flex";
+    }
+    if (winOrLooseSelf == "LOSE") {
+    }
 
-const newPartieButton = (event) => {
-  // On veut faire une redirection vers une nouvelle partie. il faut donc changer de page vider le serveur et changer de page.
-  // on envoit un webSocket a tout le monde pour dire de vider le serveur et losque c'est bon on change de page. 
-  console.log('clique est trigger');
-  // sert a effacer le role  
-  dispatch(cleanRoleSelf());
-  // sert a vider le tableau des joueurs
-  dispatch(sendCleanJoueurArray());
-  dispatch(cleanServer());
-}
+    /*******************joueur 1 */
+    if (winOrLooseArray[IndexJoueur1Result] == "Win") {
+      score1.style.display = "flex";
+      console.log('gagné css joueur 1', IndexJoueur1Result);
+    }
+    if (winOrLooseArray[IndexJoueur1Result] == "LOSE") {
+      console.log('perdu css joueur 1');
+    }
+    /*******************joueur 2 */
+    if (winOrLooseArray[IndexJoueur2Result] == "Win") {
+      score2.style.display = "flex";
+      console.log('gagné css joueur 2', IndexJoueur2Result);
+    }
+    if (winOrLooseArray[IndexJoueur2Result] == "LOSE") {
+      console.log('perdu css joueur 2');
+    }
+    /*******************joueur 3 */
+    if (winOrLooseArray[IndexJoueur3Result] == "Win") {
+      score3.style.display = "flex";
+      console.log('gagné css joueur 4', IndexJoueur3Result);
+    }
+    if (winOrLooseArray[IndexJoueur3Result] == "LOSE") {
+      console.log('perdu css joueur 4');
+    }
+    /*******************joueur 4 */
+    if (winOrLooseArray[IndexJoueur4Result] == "Win") {
+      score4.style.display = "flex";
+      console.log('gagné css joueur 5', IndexJoueur4Result);
+    }
+    if (winOrLooseArray[IndexJoueur4Result] == "LOSE") {
+      console.log('perdu css joueur 5');
+    }
+    /*******************joueur 5 */
+    if (winOrLooseArray[IndexJoueur5Result] == "Win") {
+      score5.style.display = "flex";
+      console.log('gagné css joueur 5', IndexJoueur5Result);
+    }
+    if (winOrLooseArray[IndexJoueur5Result] == "LOSE") {
+      console.log('perdu css joueur 5');
+    }
+    /*******************joueur 6 */
+    if (winOrLooseArray[IndexJoueur6Result] == "Win") {
+      score6.style.display = "flex";
+      console.log('gagné css joueur 5', IndexJoueur6Result);
+    }
+    if (winOrLooseArray[IndexJoueur6Result] == "LOSE") {
+      console.log('perdu css joueur 5');
+    }
+    /*******************joueur 7 */
+    if (winOrLooseArray[IndexJoueur7Result] == "Win") {
+      score7.style.display = "flex";
+      console.log('gagné css joueur 5', IndexJoueur7Result);
+    }
+    if (winOrLooseArray[IndexJoueur7Result] == "LOSE") {
+      console.log('perdu css joueur 5');
+    }
+    /*******************joueur 8 */
+    if (winOrLooseArray[IndexJoueur8Result] == "Win") {
+      score8.style.display = "flex";
+      console.log('gagné css joueur 5', IndexJoueur4Result);
+    }
+    if (winOrLooseArray[IndexJoueur8Result] == "LOSE") {
+      console.log('perdu css joueur 5');
+    }
+    /*******************joueur 9 */
+    if (winOrLooseArray[IndexJoueur9Result] == "Win") {
+      score9.style.display = "flex";
+      console.log('gagné css joueur 5', IndexJoueur9Result);
+    }
+    if (winOrLooseArray[IndexJoueur9Result] == "LOSE") {
+      console.log('perdu css joueur 5');
+    }
+    /*******************joueur 10 */
+    if (winOrLooseArray[IndexJoueur10Result] == "Win") {
+      score10.style.display = "flex";
+      console.log('gagné css joueur 5', IndexJoueur10Result);
+    }
+    if (winOrLooseArray[IndexJoueur10Result] == "LOSE") {
+      console.log('perdu css joueur 5');
+    }
+    /*******************joueur 11 */
+    if (winOrLooseArray[IndexJoueur11Result] == "Win") {
+      score11.style.display = "flex";
+      console.log('gagné css joueur 5', IndexJoueur11Result);
+    }
+    if (winOrLooseArray[IndexJoueur11Result] == "LOSE") {
+      console.log('perdu css joueur 5');
+    }
+  }, [winOrLooseArray]);
 
 
-if ( newGameready == "newGame") {
-  /**
-   * la div qui masque la page result lorsque on initie une nouvelle partie
-   */
-  const divWating = document.querySelector('.watingForNewPlay');
-  console.log('on passe vers la page de jeu', newGameready);
+  const newPartieButton = (event) => {
+    // On veut faire une redirection vers une nouvelle partie. il faut donc changer de page vider le serveur et changer de page.
+    // on envoit un webSocket a tout le monde pour dire de vider le serveur et losque c'est bon on change de page. 
+    console.log('clique est trigger');
+    // sert a effacer le role  
+    dispatch(cleanRoleSelf());
+    // sert a vider le tableau des joueurs
+    dispatch(sendCleanJoueurArray());
+    dispatch(cleanServer());
+  }
 
-  /**
-   * la div normale qui affiche les resultats
-   */
-   const divResult = document.querySelector('.resultview');
 
-   //divWating.style.display = "flex";
-   //divResult.style.display = "none";
-   navigate(`/Playing/${salonState}`);
-}
+  if (newGameready == "newGame") {
+    /**
+     * la div qui masque la page result lorsque on initie une nouvelle partie
+     */
+    const divWating = document.querySelector('.watingForNewPlay');
+    console.log('on passe vers la page de jeu', newGameready);
+
+    /**
+     * la div normale qui affiche les resultats
+     */
+    const divResult = document.querySelector('.resultview');
+
+    //divWating.style.display = "flex";
+    //divResult.style.display = "none";
+    navigate(`/Playing/${salonState}`);
+  }
 
 
 
@@ -1085,583 +1085,584 @@ if ( newGameready == "newGame") {
         {/*     <!--pouvoir faire remonter les bugs ou les points a ameliorer !! Attention au insersion de sql-->
           <!--IL faut placer les joueurs et les informateurs dans une boucle forEatch-->
               <!--ici on affiche la ou les deux taupes--> */}
-      <div className="containerResult">
-      <div className="responsiveAlert" >!!!!!!!!!!Responsive in progress!!!!!!!!!!</div>
-      <div className="div__les__taupes--contain--1">
-        <div className="div__role--main">
-          <img className="icone_taupe" src={taupe} alt="icone Taupe" />
-        </div>{" "}
-        <div className="div__PseudoImg--Taupe">
-          <img
-            className="img__Avatar"
-            src={avatarUserResults[indexTaupeResults]}
-            alt="Img Avatar"
-          />
-          <span className="span__pseudo">
+        <div className="containerResult">
+          <div className="responsiveAlert" >!!!!!!!!!!Responsive in progress!!!!!!!!!!</div>
+          <div className="div__les__taupes--contain--1">
+            <div className="div__role--main">
+              <img className="icone_taupe" src={taupe} alt="icone Taupe" />
+            </div>{" "}
+            <div className="div__PseudoImg--Taupe">
+              <img
+                className="img__Avatar"
+                src={avatarUserResults[indexTaupeResults]}
+                alt="Img Avatar"
+              />
+              <span className="span__pseudo">
+                {" "}
+                {nameUserResults[indexTaupeResults]}{" "}
+              </span>{" "}
+            </div>{" "}
+            <div className="div__symboles--taupe">
+              <img
+                className="carte__pierreTaupe "
+                src={Pierre}
+                alt="Icone Pierre"
+              />
+              <img
+                className="carte__feuilleTaupe "
+                src={Feuille}
+                alt="Icone Feuille"
+              />
+              <img
+                className="carte__ciseauTaupe "
+                src={Ciseaux}
+                alt="Icone ciseaux"
+              />
+            </div>{" "}
+          </div>{" "}
+          <div className="compteurTaupe">
+            <div className="scoreTaupe"> 10 </div>{" "}
+          </div>{" "}
+          {/*  <!--ici on affiche les deux informateurs--> */}
+          <div className="contener__informateur">
             {" "}
-            {nameUserResults[indexTaupeResults]}{" "}
-          </span>{" "}
-        </div>{" "}
-        <div className="div__symboles--taupe">
-          <img
-            className="carte__pierreTaupe "
-            src={Pierre}
-            alt="Icone Pierre"
-          />
-          <img
-            className="carte__feuilleTaupe "
-            src={Feuille}
-            alt="Icone Feuille"
-          />
-          <img
-            className="carte__ciseauTaupe "
-            src={Ciseaux}
-            alt="Icone ciseaux"
-          />
-        </div>{" "}
-      </div>{" "}
-      <div className="compteurTaupe">
-        <div className="scoreTaupe"> 10 </div>{" "}
-      </div>{" "}
-      {/*  <!--ici on affiche les deux informateurs--> */}
-      <div className="contener__informateur">
-        {" "}
-        {/**Informateur 1 */}{" "}
-        <div className="div__Informateurs div__Informateurs1">
-          <div className="contener__icone__informateur">
-            <img
-              className="icone__informateur icone__informateur1"
-              src={Informateur}
-              alt="icone Informateur"
-            />
+            {/**Informateur 1 */}{" "}
+            <div className="div__Informateurs div__Informateurs1">
+              <div className="contener__icone__informateur">
+                <img
+                  className="icone__informateur icone__informateur1"
+                  src={Informateur}
+                  alt="icone Informateur"
+                />
+              </div>{" "}
+              <div className="contenerPersoInformateur">
+                <img
+                  className="img__informateur--1 imgAvatarResultat"
+                  src={avatarUserResults[indexInfo1Results]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoInformateur pseudoInformateur1">
+                  {" "}
+                  {nameUserResults[indexInfo1Results]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre info1Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille info1Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux info1Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurInformateurs compteurInformateurs1">
+                <div className="scoreInformateur "> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Informateur 2 */}{" "}
+            <div className="div__Informateurs div__Informateurs2">
+              <div className="contener__icone__informateur">
+                <img
+                  className="icone__informateur icone__informateur2"
+                  src={Informateur}
+                  alt="icone informateur"
+                />
+              </div>{" "}
+              <div className="contenerPersoInformateur">
+                <img
+                  className="img__informateur--2 imgAvatarResultat"
+                  src={avatarUserResults[indexInfo2Results]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoInformateur pseudoInformateur2">
+                  {" "}
+                  {nameUserResults[indexInfo2Results]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre info2Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille info2Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux info2Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurInformateurs compteurInformateurs2">
+                <div className="scoreInformateur"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player0 // JoueurSelf */}{" "}
           </div>{" "}
-          <div className="contenerPersoInformateur">
-            <img
-              className="img__informateur--1 imgAvatarResultat"
-              src={avatarUserResults[indexInfo1Results]}
-              alt="img__avatar"
-            />
-            <span className="pseudoInformateur pseudoInformateur1">
-              {" "}
-              {nameUserResults[indexInfo1Results]}{" "}
-            </span>{" "}
+          <div className="contener__player">
+            {" "}
+            {/*  <!--ici on affiche tous les joueurs--> */}{" "}
+            <div className="div__playerSelf">
+              <div className="contener__icone__player">
+                <img className="icone__playerSelf" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer0 imgAvatarResultat"
+                  src={avatarSelfResults}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayerSelf"> {nameSelfResults} </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueurSelfPierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueurSelfFeuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueurSelfCiseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayerSelf">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player1 */}{" "}
+            <div className="div__player joueur1Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer1 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur1Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer1Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur1Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur1Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur1Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur1Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer1">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player2 */}{" "}
+            <div className="div__player joueur2Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer2 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur2Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer2Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur2Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur2Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur2Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur2Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer2">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player3 */}{" "}
+            <div className="div__player joueur3Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer3 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur3Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer3Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur3Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur3Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur3Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur3Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer3">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player4 */}{" "}
+            <div className="div__player joueur4Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer4 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur4Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer4Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur4Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur4Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur4Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur4Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer4">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player5 */}{" "}
+            <div className="div__player joueur5Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer5 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur5Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer5Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur5Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur5Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur5Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur5Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer5">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player6 */}{" "}
+            <div className="div__player joueur6Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer6 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur6Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer6Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur6Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur6Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur6Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur6Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer6">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player7 */}{" "}
+            <div className="div__player joueur7Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer7 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur7Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer7Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur7Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur7Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur7Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur7Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer7">
+                <div className="scorePlayer "> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player8 */}{" "}
+            <div className="div__player joueur8Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer8 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur8Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer8Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur8Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur8Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur8Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur8Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer8">
+                <div className="scorePlayer "> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player9 */}{" "}
+            <div className="div__player joueur9Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer8 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur9Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer9Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur9Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur9Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur9Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur9Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer9">
+                <div className="scorePlayer "> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player10 */}{" "}
+            <div className="div__player joueur10Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer8 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur10Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer10Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur10Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur10Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur10Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur10Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer10">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>
+            {/**Player11 */}{" "}
+            <div className="div__player joueur11Result">
+              <div className="contener__icone__player">
+                <img className="icone__player" src={player} alt="img player" />
+              </div>{" "}
+              <div className="contenerPseudoPlayer">
+                <img
+                  className="imgPlayer8 imgAvatarResultat"
+                  src={avatarUserResults[IndexJoueur11Result]}
+                  alt="img__avatar"
+                />
+                <span className="pseudoPlayer pseudoPlayer11Results">
+                  {" "}
+                  {nameUserResults[IndexJoueur11Result]}{" "}
+                </span>{" "}
+              </div>{" "}
+              <div className="contener__card">
+                <img
+                  className="carte__pierre joueur11Pierre"
+                  src={Pierre}
+                  alt="icone Pierre"
+                />
+                <img
+                  className="carte__feuille joueur11Feuille"
+                  src={Feuille}
+                  alt="icone Feuille"
+                />
+                <img
+                  className="carte__ciseaux joueur11Ciseaux"
+                  src={Ciseaux}
+                  alt="icone Ciseaux"
+                />
+              </div>{" "}
+              <div className="compteurPlayer compteurPlayer11">
+                <div className="scorePlayer"> 10 </div>{" "}
+              </div>{" "}
+            </div>{" "}
           </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre info1Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille info1Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux info1Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
+          <div className="NewGameContener">
+            <button className="button_style--active buttonNewPartie" onClick={newPartieButton}>
+              Nouvelle Partie{" "}
+            </button>{" "}
           </div>{" "}
-          <div className="compteurInformateurs compteurInformateurs1">
-            <div className="scoreInformateur "> 10 </div>{" "}
-          </div>{" "}
+          <div className="pubPortable" >Pub Portable</div>
         </div>
-        {/**Informateur 2 */}{" "}
-        <div className="div__Informateurs div__Informateurs2">
-          <div className="contener__icone__informateur">
-            <img
-              className="icone__informateur icone__informateur2"
-              src={Informateur}
-              alt="icone informateur"
-            />
-          </div>{" "}
-          <div className="contenerPersoInformateur">
-            <img
-              className="img__informateur--2 imgAvatarResultat"
-              src={avatarUserResults[indexInfo2Results]}
-              alt="img__avatar"
-            />
-            <span className="pseudoInformateur pseudoInformateur2">
-              {" "}
-              {nameUserResults[indexInfo2Results]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre info2Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille info2Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux info2Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurInformateurs compteurInformateurs2">
-            <div className="scoreInformateur"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player0 // JoueurSelf */}{" "}
-      </div>{" "}
-      <div className="contener__player">
-        {" "}
-        {/*  <!--ici on affiche tous les joueurs--> */}{" "}
-        <div className="div__playerSelf">
-          <div className="contener__icone__player">
-            <img className="icone__playerSelf" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer0 imgAvatarResultat"
-              src={avatarSelfResults}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayerSelf"> {nameSelfResults} </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueurSelfPierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueurSelfFeuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueurSelfCiseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayerSelf">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player1 */}{" "}
-        <div className="div__player joueur1Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer1 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur1Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer1Results">
-              {" "}
-              {nameUserResults[IndexJoueur1Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur1Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur1Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur1Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer1">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player2 */}{" "}
-        <div className="div__player joueur2Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer2 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur2Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer2Results">
-              {" "}
-              {nameUserResults[IndexJoueur2Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur2Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur2Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur2Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer2">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player3 */}{" "}
-        <div className="div__player joueur3Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer3 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur3Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer3Results">
-              {" "}
-              {nameUserResults[IndexJoueur3Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur3Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur3Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur3Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer3">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player4 */}{" "}
-        <div className="div__player joueur4Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer4 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur4Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer4Results">
-              {" "}
-              {nameUserResults[IndexJoueur4Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur4Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur4Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur4Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer4">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player5 */}{" "}
-        <div className="div__player joueur5Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer5 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur5Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer5Results">
-              {" "}
-              {nameUserResults[IndexJoueur5Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur5Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur5Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur5Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer5">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player6 */}{" "}
-        <div className="div__player joueur6Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer6 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur6Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer6Results">
-              {" "}
-              {nameUserResults[IndexJoueur6Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur6Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur6Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur6Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer6">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player7 */}{" "}
-        <div className="div__player joueur7Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer7 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur7Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer7Results">
-              {" "}
-              {nameUserResults[IndexJoueur7Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur7Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur7Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur7Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer7">
-            <div className="scorePlayer "> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player8 */}{" "}
-        <div className="div__player joueur8Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer8 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur8Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer8Results">
-              {" "}
-              {nameUserResults[IndexJoueur8Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur8Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur8Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur8Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer8">
-            <div className="scorePlayer "> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player9 */}{" "}
-        <div className="div__player joueur9Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer8 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur9Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer9Results">
-              {" "}
-              {nameUserResults[IndexJoueur9Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur9Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur9Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur9Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer9">
-            <div className="scorePlayer "> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player10 */}{" "}
-        <div className="div__player joueur10Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer8 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur10Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer10Results">
-              {" "}
-              {nameUserResults[IndexJoueur10Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur10Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur10Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur10Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer10">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>
-        {/**Player11 */}{" "}
-        <div className="div__player joueur11Result">
-          <div className="contener__icone__player">
-            <img className="icone__player" src={player} alt="img player" />
-          </div>{" "}
-          <div className="contenerPseudoPlayer">
-            <img
-              className="imgPlayer8 imgAvatarResultat"
-              src={avatarUserResults[IndexJoueur11Result]}
-              alt="img__avatar"
-            />
-            <span className="pseudoPlayer pseudoPlayer11Results">
-              {" "}
-              {nameUserResults[IndexJoueur11Result]}{" "}
-            </span>{" "}
-          </div>{" "}
-          <div className="contener__card">
-            <img
-              className="carte__pierre joueur11Pierre"
-              src={Pierre}
-              alt="icone Pierre"
-            />
-            <img
-              className="carte__feuille joueur11Feuille"
-              src={Feuille}
-              alt="icone Feuille"
-            />
-            <img
-              className="carte__ciseaux joueur11Ciseaux"
-              src={Ciseaux}
-              alt="icone Ciseaux"
-            />
-          </div>{" "}
-          <div className="compteurPlayer compteurPlayer11">
-            <div className="scorePlayer"> 10 </div>{" "}
-          </div>{" "}
-        </div>{" "}
-      </div>{" "}
-      <div className="NewGameContener">
-        <button className="button_style--active buttonNewPartie" onClick={newPartieButton}>
-          Nouvelle Partie{" "}
-        </button>{" "}
-      </div>{" "}
+        <div className="pubDroiteResultat" >Pub 2</div>
       </div>
-      <div className="pubDroiteResultat" >Pub 2</div>
-    </div>
     </div>
   );
 }

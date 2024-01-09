@@ -233,7 +233,7 @@ function Meetplayer() {
       divRegle.style.display = "none";
       buttonRegle.style.backgroundColor = "white";
       buttonRegle.style.color = "#0D3B66";
-      divOption.style.display = "block";
+      divOption.style.display = "flex";
       buttonOption.style.backgroundColor = "#0D3B66";
       buttonOption.style.color = "white";
     }
@@ -412,8 +412,9 @@ function Meetplayer() {
   const handleCopyLink = () => {
     console.log(salonState);
     navigator.clipboard.writeText(
-      /*`http://localhost:8080/Send-invitation/${salonState}`*/
-      `https://pierrefeuillearnaque.com/Send-invitation/${salonState}`
+      
+      `http://localhost:8080/Send-invitation/${salonState}`
+      //`https://pierrefeuillearnaque.com/Send-invitation/${salonState}`
     );
   };
 
@@ -542,9 +543,9 @@ function Meetplayer() {
               <div className="les_regles">
                 {/*La regle 1*/}
                 <div className="pageRegle1 pageRegle">
-                  <span className="regle1Titre" >Au debut de la partie, les participants sont assignés a un role :</span>
+                  <span className="regle1Titre" >Au debut de la partie, les participants sont assignés à un role :</span>
                   <img className="imgRegle1 regle1Taupe regleIconeRole" src={taupe} alt="IconeTaupe"/>
-                  <span className="regle1taupe regle1role" >La taupe</span>
+                  <span className="regle1taupe regle1role" >L'arnaqueur</span>
                   <img className="imgRegle1 regle1Informateur regleIconeRole" src={informateurs} alt="IconeInformateur"/>
                   <span className="regle1informateur regle1role">Les informateurs</span>
                   <img className="imgRegle1 regle1Joueur regleIconeRole" src={Joueurs} alt="IconeJoueur"/>
@@ -553,39 +554,39 @@ function Meetplayer() {
                   {/*La regle 2*/}
                 <div className="pageRegle2 pageRegle">
                   <img className="taupeRegle2 regleIconeRole" src={taupe} alt="IconeTaupe"/>
-                  <div>La taupe va recevoir un symbole à defendre</div>
-                  <span>Par exemple, la Feuille:</span>
+                  <div className="regle1informateur regle1role">L'arnaqueur va recevoir un symbole à defendre</div>
+                  <span className="regle1role">Par exemple, la Feuille:</span>
                   <div className="contenerCardregle2" >
                   <img className="regle2PierreBlanche regleIconeSymbole" src={Pierre} alt="IconePierre"/>
                   <img className="regle2FeuilleRed regleIconeSymbole" src={Feuille} alt="IconeFeuille"/>
                   <img className="regle2CiseauBlanche regleIconeSymbole" src={Ciseau} alt="IconeCiseau"/>
                   </div>
-                  <span>Dans ce cas la, la taupe va devoir inciter les joueurs à jouer les symboles perdant face a la feuille.</span>
+                  <span className="regle1role">Dans ce cas la, l'arnaqueur va devoir inciter les joueurs à jouer les symboles perdant face à la feuille.</span>
                   <div className="contenerCardregle2 contenerRow">
                   <img className="regle2PierreJaune regleIconeSymbole" src={Pierre} alt="IconePierre"/>
                   <img className="regle2FeuilleJaune regleIconeSymbole" src={Feuille} alt="IconeFeuille"/>
                   <img className="regle2CiseauBlanche2 regleIconeSymbole" src={Ciseau} alt="IconeCiseau"/>
                   </div>
-                  <span>Plus les joueurs se trompent,</span>
-                  <span>Plus la taupe gagne de points.</span>
+                  <span className="regle1role">Plus les joueurs se trompent,</span>
+                  <span className="regle1role">Plus l'arnaqueur gagne de points.</span>
                 </div>
                 {/*La regle 3*/}
                 <div className="pageRegle3 pageRegle">
                   <img className="regle3imginformateur regleIconeRole" src={informateurs} alt="iconeInformateur"/>
-                  <span>Les deux Informateurs voient chacun une carte perdante</span>
-                  <span>Par exemple :</span>
+                  <span className="regle1role">Les deux Informateurs voient chacun une carte perdante</span>
+                  <span className="regle1role">Par exemple :</span>
                   <img className="regle3PierreRouge regleIconeSymbole" src={Pierre} alt="iconePierre"/>
-                  <span>Les Informateurs doivent aider les joueurs a gagner en les incitant a jouer la bonne carte .</span>
-                  <span>Mais attention, Les Taupes vont esseyer de se faire passer pour les informateurs afin inciter les joueurs a jouer le mauvais symbole.</span>
+                  <span className="regle1role">Les Informateurs doivent aider les joueurs a gagner en les incitant a jouer la bonne carte .</span>
+                  <span className="regle1role">Mais attention, l'arnaqueur va esseyer de se faire passer pour l'un des informateurs afin inciter les joueurs a jouer le mauvais symbole.</span>
                 </div>
                 <div className="pageRegle4 pageRegle">
                   <img className="iconeJoueurRegle4 regleIconeRole" src={Joueurs} alt="iconeJoueur"/>
-                  <span>Les joueurs doivent jouer le symbole qui bat celui de la taupe</span>
-                  <span>Par exemple, si la taupe défend :</span>
+                  <span className="regle1role">Les joueurs doivent jouer le symbole qui bat celui de l'arnaqueur</span>
+                  <span className="regle1role">Par exemple, si l'arnaqueur défend :</span>
                   <img className="feuilleRegle4 regleIconeSymbole" src={Feuille} alt="iconeFeuille" />
-                  <span>Les joueurs doivent jouer :</span>
+                  <span className="regle1role">Les joueurs doivent jouer :</span>
                   <img className="ciseauRegle4 regleIconeSymbole" src={Ciseau} alt="iconeCiseaux"/>
-                  <span>Les joueurs devront aussi repérer les informateurs pour savoir quelle carte jouer.</span>
+                  <span className="regle1role">Les joueurs devront aussi repérer les informateurs pour savoir quelle carte jouer.</span>
                 </div>
                 <div className="contenerButtonRegle">
                   <button onClick={ClicRegle1} className="buttonRegle1 buttonRegle" ></button>

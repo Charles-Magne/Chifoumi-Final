@@ -9,11 +9,11 @@ export const initialState = {
   /**
    * La durée totale du timer (ne change pas)
    */
-  timerValue: 120, 
+  timerValue: 12, 
   /**
    * Le timer qui se decremente
    */
-  timer: 120,
+  timer: 12,
 
 }
 

@@ -90,18 +90,19 @@ display: flex;
 .div__section-principal--inviter--joueur {
   display: flex;
   flex-direction: row;
-  width: 80rem;
+  width: 40rem;
   background: linear-gradient(0deg, rgba(15, 96, 133, 0.85), rgba(13, 59, 102, 0.35));
   height: 40rem;
   border-radius: 0.5em;
   justify-content: space-between;
+  
 }
 
 // ******** le menu de gauche 
 
 .div__roles--options {
   display: flex;
-  width: 20rem;
+  width: 10rem;
   height: 40rem;
   background-color: white;
   border-radius: vars.$raduis;
@@ -133,6 +134,7 @@ display: flex;
 
 .les_regles {
   display: none;
+  justify-items: center;
 }
 
 .P__astuces--1 {
@@ -177,15 +179,26 @@ display: flex;
 
 //class commun pour ne pas repeter de code
 .pageRegle{
+  display: flex;
   flex-direction: column;
+  align-content: space-between;
 }
 
 .regleIconeRole{
+  display: flex;
+  align-self: center;
   width: 2rem;
 }
 
 .regleIconeSymbole{
+  align-self: center;
   width: 2rem;
+}
+
+.contenerCardregle2{
+  display: flex;
+  width: 15rem;
+  justify-content: space-between;
 }
 
 .contenerRow{
@@ -206,6 +219,8 @@ display: flex;
 .regle1role{
   display: flex;
   margin: 0.5rem 0 0 0;
+  align-self: center;
+  text-align: center;
 }
 
 .pageRegle2{
@@ -226,19 +241,17 @@ display: flex;
 
 .contenerButtonRegle{
   display: flex;
-  //width: 100%;
+  width: 100%;
   height: 0.8rem;
-  margin: 0 auto;
+  margin: 4rem auto;
   justify-self: center;
   flex-direction: row;
-  position: absolute;
-  bottom: 8rem;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .buttonRegle{
 display: flex;
-width: 2rem;
+width: 3rem;
 border: 1px solid vars.$bleu-main;
 border-radius: 0.5rem;
 }
@@ -311,7 +324,7 @@ border-radius: 0.5rem;
 .contenerNonHote{
   display: none;
   flex-direction: column;
-  width: 80rem;
+  width: 40rem;
   align-items: center;
   color: vars.$bleu-main;
 }
@@ -382,7 +395,7 @@ border-radius: 0.5rem;
 // ************ Le button du centre pour copier le lien => visible seulement par l'hote
 .contenerInvitLink{
   display: none;
-  width: 60rem;
+  width: 40rem;
 justify-content: center;
 }
 
@@ -679,7 +692,7 @@ padding: 1em 0 ;
   }
 
   .div__section-principal--inviter--joueur {
-    width: 70rem;
+    width: 60rem;
   }
 
   .div__roles--options {
@@ -687,7 +700,7 @@ padding: 1em 0 ;
   }
 
   .div__link--invit {
-    width: 20rem;
+    width: 15rem;
     height: 12rem;
   }
 
@@ -736,6 +749,20 @@ padding: 1em 0 ;
     margin: 2rem 0 2rem 0  ;
   }
 
+  .button__carte{
+    width: 8rem;
+  }
+
+  .image__symbole{
+    width: 2rem;
+    margin: 0 4rem;
+  }
+
+  .texteSymbole{
+    width: 4rem;
+    margin: 0 2rem;
+  }
+
   .div__listeJoueurs {
     width: 30rem;
     margin: 2rem 0 0 0;
@@ -757,12 +784,12 @@ padding: 1em 0 ;
 
   .ad-1 {
     position: sticky;
-    top: 10rem;
+    top: 2rem;
   }
 
   .ad-2 {
     position: sticky;
-    top: 10rem;
+    top: 2rem;
   }
 
 }
@@ -791,20 +818,32 @@ padding: 1em 0 ;
 
 // Les ecrans jusqu'a 670PX de large
 @media screen and (max-width:670px) {
+
   .contener-main{
     width: 22rem;
+  }
+
+  .div__roles--options{
+   width: 22rem; 
   }
 
   .div__section-principal--inviter--joueur {
     width: 22rem;
   }
+
+  .div__listeJoueurs{
+    width: 22rem;
+  }
+
 }
 
 // Les ecrans jusqu'a 510PX de large la pub pour le portable apparait
 @media screen and (max-width:540px) {
 
   .pseudoBody{
+    display: flex;
     flex-direction: column;
+    width: 46rem;
   }
 
   .ad-1{
@@ -812,7 +851,7 @@ padding: 1em 0 ;
 }
 
   .contener-main{
-    width: 31rem;
+    width: 40rem;
     height: 80rem;
   }
 
@@ -823,6 +862,16 @@ padding: 1em 0 ;
 
   .div__section-principal--inviter--joueur {
     width: 31rem;
+    height: 100%;
+  }
+
+  .logo__joueursSelf{
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+
+  .Pseudo__joueurSelf {
+    font-size: 1rem;
   }
 
   .contenerPubPortable{
@@ -831,5 +880,7 @@ padding: 1em 0 ;
 
   .pubportableMeetplayer{
     display: flex;
+    position: fixed;
+    bottom: 1rem;
   }
 }

@@ -18,7 +18,7 @@
 .contener-main{
   display: flex;
   flex-direction: column;
-  width: 80rem; //! attention
+  width: 70vw; //! attention
   height: 45rem;
 }
 
@@ -51,7 +51,6 @@ display: flex;
   position: absolute;
   width: 5rem;
   height: 3rem;
-  background-color: red;
   top: 75%;
   right: 10%;
   border-radius: 0.5em;
@@ -90,20 +89,19 @@ display: flex;
 .div__section-principal--inviter--joueur {
   display: flex;
   flex-direction: row;
-  width: 40rem;
   background: linear-gradient(0deg, rgba(15, 96, 133, 0.85), rgba(13, 59, 102, 0.35));
   height: 40rem;
   border-radius: 0.5em;
   justify-content: space-between;
-  
+  width: 70vw;
 }
 
 // ******** le menu de gauche 
-
 .div__roles--options {
   display: flex;
-  width: 10rem;
+  width: 15vw;
   height: 40rem;
+  align-self: center;
   background-color: white;
   border-radius: vars.$raduis;
   flex-direction: column;
@@ -163,8 +161,10 @@ display: flex;
 
 /*div a cacher ou a afficher selon le clic*/
 .les_options {
-  display: block;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 15rem;
   height: 50%;
   margin-bottom: 10%;
 }
@@ -373,7 +373,8 @@ border-radius: 0.5rem;
 .alertAvatarEmpty{
   position: absolute;
   top: 14rem;
-  right: 51rem;
+  left: 60vw;
+  width: 8rem;
   display: none;
   background-color: white;
   font-size: 0.7rem;
@@ -475,7 +476,7 @@ padding: 1em 0 ;
   display: flex;
   flex-direction: column;
   //position: relative;
-  width: 30rem;
+  width: 15vw;
   height: 40em;
   background-color: white;
   border-radius: 0.5em;
@@ -590,7 +591,8 @@ padding: 1em 0 ;
   display: flex;
   width: 7rem;
   font-size: 1.2rem;
-  align-self: center;
+justify-content: center;
+align-self: center;  
   color: vars.$bleu-main;
   margin: 0rem 0rem 0rem 0rem;
   text-transform: lowercase;
@@ -662,9 +664,10 @@ padding: 1em 0 ;
 .contenerPubPortable{
   display: none;
   justify-content: center;
-  width: 33rem;
-  position: sticky;
-  top: 15rem;
+  width: 100vw;
+  height: auto;
+  //position: sticky;
+  //top: 15rem;
 }
 
 .pubportableMeetplayer{
@@ -681,9 +684,6 @@ padding: 1em 0 ;
 //**************************************************** Responsive **************************************************************************
 
 
-
-
-
 // Les ecrans jusqu'a 1670PX de large
 @media screen and (max-width:1670px) {
 
@@ -696,12 +696,16 @@ padding: 1em 0 ;
   }
 
   .div__roles--options {
-    width: 30rem;
+    width: 20rem;
   }
 
   .div__link--invit {
-    width: 15rem;
+    width: 20rem;
     height: 12rem;
+  }
+
+  .div__listeJoueurs{
+    width: 20rem;
   }
 
   .Pseudo__joueurSelf{
@@ -735,15 +739,22 @@ padding: 1em 0 ;
   .div__section-principal--inviter--joueur {
     flex-direction: column;
     width: 40rem;
-    height: 80rem;
+    height: auto;
     align-items: center;
   }
 
   .div__roles--options {
     width: 30rem;
-    height: 52rem;
+    height: auto;
   }
 
+  .alertAvatarEmpty{
+    position: absolute;
+    top: 47.4rem;
+    left: 45vw;
+    width: 8rem;
+    display: none;
+  }
 
   .div__link--invit {
     margin: 2rem 0 2rem 0  ;
@@ -769,17 +780,31 @@ padding: 1em 0 ;
   }
 
   .logo__joueursSelf {
-    width: 5rem;
+    width: 3rem;
   }
 
   .Pseudo__joueurHoteMeet{
-    font-size: 2rem;
+    font-size: 1rem;
     width: 11rem;
   }
 
   .Pseudo__joueurSelf {
-    font-size: 2rem;
+    font-size: 1rem;
     width: 11rem;
+  }
+
+  .inputNameHote{
+    margin-top: 2rem;
+  }
+
+  .alertLength {
+    position: absolute;
+    top: 43.7rem;
+    display: none;
+  }
+
+  .alertEmpty{
+    top: 43.7rem;
   }
 
   .ad-1 {
@@ -801,8 +826,15 @@ padding: 1em 0 ;
     width: 30rem;
   }
 
+  .div__roles--options{
+height: auto;
+  }
+
   .div__section-principal--inviter--joueur {
     width: 30rem;
+    height: auto;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
   }
 
 }
@@ -814,6 +846,19 @@ padding: 1em 0 ;
     display: none;
   }
 
+  .div__section-principal--inviter--joueur{
+    height: auto;
+    padding-bottom: 3rem;
+  }
+
+  .alertAvatarEmpty{
+    position: absolute;
+    top: 47.4rem;
+    left: 55vw;
+    width: 8rem;
+    display: none;
+  }
+
 }
 
 // Les ecrans jusqu'a 670PX de large
@@ -821,14 +866,24 @@ padding: 1em 0 ;
 
   .contener-main{
     width: 22rem;
+    height: auto;
   }
 
   .div__roles--options{
    width: 22rem; 
   }
 
-  .div__section-principal--inviter--joueur {
-    width: 22rem;
+  .alertAvatarEmpty{
+    position: absolute;
+    top: 47.4rem;
+    left: 40vw;
+    width: 8rem;
+    display: none;
+  }
+
+  .div__section-principal--inviter--joueur{
+    height: auto;
+    padding-bottom: 3rem;
   }
 
   .div__listeJoueurs{
@@ -843,7 +898,14 @@ padding: 1em 0 ;
   .pseudoBody{
     display: flex;
     flex-direction: column;
-    width: 46rem;
+    align-self: center;
+
+  }
+
+  .contener-header{
+    display: flex;
+    flex-direction: row;
+  width: 100vw;
   }
 
   .ad-1{
@@ -851,18 +913,35 @@ padding: 1em 0 ;
 }
 
   .contener-main{
-    width: 40rem;
-    height: 80rem;
+    width: 100vw;
+    height: auto;
+
+  }
+
+  .alertAvatarEmpty{
+    position: absolute;
+    top: 48.4rem;
+    left: 38vw;
+    width: 8rem;
+    display: none;
   }
 
   .contenerNonHote{
-    width: 31rem;
+    width: 25rem;
   }
 
+.avatarContenerMain{
+  width: 90vw;
+}
+
+.contenerInvitLink{
+  width: 90vw;
+}
 
   .div__section-principal--inviter--joueur {
-    width: 31rem;
-    height: 100%;
+    width: 100vw;
+    height: auto;
+    margin-bottom: 5rem;
   }
 
   .logo__joueursSelf{
@@ -876,11 +955,12 @@ padding: 1em 0 ;
 
   .contenerPubPortable{
     display: flex;
+    //width: 100vw;
   }
 
   .pubportableMeetplayer{
     display: flex;
-    position: fixed;
-    bottom: 1rem;
+    position: sticky;
+    bottom: 2rem;
   }
 }

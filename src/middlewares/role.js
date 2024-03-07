@@ -34,7 +34,7 @@ const role = (store) => (next) => (action) => {
 
       if (process.env.NODE_ENV === "production") {
         //si je suis en production *****************
-        const serverIP = "play.pierrefeuillearnaque.com:2015"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
+        const serverIP = "play.pierrefeuillearnaque.com:443"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
         socket = window.io(`https://${serverIP}`);
       }
 
@@ -107,7 +107,7 @@ const role = (store) => (next) => (action) => {
 
       if (process.env.NODE_ENV === "production") {
         //si je suis en production *****************
-        const serverIP = "play.pierrefeuillearnaque.com:2015"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
+        const serverIP = "play.pierrefeuillearnaque.com:443"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
         socket = window.io(`https://${serverIP}`);
       }
       console.log("on envoit la requet pour les joueur + index");
@@ -125,7 +125,7 @@ const role = (store) => (next) => (action) => {
 
       if (process.env.NODE_ENV === "production") {
         //si je suis en production *****************
-        const serverIP = "play.pierrefeuillearnaque.com:2015"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
+        const serverIP = "play.pierrefeuillearnaque.com:443"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
         socket = window.io(`https://${serverIP}`);
       }
       console.log(("on envoit notre choix de symbole aux autres", action));
@@ -144,7 +144,7 @@ const role = (store) => (next) => (action) => {
 
       if (process.env.NODE_ENV === "production") {
         //si je suis en production *****************
-        const serverIP = "play.pierrefeuillearnaque.com:2015"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
+        const serverIP = "play.pierrefeuillearnaque.com:443"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
         socket = window.io(`https://${serverIP}`);
       }
       console.log(("WIN_on envoit notre choix de symbole aux autres", action));
@@ -160,7 +160,7 @@ const role = (store) => (next) => (action) => {
 
       if (process.env.NODE_ENV === "production") {
         //si je suis en production *****************
-        const serverIP = "play.pierrefeuillearnaque.com:2015"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
+        const serverIP = "play.pierrefeuillearnaque.com:443"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
         socket = window.io(`https://${serverIP}`);
       }
       console.log(
@@ -178,7 +178,7 @@ const role = (store) => (next) => (action) => {
 
       if (process.env.NODE_ENV === "production") {
         //si je suis en production *****************
-        const serverIP = "play.pierrefeuillearnaque.com:2015"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
+        const serverIP = "play.pierrefeuillearnaque.com:443"; // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine
         socket = window.io(`https://${serverIP}`);
       }
       socket.emit("send_Clean_Joueur_Array");

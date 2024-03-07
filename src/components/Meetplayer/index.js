@@ -26,7 +26,11 @@ import Ciseau from "../../assets/Pictures/Symbole/ciseaux_bleu.png";
 
 // Les actions
 
-import { savePseudoInvite, sendNameself, launchGame } from "../../action/Avatar";
+import {
+  savePseudoInvite,
+  sendNameself,
+  launchGame,
+} from "../../action/Avatar";
 import {
   connectionWebSo,
   newInviteDetecte,
@@ -35,13 +39,11 @@ import {
 
 import { fetchCodeSalonWs, saveLobbyRandom } from "../../action/Salon";
 
-
 import { number } from "prop-types";
 
 function Meetplayer() {
-
-    // On import le code du salon
-    const salonState = useSelector((state) => state.salon.lobby);
+  // On import le code du salon
+  const salonState = useSelector((state) => state.salon.lobby);
   const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom de l'hote toujours en haut dans tous les reducers
   const imgMJ = useSelector((state) => state.avatar.hote.avatarImgHote); // l'img de l'hote toujours en haut
   const nameMJTrue = useSelector((state) => state.avatar.hote.hotePseudo); // le nom de l'hote toujours en haut uniquement pour l'hote
@@ -79,7 +81,9 @@ function Meetplayer() {
   //On defini les index pour savoir si on affche ou non les div
   const totalOfUser = useSelector((state) => state.avatar.joueurs.nbPlayer); // Le nombre de joueur present dans la room
   const indexJoueur1 = useSelector((state) => state.avatar.joueurs.i1); // index standard
-  const indexJoueurRandom1 = useSelector((state) => state.avatar.joueurs.indexRandom1 ); // index Random du joueur 1
+  const indexJoueurRandom1 = useSelector(
+    (state) => state.avatar.joueurs.indexRandom1
+  ); // index Random du joueur 1
   const indexJoueur2 = useSelector((state) => state.avatar.joueurs.i2);
   const indexJoueurRandom2 = useSelector(
     (state) => state.avatar.joueurs.indexRandom2
@@ -133,7 +137,22 @@ function Meetplayer() {
     (state) => state.avatar.joueurs.indexRandom14
   );
 
-  const indexRandomArry = [indexJoueurRandom1, indexJoueurRandom2, indexJoueurRandom3, indexJoueurRandom4, indexJoueurRandom5, indexJoueurRandom6, indexJoueurRandom7, indexJoueurRandom8, indexJoueurRandom9, indexJoueurRandom10,  indexJoueurRandom11,  indexJoueurRandom12,  indexJoueurRandom13,  indexJoueurRandom14];
+  const indexRandomArry = [
+    indexJoueurRandom1,
+    indexJoueurRandom2,
+    indexJoueurRandom3,
+    indexJoueurRandom4,
+    indexJoueurRandom5,
+    indexJoueurRandom6,
+    indexJoueurRandom7,
+    indexJoueurRandom8,
+    indexJoueurRandom9,
+    indexJoueurRandom10,
+    indexJoueurRandom11,
+    indexJoueurRandom12,
+    indexJoueurRandom13,
+    indexJoueurRandom14,
+  ];
 
   // On identifie les div a afficher
   const divJoueur1 = document.querySelector(".joueur1");
@@ -151,7 +170,22 @@ function Meetplayer() {
   const divJoueur13 = document.querySelector(".joueur13");
   const divJoueur14 = document.querySelector(".joueur14");
 
-  const divJoueurs = [  divJoueur1,  divJoueur2,  divJoueur3,  divJoueur4,  divJoueur5,  divJoueur6,  divJoueur7,  divJoueur8,  divJoueur9,  divJoueur10,  divJoueur11,  divJoueur12,  divJoueur13,  divJoueur14,];
+  const divJoueurs = [
+    divJoueur1,
+    divJoueur2,
+    divJoueur3,
+    divJoueur4,
+    divJoueur5,
+    divJoueur6,
+    divJoueur7,
+    divJoueur8,
+    divJoueur9,
+    divJoueur10,
+    divJoueur11,
+    divJoueur12,
+    divJoueur13,
+    divJoueur14,
+  ];
 
   // On cible les icones pret et en attante
   const waitingSelf = document.querySelector(".playerWaitingSelf");
@@ -185,7 +219,6 @@ function Meetplayer() {
   const waiting14 = document.querySelector(".playerWaiting14");
   const ready14 = document.querySelector(".playerReady14");
 
-
   //ciblage du pseudoSelf pour changer la couleur lorsque on valide le nom
   const PseudoSelf = document.querySelector(".PseudoSelfTrue");
   const iround = useSelector((state) => state.avatar.joueurSelf.inumber);
@@ -208,13 +241,13 @@ function Meetplayer() {
     }
   }
 
-    // ******************************** Clic sur les buttons Regles/Option *********************************************************
-    // On clic sur le bouton regles
+  // ******************************** Clic sur les buttons Regles/Option *********************************************************
+  // On clic sur le bouton regles
   const clicRegleButton = () => {
-    const divRegle = document.querySelector('.les_regles');
-    const divOption = document.querySelector('.les_options');
-    const buttonOption = document.querySelector('.Button__options');
-    const buttonRegle = document.querySelector('.Button__regles');
+    const divRegle = document.querySelector(".les_regles");
+    const divOption = document.querySelector(".les_options");
+    const buttonOption = document.querySelector(".Button__options");
+    const buttonRegle = document.querySelector(".Button__regles");
     divRegle.style.display = "flex";
     buttonRegle.style.backgroundColor = "#0D3B66";
     buttonRegle.style.color = "white";
@@ -222,179 +255,174 @@ function Meetplayer() {
     buttonOption.style.backgroundColor = "white";
     buttonOption.style.color = "#0D3B66";
     buttonOption.style.borderColor = "#0D3B66";
-  }
+  };
 
   // On clic sur Option
-    const clicOptionButton = () => {
-      const divRegle = document.querySelector('.les_regles');
-      const divOption = document.querySelector('.les_options');
-      const buttonOption = document.querySelector('.Button__options');
-      const buttonRegle = document.querySelector('.Button__regles');
-      divRegle.style.display = "none";
-      buttonRegle.style.backgroundColor = "white";
-      buttonRegle.style.color = "#0D3B66";
-      divOption.style.display = "flex";
-      buttonOption.style.backgroundColor = "#0D3B66";
-      buttonOption.style.color = "white";
-    }
+  const clicOptionButton = () => {
+    const divRegle = document.querySelector(".les_regles");
+    const divOption = document.querySelector(".les_options");
+    const buttonOption = document.querySelector(".Button__options");
+    const buttonRegle = document.querySelector(".Button__regles");
+    divRegle.style.display = "none";
+    buttonRegle.style.backgroundColor = "white";
+    buttonRegle.style.color = "#0D3B66";
+    divOption.style.display = "flex";
+    buttonOption.style.backgroundColor = "#0D3B66";
+    buttonOption.style.color = "white";
+  };
 
-    const ClicRegle1 = () => {
-      const regle1 = document.querySelector('.pageRegle1');
-      const regle2 = document.querySelector('.pageRegle2');
-      const regle3 = document.querySelector('.pageRegle3');
-      const regle4 = document.querySelector('.pageRegle4');
-      regle1.style.display = "flex";
-      regle2.style.display = "none";
-      regle3.style.display = "none";
-      regle4.style.display = "none";
-      const bouton1 = document.querySelector('.buttonRegle1');
-      const bouton2 = document.querySelector('.buttonRegle2');
-      const bouton3 = document.querySelector('.buttonRegle3');
-      const bouton4 = document.querySelector('.buttonRegle4');
-      bouton1.style.backgroundColor = "#0D3B66";
-      bouton2.style.backgroundColor = "white";
-      bouton3.style.backgroundColor = "white";
-      bouton4.style.backgroundColor = "white";
-    }
-  
-    const ClicRegle2 = () => {
-      const regle1 = document.querySelector('.pageRegle1');
-      const regle2 = document.querySelector('.pageRegle2');
-      const regle3 = document.querySelector('.pageRegle3');
-      const regle4 = document.querySelector('.pageRegle4');
-      regle1.style.display = "none";
-      regle2.style.display = "flex";
-      regle3.style.display = "none";
-      regle4.style.display = "none";
-      const bouton1 = document.querySelector('.buttonRegle1');
-      const bouton2 = document.querySelector('.buttonRegle2');
-      const bouton3 = document.querySelector('.buttonRegle3');
-      const bouton4 = document.querySelector('.buttonRegle4');
-      bouton1.style.backgroundColor = "white";
-      bouton2.style.backgroundColor = "#0D3B66";
-      bouton3.style.backgroundColor = "white";
-      bouton4.style.backgroundColor = "white";
-    }
+  const ClicRegle1 = () => {
+    const regle1 = document.querySelector(".pageRegle1");
+    const regle2 = document.querySelector(".pageRegle2");
+    const regle3 = document.querySelector(".pageRegle3");
+    const regle4 = document.querySelector(".pageRegle4");
+    regle1.style.display = "flex";
+    regle2.style.display = "none";
+    regle3.style.display = "none";
+    regle4.style.display = "none";
+    const bouton1 = document.querySelector(".buttonRegle1");
+    const bouton2 = document.querySelector(".buttonRegle2");
+    const bouton3 = document.querySelector(".buttonRegle3");
+    const bouton4 = document.querySelector(".buttonRegle4");
+    bouton1.style.backgroundColor = "#0D3B66";
+    bouton2.style.backgroundColor = "white";
+    bouton3.style.backgroundColor = "white";
+    bouton4.style.backgroundColor = "white";
+  };
 
-    const ClicRegle3 = () => {
-      const regle1 = document.querySelector('.pageRegle1');
-      const regle2 = document.querySelector('.pageRegle2');
-      const regle3 = document.querySelector('.pageRegle3');
-      const regle4 = document.querySelector('.pageRegle4');
-      regle1.style.display = "none";
-      regle2.style.display = "none";
-      regle3.style.display = "flex";
-      regle4.style.display = "none";
-      const bouton1 = document.querySelector('.buttonRegle1');
-      const bouton2 = document.querySelector('.buttonRegle2');
-      const bouton3 = document.querySelector('.buttonRegle3');
-      const bouton4 = document.querySelector('.buttonRegle4');
-      bouton1.style.backgroundColor = "white";
-      bouton2.style.backgroundColor = "white";
-      bouton3.style.backgroundColor = "#0D3B66";
-      bouton4.style.backgroundColor = "white";
-    }
+  const ClicRegle2 = () => {
+    const regle1 = document.querySelector(".pageRegle1");
+    const regle2 = document.querySelector(".pageRegle2");
+    const regle3 = document.querySelector(".pageRegle3");
+    const regle4 = document.querySelector(".pageRegle4");
+    regle1.style.display = "none";
+    regle2.style.display = "flex";
+    regle3.style.display = "none";
+    regle4.style.display = "none";
+    const bouton1 = document.querySelector(".buttonRegle1");
+    const bouton2 = document.querySelector(".buttonRegle2");
+    const bouton3 = document.querySelector(".buttonRegle3");
+    const bouton4 = document.querySelector(".buttonRegle4");
+    bouton1.style.backgroundColor = "white";
+    bouton2.style.backgroundColor = "#0D3B66";
+    bouton3.style.backgroundColor = "white";
+    bouton4.style.backgroundColor = "white";
+  };
 
-    const ClicRegle4 = () => {
-      const regle1 = document.querySelector('.pageRegle1');
-      const regle2 = document.querySelector('.pageRegle2');
-      const regle3 = document.querySelector('.pageRegle3');
-      const regle4 = document.querySelector('.pageRegle4');
-      regle1.style.display = "none";
-      regle2.style.display = "none";
-      regle3.style.display = "none";
-      regle4.style.display = "flex";
-      const bouton1 = document.querySelector('.buttonRegle1');
-      const bouton2 = document.querySelector('.buttonRegle2');
-      const bouton3 = document.querySelector('.buttonRegle3');
-      const bouton4 = document.querySelector('.buttonRegle4');
-      bouton1.style.backgroundColor = "white";
-      bouton2.style.backgroundColor = "white";
-      bouton3.style.backgroundColor = "white";
-      bouton4.style.backgroundColor = "#0D3B66";
-    }
+  const ClicRegle3 = () => {
+    const regle1 = document.querySelector(".pageRegle1");
+    const regle2 = document.querySelector(".pageRegle2");
+    const regle3 = document.querySelector(".pageRegle3");
+    const regle4 = document.querySelector(".pageRegle4");
+    regle1.style.display = "none";
+    regle2.style.display = "none";
+    regle3.style.display = "flex";
+    regle4.style.display = "none";
+    const bouton1 = document.querySelector(".buttonRegle1");
+    const bouton2 = document.querySelector(".buttonRegle2");
+    const bouton3 = document.querySelector(".buttonRegle3");
+    const bouton4 = document.querySelector(".buttonRegle4");
+    bouton1.style.backgroundColor = "white";
+    bouton2.style.backgroundColor = "white";
+    bouton3.style.backgroundColor = "#0D3B66";
+    bouton4.style.backgroundColor = "white";
+  };
 
+  const ClicRegle4 = () => {
+    const regle1 = document.querySelector(".pageRegle1");
+    const regle2 = document.querySelector(".pageRegle2");
+    const regle3 = document.querySelector(".pageRegle3");
+    const regle4 = document.querySelector(".pageRegle4");
+    regle1.style.display = "none";
+    regle2.style.display = "none";
+    regle3.style.display = "none";
+    regle4.style.display = "flex";
+    const bouton1 = document.querySelector(".buttonRegle1");
+    const bouton2 = document.querySelector(".buttonRegle2");
+    const bouton3 = document.querySelector(".buttonRegle3");
+    const bouton4 = document.querySelector(".buttonRegle4");
+    bouton1.style.backgroundColor = "white";
+    bouton2.style.backgroundColor = "white";
+    bouton3.style.backgroundColor = "white";
+    bouton4.style.backgroundColor = "#0D3B66";
+  };
 
   // ******************************** optention de code lobby *********************************************************
 
-      /**
- * le ramdom number que l'on recupere lorsque on arrive sur la page meetplayer (il va servire a aceder au serrver)
- */
-       const salonNumber = useParams();
-       console.log('le useparams', salonNumber);
+  /**
+   * le ramdom number que l'on recupere lorsque on arrive sur la page meetplayer (il va servire a aceder au serrver)
+   */
+  const salonNumber = useParams();
+  console.log("le useparams", salonNumber);
 
   //!dispatch(connectionWebSo(salonState)); // on lance les websockets
 
- // **************************************Gestion de l'affichage du participant ***********************************
-
- useEffect(() => {
-
-  const divNonHote = document.querySelector(".contenerNonHote"); // le choix de l'avatar et du pseudo
-  const buttonLaunch = document.querySelector(".button__lancer__une__partie--2");
-
-  if ( nameMJ == "") { 
-    console.log('je ne suis pas l hote ');
-    divNonHote.style.display = "flex";
-    buttonLaunch.style.display = "none";
-  }
-
-        // Si le salon state est vide on est un participant donc on doit faire un useparam enregistrer le 
-  if ( salonState == "")  {
-    dispatch(saveLobbyRandom(salonNumber)); // ON enregistre le number salon dans le reducer Si le salonNumber est vide
-    console.log('on save le number dans le state');
-  }
-
-
-  // Si le salon state est vide on est un participant donc on doit faire un useparam enregistrer le 
-  if ( salonState !== "" && nameMJ == "" )  {
-        // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
-        const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
-        
-    dispatch(connectionWebSo(salonState)); // on lance les websockets Si le sate est rempli et que le nameMj est vide
-    dispatch(newInviteDetecte(indexRandomPlayer)); // si invité, je demande le name de l'hote Si le sate est rempli et que le nameMj est vide
-    console.log('on se connecter et notifie qu\'on est l\'invite');
-  }
-
-}, [salonState]);
-
- // **************************************Gestion de l'affichage de l'hote ou du participant ***********************************
+  // **************************************Gestion de l'affichage du participant ***********************************
 
   useEffect(() => {
-        // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
-        const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
+    const divNonHote = document.querySelector(".contenerNonHote"); // le choix de l'avatar et du pseudo
+    const buttonLaunch = document.querySelector(
+      ".button__lancer__une__partie--2"
+    );
+
+    if (nameMJ == "") {
+      console.log("je ne suis pas l hote ");
+      divNonHote.style.display = "flex";
+      buttonLaunch.style.display = "none";
+    }
+
+    // Si le salon state est vide on est un participant donc on doit faire un useparam enregistrer le
+    if (salonState == "") {
+      dispatch(saveLobbyRandom(salonNumber)); // ON enregistre le number salon dans le reducer Si le salonNumber est vide
+      console.log("on save le number dans le state");
+    }
+
+    // Si le salon state est vide on est un participant donc on doit faire un useparam enregistrer le
+    if (salonState !== "" && nameMJ == "") {
+      // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
+      const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
+
+      dispatch(connectionWebSo(salonState)); // on lance les websockets Si le sate est rempli et que le nameMj est vide
+      dispatch(newInviteDetecte(indexRandomPlayer)); // si invité, je demande le name de l'hote Si le sate est rempli et que le nameMj est vide
+      console.log("on se connecter et notifie qu'on est l'invite");
+    }
+  }, [salonState]);
+
+  // **************************************Gestion de l'affichage de l'hote ou du participant ***********************************
+
+  useEffect(() => {
+    // On creer un math random qui va servir d'identifiant et on l'enregistre dans le state
+    const indexRandomPlayer = Math.round(Math.random() * 10000000000000000);
 
     const divHote = document.querySelector(".contenerInvitLink"); // le lien d'invitation
 
     const divJoueurSelf = document.querySelector(".joueurSelf"); // La div qui affiche le joueur self
-   const divJoueurHote = document.querySelector(".joueurHote"); // la div qui affiche le joueur self
+    const divJoueurHote = document.querySelector(".joueurHote"); // la div qui affiche le joueur self
 
     // check si hote ou invité pour gerer affichage
     if (nameMJ != "") {
-      dispatch(connectionWebSo(salonState)); // on lance les websockets 
-       divHote.style.display = "flex";
+      dispatch(connectionWebSo(salonState)); // on lance les websockets
+      divHote.style.display = "flex";
       dispatch(fetchCodeSalonWs(salonState)); // on envoie le number du lobby sur le serveur
-      divJoueurHote.classList.add('Pseudo__joueurHoteSelf'); // Si je suis l'hote je passe la case en bleu
+      divJoueurHote.classList.add("Pseudo__joueurHoteSelf"); // Si je suis l'hote je passe la case en bleu
       divJoueurSelf.style.display = "none"; // On cache la div joueur self et le choix de l'avatar
       dispatch(HoteDetecte(nameMJ, imgMJ, indexRandomPlayer)); // Si je suis l'hote j'envoie mon nom a l'invité
-      console.log('je suis hote');
-      }
+      console.log("je suis hote");
+    }
 
+    /**
+     * sert a verifier si on est hote ou non pour changer la couleur du pseudo
+     */
+    const setColorName = document.querySelector(".Pseudo__joueurHoteMeet");
 
-      /**
-       * sert a verifier si on est hote ou non pour changer la couleur du pseudo
-       */
-      const setColorName = document.querySelector('.Pseudo__joueurHoteMeet');
-
-      //si on est hote 
-      if (nameMJ != "") {
-        setColorName.style.color = "white";
-      }
-      else {
-        setColorName.style.color = "#0D3B66";
-      }
+    //si on est hote
+    if (nameMJ != "") {
+      setColorName.style.color = "white";
+    } else {
+      setColorName.style.color = "#0D3B66";
+    }
 
     //! Attention, il faut virer les joueurs en trop La ternaire qui gere les joueurs lorsque le salon est plein navigate("/error")
-
   }, []);
 
   //input du pseudo
@@ -412,9 +440,9 @@ function Meetplayer() {
   const handleCopyLink = () => {
     console.log(salonState);
     navigator.clipboard.writeText(
-      
-      `http://localhost:8080/Send-invitation/${salonState}`
-      //`https://pierrefeuillearnaque.com/Send-invitation/${salonState}`
+      process.env.NODE_ENV === "development" ?
+      (`http://localhost:8080/Send-invitation/${salonState}`)
+      : (`https://pierrefeuillearnaque.com/Send-invitation/${salonState}`)
     );
   };
 
@@ -493,13 +521,13 @@ function Meetplayer() {
     ready14.style.display = "flex";
   }
 
-  // On envoie les joueurs sur l'ecran de jeu 
+  // On envoie les joueurs sur l'ecran de jeu
   const handleLaunchGame = () => {
     const alertFivePlayer = document.querySelector(".alert__nb--player");
 
     //On verifie sur il y a assez de joueurs
     indexJoueurRandom4 == null
-      ? alertFivePlayer.style.display = "flex"
+      ? (alertFivePlayer.style.display = "flex")
       : dispatch(launchGame());
     //navigate("/Playing");
   };
@@ -507,16 +535,16 @@ function Meetplayer() {
   const gameready = useSelector((state) => state.salon.gameReady);
 
   useEffect(() => {
-
-  // si le state est egale a yes alors on passe sur la page suivante
-  if ( gameready === "yes" ) {
-    process.env.NODE_ENV === 'development' ? navigate(`/Playing/${salonState}`)  : navigate(`/Playing/${salonState}`) ;
-    // si on est en devloppement 
-    // si on est en production
-    //navigate(`/Playing/${salonState}`); 
-  }
-}, [gameready]);
-
+    // si le state est egale a yes alors on passe sur la page suivante
+    if (gameready === "yes") {
+      process.env.NODE_ENV === "development"
+        ? navigate(`/Playing/${salonState}`)
+        : navigate(`/Playing/${salonState}`);
+      // si on est en devloppement
+      // si on est en production
+      //navigate(`/Playing/${salonState}`);
+    }
+  }, [gameready]);
 
   return (
     <div>
@@ -532,10 +560,16 @@ function Meetplayer() {
           <div className="div__section-principal--inviter--joueur">
             <div className="div__roles--options">
               <div className="contain__role--options">
-                <button onClick={clicRegleButton} className="Button__regles button_secondaire--desactive">
+                <button
+                  onClick={clicRegleButton}
+                  className="Button__regles button_secondaire--desactive"
+                >
                   Régles
                 </button>
-                <button onClick={clicOptionButton} className="Button__options button_secondaire--active">
+                <button
+                  onClick={clicOptionButton}
+                  className="Button__options button_secondaire--active"
+                >
                   Options{" "}
                 </button>
               </div>
@@ -543,105 +577,208 @@ function Meetplayer() {
               <div className="les_regles">
                 {/*La regle 1*/}
                 <div className="pageRegle1 pageRegle">
-                  <span className="regle1Titre" >Au debut de la partie, les participants sont assignés à un role :</span>
-                  <img className="imgRegle1 regle1Taupe regleIconeRole" src={taupe} alt="IconeTaupe"/>
-                  <span className="regle1taupe regle1role" >L'arnaqueur</span>
-                  <img className="imgRegle1 regle1Informateur regleIconeRole" src={informateurs} alt="IconeInformateur"/>
-                  <span className="regle1informateur regle1role">Les informateurs</span>
-                  <img className="imgRegle1 regle1Joueur regleIconeRole" src={Joueurs} alt="IconeJoueur"/>
+                  <span className="regle1Titre">
+                    Au debut de la partie, les participants sont assignés à un
+                    role :
+                  </span>
+                  <img
+                    className="imgRegle1 regle1Taupe regleIconeRole"
+                    src={taupe}
+                    alt="IconeTaupe"
+                  />
+                  <span className="regle1taupe regle1role">L'arnaqueur</span>
+                  <img
+                    className="imgRegle1 regle1Informateur regleIconeRole"
+                    src={informateurs}
+                    alt="IconeInformateur"
+                  />
+                  <span className="regle1informateur regle1role">
+                    Les informateurs
+                  </span>
+                  <img
+                    className="imgRegle1 regle1Joueur regleIconeRole"
+                    src={Joueurs}
+                    alt="IconeJoueur"
+                  />
                   <span className="regle1joueur regle1role">Les joueurs</span>
-                  </div>
-                  {/*La regle 2*/}
+                </div>
+                {/*La regle 2*/}
                 <div className="pageRegle2 pageRegle">
-                  <img className="taupeRegle2 regleIconeRole" src={taupe} alt="IconeTaupe"/>
-                  <div className="regle1informateur regle1role">L'arnaqueur va recevoir un symbole à defendre</div>
+                  <img
+                    className="taupeRegle2 regleIconeRole"
+                    src={taupe}
+                    alt="IconeTaupe"
+                  />
+                  <div className="regle1informateur regle1role">
+                    L'arnaqueur va recevoir un symbole à defendre
+                  </div>
                   <span className="regle1role">Par exemple, la Feuille:</span>
-                  <div className="contenerCardregle2" >
-                  <img className="regle2PierreBlanche regleIconeSymbole" src={Pierre} alt="IconePierre"/>
-                  <img className="regle2FeuilleRed regleIconeSymbole" src={Feuille} alt="IconeFeuille"/>
-                  <img className="regle2CiseauBlanche regleIconeSymbole" src={Ciseau} alt="IconeCiseau"/>
+                  <div className="contenerCardregle2">
+                    <img
+                      className="regle2PierreBlanche regleIconeSymbole"
+                      src={Pierre}
+                      alt="IconePierre"
+                    />
+                    <img
+                      className="regle2FeuilleRed regleIconeSymbole"
+                      src={Feuille}
+                      alt="IconeFeuille"
+                    />
+                    <img
+                      className="regle2CiseauBlanche regleIconeSymbole"
+                      src={Ciseau}
+                      alt="IconeCiseau"
+                    />
                   </div>
-                  <span className="regle1role">Dans ce cas la, l'arnaqueur va devoir inciter les joueurs à jouer les symboles perdant face à la feuille.</span>
+                  <span className="regle1role">
+                    Dans ce cas la, l'arnaqueur va devoir inciter les joueurs à
+                    jouer les symboles perdant face à la feuille.
+                  </span>
                   <div className="contenerCardregle2 contenerRow">
-                  <img className="regle2PierreJaune regleIconeSymbole" src={Pierre} alt="IconePierre"/>
-                  <img className="regle2FeuilleJaune regleIconeSymbole" src={Feuille} alt="IconeFeuille"/>
-                  <img className="regle2CiseauBlanche2 regleIconeSymbole" src={Ciseau} alt="IconeCiseau"/>
+                    <img
+                      className="regle2PierreJaune regleIconeSymbole"
+                      src={Pierre}
+                      alt="IconePierre"
+                    />
+                    <img
+                      className="regle2FeuilleJaune regleIconeSymbole"
+                      src={Feuille}
+                      alt="IconeFeuille"
+                    />
+                    <img
+                      className="regle2CiseauBlanche2 regleIconeSymbole"
+                      src={Ciseau}
+                      alt="IconeCiseau"
+                    />
                   </div>
-                  <span className="regle1role">Plus les joueurs se trompent,</span>
-                  <span className="regle1role">Plus l'arnaqueur gagne de points.</span>
+                  <span className="regle1role">
+                    Plus les joueurs se trompent,
+                  </span>
+                  <span className="regle1role">
+                    Plus l'arnaqueur gagne de points.
+                  </span>
                 </div>
                 {/*La regle 3*/}
                 <div className="pageRegle3 pageRegle">
-                  <img className="regle3imginformateur regleIconeRole" src={informateurs} alt="iconeInformateur"/>
-                  <span className="regle1role">Les deux Informateurs voient chacun une carte perdante</span>
+                  <img
+                    className="regle3imginformateur regleIconeRole"
+                    src={informateurs}
+                    alt="iconeInformateur"
+                  />
+                  <span className="regle1role">
+                    Les deux Informateurs voient chacun une carte perdante
+                  </span>
                   <span className="regle1role">Par exemple :</span>
-                  <img className="regle3PierreRouge regleIconeSymbole" src={Pierre} alt="iconePierre"/>
-                  <span className="regle1role">Les Informateurs doivent aider les joueurs a gagner en les incitant a jouer la bonne carte .</span>
-                  <span className="regle1role">Mais attention, l'arnaqueur va esseyer de se faire passer pour l'un des informateurs afin inciter les joueurs a jouer le mauvais symbole.</span>
+                  <img
+                    className="regle3PierreRouge regleIconeSymbole"
+                    src={Pierre}
+                    alt="iconePierre"
+                  />
+                  <span className="regle1role">
+                    Les Informateurs doivent aider les joueurs a gagner en les
+                    incitant a jouer la bonne carte .
+                  </span>
+                  <span className="regle1role">
+                    Mais attention, l'arnaqueur va esseyer de se faire passer
+                    pour l'un des informateurs afin inciter les joueurs a jouer
+                    le mauvais symbole.
+                  </span>
                 </div>
                 <div className="pageRegle4 pageRegle">
-                  <img className="iconeJoueurRegle4 regleIconeRole" src={Joueurs} alt="iconeJoueur"/>
-                  <span className="regle1role">Les joueurs doivent jouer le symbole qui bat celui de l'arnaqueur</span>
-                  <span className="regle1role">Par exemple, si l'arnaqueur défend :</span>
-                  <img className="feuilleRegle4 regleIconeSymbole" src={Feuille} alt="iconeFeuille" />
-                  <span className="regle1role">Les joueurs doivent jouer :</span>
-                  <img className="ciseauRegle4 regleIconeSymbole" src={Ciseau} alt="iconeCiseaux"/>
-                  <span className="regle1role">Les joueurs devront aussi repérer les informateurs pour savoir quelle carte jouer.</span>
+                  <img
+                    className="iconeJoueurRegle4 regleIconeRole"
+                    src={Joueurs}
+                    alt="iconeJoueur"
+                  />
+                  <span className="regle1role">
+                    Les joueurs doivent jouer le symbole qui bat celui de
+                    l'arnaqueur
+                  </span>
+                  <span className="regle1role">
+                    Par exemple, si l'arnaqueur défend :
+                  </span>
+                  <img
+                    className="feuilleRegle4 regleIconeSymbole"
+                    src={Feuille}
+                    alt="iconeFeuille"
+                  />
+                  <span className="regle1role">
+                    Les joueurs doivent jouer :
+                  </span>
+                  <img
+                    className="ciseauRegle4 regleIconeSymbole"
+                    src={Ciseau}
+                    alt="iconeCiseaux"
+                  />
+                  <span className="regle1role">
+                    Les joueurs devront aussi repérer les informateurs pour
+                    savoir quelle carte jouer.
+                  </span>
                 </div>
                 <div className="contenerButtonRegle">
-                  <button onClick={ClicRegle1} className="buttonRegle1 buttonRegle" ></button>
-                  <button onClick={ClicRegle2} className="buttonRegle2 buttonRegle" ></button>
-                  <button onClick={ClicRegle3} className="buttonRegle3 buttonRegle" ></button>
-                  <button onClick={ClicRegle4} className="buttonRegle4 buttonRegle" ></button>
+                  <button
+                    onClick={ClicRegle1}
+                    className="buttonRegle1 buttonRegle"
+                  ></button>
+                  <button
+                    onClick={ClicRegle2}
+                    className="buttonRegle2 buttonRegle"
+                  ></button>
+                  <button
+                    onClick={ClicRegle3}
+                    className="buttonRegle3 buttonRegle"
+                  ></button>
+                  <button
+                    onClick={ClicRegle4}
+                    className="buttonRegle4 buttonRegle"
+                  ></button>
                 </div>
               </div>
               <div className="les_options">
-                <div>
-                  <div className="div__Difficultéchoix titre--option">
-                    Choisir la difficulté
-                    <button className="button__difficulté button__difficulté--facile button_secondaire--desactive">
-                      Je decouvre le jeu
-                    </button>
-                    <button className="button__difficulté button__difficulté--normal button_secondaire--active">
-                      C'est bon, je connais
-                    </button>
-                    <button className="button__difficulté button__difficulté--difficile button_secondaire--desactive">
-                      Temps de jeu = 5000 H
-                    </button>
-                  </div>
-                  <h3 className="h3__nb_de_taupe titre--option">
-                    Modifier le nb de taupe
-                  </h3>
-                  <div className="div__nbDeTaupe--choix">
-                    <div className="choixTaupe">
-                      <span>1</span>
-                      <input
-                        className="checkbox--taupe checkbox--taupe--1"
-                        type="checkbox"
-                        label="ca sert a quoi ?"
-                        value={1}
-                      />
-                    </div>
-                    <div className="choixTaupe">
-                      <span>2</span>
-                      <input
-                        className="checkbox--taupe checkbox--taupe--2"
-                        type="checkbox"
-                        value={2}
-                      />
-                    </div>
-                  </div>
-                  <div className="div__gestionCarteAction titre--option">
-                    Gerer les cartes puputes
-                  </div>
-                  <button className="button__carte--pupute button_secondaire--desactive">
-                    Supprimer certaines cartes puputes
+                <div className="div__Difficultéchoix titre--option">
+                  Choisir la difficulté
+                  <button className="button__difficulté button__difficulté--facile button_secondaire--desactive">
+                    Je decouvre le jeu
                   </button>
-                  {/*<!--nb de carte total activé de facon dynamique--> */}
-                  {/*-- astuces Checkbox (pas sur de l'integrer)-- 
+                  <button className="button__difficulté button__difficulté--normal button_secondaire--active">
+                    C'est bon, je connais
+                  </button>
+                  <button className="button__difficulté button__difficulté--difficile button_secondaire--desactive">
+                    Temps de jeu = 5000 H
+                  </button>
+                </div>
+                <h3 className="h3__nb_de_taupe titre--option">
+                  Modifier le nb de taupe
+                </h3>
+                <div className="div__nbDeTaupe--choix">
+                  <div className="choixTaupe">
+                    <span>1</span>
+                    <input
+                      className="checkbox--taupe checkbox--taupe--1"
+                      type="checkbox"
+                      label="ca sert a quoi ?"
+                      value={1}
+                    />
+                  </div>
+                  <div className="choixTaupe">
+                    <span>2</span>
+                    <input
+                      className="checkbox--taupe checkbox--taupe--2"
+                      type="checkbox"
+                      value={2}
+                    />
+                  </div>
+                </div>
+                <div className="div__gestionCarteAction titre--option">
+                  Gerer les cartes puputes
+                </div>
+                <button className="button__carte--pupute button_secondaire--desactive">
+                  Supprimer certaines cartes puputes
+                </button>
+                {/*<!--nb de carte total activé de facon dynamique--> */}
+                {/*-- astuces Checkbox (pas sur de l'integrer)-- 
                     -- selectioner les cartes que l'on veut =>  ouvre un menu avec une scrollbarre possibilité de sauvgarder les choix
                     -- activer le dialogue automatique (sans micro / c'est mieux de les avoir activé automatiquement) => checkBox --> */}
-                </div>
               </div>
             </div>
             {/* *************************cette partie n'est visible que par les joueurs qui ne sont pas hote */}
@@ -668,22 +805,22 @@ function Meetplayer() {
               <AvatarChoix />
             </div>
             {/********************************** cette partie n'est visible que par l'hote du jeu */}
-            <div className="contenerInvitLink" >
-            <button onClick={handleCopyLink} className="div__link--invit">
-              <img
-                className="img__icone--information"
-                src={info}
-                alt="Informations"
-              />
-              <div className="div__conseil--hide">
-                <p>
-                  Pour inviter d'autres joueurs, cliquer sur le bouton, puis
-                  envoyer le code à vos amis.
-                </p>
-              </div>
-              <p className="partage__titre">Cliquer pour copier le lien</p>
-              <img className="img__partager" src={share} alt="icone-share" />
-            </button>
+            <div className="contenerInvitLink">
+              <button onClick={handleCopyLink} className="div__link--invit">
+                <img
+                  className="img__icone--information"
+                  src={info}
+                  alt="Informations"
+                />
+                <div className="div__conseil--hide">
+                  <p>
+                    Pour inviter d'autres joueurs, cliquer sur le bouton, puis
+                    envoyer le code à vos amis.
+                  </p>
+                </div>
+                <p className="partage__titre">Cliquer pour copier le lien</p>
+                <img className="img__partager" src={share} alt="icone-share" />
+              </button>
             </div>
             {/********************************** liste des joueurs */}
             <div className="div__listeJoueurs">
@@ -692,9 +829,7 @@ function Meetplayer() {
                 {/*Joueur hote */}
                 <div className=" joueurHote">
                   <img className="logo__joueursSelf" src={imgMJ} />
-                  <span className="Pseudo__joueurHoteMeet">
-                    {nameMJTrue}
-                  </span>
+                  <span className="Pseudo__joueurHoteMeet">{nameMJTrue}</span>
                   <img className="playerReady playerReadyHote" src={ready} />
                   {/*pret ou non */}
                 </div>
@@ -872,7 +1007,7 @@ function Meetplayer() {
         </div>
         <div className="ad-2">pub2</div>
         <div className="contenerPubPortable">
-        <div className="pubportableMeetplayer" ></div>
+          <div className="pubportableMeetplayer"></div>
         </div>
       </div>
     </div>

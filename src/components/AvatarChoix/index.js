@@ -101,11 +101,7 @@ const nameMJ = useSelector((state) => state.avatar.hote.valuePseudo); // le nom 
     }
     event.target.classList.add("button_style--active");
     
-  }
-
-
-
-  
+  }  
 
   return (
     <div className="avatarContenerMain">

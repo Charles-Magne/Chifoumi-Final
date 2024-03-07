@@ -75,7 +75,7 @@ const webSocketConnection = (store) => (next) => (action) => {
 
       if (process.env.NODE_ENV === 'production') {
         //si je suis en production *****************  
-        const serverIP = "play.pierrefeuillearnaque.com:2015" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
+        const serverIP = "play.pierrefeuillearnaque.com:443" // 37.187.38.225 => ip du server // 162.19.79.210 => ip du sous domaine 
         socket = window.io(`https://${serverIP}`);
       }
       // rsync -avz /home/student/Bureau/html/Perso/Server-Chifoumi ubuntu@vps-2b70c083.vps.ovh.net:/home/ubuntu/server
